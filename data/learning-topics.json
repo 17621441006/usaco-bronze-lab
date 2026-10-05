@@ -1,0 +1,80 @@
+[
+  {
+    "id": "simulation",
+    "label": "模拟与状态",
+    "description": "把规则按顺序执行，处理时间、位置和状态变化。",
+    "lesson": "simulation"
+  },
+  {
+    "id": "enumeration",
+    "label": "枚举与搜索",
+    "description": "先确定候选规模，再枚举、回溯或用位掩码表示选择。",
+    "lesson": "enumeration"
+  },
+  {
+    "id": "strings",
+    "label": "字符串与序列",
+    "description": "下标、子串、排列和连续段，先区分子串与子序列。",
+    "lesson": "strings"
+  },
+  {
+    "id": "sorting",
+    "label": "排序与查找",
+    "description": "利用顺序、排名或单调性减少反复查找。",
+    "lesson": "sorting"
+  },
+  {
+    "id": "counting",
+    "label": "计数与集合",
+    "description": "用频次、字典和集合统计贡献，避免重复计数。",
+    "lesson": "counting"
+  },
+  {
+    "id": "geometry",
+    "label": "区间与几何",
+    "description": "区间交并、坐标、距离与面积，注意边界和端点。",
+    "lesson": "interval"
+  },
+  {
+    "id": "grid",
+    "label": "网格与空间",
+    "description": "二维、三维下标，以及一次修改影响的局部位置。",
+    "lesson": "grid"
+  },
+  {
+    "id": "greedy",
+    "label": "贪心与构造",
+    "description": "说明当前选择为什么安全，或构造满足条件的答案。",
+    "lesson": "greedy"
+  },
+  {
+    "id": "math",
+    "label": "数学与规律",
+    "description": "奇偶、余数、取整、数位、递推与约束推导。",
+    "lesson": "arithmetic"
+  },
+  {
+    "id": "prefix",
+    "label": "前缀与差分",
+    "description": "复用累计信息，用变化量替代反复扫描。",
+    "lesson": "prefix"
+  },
+  {
+    "id": "graphs",
+    "label": "图与关系",
+    "description": "把相邻、传递和限制关系画成点与边。",
+    "lesson": "graphs"
+  },
+  {
+    "id": "adhoc",
+    "label": "Ad Hoc 与分类讨论",
+    "description": "画小例子、找不变量、构造并用反例检验；它是思考训练，不是单一算法。",
+    "lesson": "adhoc"
+  },
+  {
+    "id": "dp",
+    "label": "动态规划",
+    "description": "明确状态和转移；同时区分主解与可选拓展。",
+    "lesson": "dp"
+  }
+]

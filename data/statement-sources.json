@@ -1,0 +1,1376 @@
+{
+  "checkedAt": "2026-10-03T10:19:35.558399+00:00",
+  "problems": [
+    {
+      "id": 1589,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1589&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1588,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1588&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1587,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1587&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1565,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1565&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1564,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1564&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1563,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1563&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1541,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1541&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1540,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1540&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1539,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1539&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1493,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1493&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1493&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1492,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1492&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1492&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1491,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1491&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1491&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1469,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1469&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1469&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1468,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1468&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1468&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1467,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1467&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1467&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1445,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1445&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1445&lang=zh",
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1444,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1444&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1444&lang=zh",
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1443,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1443&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1443&lang=zh",
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1397,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1397&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1397&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1396,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1396&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1396&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1395,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1395&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1395&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1373,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1373&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1373&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1372,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1372&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1372&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1371,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1371&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1371&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1349,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1349&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1348,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1348&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1347,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1347&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1301,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1301&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1300,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1300&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1299,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1299&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1277,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1277&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1276,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1276&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1275,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1275&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1253,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1253&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1253&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1252,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1252&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1252&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1251,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1251&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1251&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1205,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1205&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1205&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1204,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1204&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1204&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1203,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1203&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1203&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1181,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1181&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1181&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1180,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1180&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1180&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1179,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1179&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1179&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1157,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1157&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1157&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1156,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1156&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1156&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1155,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1155&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1155&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1109,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1109&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1109&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1108,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1108&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1108&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1107,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1107&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1107&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1085,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1085&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1085&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1084,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1084&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1084&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1083,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1083&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1083&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1061,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1061&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1061&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1060,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1060&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1060&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1059,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1059&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1059&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1013,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1013&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1013&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1012,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1012&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1012&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 1011,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1011&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=1011&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 989,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=989&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=989&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "mn",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 988,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=988&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=988&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "mn",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 987,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=987&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=987&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "mn",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 965,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=965&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=965&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "mn",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 964,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=964&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=964&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "mn",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 963,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=963&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=963&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "mn",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 917,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=917&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=917&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 916,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=916&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=916&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 915,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=915&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=915&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 893,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=893&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=893&lang=zh",
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 892,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=892&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=892&lang=zh",
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 891,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=891&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=891&lang=zh",
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 857,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=857&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=857&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 856,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=856&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=856&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 855,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=855&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=855&lang=zh",
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 809,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=809&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=809&lang=zh",
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 808,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=808&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=808&lang=zh",
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 807,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=807&lang=en",
+      "chineseUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=807&lang=zh",
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "zh"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 785,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=785&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 784,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=784&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 783,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=783&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 761,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=761&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 760,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=760&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 759,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=759&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 713,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=713&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ka",
+        "id",
+        "ru",
+        "es",
+        "vi"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 712,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=712&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ka",
+        "id",
+        "ru",
+        "es",
+        "vi"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 711,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=711&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ka",
+        "id",
+        "ru",
+        "es",
+        "vi"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 689,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=689&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "vi"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 688,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=688&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "vi"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 687,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=687&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "fr",
+        "ru",
+        "es",
+        "vi"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 665,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=665&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ka",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 664,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=664&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ka",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 663,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=663&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ka",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 617,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=617&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ru",
+        "es",
+        "rs"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 616,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=616&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ru",
+        "es",
+        "rs"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 615,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=615&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ru",
+        "es",
+        "rs"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 593,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=593&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "rs"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 592,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=592&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "rs"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 591,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=591&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "fr",
+        "ru",
+        "es",
+        "rs"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 569,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=569&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ka",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 568,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=568&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ka",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    },
+    {
+      "id": 567,
+      "englishUrl": "https://usaco.org/index.php?page=viewproblem2&cpid=567&lang=en",
+      "chineseUrl": null,
+      "languages": [
+        "en",
+        "hy",
+        "bg",
+        "fr",
+        "ka",
+        "ru",
+        "es"
+      ],
+      "embedAllowedByHeaders": true
+    }
+  ]
+}

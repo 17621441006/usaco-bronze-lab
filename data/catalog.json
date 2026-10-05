@@ -1,0 +1,5620 @@
+[
+  {
+    "id": 1589,
+    "title": "Swap to Win",
+    "round": "season26contest3results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1589",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_season26contest3.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_season26contest3.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest3results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "构造",
+      "二维数组",
+      "计数"
+    ],
+    "samples": [
+      {
+        "input": "3\n3 6\nbanana\nnabana\nbanana\nnnbaaa\n5 3\nabc\ndef\nbca\nghi\njkl\nmno\n3 5\nabcde\nabcde\nabcde\nzzzzz",
+        "output": "3\n2 1 2 1\n1 1 3 5\n2 1 2 5\n5\n1 2 1 3\n2 1 2 1\n1 2 2 3\n2 1 2 2\n2 1 2 3\n0"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "11538ae383541002cd7866e0205df9f93f9814d8dc9be78c5706a1405bbf13e2",
+    "editorialHash": "59f4c7d0e79d5f69abea0f50a2921698e5fd0c664254e3e0001b637b893bfb1d",
+    "year": 2026,
+    "season": "2025–26",
+    "roundLabel": "2026 第 3 场",
+    "zhTitle": "交换取胜",
+    "level": "挑战",
+    "visual": "grid",
+    "summary": "有 N 个长度为 M 的字符串和目标 t。可以在同一行交换两个字符，或在同一列交换两行字符。请在不超过 2M 次操作内把第一行变成 t；输入保证有解。",
+    "summaryEn": "Transform the first of N length-M strings into target t. Swap two characters within a row, or swap characters in one column across two rows. Output any valid construction using at most 2M operations.",
+    "hints": [
+      "把字符串放进 N×M 网格。",
+      "一个字符最多两次交换就能到达目标格。",
+      "先匹配第一行已有的字符，再从其他行补缺口。"
+    ],
+    "analysis": "先利用第一行已有字符，再从其他行补齐。按行维护字符频次，减少无效查找。",
+    "checker": "special",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob3_bronze_season26contest3.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "grid",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "按列固定第一行。按字母维护候选位置栈，惰性丢弃失效位置；同一行一次交换，其他行先横向再纵向，至多 2M 次。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1588,
+    "title": "Strange Function",
+    "round": "season26contest3results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1588",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_season26contest3.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_season26contest3.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest3results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "数学规律",
+      "递推",
+      "模运算"
+    ],
+    "samples": [
+      {
+        "input": "2\n24680\n210",
+        "output": "1\n4"
+      },
+      {
+        "input": "1\n1234567890123456789012345678901234567890",
+        "output": "511620083"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "2db67bf1a2dfe9656143535f12db7135d2dc6760921b7032f1550757e5dbff25",
+    "editorialHash": "107aedf6a956732f31e7e685d1ec6f928793508baf765bc9eecedb5f8e3af420",
+    "year": 2026,
+    "season": "2025–26",
+    "roundLabel": "2026 第 3 场",
+    "zhTitle": "奇妙函数",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "若整数含有 0、1 以外的数字，把每位改成它的奇偶值；否则整数减 1。求重复执行到 0 的次数，答案模 1,000,000,007。整数可能长达 200,000 位。",
+    "summaryEn": "Repeatedly transform x: if any digit is not 0 or 1, replace every digit with its parity; otherwise subtract 1. Count operations until zero, modulo 1,000,000,007. Input numbers can contain 200,000 digits.",
+    "hints": [
+      "先手算 210 的变化。",
+      "完成一次奇偶变换后，剩下的数字只含 0 和 1。",
+      "考虑每一位对操作次数的贡献，并及时取模。"
+    ],
+    "analysis": "官方通过只含 0/1 的十进制数与二进制排名的关系推导贡献，线性处理数位。递推不应一律标成通用 DP。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob2_bronze_season26contest3.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "math",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "最多一次奇偶映射后只剩 0/1 数位；将末位之外的这些位按二进制求值乘 3，再加末位和首次映射次数。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1587,
+    "title": "Make All Distinct",
+    "round": "season26contest3results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1587",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_season26contest3.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_season26contest3.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest3results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "贪心",
+      "计数",
+      "模运算"
+    ],
+    "samples": [
+      {
+        "input": "4\n4 1\n4 1 4 1\n4 -3\n4 1 4 1\n4 4\n4 1 4 1\n3 -1\n1 1 2",
+        "output": "2\n4\n2\n1"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "bcbf614f90dc02fc99258f440c504a62c1bc399ce878a9b1208c891c5108423f",
+    "editorialHash": "b23ce938014b2d0a50b55fb507803457b2c6f64258044afa0ad95df36edf6812",
+    "year": 2026,
+    "season": "2025–26",
+    "roundLabel": "2026 第 3 场",
+    "zhTitle": "让数值各不相同",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "数组长度 N，初值在 1..N。每次可以给一个元素加非零 K。求使所有元素互不相同的最少操作次数；K 也可能为负。",
+    "summaryEn": "Each operation adds a fixed nonzero K to one array element. Minimize operations until all values are distinct. Initially values are in 1..N, and K may be negative.",
+    "hints": [
+      "加 K 会改变余数吗？",
+      "同一位置留下一个数，其余需要继续移动。",
+      "不要遗漏负 K 和 64 位答案。"
+    ],
+    "analysis": "按模 |K| 的余数分组，处理重复值；负 K 可通过变换统一处理。",
+    "checker": "tokens",
+    "testsImported": 13,
+    "testsTotal": 13,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob1_bronze_season26contest3.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "counting",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "负 K 先镜像成正 K。相同余数构成独立链，每个数值位置保留一个元素，剩余元素向下一位置移动并累加操作数。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1565,
+    "title": "Purchasing Milk",
+    "round": "season26contest2results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1565",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_season26contest2.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_season26contest2.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest2results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "贪心",
+      "预处理",
+      "二进制"
+    ],
+    "samples": [
+      {
+        "input": "2 4\n10 15\n1\n2\n6\n7",
+        "output": "10\n15\n45\n55"
+      },
+      {
+        "input": "4 10\n10 25 30 70\n1\n2\n3\n4\n5\n6\n7\n8\n15\n101",
+        "output": "10\n20\n30\n30\n40\n50\n60\n60\n120\n760"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "d9de31466f9908305ba23abef89ff38419fb87dab1dd0534295f684a09f68e1c",
+    "editorialHash": "f7b5fb8bbe131890c4497c3e46494368805db485add25433c774ed6b810f2ac6",
+    "year": 2026,
+    "season": "2025–26",
+    "roundLabel": "2026 第 2 场",
+    "zhTitle": "购买牛奶",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "第 i 种套餐含 2^(i−1) 桶牛奶，价格为 aᵢ，可重复购买。每次询问至少买 x 桶的最小花费，允许多买。",
+    "summaryEn": "Deal i contains 2^(i−1) buckets and costs aᵢ. Deals can be repeated. For each query, find the cheapest way to buy at least x buckets; buying extra is allowed.",
+    "hints": [
+      "至少 x 桶不等于恰好 x 桶。",
+      "一个大套餐会不会比两个小套餐贵？",
+      "从大到小选，并记录多买一份的候选答案。"
+    ],
+    "analysis": "先用两个小套餐修正更贵的大套餐，再从大到小选择，同时比较多买一个套餐的情况。",
+    "checker": "tokens",
+    "testsImported": 16,
+    "testsTotal": 16,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob3_bronze_season26contest2.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "先用两份小套餐优化大套餐价格，再从大到小购买；每一层额外比较“多买一份直接满足需求”的候选费用。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1564,
+    "title": "Moo Hunt",
+    "round": "season26contest2results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1564",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_season26contest2.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_season26contest2.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest2results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "位掩码",
+      "枚举",
+      "状态压缩 DP（可选）"
+    ],
+    "samples": [
+      {
+        "input": "5 6\n1 2 3\n1 2 3\n1 3 5\n2 3 4\n5 3 2\n5 2 3",
+        "output": "4 2"
+      },
+      {
+        "input": "6 12\n2 4 3\n2 3 4\n3 5 2\n3 5 1\n3 1 5\n3 1 2\n6 1 5\n1 6 4\n2 3 6\n3 6 2\n4 1 6\n3 4 2",
+        "output": "6 3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "81ab9ff4067ffc9e1d55f7d44fb7c344c6e59c0c06b6b4c70ca9c1c8a7a2ad26",
+    "editorialHash": "0441ac6ed92be050a18a284fa660f7b82c332c8fd9f0f33c6b213edda890ebd4",
+    "year": 2026,
+    "season": "2025–26",
+    "roundLabel": "2026 第 2 场",
+    "zhTitle": "Moo Hunt",
+    "level": "挑战",
+    "visual": "moo",
+    "summary": "N 个格子各放 M 或 O。给定 K 次点击三元组 (x,y,z)，三格依次为 MOO 就得一分。选择整个棋盘，让总分最大，并统计有多少个棋盘达到最大分。N≤20。",
+    "summaryEn": "Choose M or O for each of N cells. Each given ordered triple scores when its cells spell MOO. Find the maximum total score and the number of boards attaining it. N is at most 20.",
+    "hints": [
+      "N≤20，棋盘一共有 2^N 种。",
+      "重复出现的点击三元组能否先合并？",
+      "改变一格时，只更新涉及这一格的贡献。"
+    ],
+    "analysis": "官方第一种满分解法是聚合相同三元组后枚举棋盘；第二种可选解法复用较小状态得分。GitHub 上另有 SOS DP 实现。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob2_bronze_season26contest2.html",
+    "alternativeSource": "https://github.com/ZhaLuc/USACO/blob/main/bronze/02_moo_hunt.cpp",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "counting"
+    ],
+    "optionalTopics": [
+      "dp"
+    ],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "棋盘枚举为基础路线，本站参考代码采用子集和 DP 优化；DP 属于可选进阶路线。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1563,
+    "title": "It's Mooin' Time IV",
+    "round": "season26contest2results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1563",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_season26contest2.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_season26contest2.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest2results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "逆向思考",
+      "字符串",
+      "奇偶性"
+    ],
+    "samples": [
+      {
+        "input": "2 0\n3\nMOO\n5\nOOMOO",
+        "output": "YES\nYES"
+      },
+      {
+        "input": "2 1\n3\nMOO\n5\nOOMOO",
+        "output": "YES\nOMO\nYES\nMOOMO"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "41cc2ed85c03d2ce0f282f4ed87cf796b5572702f4a30a81a862230b6a65be70",
+    "editorialHash": "f1dde7c89e9f8d9b5105760ed87664cdaaea1d1e26d18eabe8a48272231ffe08",
+    "year": 2026,
+    "season": "2025–26",
+    "roundLabel": "2026 第 2 场",
+    "zhTitle": "哞声键盘 IV",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "键盘只有 M 和 O。输入 O 前，所有已输入字母会 M/O 互换。判断能否得到目标串；k=1 时还要输出一种按键序列。",
+    "summaryEn": "Typing O flips every previously typed M/O character before appending O. Decide whether a target string can be produced; when k=1, also output a valid keystroke sequence.",
+    "hints": [
+      "最后一次按键产生的字母还会被反转吗？",
+      "从右往左确定按键。",
+      "反转两次相当于没有反转。"
+    ],
+    "analysis": "从末尾向前处理，用一个奇偶状态记录是否被反转。",
+    "checker": "special",
+    "testsImported": 16,
+    "testsTotal": 16,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob1_bronze_season26contest2.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "strings",
+      "greedy",
+      "math",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "从右向左决定按键；记录后续 O 按键造成的翻转奇偶性，据此确定当前应按 M 还是 O。任意目标串都可构造。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1541,
+    "title": "Photoshoot",
+    "round": "season26contest1results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1541",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_season26contest1.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_season26contest1.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest1results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "二维数组",
+      "增量维护",
+      "单调性"
+    ],
+    "samples": [
+      {
+        "input": "4 2\n3\n2 2 11\n3 4 3\n3 1 100",
+        "output": "11\n11\n111"
+      },
+      {
+        "input": "3 1\n3\n2 2 3\n2 2 5\n2 2 7",
+        "output": "3\n5\n7"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "ee8501c167d23f79a2c5cf22038a441a4761463c12ab24e1d8bd207a3f0e60ba",
+    "editorialHash": "7274a20ce51ea070e75999019cbb994ec582fa9656af4671c9744c14b9a98fb1",
+    "year": 2026,
+    "season": "2025–26",
+    "roundLabel": "2026 第 1 场",
+    "zhTitle": "牛群摄影",
+    "level": "挑战",
+    "visual": "grid",
+    "summary": "N×N 网格每格有一个美丽值，初始全为 0。每次增大一个格子的值，求任意 K×K 正方形内的最大总和。",
+    "summaryEn": "All values in an N×N grid start at zero. Updates strictly increase one cell. After each update, report the largest sum over any K×K square.",
+    "hints": [
+      "一格变化会影响哪些照片？",
+      "列出包含这个格子的窗口左上角范围。",
+      "所有窗口和都不下降，无需重新扫描全部窗口。"
+    ],
+    "analysis": "只更新包含变化格子的窗口；利用数值只增不减维护全局最大值。",
+    "checker": "tokens",
+    "testsImported": 18,
+    "testsTotal": 18,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob3_bronze_season26contest1.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "grid",
+      "prefix"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "输入给的是新值，先减去旧值得到增量；只更新包含这个格子的窗口。所有更新均为增加，因此全局最大值只需与新窗口比较。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1540,
+    "title": "COW Splits",
+    "round": "season26contest1results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1540",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_season26contest1.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_season26contest1.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest1results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "构造",
+      "字符串",
+      "分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "3 1\n3\nCOWOWCWCO\n4\nWCOCOWWCOCOW\n6\nCOWCOWOWCOWCOWCOWC",
+        "output": "-1\n1\n1 1 1 1 1 1 1 1 1 1 1 1\n3\n3 3 2 3 3 2 1 1 1 1 1 1 1 1 1 1 1 1"
+      },
+      {
+        "input": "3 0\n3\nCOWOWCWCO\n4\nWCOCOWWCOCOW\n6\nCOWCOWOWCOWCOWCOWC",
+        "output": "-1\n1\n1 1 1 1 1 1 1 1 1 1 1 1\n2\n1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "1dddb0f0b2b504c4ea97367be7427db220789ec3346288ebe0fb463680b0196d",
+    "editorialHash": "490d52d88de08457da668cb02045fc6eded5f22d0d3aaa19c4c139cb6b401cb5",
+    "year": 2026,
+    "season": "2025–26",
+    "roundLabel": "2026 第 1 场",
+    "zhTitle": "COW 拆分",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "字符串由 COW、OWC、WCO 三种块拼接。每次删除一个形如 Y+Y 的子序列。判断能否清空，并按 k 的要求给出最少或至多多一次的操作方案。",
+    "summaryEn": "The string consists of COW, OWC, and WCO blocks. Remove square subsequences Y+Y until it is empty, and construct a solution satisfying the operation bound specified by k.",
+    "hints": [
+      "先考虑字符串总长度的奇偶性。",
+      "一次操作成功要求整个串是什么形式？",
+      "比较前后两半中对应的三个字母块。"
+    ],
+    "analysis": "官方从奇偶性和方串入手，证明可用至多两次操作构造。小数据可先枚举子序列。",
+    "checker": "special",
+    "testsImported": 14,
+    "testsTotal": 14,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob2_bronze_season26contest1.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "strings",
+      "math",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "奇数块无法清空；原串已为方串时一次删除。否则将两半对应三字母块的公共有序对子分到操作 1，余下同字母分到操作 2。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1539,
+    "title": "Chip Exchange",
+    "round": "season26contest1results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1539",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_season26contest1.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_season26contest1.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest1results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "数学规律",
+      "分类讨论",
+      "取整"
+    ],
+    "samples": [
+      {
+        "input": "2\n2 3 1 1 6\n2 3 1 1 4",
+        "output": "1\n0"
+      },
+      {
+        "input": "5\n0 0 2 3 5\n0 1 2 3 5\n1 0 2 3 5\n10 10 2 3 5\n0 0 1 1000000000 1000000000",
+        "output": "9\n8\n7\n0\n1000000000000000000"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "ba535147d4c8555cc5db57e9d883955d51aafd3129d0157868e8ebbe9c717347",
+    "editorialHash": "017ec79e3223db66a0c14887306eab8b3601c9ba71ae66ee80e45b57d7817b6f",
+    "year": 2026,
+    "season": "2025–26",
+    "roundLabel": "2026 第 1 场",
+    "zhTitle": "筹码交换",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "持有 A、B 两类筹码，可用 cB 枚 B 换 cA 枚 A。求最少再收到多少枚任意类型筹码，才能保证最终拥有至少 fA 枚 A。",
+    "summaryEn": "Trade cB type-B chips for cA type-A chips. Find the minimum number of additional chips that guarantees at least fA type-A chips, regardless of the types received.",
+    "hints": [
+      "先判断现有筹码是否已经足够。",
+      "保证意味着对最不利的筹码分配也要成立。",
+      "寻找仍然不够的最大新增总数，再加一。"
+    ],
+    "analysis": "官方满分解法通过最坏分配与取模边界得到 O(1) 计算，不把第三方的二分解法误记为唯一考点。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob1_bronze_season26contest1.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "math",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "先求“仍然可能不够”的最大新增筹码数：B 类停在下一次兑换前一枚；再根据兑换比率选择增加多少整批，最后加一。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1493,
+    "title": "Printing Sequences",
+    "round": "feb25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1493",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb25results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "分类讨论",
+      "重复块",
+      "区间 DP（拓展）"
+    ],
+    "samples": [
+      {
+        "input": "2\n1 1\n1\n4 1\n1 1 1 1",
+        "output": "YES\nYES"
+      },
+      {
+        "input": "11\n4 2\n1 2 2 2\n4 2\n1 1 2 1\n4 2\n1 1 2 2\n6 2\n1 1 2 2 1 1\n10 2\n1 1 1 2 2 1 1 1 2 2\n8 3\n3 3 1 2 2 1 2 2\n9 3\n1 1 2 2 2 3 3 3 3\n16 3\n2 2 3 2 2 3 1 1 2 2 3 2 2 3 1 1\n24 3\n1 1 2 2 3 3 3 2 2 3 3 3 1 1 2 2 3 3 3 2 2 3 3 3\n9 3\n1 2 2 1 3 3 1 2 2\n6 3\n1 2 1 2 2 3",
+        "output": "YES\nNO\nYES\nNO\nYES\nYES\nYES\nYES\nYES\nNO\nNO"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "e8a93e1d44e7fdc5cf9fb6715895807ac4d12e66005b20b510600d82c10aa248",
+    "editorialHash": "98cfb756587863a1c30ec9ce87453fcdfc60d2f75e9c282b27a540645cd8a5be",
+    "year": 2025,
+    "season": "2024–25",
+    "roundLabel": "2025 / 02",
+    "zhTitle": "打印序列",
+    "level": "挑战",
+    "visual": "printing",
+    "summary": "用 PRINT x 和可嵌套的 REP 循环输出给定序列。程序最多含 K 条 PRINT 语句，K≤3；循环次数不计入 PRINT 条数。判断是否存在这样的程序。",
+    "summaryEn": "Generate a target sequence with PRINT commands and nested REP loops. At most K PRINT statements may occur in the program, with K≤3. Repeating a block does not add PRINT statements.",
+    "hints": [
+      "区分 PRINT 语句条数和实际输出长度。",
+      "先检查整个区间能否由更短的块重复得到。",
+      "也可以把区间切成两段，组合两段所需的 PRINT 条数。"
+    ],
+    "analysis": "官方解法按 K 分类，检查重复块及切分点。区间 DP 是拓展视角，本版不将其标为官方唯一解法。",
+    "checker": "tokens",
+    "testsImported": 13,
+    "testsTotal": 13,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob3_bronze_feb25.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "strings",
+      "adhoc"
+    ],
+    "optionalTopics": [
+      "dp"
+    ],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "按重复块和切分点分类枚举；区间 DP 作为可选拓展，不视为唯一解法。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1492,
+    "title": "Making Mexes",
+    "round": "feb25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1492",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb25results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "计数",
+      "前缀统计",
+      "贪心"
+    ],
+    "samples": [
+      {
+        "input": "4\n2 2 2 0",
+        "output": "1\n0\n3\n1\n2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "6323f36f73dd2834b10a1c5e7fd1d65a2bd13c8a531578106aead3815ea17107",
+    "editorialHash": "de6c31879dff3897aa04bbaad76acc75257eae4a3f89fa7ae37e5089f550ae67",
+    "year": 2025,
+    "season": "2024–25",
+    "roundLabel": "2025 / 02",
+    "zhTitle": "构造 MEX",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "每次可把数组中的一个元素改为任意非负整数。对每个 i=0..N，求让数组 MEX 恰好等于 i 的最少修改次数。MEX 是未出现的最小非负整数。",
+    "summaryEn": "Change any array element to a nonnegative integer. For each target MEX from 0 to N, minimize changes. MEX means the smallest nonnegative integer absent from the array.",
+    "hints": [
+      "MEX=i 要满足哪两个条件？",
+      "统计 i 的出现次数和 0..i−1 的缺失种数。",
+      "一次修改能同时消除 i 并补一个缺失值。"
+    ],
+    "analysis": "必须消除所有 i，并补齐小于 i 的缺失值；一次修改可能同时完成两件事。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob2_bronze_feb25.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "counting",
+      "prefix",
+      "greedy"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "令 MEX=x，既要消除所有 x，也要补齐小于 x 的缺失值；一次改动可同时完成两件事，所以取两个数量的较大值。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1491,
+    "title": "Reflection",
+    "round": "feb25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1491",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb25results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "二维数组",
+      "对称分组",
+      "增量维护"
+    ],
+    "samples": [
+      {
+        "input": "4 5\n..#.\n##.#\n####\n..##\n1 3\n2 3\n4 3\n4 4\n4 4",
+        "output": "4\n3\n2\n1\n0\n1"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "8652aca5e10a740847021915b305037a632bee3c06fd4254cd0349adcc5d47dd",
+    "editorialHash": "fdd06e2dce18093c8fdee2624093197173537104060828b2feeaa6fac62811af",
+    "year": 2025,
+    "season": "2024–25",
+    "roundLabel": "2025 / 02",
+    "zhTitle": "镜像画布",
+    "level": "进阶",
+    "visual": "reflection",
+    "summary": "偶数阶方格画布需要关于中央横轴、纵轴同时对称。给定初始画布及单格翻转，求初始时和每次翻转后最少再改多少格能恢复对称。",
+    "summaryEn": "Restore horizontal and vertical reflection symmetry on an even-sized square canvas. Report the fewest cell changes needed initially and after every specified single-cell toggle.",
+    "hints": [
+      "标出一个格子的三个镜像伙伴。",
+      "四格中有 c 格涂色，统一颜色最少改多少格？",
+      "一次翻转只影响一个对称组。"
+    ],
+    "analysis": "每四个对称位置形成一个独立组。每次只重算受影响的那一组。",
+    "checker": "tokens",
+    "testsImported": 16,
+    "testsTotal": 16,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob1_bronze_feb25.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "grid",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "四个镜像位置组成独立组；代价是 min(黑格数,4−黑格数)。修改单格时只更新一组。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1469,
+    "title": "Cow Checkups",
+    "round": "jan25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1469",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan25results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "枚举",
+      "中心扩展",
+      "增量维护"
+    ],
+    "samples": [
+      {
+        "input": "3\n1 3 2\n3 2 1",
+        "output": "3\n3\n0\n0"
+      },
+      {
+        "input": "3\n1 2 3\n1 2 3",
+        "output": "0\n3\n0\n3"
+      },
+      {
+        "input": "7\n1 3 2 2 1 3 2\n3 2 2 1 2 3 1",
+        "output": "0\n6\n14\n6\n2\n0\n0\n0"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "92c5245250027657891d38ed642cfffab1c4c59d9c005a11906499c72891447e",
+    "editorialHash": "22d2cbd4bb4f571578add9814123858e4e55f27df80533374a832606a30eb07c",
+    "year": 2025,
+    "season": "2024–25",
+    "roundLabel": "2025 / 01",
+    "zhTitle": "牛群体检",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "选择一个连续区间反转牛群顺序。对每个匹配数量 c，统计有多少个反转区间能让恰好 c 个位置与目标品种匹配。",
+    "summaryEn": "Reverse exactly one contiguous segment. Count, for every c, how many segment choices produce exactly c matches with the target species sequence.",
+    "hints": [
+      "先写小数据的枚举反转。",
+      "区间向两侧各扩一格时，哪些位置贡献会改变？",
+      "分别处理奇数长度与偶数长度的中心。"
+    ],
+    "analysis": "围绕中心向两端扩展，只更新新交换的两个位置。官方题面明确建议满分使用 Python 以外的语言。",
+    "checker": "tokens",
+    "testsImported": 13,
+    "testsTotal": 13,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob3_bronze_jan25.html",
+    "languageNote": "官方提示：建议使用 Python 之外的语言争取满分。",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "strings",
+      "prefix"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "按反转中心向两端扩展，新增一对交换只改变两个位置的匹配贡献，不再重新反转和扫描整个数组。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1468,
+    "title": "It's Mooin' Time II",
+    "round": "jan25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1468",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan25results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "前缀统计",
+      "集合",
+      "计数"
+    ],
+    "samples": [
+      {
+        "input": "6\n1 2 3 4 4 4",
+        "output": "3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "fadf6d8a5880912b71d1295bc4dcda74d3d2e29d2fb8239e27d4a667ca709164",
+    "editorialHash": "b12e27a56463e1ac1dd36426b03f65349cdd041282c25a0ec00262af5bd110c2",
+    "year": 2025,
+    "season": "2024–25",
+    "roundLabel": "2025 / 01",
+    "zhTitle": "哞声序列 II",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "在数组中按原顺序选出三个数，满足后两数相等且与第一个不同。统计不同的数值三元组数量，不能把重复出现的位置组合重复计数。",
+    "summaryEn": "Count distinct value triples obtainable as subsequences, where the last two values match and differ from the first. Different index choices yielding the same triple count only once.",
+    "hints": [
+      "这里是子序列，不要求连续。",
+      "后两项相同时，可优先考虑哪两次出现？",
+      "维护前缀不同值个数，并去掉与后两项相同的值。"
+    ],
+    "analysis": "利用某值最右两次出现，并预处理前缀不同元素个数以去重计数。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob2_bronze_jan25.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "counting",
+      "prefix",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "后两个相同数只需选择最右两次出现；前面不同数的种数用前缀统计得到，并排除与后两项相同的值。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1467,
+    "title": "Astral Superposition",
+    "round": "jan25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1467",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan25results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "网格",
+      "贪心",
+      "依赖顺序"
+    ],
+    "samples": [
+      {
+        "input": "1\n3 0 0\nWWB\nBBB\nGGG",
+        "output": "7"
+      },
+      {
+        "input": "3\n5 1 2\nGWGWW\nWGWWW\nWBWGW\nWWWWW\nWWGWW\n3 1 1\nWWW\nWBW\nWWW\n3 1 0\nGGB\nGGW\nWWW",
+        "output": "4\n-1\n4"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "491468946cba25da04a3b346c83436595f26305b9533ca75c0e3b5c6720c3bd3",
+    "editorialHash": "b0e64e5fab6ed1798b671fa11db0920ca16ca1d94116c8ac3573d3a943cd1c8c",
+    "year": 2025,
+    "season": "2024–25",
+    "roundLabel": "2025 / 01",
+    "zhTitle": "星图叠加",
+    "level": "挑战",
+    "visual": "grid",
+    "summary": "星星可能消失，或统一向右 A、向下 B 移动。两张照片叠加后像素为白、灰、黑，分别表示 0、1、2 张照片有星星。求初始星星最少数量，不可能则输出 −1。",
+    "summaryEn": "Stars disappear or shift right by A and down by B. An overlay marks cells occupied in zero, one, or both photos. Find the minimum initial star count, or report impossibility.",
+    "hints": [
+      "黑格说明两张照片在这里都有星星。",
+      "尝试定位移动前对应的位置。",
+      "先处理强制条件，再处理有选择的灰格。"
+    ],
+    "analysis": "先满足黑格的强制要求，再检查白格，按移动依赖顺序贪心处理灰格。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob1_bronze_jan25.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "grid",
+      "greedy"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "先由黑格确定必须存在的原始星星，再检查白格冲突；按移动依赖顺序，为仍未满足的灰格贪心补星。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1445,
+    "title": "It's Mooin' Time",
+    "round": "dec24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1445",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec24results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "字符串",
+      "枚举",
+      "增量维护"
+    ],
+    "samples": [
+      {
+        "input": "10 2\nzzmoozzmoo",
+        "output": "1\nmoo"
+      },
+      {
+        "input": "17 2\nmomoobaaaaaqqqcqq",
+        "output": "3\naqq\nbaa\ncqq"
+      },
+      {
+        "input": "3 1\nooo",
+        "output": "25\naoo\nboo\ncoo\ndoo\neoo\nfoo\ngoo\nhoo\nioo\njoo\nkoo\nloo\nmoo\nnoo\npoo\nqoo\nroo\nsoo\ntoo\nuoo\nvoo\nwoo\nxoo\nyoo\nzoo"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "636592219c115cc3e0d0c6ac76554c4ec25146c03fd7cc6fa6aeb0092752482b",
+    "editorialHash": "9ca7d3faece5eb8781f13fb522ef0db27f77971dc4c764ce7e05cfd5c68765fe",
+    "year": 2024,
+    "season": "2024–25",
+    "roundLabel": "2024 / 12",
+    "zhTitle": "哞声字符串",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "字符串可能有至多一个错误字符。找出所有可能至少出现 F 次的三字母子串 abb，其中 a≠b，按字典序输出。",
+    "summaryEn": "A string may contain one corrupted character. List all possible length-three patterns abb with a≠b that could occur at least F times after correcting at most one character.",
+    "hints": [
+      "先统计原串的三字符窗口。",
+      "修改一个位置会影响哪些窗口？",
+      "试探修改后还要恢复计数，才能继续枚举。"
+    ],
+    "analysis": "改变一个字符只影响附近至多三个长度为三的窗口，可局部更新频次。",
+    "checker": "tokens",
+    "testsImported": 13,
+    "testsTotal": 13,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob3_bronze_dec24.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "strings",
+      "enumeration",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "一次改字只影响最多三个长度为 3 的窗口。先扣旧贡献，再试新字母并检查频次，最后恢复。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1444,
+    "title": "Farmer John's Cheese Block",
+    "round": "dec24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1444",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec24results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "三维坐标",
+      "计数",
+      "增量维护"
+    ],
+    "samples": [
+      {
+        "input": "2 5\n0 0 0\n1 1 1\n0 1 0\n1 0 0\n1 1 0",
+        "output": "0\n0\n1\n2\n5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "152d5c4dd82040182981d22030527036ff835121f5ad534cdf55665695404cfc",
+    "editorialHash": "5ab6fde27a7b2a9ff523a2858b3c3fce40d67c9c86890c3b4bb72b83b53bc539",
+    "year": 2024,
+    "season": "2024–25",
+    "roundLabel": "2024 / 12",
+    "zhTitle": "农场主的奶酪块",
+    "level": "进阶",
+    "visual": "cheese",
+    "summary": "N×N×N 奶酪立方体中，每次移除一个单位方块。每次移除后，统计可完整放入 1×1×N 长条的空通道数量，长条可沿三个坐标轴摆放。",
+    "summaryEn": "Remove unit cubes from an N×N×N cheese block. After each removal, count empty axis-aligned channels that can hold a 1×1×N brick. Count all three orientations.",
+    "hints": [
+      "长条只有沿 x、y、z 轴三种方向。",
+      "一个方块属于几条轴线？",
+      "每次只更新穿过这个方块的三条线。"
+    ],
+    "analysis": "分别统计三个方向上每一条轴线被挖掉的方块数。一条线达到 N 时新增一个通道。",
+    "checker": "tokens",
+    "testsImported": 16,
+    "testsTotal": 16,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob2_bronze_dec24.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "grid",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "每次移除方块，只更新经过它的三条轴线；某条线移除数达到 N 时，新增长条放置方式。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1443,
+    "title": "Roundabout Rounding",
+    "round": "dec24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1443",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec24results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "数学规律",
+      "数位",
+      "预处理"
+    ],
+    "samples": [
+      {
+        "input": "4\n1\n100\n4567\n3366",
+        "output": "0\n5\n183\n60"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "3a05719aed81f86efe2cfc0f0ef099f3b4ac73835006ea428b90e57a847688b6",
+    "editorialHash": "638f2a7ff2794ea8f5bbed9215bb511bcb28b3d830380b6000a1252e38cbdec2",
+    "year": 2024,
+    "season": "2024–25",
+    "roundLabel": "2024 / 12",
+    "zhTitle": "连锁四舍五入",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "比较直接舍入到某个 10 的幂与逐级连锁舍入。对每个 N，统计 2..N 中两种结果不同的整数个数。",
+    "summaryEn": "Compare direct rounding to a power of ten with rounding successively through smaller powers. For each N, count integers from 2 through N where the results differ.",
+    "hints": [
+      "从 45、49、50、445 等数开始手算。",
+      "哪些数会因为低位进位使高位从 4 变成 5？",
+      "按数字位数统计连续的有效区间。"
+    ],
+    "analysis": "从小规模模拟找规律；满分解法统计以连续 4 开头的特殊数值区间。",
+    "checker": "tokens",
+    "testsImported": 13,
+    "testsTotal": 13,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_prob1_bronze_dec24.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "math",
+      "enumeration"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "两种舍入结果不同的数形成区间 [45,49]、[445,499]、[4445,4999]……分别截取到 N 后累加。",
+    "statementAvailable": true
+  },
+  {
+    "id": 1397,
+    "title": "Maximizing Productivity",
+    "round": "feb24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1397",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb24results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "排序与查找",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "5 5\n3 5 7 9 12\n4 2 3 3 8\n1 5\n1 6\n3 3\n4 2\n5 1",
+        "output": "YES\nNO\nYES\nYES\nNO"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "b02721057f14535e90938dd8a5a2d238c946db6a7453f6935dd9d5ed6124cf9f",
+    "editorialHash": "8d5570d0704d9222bf3134a0298de56d4950f03b821acc811fb2f7d3ed2885ae",
+    "year": 2024,
+    "season": "2023–24",
+    "roundLabel": "2024 / 02",
+    "zhTitle": "Maximizing Productivity",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "询问出发时刻 S 能否及时抵达至少 V 个农场；到达必须严格早于关闭时间。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "预处理每个农场的关闭时间减路程时间；能否访问至少 V 个农场，只需比较第 V 大值与出发时刻。"
+    ],
+    "analysis": "预处理每个农场的关闭时间减路程时间；能否访问至少 V 个农场，只需比较第 V 大值与出发时刻。",
+    "checker": "tokens",
+    "testsImported": 17,
+    "testsTotal": 17,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "sorting",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "预处理每个农场的关闭时间减路程时间；能否访问至少 V 个农场，只需比较第 V 大值与出发时刻。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1396,
+    "title": "Milk Exchange",
+    "round": "feb24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1396",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb24results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "字符串与序列",
+      "贪心与构造"
+    ],
+    "samples": [
+      {
+        "input": "3 1\nRRL\n1 1 1",
+        "output": "2"
+      },
+      {
+        "input": "5 20\nLLLLL\n3 3 2 3 3",
+        "output": "14"
+      },
+      {
+        "input": "9 5\nRRRLRRLLR\n5 8 4 9 3 4 9 5 4",
+        "output": "38"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "6d83939d2473be02af919584ec886ba794ef1e2251b9103b1e2a9a71fec19204",
+    "editorialHash": "49d8fc9e703e9bee245cfc740995c5f028ecb01bcd48c4eec9be53802558635a",
+    "year": 2024,
+    "season": "2023–24",
+    "roundLabel": "2024 / 02",
+    "zhTitle": "Milk Exchange",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "桶围成圆环，初始装满；每分钟同时按 L/R 传 1 单位奶，超过容量会溢出。求 1 分钟后的总奶量。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "圆环按连续同向段拆开。每段最靠近 RL 互传点的桶不会变空，其余链上的奶每分钟最多损失一单位。"
+    ],
+    "analysis": "圆环按连续同向段拆开。每段最靠近 RL 互传点的桶不会变空，其余链上的奶每分钟最多损失一单位。",
+    "checker": "tokens",
+    "testsImported": 16,
+    "testsTotal": 16,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "strings",
+      "greedy"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "圆环按连续同向段拆开。每段最靠近 RL 互传点的桶不会变空，其余链上的奶每分钟最多损失一单位。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1395,
+    "title": "Palindrome Game",
+    "round": "feb24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1395",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb24results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "数学与规律",
+      "Ad Hoc 与分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "3\n8\n10\n12",
+        "output": "B\nE\nB"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "130c0db8e5b68c6eef163115babf89e64162381e4d4f3bc7702aa9553a135045",
+    "editorialHash": "daa246ac8ba6614bd061042b490a1e5b7a962bc79601d1751c373bf6cf1b72cb",
+    "year": 2024,
+    "season": "2023–24",
+    "roundLabel": "2024 / 02",
+    "zhTitle": "Palindrome Game",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "两人轮流减去正回文数，不能操作者输；每个数字是独立的初始局面。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "正回文数末位不能为 0；末位为 0 的局面是必败态，其他局面可减去个位数转移到必败态。"
+    ],
+    "analysis": "正回文数末位不能为 0；末位为 0 的局面是必败态，其他局面可减去个位数转移到必败态。",
+    "checker": "tokens",
+    "testsImported": 13,
+    "testsTotal": 13,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "math",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "正回文数末位不能为 0；末位为 0 的局面是必败态，其他局面可减去个位数转移到必败态。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1373,
+    "title": "Balancing Bacteria",
+    "round": "jan24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1373",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan24results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "前缀与差分",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "2\n-1 3",
+        "output": "6"
+      },
+      {
+        "input": "5\n1 3 -2 -7 5",
+        "output": "26"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "90298745a7075eff038b2ad5a2dc881e6236fa6bc9894765bfcc8cbcc529d37c",
+    "editorialHash": "32a6325ca0ed5dd64e5b9d077e30ce9492e8db8125f017507b07df96acde8ae2",
+    "year": 2024,
+    "season": "2023–24",
+    "roundLabel": "2024 / 01",
+    "zhTitle": "Balancing Bacteria",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "选一个起点，之后各格依次增减 1、2、3……，让所有格子归零。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "一次等差增减在二阶差分中只改变一个位置，因此最少次数是二阶差分各项绝对值之和。"
+    ],
+    "analysis": "一次等差增减在二阶差分中只改变一个位置，因此最少次数是二阶差分各项绝对值之和。",
+    "checker": "tokens",
+    "testsImported": 15,
+    "testsTotal": 15,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "prefix",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "一次等差增减在二阶差分中只改变一个位置，因此最少次数是二阶差分各项绝对值之和。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1372,
+    "title": "Cannonball",
+    "round": "jan24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1372",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan24results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "5 2\n0 1\n1 1\n1 2\n0 1\n1 1",
+        "output": "1"
+      },
+      {
+        "input": "6 4\n0 3\n1 1\n1 2\n1 1\n0 1\n1 1",
+        "output": "3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "cd305171e2e787b290cd7050d0494391f41919dd8df6a4c980f47bd9e32f3efb",
+    "editorialHash": "0fee95892a0a81ca23e0aa6940ca0b0eb98479bb0a0ddd6bf0a0662a7e4d04cf",
+    "year": 2024,
+    "season": "2023–24",
+    "roundLabel": "2024 / 01",
+    "zhTitle": "Cannonball",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "从 2 号位置向右、弹力 1 出发。跳板使方向翻转并加大弹力；目标只在弹力足够时破碎。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "跳板增加弹力并改变方向，目标只在弹力足够时破碎；记录位置、弹力和方向，遇到重复状态停止。"
+    ],
+    "analysis": "跳板增加弹力并改变方向，目标只在弹力足够时破碎；记录位置、弹力和方向，遇到重复状态停止。",
+    "checker": "tokens",
+    "testsImported": 20,
+    "testsTotal": 20,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "跳板增加弹力并改变方向，目标只在弹力足够时破碎；记录位置、弹力和方向，遇到重复状态停止。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1371,
+    "title": "Majority Opinion",
+    "round": "jan24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1371",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan24results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "字符串与序列",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "5\n5\n1 2 2 2 3\n6\n1 2 3 1 2 3\n6\n1 1 1 2 2 2\n3\n3 2 3\n2\n2 1",
+        "output": "2\n-1\n1 2\n3\n-1"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "2fc75e74918edaad573df9f6a14a0f31334b8f3051eb80234fb5613b375fc749",
+    "editorialHash": "a0870164b01244b9baed3713f1ffa9b6ed03d1e7031778f4e66c2fbf26aa3c6f",
+    "year": 2024,
+    "season": "2023–24",
+    "roundLabel": "2024 / 01",
+    "zhTitle": "Majority Opinion",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "在某连续区间形成严格多数的偏好可传播到整个区间；判断哪些偏好最终能统一全队。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "同一偏好只要在距离 1 或 2 的两个位置出现，就能形成严格多数并逐步向外扩张。"
+    ],
+    "analysis": "同一偏好只要在距离 1 或 2 的两个位置出现，就能形成严格多数并逐步向外扩张。",
+    "checker": "tokens",
+    "testsImported": 15,
+    "testsTotal": 15,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "strings",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "同一偏好只要在距离 1 或 2 的两个位置出现，就能形成严格多数并逐步向外扩张。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1349,
+    "title": "Farmer John Actually Farms",
+    "round": "dec23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1349",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec23results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "数学与规律",
+      "排序与查找"
+    ],
+    "samples": [
+      {
+        "input": "6\n1\n10\n1\n0\n2\n7 3\n8 10\n1 0\n2\n3 6\n10 8\n0 1\n2\n7 3\n8 9\n1 0\n2\n7 7\n8 8\n0 1\n2\n7 3\n8 8\n1 0",
+        "output": "0\n3\n2\n5\n-1\n-1"
+      },
+      {
+        "input": "2\n5\n7 4 1 10 12\n3 4 5 2 1\n2 1 0 3 4\n5\n4 10 12 7 1\n3 1 1 4 5\n2 4 3 1 0",
+        "output": "4\n7"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "fef5ceca745795e43ae99da14d1dffb07a3f67ec5f8f0ec7789c12ae4cdf5a91",
+    "editorialHash": "4f35e8149a792835504010896fa7fc13f2a303e112eaf7b28cd9c793046e72cd",
+    "year": 2023,
+    "season": "2023–24",
+    "roundLabel": "2023 / 12",
+    "zhTitle": "Farmer John Actually Farms",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "第一组独立测试。每株高度随天数线性增加；找最早使每株都满足指定排名的整数天数。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "按目标排名直接建立顺序；相邻植物的严格高低关系转化成天数上下界，求所有不等式的交集。"
+    ],
+    "analysis": "按目标排名直接建立顺序；相邻植物的严格高低关系转化成天数上下界，求所有不等式的交集。",
+    "checker": "tokens",
+    "testsImported": 13,
+    "testsTotal": 13,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "math",
+      "sorting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "按目标排名直接建立顺序；相邻植物的严格高低关系转化成天数上下界，求所有不等式的交集。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1348,
+    "title": "Cowntact Tracing 2",
+    "round": "dec23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1348",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec23results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "贪心与构造",
+      "字符串与序列",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "5\n11111",
+        "output": "1"
+      },
+      {
+        "input": "6\n011101",
+        "output": "4"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "3f8ee3aad2741c996f06c2086e87d3ae0881150a7b744dc7c3c694da04e08e3d",
+    "editorialHash": "c43fb7b4fda182accfba04ea429d309ce2b4ff22e6f3bd060b7a69070307c3f4",
+    "year": 2023,
+    "season": "2023–24",
+    "roundLabel": "2023 / 12",
+    "zhTitle": "Cowntact Tracing 2",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "1 表示现在感染，0 表示未感染；每天向左右传播一格，反推最少最初感染牛数。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "每个连续感染段约束传播天数，边界段允许单侧传播；取最大的统一可行天数，再求覆盖每段需要多少初始感染源。"
+    ],
+    "analysis": "每个连续感染段约束传播天数，边界段允许单侧传播；取最大的统一可行天数，再求覆盖每段需要多少初始感染源。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "strings",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "每个连续感染段约束传播天数，边界段允许单侧传播；取最大的统一可行天数，再求覆盖每段需要多少初始感染源。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1347,
+    "title": "Candy Cane Feast",
+    "round": "dec23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1347",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec23results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "3 2\n3 2 5\n6 1",
+        "output": "7\n2\n7"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "94daf14642e017f4531c141288a11e9da878578d5ce1b7f2925e156b393a46c6",
+    "editorialHash": "fba4e2eac0224c1dff9d787b5437385601b6badcd214d3229d5771ef8a2183e8",
+    "year": 2023,
+    "season": "2023–24",
+    "roundLabel": "2023 / 12",
+    "zhTitle": "Candy Cane Feast",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每根糖杖从地面竖起，牛按顺序吃自己够得到且尚未被吃的部分，再按吃掉的长度长高。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "维护糖杖尚未被吃掉的底部高度，每头牛只能吃到自己当前高度可及的那一段。"
+    ],
+    "analysis": "维护糖杖尚未被吃掉的底部高度，每头牛只能吃到自己当前高度可及的那一段。",
+    "checker": "tokens",
+    "testsImported": 14,
+    "testsTotal": 14,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "维护糖杖尚未被吃掉的底部高度，每头牛只能吃到自己当前高度可及的那一段。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1301,
+    "title": "Watching Mooloo",
+    "round": "feb23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1301",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb23results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "贪心与构造",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "2 4\n7 9",
+        "output": "7"
+      },
+      {
+        "input": "2 3\n1 10",
+        "output": "8"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "6b6c7e4190a704055d1fb3173e09d55f7a9b35f652db353e8ed01040bb808344",
+    "editorialHash": "69094b309bd24afe575d6fcef9c48d7a58ff541cdd707b9d14f4b767d19989da",
+    "year": 2023,
+    "season": "2022–23",
+    "roundLabel": "2023 / 02",
+    "zhTitle": "Watching Mooloo",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每次开启订阅支付 4，每个订阅日再付 1；相邻观看日之间可以保持订阅或重新开启。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "相邻观看日之间，比较一直保留订阅和重新支付启动费，选择更便宜的连接方式。"
+    ],
+    "analysis": "相邻观看日之间，比较一直保留订阅和重新支付启动费，选择更便宜的连接方式。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "相邻观看日之间，比较一直保留订阅和重新支付启动费，选择更便宜的连接方式。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1300,
+    "title": "Stamp Grid",
+    "round": "feb23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1300",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb23results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "网格与空间",
+      "枚举与搜索"
+    ],
+    "samples": [
+      {
+        "input": "4\n\n2\n**\n*.\n1\n*\n\n3\n.**\n.**\n***\n2\n.*\n**\n\n3\n...\n.*.\n...\n3\n.*.\n...\n...\n\n3\n**.\n.**\n..*\n2\n.*\n*.",
+        "output": "YES\nYES\nNO\nYES"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "14647318c6f03a4d2b1a9057fa2db6d946a7341b3ee8383a037c8cab0327dd41",
+    "editorialHash": "1cad8c295ba6872d83e2cea17cb68618a38592f3adf147dbde1ee8b933269bab",
+    "year": 2023,
+    "season": "2022–23",
+    "roundLabel": "2023 / 02",
+    "zhTitle": "Stamp Grid",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "印章可以旋转并反复盖，但不能涂黑目标中的白格；检查是否能覆盖全部目标黑格。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "枚举印章四种旋转和所有位置；凡是不会涂到目标白格的位置都盖一次，最后检查是否覆盖全部目标黑格。"
+    ],
+    "analysis": "枚举印章四种旋转和所有位置；凡是不会涂到目标白格的位置都盖一次，最后检查是否覆盖全部目标黑格。",
+    "checker": "tokens",
+    "testsImported": 14,
+    "testsTotal": 14,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "grid",
+      "enumeration"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "枚举印章四种旋转和所有位置；凡是不会涂到目标白格的位置都盖一次，最后检查是否覆盖全部目标黑格。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1299,
+    "title": "Hungry Cow",
+    "round": "feb23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1299",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb23results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "贪心与构造"
+    ],
+    "samples": [
+      {
+        "input": "1 5\n1 2",
+        "output": "2"
+      },
+      {
+        "input": "2 5\n1 2\n5 10",
+        "output": "3"
+      },
+      {
+        "input": "2 5\n1 10\n5 10",
+        "output": "5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "5ac7756b0721ea9ba655de3d73a8e84f46ff4fba5759e3903eb862eb59c108b3",
+    "editorialHash": "106cda3ff2bd165586ee73ef2a2ff542a0eb4b97b0b252bfd9c6ffaebae51ec5",
+    "year": 2023,
+    "season": "2022–23",
+    "roundLabel": "2023 / 02",
+    "zhTitle": "Hungry Cow",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每天吃一捆，收到的草料可积存；计算到第 5 天共吃了多少。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "把每批草料安排在到达后第一个空闲日开始连续食用，截断到第 T 天，无需逐日模拟。"
+    ],
+    "analysis": "把每批草料安排在到达后第一个空闲日开始连续食用，截断到第 T 天，无需逐日模拟。",
+    "checker": "tokens",
+    "testsImported": 13,
+    "testsTotal": 13,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "greedy"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "把每批草料安排在到达后第一个空闲日开始连续食用，截断到第 T 天，无需逐日模拟。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1277,
+    "title": "Moo Operations",
+    "round": "jan23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1277",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan23results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "字符串与序列",
+      "枚举与搜索"
+    ],
+    "samples": [
+      {
+        "input": "3\nMOMMOM\nMMO\nMOO",
+        "output": "4\n-1\n0"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "c6893d6c6cf82f9e7e224cb4edec4bbf465fa5c99a8fd97e6c4873bcd6ddd610",
+    "editorialHash": "88ea6a13b6edeb6a93207dc7d25585f11e84e818bf9cfe718d78a6b16cb028e4",
+    "year": 2023,
+    "season": "2022–23",
+    "roundLabel": "2023 / 01",
+    "zhTitle": "Moo Operations",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "可以删除两端字符、修改指定端点；目标是得到 MOO，保留窗口中心必须已经是 O。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "最终保留一个长度为 3、中心为 O 的窗口；删除外部字符，再修正窗口两端。"
+    ],
+    "analysis": "最终保留一个长度为 3、中心为 O 的窗口；删除外部字符，再修正窗口两端。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "strings",
+      "enumeration"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "最终保留一个长度为 3、中心为 O 的窗口；删除外部字符，再修正窗口两端。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1276,
+    "title": "Air Cownditioning II",
+    "round": "jan23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1276",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan23results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "2 4\n1 5 2\n7 9 3\n2 9 2 3\n1 6 2 8\n1 2 4 2\n6 9 1 5",
+        "output": "10"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "2e46489b0cc42f0fad54ef5c4712c6de4900eb861e28b3d976cc3ff775387707",
+    "editorialHash": "451c4e77db460d8641c50c4f7867a3564495b451ce2a4ae83cbfbd1d73da4568",
+    "year": 2023,
+    "season": "2022–23",
+    "roundLabel": "2023 / 01",
+    "zhTitle": "Air Cownditioning II",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "各牛栏冷量需求必须全部满足；空调范围可重叠、冷量可叠加，求最低费用。右端加 1 用于展示包含端点的整数牛栏。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "用位掩码枚举开关组合，累加每个牛栏的降温量，筛选满足全部需求的最低费用。"
+    ],
+    "analysis": "用位掩码枚举开关组合，累加每个牛栏的降温量，筛选满足全部需求的最低费用。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "用位掩码枚举开关组合，累加每个牛栏的降温量，筛选满足全部需求的最低费用。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1275,
+    "title": "Leaders",
+    "round": "jan23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1275",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan23results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "4\nGHHG\n2 4 3 4",
+        "output": "1"
+      },
+      {
+        "input": "3\nGGH\n2 3 3",
+        "output": "2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "731c06d29d02e60463d50ecfeba516893293a9071922bc86414198eb71d60354",
+    "editorialHash": "2f9960703a96f40af3c423bb940cb90d019e814db7ac01525bb838c3c24ff116",
+    "year": 2023,
+    "season": "2022–23",
+    "roundLabel": "2023 / 01",
+    "zhTitle": "Leaders",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "牛 i 访问 [i,Eᵢ]。两品种各选一名领袖，每名领袖必须访问全部同品种牛，或访问另一名领袖。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "至少一名领袖必须是本品种最靠左且能覆盖所有同品种牛的牛；固定它，再枚举另一品种领袖。"
+    ],
+    "analysis": "至少一名领袖必须是本品种最靠左且能覆盖所有同品种牛的牛；固定它，再枚举另一品种领袖。",
+    "checker": "tokens",
+    "testsImported": 17,
+    "testsTotal": 17,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "至少一名领袖必须是本品种最靠左且能覆盖所有同品种牛的牛；固定它，再枚举另一品种领袖。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1253,
+    "title": "Reverse Engineering",
+    "round": "dec22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1253",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec22results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "贪心与构造",
+      "字符串与序列",
+      "Ad Hoc 与分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "4\n\n1 3\n0 0\n0 0\n1 1\n\n2 4\n00 0\n01 1\n10 1\n11 1\n\n1 2\n0 1\n0 0\n\n2 4\n00 0\n01 1\n10 1\n11 0",
+        "output": "OK\nOK\nLIE\nLIE"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "5c2c43b3e9d5ca097de7381368f71ac125e93cb73af684170641a5157b1267ae",
+    "editorialHash": "f1a255ec959f1c939c1acd90515106d30a114a632fe0f821897a3edd60bc1ac6",
+    "year": 2022,
+    "season": "2022–23",
+    "roundLabel": "2022 / 12",
+    "zhTitle": "Reverse Engineering",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "能否用逐个变量判断的 if / else 程序同时解释这些输入输出？同一分支被截获的样本必须输出一致。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "合法程序的第一个判断必须把某一位取某个值的所有样本映射到同一结果；反复找这样的分支并删除对应样本。"
+    ],
+    "analysis": "合法程序的第一个判断必须把某一位取某个值的所有样本映射到同一结果；反复找这样的分支并删除对应样本。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "strings",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "合法程序的第一个判断必须把某一位取某个值的所有样本映射到同一结果；反复找这样的分支并删除对应样本。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1252,
+    "title": "Feeding the Cows",
+    "round": "dec22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1252",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec22results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "贪心与构造",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "6\n5 0\nGHHGG\n5 1\nGHHGG\n5 2\nGHHGG\n5 3\nGHHGG\n5 4\nGHHGG\n2 1\nGH",
+        "output": "5\nGHHGG\n3\n.GH.G\n2\n..GH.\n2\n...GH\n2\n...HG\n2\nHG"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "f96b33e986aea04ac2c1f71aaef220470fe4c0d6f9d4c51315a51392e2370401",
+    "editorialHash": "5b37ec550d48916e35b09920f5608840d23d34a4567925eee557b77c29a70d22",
+    "year": 2022,
+    "season": "2022–23",
+    "roundLabel": "2022 / 12",
+    "zhTitle": "Feeding the Cows",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "第一组样例 K=0。每头牛需要在距离 K 以内找到同品种草；每个位置最多一种草。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "从左向右找到尚未被喂到的牛，将对应草种尽量放到右侧 K 格处，延伸覆盖；末端冲突时向左错开一格。"
+    ],
+    "analysis": "从左向右找到尚未被喂到的牛，将对应草种尽量放到右侧 K 格处，延伸覆盖；末端冲突时向左错开一格。",
+    "checker": "special",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "从左向右找到尚未被喂到的牛，将对应草种尽量放到右侧 K 格处，延伸覆盖；末端冲突时向左错开一格。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1251,
+    "title": "Cow College",
+    "round": "dec22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1251",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec22results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "排序与查找",
+      "贪心与构造"
+    ],
+    "samples": [
+      {
+        "input": "4\n1 6 4 6",
+        "output": "12 4"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "45dcf7f224624081b976b67b924f780275b07127f8f14ed24ae943277ebb7faf",
+    "editorialHash": "9b935f0ee173c8b552cfedc43875595da392847e1d847ddc913a70d48d0e850f",
+    "year": 2022,
+    "season": "2022–23",
+    "roundLabel": "2022 / 12",
+    "zhTitle": "Cow College",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "柱子/格子是各学生愿付学费；统一定价后统计收入。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "按最高可接受学费排序；把每一种意愿价格作为学费，计算收入，收入相同保留更低学费。"
+    ],
+    "analysis": "按最高可接受学费排序；把每一种意愿价格作为学费，计算收入，收入相同保留更低学费。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "sorting",
+      "greedy"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "按最高可接受学费排序；把每一种意愿价格作为学费，计算收入，收入相同保留更低学费。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1205,
+    "title": "Blocks",
+    "round": "feb22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1205",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb22results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "6\nMOOOOO\nOOOOOO\nABCDEF\nUVWXYZ\nCOW\nMOO\nZOO\nMOVE\nCODE\nFARM",
+        "output": "YES\nNO\nYES\nYES\nNO\nNO"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "9432219d24bc0b113b09a7f810b1cba61628d03255954f69277a8648baefa624",
+    "editorialHash": "c51855d255d7e44e10ff012793bb87489999eb2a0b3f20b238a57cbfbf6ec17a",
+    "year": 2022,
+    "season": "2021–22",
+    "roundLabel": "2022 / 02",
+    "zhTitle": "Blocks",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每个单词单独判断；一个字母使用一块积木，一块积木在同一单词中只能用一次。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "同一块积木只能使用一次。枚举字母分别选用哪块积木，检查是否存在一种合法分配。"
+    ],
+    "analysis": "同一块积木只能使用一次。枚举字母分别选用哪块积木，检查是否存在一种合法分配。",
+    "checker": "tokens",
+    "testsImported": 20,
+    "testsTotal": 20,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "同一块积木只能使用一次。枚举字母分别选用哪块积木，检查是否存在一种合法分配。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1204,
+    "title": "Photoshoot 2",
+    "round": "feb22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1204",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb22results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "贪心与构造",
+      "排序与查找"
+    ],
+    "samples": [
+      {
+        "input": "5\n1 2 3 4 5\n1 2 3 4 5",
+        "output": "0"
+      },
+      {
+        "input": "5\n5 1 3 2 4\n4 5 2 1 3",
+        "output": "2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "b4ebbc579cfd737d01f29bc29082e1c87831d5734044ea097a3b6d96f034964d",
+    "editorialHash": "004160cae733f5c60ef794e8fb172a821022ea9d1ad8085e1de6cca40b8662a6",
+    "year": 2022,
+    "season": "2021–22",
+    "roundLabel": "2022 / 02",
+    "zhTitle": "Photoshoot 2",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "把上排变成下排，允许选择牛向前移动；判断哪些牛必须被选择。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "按目标队列重新编号；若某头牛前面出现了本应在它后面的牛，这头牛必须被向前移动。"
+    ],
+    "analysis": "按目标队列重新编号；若某头牛前面出现了本应在它后面的牛，这头牛必须被向前移动。",
+    "checker": "tokens",
+    "testsImported": 14,
+    "testsTotal": 14,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "sorting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "按目标队列重新编号；若某头牛前面出现了本应在它后面的牛，这头牛必须被向前移动。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1203,
+    "title": "Sleeping in Class",
+    "round": "feb22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1203",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb22results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "前缀与差分",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "3\n6\n1 2 3 1 1 1\n3\n2 2 3\n5\n0 0 0 0 0",
+        "output": "3\n2\n0"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "6faa0055b72aa67ac4e0455e0e0520658f205713d8a460ad2001c3fae8d04274",
+    "editorialHash": "074fe6941de74c170644e171c2ff379531c87c9f98dc58b2c2b28d35e605126d",
+    "year": 2022,
+    "season": "2021–22",
+    "roundLabel": "2022 / 02",
+    "zhTitle": "Sleeping in Class",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "一次合并相邻两个记录，数值相加；目标是让剩余记录全部相等。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "合并不会改变总和。枚举最终组数，检查能否从左到右划成等和连续段。"
+    ],
+    "analysis": "合并不会改变总和。枚举最终组数，检查能否从左到右划成等和连续段。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "prefix",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "合并不会改变总和。枚举最终组数，检查能否从左到右划成等和连续段。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1181,
+    "title": "Drought",
+    "round": "jan22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1181",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan22results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "数学与规律",
+      "贪心与构造",
+      "Ad Hoc 与分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "5\n3\n8 10 5\n6\n4 6 4 4 6 4\n3\n0 1 0\n2\n1 2\n3\n10 9 9",
+        "output": "14\n16\n-1\n-1\n-1"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "530ce4225b2b37574843651d1683fca2ab1264498a23db2ff1a2b3cfc89dce3b",
+    "editorialHash": "b7207745371b777da64f534f595703273e7d8c96e02214bd1d5a2247786cb453",
+    "year": 2022,
+    "season": "2021–22",
+    "roundLabel": "2022 / 01",
+    "zhTitle": "Drought",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "一次同时减少相邻两头牛的饥饿值，直到全部相等且非负。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "设最终饥饿值为 f，相邻操作次数满足 oᵢ=hᵢ−f−oᵢ₋₁。维护关于 f 的一次式和非负约束，选择最大的可行 f。"
+    ],
+    "analysis": "设最终饥饿值为 f，相邻操作次数满足 oᵢ=hᵢ−f−oᵢ₋₁。维护关于 f 的一次式和非负约束，选择最大的可行 f。",
+    "checker": "tokens",
+    "testsImported": 15,
+    "testsTotal": 15,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "math",
+      "greedy",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "设最终饥饿值为 f，相邻操作次数满足 oᵢ=hᵢ−f−oᵢ₋₁。维护关于 f 的一次式和非负约束，选择最大的可行 f。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1180,
+    "title": "Non-Transitive Dice",
+    "round": "jan22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1180",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan22results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "3\n4 5 6 7 2 4 5 10\n2 2 2 2 1 1 1 1\n1 1 1 1 2 2 2 2",
+        "output": "yes\nno\nno"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "94702913fcc910683f474c49d9bcf69bb4efc28dfd8f5f6d05b7a44ce1da4786",
+    "editorialHash": "d16427f11d1c199b7526e1bdcd52fc94d64512686abfbec43b243a2b76c2c1c1",
+    "year": 2022,
+    "season": "2021–22",
+    "roundLabel": "2022 / 01",
+    "zhTitle": "Non-Transitive Dice",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "为 C 的四个面选择 1～10，使三个骰子形成 A 胜 B、B 胜 C、C 胜 A 的循环（或反向）。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "先确定已知两个骰子的胜负方向；只枚举第三个骰子排好序的四个面，检查能否形成胜负环。"
+    ],
+    "analysis": "先确定已知两个骰子的胜负方向；只枚举第三个骰子排好序的四个面，检查能否形成胜负环。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "先确定已知两个骰子的胜负方向；只枚举第三个骰子排好序的四个面，检查能否形成胜负环。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1179,
+    "title": "Herdle",
+    "round": "jan22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1179",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan22results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "计数与集合",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "COW\nSAY\nMOO\nWIN\nTHE\nIOI",
+        "output": "1\n1"
+      },
+      {
+        "input": "AAA\nBBB\nCCC\nAYY\nAAA\nZZZ",
+        "output": "1\n2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "ece09f34ac9631d88faf6426d0159eb3152effcc68d34ad5baad920bbfb4e614",
+    "editorialHash": "04ac7d38fefbc85d03de38406303eda808a0134ae7e5cf8c4599cb2153d1ceec",
+    "year": 2022,
+    "season": "2021–22",
+    "roundLabel": "2022 / 01",
+    "zhTitle": "Herdle",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "先匹配位置和字母都正确的绿色，再按剩余字母频次匹配黄色。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "同位置相同字符计绿色；每个字母能匹配的总数取两边频次较小值，减去绿色就是黄色。"
+    ],
+    "analysis": "同位置相同字符计绿色；每个字母能匹配的总数取两边频次较小值，减去绿色就是黄色。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "counting",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "同位置相同字符计绿色；每个字母能匹配的总数取两边频次较小值，减去绿色就是黄色。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1157,
+    "title": "Walking Home",
+    "round": "dec21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1157",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec21results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "网格与空间",
+      "Ad Hoc 与分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "7\n3 1\n...\n...\n...\n3 2\n...\n...\n...\n3 3\n...\n...\n...\n3 3\n...\n.H.\n...\n3 2\n.HH\nHHH\nHH.\n3 3\n.H.\nH..\n...\n4 3\n...H\n.H..\n....\nH...",
+        "output": "2\n4\n6\n2\n0\n0\n6"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "4f85fb9ebbe62c56b90dd3a763932eb67fef1bab9fac36ab02032c9d597cbb99",
+    "editorialHash": "a61ab95013c96d8e91d5929e66a32dde2787841695a186c6fbf9ccab40c158ae",
+    "year": 2021,
+    "season": "2021–22",
+    "roundLabel": "2021 / 12",
+    "zhTitle": "Walking Home",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "从左上走到右下，只能向右或向下；H 格不可通行，统计转弯数不超过 K 的路线。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "状态记录位置、转弯数和最后方向；向右或向下走时，仅在方向改变时增加转弯计数。"
+    ],
+    "analysis": "官方主解按转弯次数分类并枚举转弯位置；本站参考实现使用位置、方向和转弯数 DP，列作可选拓展。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "grid",
+      "adhoc"
+    ],
+    "optionalTopics": [
+      "dp"
+    ],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "官方主解按转弯次数分类并枚举转弯位置；本站参考实现使用位置、方向和转弯数 DP，列作可选拓展。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1156,
+    "title": "Air Cownditioning",
+    "round": "dec21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1156",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec21results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "贪心与构造",
+      "前缀与差分"
+    ],
+    "samples": [
+      {
+        "input": "5\n1 5 3 3 4\n1 2 2 2 1",
+        "output": "5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "a095f112756271f7802df26a5de638269dd4bf1bb414a2a3350e3accd71f6ff2",
+    "editorialHash": "a1cb4176e0692d2ae17a29774969eb75f7db1f7ba44009aa9f5cff4d8a6011a4",
+    "year": 2021,
+    "season": "2021–22",
+    "roundLabel": "2021 / 12",
+    "zhTitle": "Air Cownditioning",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "一次可以让任意连续区间的温度全部加 1 或减 1，求最少次数。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "同号相邻温差可以共享操作；只有绝对温差增加，或符号改变时，才需要新增操作。"
+    ],
+    "analysis": "同号相邻温差可以共享操作；只有绝对温差增加，或符号改变时，才需要新增操作。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "prefix"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "同号相邻温差可以共享操作；只有绝对温差增加，或符号改变时，才需要新增操作。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1155,
+    "title": "Lonely Photo",
+    "round": "dec21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1155",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec21results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "计数与集合",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "5\nGHGHG",
+        "output": "3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "895e370682ca6fd63eb6cd536b3fe1bb13c07baffd03d00574a3d24c8193f794",
+    "editorialHash": "1a7110c4ec46341dc0a17b1f69686717f2a098d5a74f18c28aa7aa56e5ae80ad",
+    "year": 2021,
+    "season": "2021–22",
+    "roundLabel": "2021 / 12",
+    "zhTitle": "Lonely Photo",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "选取长度至少 3 的连续照片，其中 G 或 H 恰好只有一头；这头牛就是“孤独牛”。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "枚举照片中唯一不同的牛，数它左右连续异种牛的长度，再排除长度不足 3 的照片。"
+    ],
+    "analysis": "枚举照片中唯一不同的牛，数它左右连续异种牛的长度，再排除长度不足 3 的照片。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "counting",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "枚举照片中唯一不同的牛，数它左右连续异种牛的长度，再排除长度不足 3 的照片。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1109,
+    "title": "Clockwise Fence",
+    "round": "feb21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1109",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb21results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "区间与几何",
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "2\nNESW\nWSSSEENWNEESSENNNNWWWS",
+        "output": "CW\nCCW"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "5d73fa1f80cd6d660c9be0e6066cae089b447abc29cb179edbead80601590185",
+    "editorialHash": "5b0f88d25289f7ade568bf65008aec303eee04d19dc06bb31347ee9447c00238",
+    "year": 2021,
+    "season": "2020–21",
+    "roundLabel": "2021 / 02",
+    "zhTitle": "Clockwise Fence",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "N 向上、E 向右；同样处理后续每条独立路径。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "用每段边的有向面积贡献判断多边形方向；在 x 向右、y 向上的坐标系中，负面积表示顺时针。"
+    ],
+    "analysis": "用每段边的有向面积贡献判断多边形方向；在 x 向右、y 向上的坐标系中，负面积表示顺时针。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "geometry",
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "用每段边的有向面积贡献判断多边形方向；在 x 向右、y 向上的坐标系中，负面积表示顺时针。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1108,
+    "title": "Comfortable Cows",
+    "round": "feb21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1108",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb21results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "网格与空间",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "8\n0 1\n1 0\n1 1\n1 2\n2 1\n2 2\n3 1\n3 2",
+        "output": "0\n0\n0\n1\n0\n0\n1\n2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "cdc86f244822b4b2ae261753a24e308df3115a785b6cfedd54d849967cbb7d96",
+    "editorialHash": "b5cdc9c3d746ca1fd671955d17f717bb9628c13f0e1068f1c1f62eea44bc88e4",
+    "year": 2021,
+    "season": "2020–21",
+    "roundLabel": "2021 / 02",
+    "zhTitle": "Comfortable Cows",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "输出每次放置后的舒适牛总数。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "新牛只改变自身和四个邻居的舒适状态；更新前扣掉旧贡献，更新后加上新贡献。"
+    ],
+    "analysis": "新牛只改变自身和四个邻居的舒适状态；更新前扣掉旧贡献，更新后加上新贡献。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "grid",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "新牛只改变自身和四个邻居的舒适状态；更新前扣掉旧贡献，更新后加上新贡献。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1107,
+    "title": "Year of the Cow",
+    "round": "feb21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1107",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb21results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "数学与规律",
+      "Ad Hoc 与分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "4\nMildred born in previous Dragon year from Bessie\nGretta born in previous Monkey year from Mildred\nElsie born in next Ox year from Gretta\nPaulina born in next Dog year from Bessie",
+        "output": "12"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "ebca1affa5040fa2ae2a17cdd57f9b450858333fc280056056bd95af0ee419a0",
+    "editorialHash": "88a4330e66caaa071ea4d8a32f9d35dcc1e3feab87a2dba90a845479cfa65fa1",
+    "year": 2021,
+    "season": "2020–21",
+    "roundLabel": "2021 / 02",
+    "zhTitle": "Year of the Cow",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每行表示“该牛出生于参照牛之前/之后的最近一个指定生肖年”；以 Bessie 年份为 0 推算。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "以 Bessie 的出生年为 0，按前一个或后一个指定生肖年推算相对年份，最后取年份差绝对值。"
+    ],
+    "analysis": "以 Bessie 的出生年为 0，按前一个或后一个指定生肖年推算相对年份，最后取年份差绝对值。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "math",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "以 Bessie 的出生年为 0，按前一个或后一个指定生肖年推算相对年份，最后取年份差绝对值。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1085,
+    "title": "Just Stalling",
+    "round": "jan21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1085",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan21results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "排序与查找",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "4\n1 2 3 4\n2 4 3 4",
+        "output": "8"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "360bf50bb5547c4b604a00326cdeb301a7353e54fd04ac12f18ec902a26cbd93",
+    "editorialHash": "3bb2d50f98a23a0a45cfe37497df2b9a0a974616472f64c2001b455bc8d6b272",
+    "year": 2021,
+    "season": "2020–21",
+    "roundLabel": "2021 / 01",
+    "zhTitle": "Just Stalling",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每头牛需要不小于自身身高的畜栏，统计一对一合法匹配数。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "从最小畜栏开始分配，可选择的牛数减去已经使用的牛数；各步选择数相乘。"
+    ],
+    "analysis": "从最小畜栏开始分配，可选择的牛数减去已经使用的牛数；各步选择数相乘。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "sorting",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "从最小畜栏开始分配，可选择的牛数减去已经使用的牛数；各步选择数相乘。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1084,
+    "title": "Even More Odd Photos",
+    "round": "jan21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1084",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan21results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "数学与规律",
+      "贪心与构造"
+    ],
+    "samples": [
+      {
+        "input": "7\n1 3 5 7 9 11 13",
+        "output": "3"
+      },
+      {
+        "input": "7\n11 2 17 13 1 15 3",
+        "output": "5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "50bc24eac14aed5c4da15e7a97b99b7d90862b66fc28d2994db1ec3247b9b295",
+    "editorialHash": "f6db77954791f674a5d7070f3c23a6cc82ff29e825d53f04ea6fc8168a6bdd5e",
+    "year": 2021,
+    "season": "2020–21",
+    "roundLabel": "2021 / 01",
+    "zhTitle": "Even More Odd Photos",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "蓝色为偶数，赭色为奇数。分组后每组编号总和必须偶、奇、偶、奇交替。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "两头奇数牛可以组成一个偶数组；先平衡奇偶组数，再按偶、奇交替排列。"
+    ],
+    "analysis": "两头奇数牛可以组成一个偶数组；先平衡奇偶组数，再按偶、奇交替排列。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "math",
+      "greedy"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "两头奇数牛可以组成一个偶数组；先平衡奇偶组数，再按偶、奇交替排列。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1083,
+    "title": "Uddered but not Herd",
+    "round": "jan21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1083",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan21results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "字符串与序列",
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "abcdefghijklmnopqrstuvwxyz\nmood",
+        "output": "3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "60f7ba0723b6259aed3dbd181211f12a1dd758d99050fb0c211ac4b2e820f235",
+    "editorialHash": "8c0b3fc48d4105f67194804e0ece6436f6abf8cc711b4e73a5348cf09d80b8c4",
+    "year": 2021,
+    "season": "2020–21",
+    "roundLabel": "2021 / 01",
+    "zhTitle": "Uddered but not Herd",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每次唱歌都按上排顺序从头开始；下排字母可以跳过没听到的字母，但不能倒着读。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "当下一个字母在字母歌中的位置没有继续向后，就必须开始新一遍字母歌。"
+    ],
+    "analysis": "当下一个字母在字母歌中的位置没有继续向后，就必须开始新一遍字母歌。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "strings",
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "当下一个字母在字母歌中的位置没有继续向后，就必须开始新一遍字母歌。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1061,
+    "title": "Stuck in a Rut",
+    "round": "dec20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1061",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec20.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec20results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "排序与查找",
+      "区间与几何"
+    ],
+    "samples": [
+      {
+        "input": "6\nE 3 5\nN 5 3\nE 4 6\nE 10 4\nN 11 2\nN 8 1",
+        "output": "5\n3\nInfinity\nInfinity\n2\n5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "c76f9efd7f3f462e91bde35a0a794af293c2b6ce1e6c6f263d4d19c8641dc266",
+    "editorialHash": "c4e76d197f3c4fa070d457359ed5230998da52ef4e5a7f8a44fd5ca7c8b9d59d",
+    "year": 2020,
+    "season": "2020–21",
+    "roundLabel": "2020 / 12",
+    "zhTitle": "Stuck in a Rut",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "同时到达交点不会相互阻挡。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "列出可能的交叉相撞事件，按较晚到达时间处理；只有先到的牛实际经过交点，才留下能阻挡另一头牛的轨迹。"
+    ],
+    "analysis": "列出可能的交叉相撞事件，按较晚到达时间处理；只有先到的牛实际经过交点，才留下能阻挡另一头牛的轨迹。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "sorting",
+      "geometry"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "列出可能的交叉相撞事件，按较晚到达时间处理；只有先到的牛实际经过交点，才留下能阻挡另一头牛的轨迹。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1060,
+    "title": "Daisy Chains",
+    "round": "dec20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1060",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec20.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec20results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "计数与集合",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "4\n1 1 2 3",
+        "output": "6"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "bffea7e1733896c8b58f11747279e29c8ead703d4b9ad4890b1b4eb3fbacd32d",
+    "editorialHash": "33eed73b0c1ce6b8eb04287dfa62b37b85ff0e29c002bd02b7e76c8b11fca221",
+    "year": 2020,
+    "season": "2020–21",
+    "roundLabel": "2020 / 12",
+    "zhTitle": "Daisy Chains",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "选连续的一段花，如果其中存在一朵花的花瓣数等于整段平均数，这张照片就有效。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "向右扩展照片区间，维护花瓣总数和出现过的花瓣数，检查平均值是否恰好出现在区间中。"
+    ],
+    "analysis": "向右扩展照片区间，维护花瓣总数和出现过的花瓣数，检查平均值是否恰好出现在区间中。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "counting",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "向右扩展照片区间，维护花瓣总数和出现过的花瓣数，检查平均值是否恰好出现在区间中。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1059,
+    "title": "Do You Know Your ABCs?",
+    "round": "dec20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1059",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec20.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec20results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "排序与查找",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "2 2 11 4 9 7 9",
+        "output": "2 2 7"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-02",
+    "statementHash": "ac5d42f01d7477315f7228fe62b1a98566b3df165c2447c41bc393f9597726e8",
+    "editorialHash": "1c957244d433695fc5831fc24cf1bed71893c80f9ee78a23874e8f6e2fa33226",
+    "year": 2020,
+    "season": "2020–21",
+    "roundLabel": "2020 / 12",
+    "zhTitle": "Do You Know Your ABCs?",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "七个数包含 A、B、C、A+B、A+C、B+C、A+B+C。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "最小两个数是 A 与 B，最大数是 A+B+C，因此可以直接还原 C。"
+    ],
+    "analysis": "最小两个数是 A 与 B，最大数是 A+B+C，因此可以直接还原 C。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "sorting",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "最小两个数是 A 与 B，最大数是 A+B+C，因此可以直接还原 C。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1013,
+    "title": "Swapity Swap",
+    "round": "feb20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1013",
+    "testsUrl": "https://usaco.org/current/data/swap_bronze_feb20.zip",
+    "editorial": "https://usaco.org/current/data/sol_swap_bronze_feb20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb20results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "7 2\n2 5\n3 7",
+        "output": "1\n2\n4\n3\n5\n7\n6"
+      }
+    ],
+    "io": "file",
+    "inputFile": "swap.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "fc8d0e2069f57b96f1275a1a3aabae07ef562a25e7ac303247ba8210e1e2c97a",
+    "editorialHash": "360343226373a883d48e71156c2fa804eaacc5bef93b2d93669ccd24399b9f69",
+    "year": 2020,
+    "season": "2019–20",
+    "roundLabel": "2020 / 02",
+    "zhTitle": "Swapity Swap",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每轮先翻转 [2,5]，再翻转 [3,7]，共做 2 轮。第二帧展示一轮结果。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "一轮两次翻转形成一个置换；拆成循环后，只需移动 K 对循环长度取模的位置。"
+    ],
+    "analysis": "一轮两次翻转形成一个置换；拆成循环后，只需移动 K 对循环长度取模的位置。",
+    "checker": "tokens",
+    "testsImported": 13,
+    "testsTotal": 13,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "一轮两次翻转形成一个置换；拆成循环后，只需移动 K 对循环长度取模的位置。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1012,
+    "title": "Mad Scientist",
+    "round": "feb20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1012",
+    "testsUrl": "https://usaco.org/current/data/breedflip_bronze_feb20.zip",
+    "editorial": "https://usaco.org/current/data/sol_breedflip_bronze_feb20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb20results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "字符串与序列",
+      "贪心与构造"
+    ],
+    "samples": [
+      {
+        "input": "7\nGHHHGHH\nHHGGGHH",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "breedflip.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "f45662381cb40bf6dbe9306fd2758b4483eea447d84b17627e9b43b1adbf39ac",
+    "editorialHash": "620df55091dc9b1d75d673371a943a53208619b1166a40f1c2c8b68c3b07239b",
+    "year": 2020,
+    "season": "2019–20",
+    "roundLabel": "2020 / 02",
+    "zhTitle": "Mad Scientist",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "找出两排相同位置的差异；每个连续差异段可一次翻转。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "每一段连续不同的位置可用一次翻转修复，统计不同段的起点。"
+    ],
+    "analysis": "每一段连续不同的位置可用一次翻转修复，统计不同段的起点。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "strings",
+      "greedy"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "每一段连续不同的位置可用一次翻转修复，统计不同段的起点。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 1011,
+    "title": "Triangles",
+    "round": "feb20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1011",
+    "testsUrl": "https://usaco.org/current/data/triangles_bronze_feb20.zip",
+    "editorial": "https://usaco.org/current/data/sol_triangles_bronze_feb20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb20results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "区间与几何",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "4\n0 0\n0 1\n1 0\n1 2",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "triangles.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "a14cb03910e83ddea41603459cbdbb54350f17a91597db8719d0d5140bd1d899",
+    "editorialHash": "928cdd54edd4e5d42334101b1cae371becf2bc0518f2915f70f21b344c1ee32b",
+    "year": 2020,
+    "season": "2019–20",
+    "roundLabel": "2020 / 02",
+    "zhTitle": "Triangles",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "题目输出两倍面积，避免小数。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "固定直角顶点，分别取同列和同行最远的点；两条直角边乘积就是两倍面积。"
+    ],
+    "analysis": "固定直角顶点，分别取同列和同行最远的点；两条直角边乘积就是两倍面积。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "geometry",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "固定直角顶点，分别取同列和同行最远的点；两条直角边乘积就是两倍面积。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 989,
+    "title": "Race",
+    "round": "jan20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=989",
+    "testsUrl": "https://usaco.org/current/data/race_bronze_jan20.zip",
+    "editorial": "https://usaco.org/current/data/sol_race_bronze_jan20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan20results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "排序与查找",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "10 5\n1\n2\n3\n4\n5",
+        "output": "6\n5\n5\n4\n4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "race.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "28e06a02d43cee16f3ddf9c299b5091f1e44423339aeda522f8632d3b6cc57dd",
+    "editorialHash": "e478a957f17c16f36cb2fad6621fcfeb9ffdbc3ad6b6a589a2236166ad0efc1d",
+    "year": 2020,
+    "season": "2019–20",
+    "roundLabel": "2020 / 01",
+    "zhTitle": "Race",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "赛程 10。速度从 0 开始，每秒最多增减 1；每根柱子代表一个独立询问。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "二分总用时 T。第 i 秒速度最多为 min(i, X+T−i)，用等差数列求可行最大距离。"
+    ],
+    "analysis": "二分总用时 T。第 i 秒速度最多为 min(i, X+T−i)，用等差数列求可行最大距离。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "sorting",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "二分总用时 T。第 i 秒速度最多为 min(i, X+T−i)，用等差数列求可行最大距离。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 988,
+    "title": "Photoshoot",
+    "round": "jan20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=988",
+    "testsUrl": "https://usaco.org/current/data/photo_bronze_jan20.zip",
+    "editorial": "https://usaco.org/current/data/sol_photo_bronze_jan20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan20results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "5\n4 6 7 6",
+        "output": "3 1 5 2 4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "photo.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "e119d749aff0c29442ae62daf0e0e716f02a3cf7608e0ba9b6151a75ae1313b5",
+    "editorialHash": "fda018426e57eb85e108c0102ef72a22e73cf576d08cbd3445644c10d7eaa28b",
+    "year": 2020,
+    "season": "2019–20",
+    "roundLabel": "2020 / 01",
+    "zhTitle": "Photoshoot",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "输入是相邻两头牛编号之和；猜测首项后，其余编号可顺次推回。\n完整输入格式与限制请查看「原题」页。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "枚举最小可能首项；后一个数由相邻和减去前一个数唯一确定，立即检查范围与重复。"
+    ],
+    "analysis": "枚举最小可能首项；后一个数由相邻和减去前一个数唯一确定，立即检查范围与重复。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "枚举最小可能首项；后一个数由相邻和减去前一个数唯一确定，立即检查范围与重复。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 987,
+    "title": "Word Processor",
+    "round": "jan20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=987",
+    "testsUrl": "https://usaco.org/current/data/word_bronze_jan20.zip",
+    "editorial": "https://usaco.org/current/data/sol_word_bronze_jan20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan20results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "10 7\nhello my name is Bessie and this is my essay",
+        "output": "hello my\nname is\nBessie\nand this\nis my\nessay"
+      }
+    ],
+    "io": "file",
+    "inputFile": "word.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "a10bce3d929bfdec618ec76e4566c3e221499dea7212e0d9648caacc1e1004e4",
+    "editorialHash": "ed654205eb88001687f0b290a933e1b691fdb853b14f2ae3c7a6be5cd1e96c36",
+    "year": 2020,
+    "season": "2019–20",
+    "roundLabel": "2020 / 01",
+    "zhTitle": "Word Processor",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "按顺序把完整单词排成多行，每行至多 K 个非空格字符。下一个单词放不下时换行；单词之间只留一个空格，行尾不能有空格。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "按单词装入当前行，长度计算不包含空格；下一个单词超出 K 时换行。"
+    ],
+    "analysis": "按单词装入当前行，长度计算不包含空格；下一个单词超出 K 时换行。",
+    "checker": "lines",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "按单词装入当前行，长度计算不包含空格；下一个单词超出 K 时换行。",
+    "statementAvailable": true,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 965,
+    "title": "Livestock Lineup",
+    "round": "dec19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=965",
+    "testsUrl": "https://usaco.org/current/data/lineup_bronze_dec19.zip",
+    "editorial": "https://usaco.org/current/data/sol_lineup_bronze_dec19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec19results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "3\nButtercup must be milked beside Bella\nBlue must be milked beside Bella\nSue must be milked beside Beatrice",
+        "output": "Beatrice\nSue\nBelinda\nBessie\nBetsy\nBlue\nBella\nButtercup"
+      }
+    ],
+    "io": "file",
+    "inputFile": "lineup.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "109b8f10dbb4e1d8010aad1106c100f397cb1371fd92ba07464012b86f6b7c8b",
+    "editorialHash": "a8c2f725f1a3c12257331e9649dc0be5d1716711629ce4ba939b3f815ac9acc5",
+    "year": 2019,
+    "season": "2019–20",
+    "roundLabel": "2019 / 12",
+    "zhTitle": "Livestock Lineup",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每行的两头牛必须挨在一起；在全部合法八牛队列中选字典序最小的。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "按字典序枚举排列，检查所有相邻约束，第一个合法排列就是所求。"
+    ],
+    "analysis": "按字典序枚举排列，检查所有相邻约束，第一个合法排列就是所求。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "按字典序枚举排列，检查所有相邻约束，第一个合法排列就是所求。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 964,
+    "title": "Where Am I?",
+    "round": "dec19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=964",
+    "testsUrl": "https://usaco.org/current/data/whereami_bronze_dec19.zip",
+    "editorial": "https://usaco.org/current/data/sol_whereami_bronze_dec19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec19results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "字符串与序列",
+      "枚举与搜索",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "7\nABCDABC",
+        "output": "4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "whereami.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "0e36c0832a33991c0e22fa8c04c99ff55a0d3c97d8f9e8a849eec0c22efd4c73",
+    "editorialHash": "59dbf296f72b729eac0334c7873939da79294feb5c51e805b63d8809b77fc5e4",
+    "year": 2019,
+    "season": "2019–20",
+    "roundLabel": "2019 / 12",
+    "zhTitle": "Where Am I?",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "只能看到连续 K 个路标；选择最小 K，使每个长度 K 的窗口都不重复。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "从短到长试观察窗口；当所有等长子串互不相同时，窗口就能唯一确定所在位置。"
+    ],
+    "analysis": "从短到长试观察窗口；当所有等长子串互不相同时，窗口就能唯一确定所在位置。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "strings",
+      "enumeration",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "从短到长试观察窗口；当所有等长子串互不相同时，窗口就能唯一确定所在位置。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 963,
+    "title": "Cow Gymnastics",
+    "round": "dec19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=963",
+    "testsUrl": "https://usaco.org/current/data/gymnastics_bronze_dec19.zip",
+    "editorial": "https://usaco.org/current/data/sol_gymnastics_bronze_dec19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec19results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "排序与查找"
+    ],
+    "samples": [
+      {
+        "input": "3 4\n4 1 2 3\n4 1 3 2\n4 2 1 3",
+        "output": "4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "gymnastics.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "598e9dcbf914329009ed9804efecaaab5d8ed18fe97f55b2949bffd66dce9b48",
+    "editorialHash": "bdd3d37c9068d5ccbf2fa8f9976cf7f4dc9d515a97d7e5a6ace84df0aa1d157c",
+    "year": 2019,
+    "season": "2019–20",
+    "roundLabel": "2019 / 12",
+    "zhTitle": "Cow Gymnastics",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每行从左到右为本次排名；找在所有行中相对顺序都相同的牛对。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "先记录每次训练中每头牛的位置；某对牛只有每次相对顺序一致才算稳定。"
+    ],
+    "analysis": "先记录每次训练中每头牛的位置；某对牛只有每次相对顺序一致才算稳定。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "sorting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "先记录每次训练中每头牛的位置；某对牛只有每次相对顺序一致才算稳定。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 917,
+    "title": "Measuring Traffic",
+    "round": "feb19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=917",
+    "testsUrl": "https://usaco.org/current/data/traffic_bronze_feb19.zip",
+    "editorial": "https://usaco.org/current/data/sol_traffic_bronze_feb19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb19results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "区间与几何",
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "4\non 1 1\nnone 10 14\nnone 11 15\noff 2 3",
+        "output": "10 13\n8 12"
+      }
+    ],
+    "io": "file",
+    "inputFile": "traffic.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "3146799706a5b802ad2a0d9ec3bed75c818131c7417b82bad6c2e26abac44785",
+    "editorialHash": "a70d67bb85fb3360a6c7d9a7ae6147746eb8dc6cab921b9d2e42a0c4461aef7c",
+    "year": 2019,
+    "season": "2018–19",
+    "roundLabel": "2019 / 02",
+    "zhTitle": "Measuring Traffic",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "on 增加车流，off 减少车流，none 给出路上实测范围；求起点与终点的可能区间。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "维护可能车流量区间；入口加区间、出口减区间、传感器取交集，再反向处理一次求起点。"
+    ],
+    "analysis": "维护可能车流量区间；入口加区间、出口减区间、传感器取交集，再反向处理一次求起点。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "geometry",
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "维护可能车流量区间；入口加区间、出口减区间、传感器取交集，再反向处理一次求起点。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 916,
+    "title": "The Great Revegetation",
+    "round": "feb19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=916",
+    "testsUrl": "https://usaco.org/current/data/revegetate_bronze_feb19.zip",
+    "editorial": "https://usaco.org/current/data/sol_revegetate_bronze_feb19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb19results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "图与关系",
+      "贪心与构造"
+    ],
+    "samples": [
+      {
+        "input": "5 6\n4 1\n4 2\n4 3\n2 5\n1 2\n1 5",
+        "output": "12133"
+      }
+    ],
+    "io": "file",
+    "inputFile": "revegetate.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "e63d97f95db8c1a2df0315b5b80c203d8e59bd621b524fd04ecf8888accf8006",
+    "editorialHash": "63d733c9ba819d75b8cb04adf191cb525e9a444ef45f557fb7d04a3fddcc2cab",
+    "year": 2019,
+    "season": "2018–19",
+    "roundLabel": "2019 / 02",
+    "zhTitle": "The Great Revegetation",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "使用 1～4 号草种，求字典序最小的合法分配。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "从编号最小的牧场开始，选择邻居尚未使用的最小草种，得到字典序最小的合法答案。"
+    ],
+    "analysis": "从编号最小的牧场开始，选择邻居尚未使用的最小草种，得到字典序最小的合法答案。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "graphs",
+      "greedy"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "从编号最小的牧场开始，选择邻居尚未使用的最小草种，得到字典序最小的合法答案。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 915,
+    "title": "Sleepy Cow Herding",
+    "round": "feb19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=915",
+    "testsUrl": "https://usaco.org/current/data/herding_bronze_feb19.zip",
+    "editorial": "https://usaco.org/current/data/sol_herding_bronze_feb19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb19results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "数学与规律",
+      "区间与几何",
+      "Ad Hoc 与分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "4 7 9",
+        "output": "1\n2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "herding.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "7654260237eddef78ec9c6011b60ebc7c31f092ba983c10bc2d3a74655edd661",
+    "editorialHash": "a1e4c52470b25e469ec58b3635a244a7e523acfc35e334e81d31846600658686",
+    "year": 2019,
+    "season": "2018–19",
+    "roundLabel": "2019 / 02",
+    "zhTitle": "Sleepy Cow Herding",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每次把端点牛移到另外两头牛之间；目标是三头牛连续站立。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "最少步数由相邻空隙是否恰好为一格决定；最多步数来自较大的那段空隙。"
+    ],
+    "analysis": "最少步数由相邻空隙是否恰好为一格决定；最多步数来自较大的那段空隙。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "math",
+      "geometry",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "最少步数由相邻空隙是否恰好为一格决定；最多步数来自较大的那段空隙。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 893,
+    "title": "Guess the Animal",
+    "round": "jan19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=893",
+    "testsUrl": "https://usaco.org/current/data/guess_bronze_jan19.zip",
+    "editorial": "https://usaco.org/current/data/sol_guess_bronze_jan19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan19results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "计数与集合",
+      "枚举与搜索"
+    ],
+    "samples": [
+      {
+        "input": "4\nbird 2 flies eatsworms\ncow 4 eatsgrass isawesome makesmilk goesmoo\nsheep 1 eatsgrass\ngoat 2 makesmilk eatsgrass",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "guess.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "e00e6f04e335de4919755bd45ac95eacaaf9731161a193b61b17ad44d23dfc5f",
+    "editorialHash": "bd0ffdcdbf8718763c0622c30a3bfc407115a4a088cc9ca49841c2807ba7bcf5",
+    "year": 2019,
+    "season": "2018–19",
+    "roundLabel": "2019 / 01",
+    "zhTitle": "Guess the Animal",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每行是一种动物拥有的特征；交集越大，两种动物越难通过提问区分。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "两种动物共同特征最多时，需要先问完这些相同特征，再问一个能够区分它们的问题。"
+    ],
+    "analysis": "两种动物共同特征最多时，需要先问完这些相同特征，再问一个能够区分它们的问题。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "counting",
+      "enumeration"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "两种动物共同特征最多时，需要先问完这些相同特征，再问一个能够区分它们的问题。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 892,
+    "title": "Sleepy Cow Sorting",
+    "round": "jan19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=892",
+    "testsUrl": "https://usaco.org/current/data/sleepy_bronze_jan19.zip",
+    "editorial": "https://usaco.org/current/data/sol_sleepy_bronze_jan19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan19results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "贪心与构造",
+      "排序与查找"
+    ],
+    "samples": [
+      {
+        "input": "4\n1 2 4 3",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "sleepy.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "506834bb2533e0819ebb2ab1f19431632ec68d8f176dfc6d1844ed67ae2cde24",
+    "editorialHash": "cd9cacf2c4f6e9bb1dce7ad010e05a834ae9cb38297eddeca2b91dcefc02b95e",
+    "year": 2019,
+    "season": "2018–19",
+    "roundLabel": "2019 / 01",
+    "zhTitle": "Sleepy Cow Sorting",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "找最长递增后缀，前缀中的牛需要逐个移走。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "保留末尾已经严格递增的后缀，前面的每头牛都必须从队首移走一次。"
+    ],
+    "analysis": "保留末尾已经严格递增的后缀，前面的每头牛都必须从队首移走一次。",
+    "checker": "tokens",
+    "testsImported": 12,
+    "testsTotal": 12,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "greedy",
+      "sorting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "保留末尾已经严格递增的后缀，前面的每头牛都必须从队首移走一次。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 891,
+    "title": "Shell Game",
+    "round": "jan19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=891",
+    "testsUrl": "https://usaco.org/current/data/shell_bronze_jan19.zip",
+    "editorial": "https://usaco.org/current/data/sol_shell_bronze_jan19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan19results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "枚举与搜索"
+    ],
+    "samples": [
+      {
+        "input": "3\n1 2 1\n3 2 1\n1 3 1",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "shell.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "e0214f0e93617f1b35b57f52319e21062ed675d4c71e2b425eeb8339ae88c3e3",
+    "editorialHash": "8752a103007c4d29c2cc8e1fb957bbcc21d63f4ee9d8211ce4d755cb2aba5d1a",
+    "year": 2019,
+    "season": "2018–19",
+    "roundLabel": "2019 / 01",
+    "zhTitle": "Shell Game",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "石子最初位置未知；分别让石子从 1、2、3 号杯出发完整模拟。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "分别假设石子最初在三个杯子下面，完整模拟交换和猜测。"
+    ],
+    "analysis": "分别假设石子最初在三个杯子下面，完整模拟交换和猜测。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "enumeration"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "分别假设石子最初在三个杯子下面，完整模拟交换和猜测。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 857,
+    "title": "Back and Forth",
+    "round": "dec18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=857",
+    "testsUrl": "https://usaco.org/current/data/backforth_bronze_dec18.zip",
+    "editorial": "https://usaco.org/current/data/sol_backforth_bronze_dec18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec18results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "模拟与状态",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "1 1 1 1 1 1 1 1 1 2\n5 5 5 5 5 5 5 5 5 5",
+        "output": "5"
+      }
+    ],
+    "io": "file",
+    "inputFile": "backforth.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "eca9729a1e9b016e1c89aa16f710540f10206a3346428f439c4b54b90b16f03d",
+    "editorialHash": "f55e59581aa22471c455acb362d6dc026b82119b2beec9d91dd4469b18a06a1b",
+    "year": 2018,
+    "season": "2018–19",
+    "roundLabel": "2018 / 12",
+    "zhTitle": "Back and Forth",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "两农场各有 1000 单位奶。四天按 A→B→A→B→A 搬桶，桶本身也随牛奶移动。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "枚举四次搬桶，移动的桶要从原集合删除并加入另一边；用集合去重最终奶量。"
+    ],
+    "analysis": "枚举四次搬桶，移动的桶要从原集合删除并加入另一边；用集合去重最终奶量。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "simulation",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "枚举四次搬桶，移动的桶要从原集合删除并加入另一边；用集合去重最终奶量。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 856,
+    "title": "The Bucket List",
+    "round": "dec18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=856",
+    "testsUrl": "https://usaco.org/current/data/blist_bronze_dec18.zip",
+    "editorial": "https://usaco.org/current/data/sol_blist_bronze_dec18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec18results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "排序与查找",
+      "前缀与差分"
+    ],
+    "samples": [
+      {
+        "input": "3\n4 10 1\n8 13 3\n2 6 2",
+        "output": "4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "blist.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "fd026d3d99ed7a07e38ad6d99c3a1844d15cf80bd3ee735ee56cdb55a01173d7",
+    "editorialHash": "b156651f7034dddc29f796cffebc182edaa137aa16fa08de6ad15f624f747535",
+    "year": 2018,
+    "season": "2018–19",
+    "roundLabel": "2018 / 12",
+    "zhTitle": "The Bucket List",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "同时工作的牛需要同时占有各自桶数；找到任意时刻的最大桶需求。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "把开始时间视作桶需求增加、结束时间视作归还；最大同时占用数就是所需桶数。"
+    ],
+    "analysis": "把开始时间视作桶需求增加、结束时间视作归还；最大同时占用数就是所需桶数。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "sorting",
+      "prefix"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "把开始时间视作桶需求增加、结束时间视作归还；最大同时占用数就是所需桶数。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 855,
+    "title": "Mixing Milk",
+    "round": "dec18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=855",
+    "testsUrl": "https://usaco.org/current/data/mixmilk_bronze_dec18.zip",
+    "editorial": "https://usaco.org/current/data/sol_mixmilk_bronze_dec18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec18results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "10 3\n11 4\n12 5",
+        "output": "0\n10\n2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "mixmilk.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "b13fe034bd38ef3de066cbd79da9ea1e0bd5817ef4ef0694de261da13a9b575f",
+    "editorialHash": "c0507f831e4d56a3f2865f636c3327ca67ca5c55619f93ba0ce0acb0c3977eb4",
+    "year": 2018,
+    "season": "2018–19",
+    "roundLabel": "2018 / 12",
+    "zhTitle": "Mixing Milk",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "按桶 1→2→3→1 的循环倒奶 100 次，每次尽可能多倒且不得溢出。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "按 1→2→3→1 的顺序倒奶；实际倒入量由来源剩余和目标空余容量共同决定。"
+    ],
+    "analysis": "按 1→2→3→1 的顺序倒奶；实际倒入量由来源剩余和目标空余容量共同决定。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "按 1→2→3→1 的顺序倒奶；实际倒入量由来源剩余和目标空余容量共同决定。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 809,
+    "title": "Taming the Herd",
+    "round": "feb18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=809",
+    "testsUrl": "https://usaco.org/current/data/taming_bronze_feb18.zip",
+    "editorial": "https://usaco.org/current/data/sol_taming_bronze_feb18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb18results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "4\n-1 -1 -1 1",
+        "output": "2 3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "taming.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "6f2ef6be106eaa8fe96d79e4c70c34ace956d549906b5a96c14160a729207425",
+    "editorialHash": "79b06cba6aea3d0aa7a96fa7218e8414239f23118fcc7a1c4d3b94b328342691",
+    "year": 2018,
+    "season": "2017–18",
+    "roundLabel": "2018 / 02",
+    "zhTitle": "Taming the Herd",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每格是距上次逃跑的天数；? 表示丢失记录。第 1 天一定发生逃跑。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "一条“距离上次逃跑 v 天”的记录，强制确定前 v 天没有逃跑以及第 i−v 天逃跑；检查冲突后数确定和未定位置。"
+    ],
+    "analysis": "一条“距离上次逃跑 v 天”的记录，强制确定前 v 天没有逃跑以及第 i−v 天逃跑；检查冲突后数确定和未定位置。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "一条“距离上次逃跑 v 天”的记录，强制确定前 v 天没有逃跑以及第 i−v 天逃跑；检查冲突后数确定和未定位置。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 808,
+    "title": "Hoofball",
+    "round": "feb18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=808",
+    "testsUrl": "https://usaco.org/current/data/hoofball_bronze_feb18.zip",
+    "editorial": "https://usaco.org/current/data/sol_hoofball_bronze_feb18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb18results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "图与关系",
+      "计数与集合",
+      "排序与查找"
+    ],
+    "samples": [
+      {
+        "input": "5\n7 1 3 11 4",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "hoofball.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "b08eb9db1af63b22d214cada2a7bb3aa3cad1d46d46ef0b0fe748eb795d58f1a",
+    "editorialHash": "7e132b4c11b3ab4b230ce9eda0b5281b096b663613c2b0201c1ad912573bfd86",
+    "year": 2018,
+    "season": "2017–18",
+    "roundLabel": "2018 / 02",
+    "zhTitle": "Hoofball",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "需要多少个初始球，才能让所有牛最终接到球？\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "画出每头牛传给最近邻的箭头。入度为零的牛需要初始球；没有外来箭头的互传二元环再加一个球。"
+    ],
+    "analysis": "画出每头牛传给最近邻的箭头。入度为零的牛需要初始球；没有外来箭头的互传二元环再加一个球。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "graphs",
+      "counting",
+      "sorting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "画出每头牛传给最近邻的箭头。入度为零的牛需要初始球；没有外来箭头的互传二元环再加一个球。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 807,
+    "title": "Teleportation",
+    "round": "feb18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=807",
+    "testsUrl": "https://usaco.org/current/data/teleport_bronze_feb18.zip",
+    "editorial": "https://usaco.org/current/data/sol_teleport_bronze_feb18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb18results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "区间与几何",
+      "枚举与搜索"
+    ],
+    "samples": [
+      {
+        "input": "3 10 8 2",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "teleport.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "e6711451ac0e3a6e69464068dac2c5955655ba5b2824aa732c782d866e504b8a",
+    "editorialHash": "9c800dc6121b5b920dcac002a6d50b79e0af60379af6849f45eb3f1e9b7b5c63",
+    "year": 2018,
+    "season": "2017–18",
+    "roundLabel": "2018 / 02",
+    "zhTitle": "Teleportation",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "可直接走，也可从任一传送口瞬间到另一个口；比较总步行距离。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "比较直接走、从第一个传送口进入、从第二个传送口进入三条路线。"
+    ],
+    "analysis": "比较直接走、从第一个传送口进入、从第二个传送口进入三条路线。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "geometry",
+      "enumeration"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "比较直接走、从第一个传送口进入、从第二个传送口进入三条路线。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 785,
+    "title": "Out of Place",
+    "round": "jan18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=785",
+    "testsUrl": "https://usaco.org/current/data/outofplace_bronze_jan18.zip",
+    "editorial": "https://usaco.org/current/data/sol_outofplace_bronze_jan18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan18results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "排序与查找",
+      "计数与集合",
+      "Ad Hoc 与分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "6\n2\n4\n7\n7\n9\n3",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "outofplace.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "1ac96b7fb57ef84528d900300324dbd29411ffb3317a9303a4ec9cf7ac6e39c1",
+    "editorialHash": "3b7d059622f22cf61e6a206d4a8b839a64ee2f82a9a7069aeddd67496a2282df",
+    "year": 2018,
+    "season": "2017–18",
+    "roundLabel": "2018 / 01",
+    "zhTitle": "Out of Place",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "只有一头牛站错位置；比较排序前后的不同位置。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "只有一头牛站错位置；比较排序前后的不同位置，跨过每种被错开的身高只需交换一次。"
+    ],
+    "analysis": "只有一头牛站错位置；比较排序前后的不同位置，跨过每种被错开的身高只需交换一次。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "sorting",
+      "counting",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "只有一头牛站错位置；比较排序前后的不同位置，跨过每种被错开的身高只需交换一次。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 784,
+    "title": "Lifeguards",
+    "round": "jan18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=784",
+    "testsUrl": "https://usaco.org/current/data/lifeguards_bronze_jan18.zip",
+    "editorial": "https://usaco.org/current/data/sol_lifeguards_bronze_jan18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan18results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "区间与几何",
+      "排序与查找",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "3\n5 9\n1 4\n3 7",
+        "output": "7"
+      }
+    ],
+    "io": "file",
+    "inputFile": "lifeguards.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "8e36490a9e9e777cbc9838b85770e5f97a5133bf7a38d767bb3cee7e85d06787",
+    "editorialHash": "3bd3378fe1c74f40492d42886d205d791e36bd3bf083c910ceca39f1c77f80ee",
+    "year": 2018,
+    "season": "2017–18",
+    "roundLabel": "2018 / 01",
+    "zhTitle": "Lifeguards",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "解雇一人后，求其余时间段并集长度的最大值。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "扫描时间事件，计算总覆盖时间和每个人独自覆盖的时间；解雇独占时间最少的人。"
+    ],
+    "analysis": "扫描时间事件，计算总覆盖时间和每个人独自覆盖的时间；解雇独占时间最少的人。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "geometry",
+      "sorting",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "扫描时间事件，计算总覆盖时间和每个人独自覆盖的时间；解雇独占时间最少的人。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 783,
+    "title": "Blocked Billboard II",
+    "round": "jan18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=783",
+    "testsUrl": "https://usaco.org/current/data/billboard_bronze_jan18.zip",
+    "editorial": "https://usaco.org/current/data/sol_billboard_bronze_jan18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan18results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "区间与几何"
+    ],
+    "samples": [
+      {
+        "input": "2 1 7 4\n5 -1 10 3",
+        "output": "15"
+      }
+    ],
+    "io": "file",
+    "inputFile": "billboard.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "ef456ef7798bb1437315d187c3e40fad77dd5cc7ace4cf12cc0b42efc1a35135",
+    "editorialHash": "2b7f953f995db2fb8436d91b5c55d5e8991b3ebb5c69b93b2f3adc96ed1ae7ce",
+    "year": 2018,
+    "season": "2017–18",
+    "roundLabel": "2018 / 01",
+    "zhTitle": "Blocked Billboard II",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "后方是广告牌，前方矩形形成遮挡；按实际坐标绘制重叠区域。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "求所有可见部分的最小外接矩形。只有遮挡覆盖整条宽或高且贴着边缘时，遮布才能缩小。"
+    ],
+    "analysis": "求所有可见部分的最小外接矩形。只有遮挡覆盖整条宽或高且贴着边缘时，遮布才能缩小。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "geometry"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "求所有可见部分的最小外接矩形。只有遮挡覆盖整条宽或高且贴着边缘时，遮布才能缩小。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 761,
+    "title": "Milk Measurement",
+    "round": "dec17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=761",
+    "testsUrl": "https://usaco.org/current/data/measurement_bronze_dec17.zip",
+    "editorial": "https://usaco.org/current/data/sol_measurement_bronze_dec17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec17results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "排序与查找",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "4\n7 Mildred +3\n4 Elsie -1\n9 Mildred -1\n1 Bessie +2",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "measurement.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "5611642203fa0c6c67dbb8148c0d0ac5ea29c46152e5d8ca4581952e2cbc6b94",
+    "editorialHash": "b1e68841d45d06440b901bca177a400534c0de4c9acd4a835b430ca107b7b8a4",
+    "year": 2017,
+    "season": "2017–18",
+    "roundLabel": "2017 / 12",
+    "zhTitle": "Milk Measurement",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "三头牛最初均产奶 7；按日期更新，观察最高产量对应的名字集合是否变化。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "按日期排序；每次更新产量后比较榜首牛的集合，而不是只比较最大产量数值。"
+    ],
+    "analysis": "按日期排序；每次更新产量后比较榜首牛的集合，而不是只比较最大产量数值。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "sorting",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "按日期排序；每次更新产量后比较榜首牛的集合，而不是只比较最大产量数值。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 760,
+    "title": "The Bovine Shuffle",
+    "round": "dec17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=760",
+    "testsUrl": "https://usaco.org/current/data/shuffle_bronze_dec17.zip",
+    "editorial": "https://usaco.org/current/data/sol_shuffle_bronze_dec17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec17results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "5\n1 3 4 5 2\n1234567 2222222 3333333 4444444 5555555",
+        "output": "1234567\n5555555\n2222222\n3333333\n4444444"
+      }
+    ],
+    "io": "file",
+    "inputFile": "shuffle.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "d6634013f8eb2bfc4453a5f7694b06af0306e98441e7c4af534d2b96e18bcaf7",
+    "editorialHash": "9aeb7aabf0aba827e2bab15e6ff1e2129f83f59c973d2780ab6cde7a438c6c55",
+    "year": 2017,
+    "season": "2017–18",
+    "roundLabel": "2017 / 12",
+    "zhTitle": "The Bovine Shuffle",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "箭头表示一轮位置映射；已知三轮后的牛编号，要反向还原初始顺序。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "已知移动后的位置，按原映射反向取回每头牛，连续逆推三次。"
+    ],
+    "analysis": "已知移动后的位置，按原映射反向取回每头牛，连续逆推三次。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "已知移动后的位置，按原映射反向取回每头牛，连续逆推三次。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 759,
+    "title": "Blocked Billboard",
+    "round": "dec17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=759",
+    "testsUrl": "https://usaco.org/current/data/billboard_bronze_dec17.zip",
+    "editorial": "https://usaco.org/current/data/sol_billboard_bronze_dec17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec17results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "区间与几何"
+    ],
+    "samples": [
+      {
+        "input": "1 2 3 5\n6 0 10 4\n2 1 8 3",
+        "output": "17"
+      }
+    ],
+    "io": "file",
+    "inputFile": "billboard.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "6427f54f568c7114c4ad138136b89cabde063c2c4760a6a0b284b4ad5fbc8112",
+    "editorialHash": "946f78f152a024e715e2591c57bc5ed9597773be22c9c7071babbd5db01a1a65",
+    "year": 2017,
+    "season": "2017–18",
+    "roundLabel": "2017 / 12",
+    "zhTitle": "Blocked Billboard",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "后方是广告牌，前方矩形形成遮挡；按实际坐标绘制重叠区域。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "每块广告牌的可见面积等于自身面积减去与卡车矩形的交集面积。"
+    ],
+    "analysis": "每块广告牌的可见面积等于自身面积减去与卡车矩形的交集面积。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "geometry"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "每块广告牌的可见面积等于自身面积减去与卡车矩形的交集面积。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 713,
+    "title": "Why Did the Cow Cross the Road III",
+    "round": "feb17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=713",
+    "testsUrl": "https://usaco.org/current/data/cowqueue_bronze_feb17.zip",
+    "editorial": "https://usaco.org/current/data/sol_cowqueue_bronze_feb17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb17results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "排序与查找",
+      "模拟与状态",
+      "贪心与构造"
+    ],
+    "samples": [
+      {
+        "input": "3\n2 1\n8 3\n5 7",
+        "output": "15"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowqueue.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "e686eae3131c67a1f0e5c60588688fdb009f045ebad2bf4bd7ce2ed3a462dbc3",
+    "editorialHash": "9d598c06b974c1d19334eacc5420685f73266eba137a9f782ce4283e6d059dfa",
+    "year": 2017,
+    "season": "2016–17",
+    "roundLabel": "2017 / 02",
+    "zhTitle": "Why Did the Cow Cross the Road III",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "先到先服务。若前一头尚未结束，后一头必须等待。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "按到达时间排队；服务开始时间取“上一头牛结束”和“本牛到达”的较大值。"
+    ],
+    "analysis": "按到达时间排队；服务开始时间取“上一头牛结束”和“本牛到达”的较大值。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "sorting",
+      "simulation",
+      "greedy"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "按到达时间排队；服务开始时间取“上一头牛结束”和“本牛到达”的较大值。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 712,
+    "title": "Why Did the Cow Cross the Road II",
+    "round": "feb17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=712",
+    "testsUrl": "https://usaco.org/current/data/circlecross_bronze_feb17.zip",
+    "editorial": "https://usaco.org/current/data/sol_circlecross_bronze_feb17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb17results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "区间与几何"
+    ],
+    "samples": [
+      {
+        "input": "ABCCABDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ",
+        "output": "1"
+      }
+    ],
+    "io": "file",
+    "inputFile": "circlecross.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "4b31cc938890d615f18aaadcb2687db0169bc868d17cbb39d1de3981a4f9b208",
+    "editorialHash": "dc7cdf5b97086f754adaff0411ebebaef5ee111b7e628ebd341e9980b19be6fc",
+    "year": 2017,
+    "season": "2016–17",
+    "roundLabel": "2017 / 02",
+    "zhTitle": "Why Did the Cow Cross the Road II",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "两头牛的端点若按 A、B、A、B 交替出现，连线会相交；样例中只有 A 和 B 满足。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "两头牛的四个端点必须交替出现（ABAB 或 BABA），它们的路线才相交。"
+    ],
+    "analysis": "两头牛的四个端点必须交替出现（ABAB 或 BABA），它们的路线才相交。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "geometry"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "两头牛的四个端点必须交替出现（ABAB 或 BABA），它们的路线才相交。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 711,
+    "title": "Why Did the Cow Cross the Road",
+    "round": "feb17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=711",
+    "testsUrl": "https://usaco.org/current/data/crossroad_bronze_feb17.zip",
+    "editorial": "https://usaco.org/current/data/sol_crossroad_bronze_feb17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb17results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "8\n3 1\n3 0\n6 0\n2 1\n4 1\n3 0\n4 0\n3 1",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "crossroad.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "dcfa4c4aa3d1a6e621a77f87d2e2f6edffd62b8c692d2aeec3951df5b8bcae1a",
+    "editorialHash": "ddbe4dffe726b2a8c58a5893c3b24680d523549fcf37b07ec0fb03c7829114d6",
+    "year": 2017,
+    "season": "2016–17",
+    "roundLabel": "2017 / 02",
+    "zhTitle": "Why Did the Cow Cross the Road",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "按时间从左到右观察；只比较同一头牛的前后记录。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "为每头牛记住上一次所在的道路一侧；只有同一头牛从一侧变到另一侧才计一次。"
+    ],
+    "analysis": "为每头牛记住上一次所在的道路一侧；只有同一头牛从一侧变到另一侧才计一次。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "为每头牛记住上一次所在的道路一侧；只有同一头牛从一侧变到另一侧才计一次。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 689,
+    "title": "Cow Tipping",
+    "round": "jan17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=689",
+    "testsUrl": "https://usaco.org/current/data/cowtip_bronze_jan17.zip",
+    "editorial": "https://usaco.org/current/data/sol_cowtip_bronze_jan17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan17results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "网格与空间",
+      "贪心与构造",
+      "Ad Hoc 与分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "3\n001\n111\n111",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowtip.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "7a502d1083f435cca01499add7ef7ade27ed36354077f4cf36fbc12d674004f3",
+    "editorialHash": "9c1d29a1e1cb8c1b7dce05ece9a2967bfa2d58a759ee4183c814747d85f824fe",
+    "year": 2017,
+    "season": "2016–17",
+    "roundLabel": "2017 / 01",
+    "zhTitle": "Cow Tipping",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "一次操作翻转从左上角到所选格子的整个矩形；从右下角确定必须做的操作。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "从右下向左上处理；如果当前格为 1，翻转以它为右下角的矩形是唯一可行决定。"
+    ],
+    "analysis": "从右下向左上处理；如果当前格为 1，翻转以它为右下角的矩形是唯一可行决定。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "grid",
+      "greedy",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "从右下向左上处理；如果当前格为 1，翻转以它为右下角的矩形是唯一可行决定。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 688,
+    "title": "Hoof, Paper, Scissors",
+    "round": "jan17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=688",
+    "testsUrl": "https://usaco.org/current/data/hps_bronze_jan17.zip",
+    "editorial": "https://usaco.org/current/data/sol_hps_bronze_jan17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan17results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "5\n1 2\n2 2\n1 3\n1 1\n3 2",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "hps.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "0f7c73461a99b8ded31958086784b58c117611f9d9569fc1dcf30bc70da84f5a",
+    "editorialHash": "6e5b0afe216bdfa924d761d1a98cbce60648709ce79878d3a24690045a65add3",
+    "year": 2017,
+    "season": "2016–17",
+    "roundLabel": "2017 / 01",
+    "zhTitle": "Hoof, Paper, Scissors",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "1、2、3 对应的真实手势未知；比较两种克制方向所能得到的胜场。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "三种手势的编号映射只会产生两种不同的克制方向，分别统计胜场。"
+    ],
+    "analysis": "三种手势的编号映射只会产生两种不同的克制方向，分别统计胜场。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "三种手势的编号映射只会产生两种不同的克制方向，分别统计胜场。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 687,
+    "title": "Don't Be Last!",
+    "round": "jan17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=687",
+    "testsUrl": "https://usaco.org/current/data/notlast_bronze_jan17.zip",
+    "editorial": "https://usaco.org/current/data/sol_notlast_bronze_jan17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan17results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "计数与集合",
+      "排序与查找"
+    ],
+    "samples": [
+      {
+        "input": "10\nBessie 1\nMaggie 13\nElsie 3\nElsie 4\nHenrietta 4\nGertie 12\nDaisy 7\nAnnabelle 10\nBessie 6\nHenrietta 5",
+        "output": "Henrietta"
+      }
+    ],
+    "io": "file",
+    "inputFile": "notlast.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "b07bea7d0f2d4278e5e5063b347ba2ad12b285aa80c8c7bef7a0268f16877b97",
+    "editorialHash": "dd8ba6e2317758dfa2d48d96b2d99a2f3f1cb27e5749a971dd0235999d7d14ff",
+    "year": 2017,
+    "season": "2016–17",
+    "roundLabel": "2017 / 01",
+    "zhTitle": "Don't Be Last!",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "找第二小的不同总产奶量；同产量若有多头牛则不能唯一确定。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "未出现在记录中的牛产奶量也为 0；寻找第二小的不同产量，并检查是否唯一。"
+    ],
+    "analysis": "未出现在记录中的牛产奶量也为 0；寻找第二小的不同产量，并检查是否唯一。",
+    "checker": "tokens",
+    "testsImported": 11,
+    "testsTotal": 11,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "counting",
+      "sorting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "未出现在记录中的牛产奶量也为 0；寻找第二小的不同产量，并检查是否唯一。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 665,
+    "title": "The Cow-Signal",
+    "round": "dec16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=665",
+    "testsUrl": "https://usaco.org/current/data/cowsignal_bronze_dec16.zip",
+    "editorial": "https://usaco.org/current/data/sol_cowsignal_bronze_dec16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec16results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "字符串与序列",
+      "网格与空间"
+    ],
+    "samples": [
+      {
+        "input": "5 4 2\nXXX.\nX..X\nXXX.\nX..X\nXXX.",
+        "output": "XXXXXX..\nXXXXXX..\nXX....XX\nXX....XX\nXXXXXX..\nXXXXXX..\nXX....XX\nXX....XX\nXXXXXX..\nXXXXXX.."
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowsignal.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "c61f8956470245aca1c39413853e604e4df71846d0cdbadead9f9213761ccc86",
+    "editorialHash": "31fc5197cfdee8b68ebe52727a4a8c93d3e851f1d2981b9ab211416e6b5dea97",
+    "year": 2016,
+    "season": "2016–17",
+    "roundLabel": "2016 / 12",
+    "zhTitle": "The Cow-Signal",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "每个原始像素扩展为 K×K 的小方块。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "每个字符横向复制 K 次，再将扩展后的整行纵向复制 K 次。"
+    ],
+    "analysis": "每个字符横向复制 K 次，再将扩展后的整行纵向复制 K 次。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "strings",
+      "grid"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "每个字符横向复制 K 次，再将扩展后的整行纵向复制 K 次。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 664,
+    "title": "Block Game",
+    "round": "dec16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=664",
+    "testsUrl": "https://usaco.org/current/data/blocks_bronze_dec16.zip",
+    "editorial": "https://usaco.org/current/data/sol_blocks_bronze_dec16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec16results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "计数与集合",
+      "字符串与序列"
+    ],
+    "samples": [
+      {
+        "input": "3\nfox box\ndog cat\ncar bus",
+        "output": "2\n2\n2\n1\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n2\n0\n0\n1\n1\n1\n1\n0\n0\n1\n0\n0"
+      }
+    ],
+    "io": "file",
+    "inputFile": "blocks.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "73245f8a3e74009de8db9832b56b916cf7478588b4a6955740f253d75214a6be",
+    "editorialHash": "3d9dc0796479334acdc8d05d488dc5f85f172c86eca8e7644fe42a1a650d015e",
+    "year": 2016,
+    "season": "2016–17",
+    "roundLabel": "2016 / 12",
+    "zhTitle": "Block Game",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "同一块木板的两面只能二选一；每个字母分别取两面需求的较大值。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "同一块木板的两面不能同时使用，所以每个字母取两面需求的较大值，再把各块木板累加。"
+    ],
+    "analysis": "同一块木板的两面不能同时使用，所以每个字母取两面需求的较大值，再把各块木板累加。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "counting",
+      "strings"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "同一块木板的两面不能同时使用，所以每个字母取两面需求的较大值，再把各块木板累加。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 663,
+    "title": "Square Pasture",
+    "round": "dec16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=663",
+    "testsUrl": "https://usaco.org/current/data/square_bronze_dec16.zip",
+    "editorial": "https://usaco.org/current/data/sol_square_bronze_dec16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec16results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "区间与几何"
+    ],
+    "samples": [
+      {
+        "input": "6 6 8 8\n1 8 4 9",
+        "output": "49"
+      }
+    ],
+    "io": "file",
+    "inputFile": "square.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "cbd70b6f575960affbb765128a4394529bbb8abf66058e13b7de87a4724d3de0",
+    "editorialHash": "a8d37042ee203e701744d4c27731cc48150ecd8d4da0148b72778f508119fb09",
+    "year": 2016,
+    "season": "2016–17",
+    "roundLabel": "2016 / 12",
+    "zhTitle": "Square Pasture",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "两个牧场的整体外接正方形。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "取两个矩形的整体宽度与高度，较大值就是最小正方形的边长。"
+    ],
+    "analysis": "取两个矩形的整体宽度与高度，较大值就是最小正方形的边长。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "geometry"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "取两个矩形的整体宽度与高度，较大值就是最小正方形的边长。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 617,
+    "title": "Load Balancing",
+    "round": "feb16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=617",
+    "testsUrl": "https://usaco.org/current/data/balancing_bronze_feb16.zip",
+    "editorial": "https://usaco.org/current/data/sol_balancing_bronze_feb16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb16results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "区间与几何"
+    ],
+    "samples": [
+      {
+        "input": "7 10\n7 3\n5 5\n9 7\n3 1\n7 7\n5 3\n9 1",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "balancing.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "0f8059710ee977fbe16fbe143b562eea73b51fefcef3342043ae638a4ae49d52",
+    "editorialHash": "6dd8c704d78fe41ee71c5f708ae49a274ec9b73f9be84cb0b8e543deee889586",
+    "year": 2016,
+    "season": "2015–16",
+    "roundLabel": "2016 / 02",
+    "zhTitle": "Load Balancing",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "移动横、竖两条线，比较四个区域的人数。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "分隔线只需放在某头牛坐标的右侧和上侧；枚举两条线，统计四个象限。"
+    ],
+    "analysis": "分隔线只需放在某头牛坐标的右侧和上侧；枚举两条线，统计四个象限。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "geometry"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "分隔线只需放在某头牛坐标的右侧和上侧；枚举两条线，统计四个象限。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 616,
+    "title": "Circular Barn",
+    "round": "feb16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=616",
+    "testsUrl": "https://usaco.org/current/data/cbarn_bronze_feb16.zip",
+    "editorial": "https://usaco.org/current/data/sol_cbarn_bronze_feb16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb16results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "5\n4\n7\n8\n6\n4",
+        "output": "48"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cbarn.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "6ad3ca974ab208f3100621b538a7b1fe61ae233e162af498bf6c155807b9d253",
+    "editorialHash": "fb1b43ae313757a46790e617257b5d22f1318d76948db2856862d01c5dc1e232",
+    "year": 2016,
+    "season": "2015–16",
+    "roundLabel": "2016 / 02",
+    "zhTitle": "Circular Barn",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "房间环形连接，每个标签是所需牛数；选择入口后只能沿同一方向步行。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "枚举入口，将每个房间所需牛数乘以从入口顺时针走到它的距离。"
+    ],
+    "analysis": "枚举入口，将每个房间所需牛数乘以从入口顺时针走到它的距离。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "枚举入口，将每个房间所需牛数乘以从入口顺时针走到它的距离。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 615,
+    "title": "Milk Pails",
+    "round": "feb16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=615",
+    "testsUrl": "https://usaco.org/current/data/pails_bronze_feb16.zip",
+    "editorial": "https://usaco.org/current/data/sol_pails_bronze_feb16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb16results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "数学与规律"
+    ],
+    "samples": [
+      {
+        "input": "17 25 77",
+        "output": "76"
+      }
+    ],
+    "io": "file",
+    "inputFile": "pails.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "29f4ad815e354e8033652a27956e4966453d2395add720288042e3dd29ec0c19",
+    "editorialHash": "8d152ec92f4fcbb7eb92f7c1d9e33fe42dcde49e740729a2e8fdea4c7c9c080a",
+    "year": 2016,
+    "season": "2015–16",
+    "roundLabel": "2016 / 02",
+    "zhTitle": "Milk Pails",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "两种桶可以反复使用；总奶量必须不超过第三根柱子表示的上限。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "枚举小桶数量，剩余容量尽可能装大桶。"
+    ],
+    "analysis": "枚举小桶数量，剩余容量尽可能装大桶。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "math"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "枚举小桶数量，剩余容量尽可能装大桶。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 593,
+    "title": "Mowing the Field",
+    "round": "jan16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=593",
+    "testsUrl": "https://usaco.org/current/data/mowing_bronze_jan16.zip",
+    "editorial": "https://usaco.org/current/data/sol_mowing_bronze_jan16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan16results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "区间与几何",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "6\nN 10\nE 2\nS 3\nW 4\nS 5\nE 8",
+        "output": "10"
+      }
+    ],
+    "io": "file",
+    "inputFile": "mowing.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "77c2b09d69536359bd9c09564cda56531232b1544744ff8e5ba0228d05046243",
+    "editorialHash": "db2ba4fccc7b80d7444b09d3d85971e33be4b3633cb30161d369a1b8ba21e86f",
+    "year": 2016,
+    "season": "2015–16",
+    "roundLabel": "2016 / 01",
+    "zhTitle": "Mowing the Field",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "寻找重复经过同一格的最短时间差。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "逐步移动，记录每个格子最近一次经过的时间；同格两次访问的最小间隔决定答案。"
+    ],
+    "analysis": "逐步移动，记录每个格子最近一次经过的时间；同格两次访问的最小间隔决定答案。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "geometry",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "逐步移动，记录每个格子最近一次经过的时间；同格两次访问的最小间隔决定答案。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 592,
+    "title": "Angry Cows",
+    "round": "jan16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=592",
+    "testsUrl": "https://usaco.org/current/data/angry_bronze_jan16.zip",
+    "editorial": "https://usaco.org/current/data/sol_angry_bronze_jan16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan16results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态",
+      "枚举与搜索",
+      "排序与查找"
+    ],
+    "samples": [
+      {
+        "input": "6\n8\n5\n6\n13\n3\n4",
+        "output": "5"
+      }
+    ],
+    "io": "file",
+    "inputFile": "angry.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "50fdc12b57b89186064b56f0da5658c546d7356c71f39f95282f1fffc00f22a8",
+    "editorialHash": "22f56a8a896c04cf3bff3ef3cad29d5d7f0ad2b48967e5ad493f20e42b2ba890",
+    "year": 2016,
+    "season": "2015–16",
+    "roundLabel": "2016 / 01",
+    "zhTitle": "Angry Cows",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "干草堆位于数轴；选择起爆点，每轮爆炸距离增加 1。图中间隔按真实坐标缩放。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "依次试每个起爆点，左右独立扩展；每一轮爆炸半径增加 1。"
+    ],
+    "analysis": "依次试每个起爆点，左右独立扩展；每一轮爆炸半径增加 1。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation",
+      "enumeration",
+      "sorting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "依次试每个起爆点，左右独立扩展；每一轮爆炸半径增加 1。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 591,
+    "title": "Promotion Counting",
+    "round": "jan16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=591",
+    "testsUrl": "https://usaco.org/current/data/promote_bronze_jan16.zip",
+    "editorial": "https://usaco.org/current/data/sol_promote_bronze_jan16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan16results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "数学与规律",
+      "计数与集合"
+    ],
+    "samples": [
+      {
+        "input": "1 2\n1 1\n1 1\n1 2",
+        "output": "1\n1\n1"
+      }
+    ],
+    "io": "file",
+    "inputFile": "promote.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "8c0cd573a1a11013d3bbb366709ac9b926f268b40f2e08cc017915dfe30727df",
+    "editorialHash": "1383968b28d2a67fe84dea40c0330c91b26c654699350564891a4cb9de593fbb",
+    "year": 2016,
+    "season": "2015–16",
+    "roundLabel": "2016 / 01",
+    "zhTitle": "Promotion Counting",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "晋级只向更高级别流动，人数差需要从最高组逐级向下累计。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "从最高组往下计算；当前组新增人数加上向更高组晋级的人数，就是流入本组的人数。"
+    ],
+    "analysis": "从最高组往下计算；当前组新增人数加上向更高组晋级的人数，就是流入本组的人数。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "math",
+      "counting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "从最高组往下计算；当前组新增人数加上向更高组晋级的人数，就是流入本组的人数。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 569,
+    "title": "Contaminated Milk",
+    "round": "dec15results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=569",
+    "testsUrl": "https://usaco.org/current/data/badmilk_bronze_dec15.zip",
+    "editorial": "https://usaco.org/current/data/sol_badmilk_bronze_dec15.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec15results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "枚举与搜索",
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "3 4 7 2\n1 1 1\n1 4 1\n1 3 4\n1 2 2\n3 1 3\n2 1 5\n2 2 7\n1 3\n2 8",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "badmilk.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "11cafd4dcd81277bfd3e6eb7ee8c3c90c7b53ef270ec7edea6d6d883b0fafb5e",
+    "editorialHash": "759713fa8cef53ebf73d6e374fd79d99aa9d74ccbd1ac54d912ee3cafb4b5732",
+    "year": 2015,
+    "season": "2015–16",
+    "roundLabel": "2015 / 12",
+    "zhTitle": "Contaminated Milk",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "先对照每名病人的发病时刻；污染牛奶必须在此之前被喝过。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "枚举污染牛奶；它必须在发病前被每名已知病人喝过，再统计喝过它的全部人数。"
+    ],
+    "analysis": "枚举污染牛奶；它必须在发病前被每名已知病人喝过，再统计喝过它的全部人数。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "enumeration",
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "枚举污染牛奶；它必须在发病前被每名已知病人喝过，再统计喝过它的全部人数。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 568,
+    "title": "Speeding Ticket",
+    "round": "dec15results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=568",
+    "testsUrl": "https://usaco.org/current/data/speeding_bronze_dec15.zip",
+    "editorial": "https://usaco.org/current/data/sol_speeding_bronze_dec15.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec15results",
+    "reviewStatus": "参考解法归类",
+    "tags": [
+      "模拟与状态"
+    ],
+    "samples": [
+      {
+        "input": "3 3\n40 75\n50 35\n10 45\n40 76\n20 30\n40 40",
+        "output": "5"
+      }
+    ],
+    "io": "file",
+    "inputFile": "speeding.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "dd29b06bc1f32c4111cef447c952ac897539dba20c8400125fae36c00429040d",
+    "editorialHash": "2ad4fba543c29ecc85600cce7c209764ae1fc9097306a9e8f6642be711bd8a9a",
+    "year": 2015,
+    "season": "2015–16",
+    "roundLabel": "2015 / 12",
+    "zhTitle": "Speeding Ticket",
+    "level": "未标注",
+    "visual": "pending",
+    "summary": "同一段 100 英里的路，上排是限速分段，下排是实际行驶分段；必须按道路位置对齐。\n完整输入格式与限制请查看官方原题。",
+    "summaryEn": "Samples and official source links are available. The teaching walkthrough is not yet written; read the official statement for complete requirements.",
+    "hints": [
+      "先用「样例图解」把输入中的对象与位置对应起来。",
+      "尝试手算样例，并说明每一步改变了哪些量。",
+      "把限速和实际速度对齐到每一英里，取超速差的最大值。"
+    ],
+    "analysis": "把限速和实际速度对齐到每一英里，取超速差的最大值。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "把限速和实际速度对齐到每一英里，取超速差的最大值。",
+    "statementAvailable": false,
+    "classificationSource": "站内参考解法",
+    "classifiedAt": "2026-10-04"
+  },
+  {
+    "id": 567,
+    "title": "Fence Painting",
+    "round": "dec15results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=567",
+    "testsUrl": "https://usaco.org/current/data/paint_bronze_dec15.zip",
+    "editorial": "https://usaco.org/current/data/sol_paint_bronze_dec15.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec15results",
+    "reviewStatus": "已核验",
+    "tags": [
+      "区间与几何",
+      "模拟",
+      "分类讨论"
+    ],
+    "samples": [
+      {
+        "input": "7 10\n4 8",
+        "output": "6"
+      }
+    ],
+    "io": "file",
+    "inputFile": "paint.in",
+    "fetchedAt": "2026-10-02",
+    "statementHash": "b46212ed57de39e135b722cd6f00867eeea5b7dc9da090a8f18f366b5cc6769f",
+    "editorialHash": "d17c00bb98db7902b4a7883aeb2cc9b37a6917154567f3d84742b9baeb7358cf",
+    "year": 2015,
+    "season": "2015–16",
+    "roundLabel": "2015 / 12",
+    "zhTitle": "栅栏涂色",
+    "level": "入门",
+    "visual": "fence",
+    "summary": "FJ 给区间 [a,b] 涂色，Bessie 给 [c,d] 涂色。求至少被涂过一次的总长度。端点范围 0–100；a<b，c<d。长度按线段计算，不是端点个数。",
+    "summaryEn": "Two painters cover intervals [a,b] and [c,d] on a fence. Calculate the length covered at least once. Endpoints are integers from 0 to 100, with a<b and c<d.",
+    "hints": [
+      "先在数轴上标出四个端点。",
+      "重叠部分被两个人分别计算了几次？",
+      "交集长度是 max(0, min(b,d) − max(a,c))。"
+    ],
+    "analysis": "官方给出逐段标记与区间分类两种解法。也可用长度之和减去交集长度。",
+    "checker": "tokens",
+    "testsImported": 10,
+    "testsTotal": 10,
+    "reviewedAt": "2026-10-02",
+    "reviewEvidence": "https://usaco.org/current/data/sol_paint_bronze_dec15.html",
+    "diagramReady": true,
+    "referenceReady": true,
+    "learningTopics": [
+      "geometry",
+      "simulation",
+      "adhoc"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "两段长度相加，再减去被重复计算的交集长度。",
+    "statementAvailable": false
+  }
+]

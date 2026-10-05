@@ -1,0 +1,17 @@
+export function checkOutput(id:number,input:string,expected:string,output:string):{ok:boolean,detail:string}{
+ const fail=(detail:string)=>({ok:false,detail});
+ try{
+  const data=input.trim().split(/\s+/),out=output.trim()?output.trim().split(/\s+/):[];let i=0,j=0;
+  const next=()=>{if(i>=data.length)throw Error('输入数据不完整');return data[i++]};
+  const read=()=>{if(j>=out.length)throw Error('输出不足');return out[j++]};
+  const integer=()=>{const s=read();if(!/^-?\d+$/.test(s)||!Number.isSafeInteger(Number(s)))throw Error('输出中出现无效整数');return +s};
+  const ni=()=>+next();
+  if(id===1252){const tests=ni();for(let t=0;t<tests;t++){const n=ni(),k=ni(),s=next(),count=integer(),p=read();if(p.length!==n||/[^.GH]/.test(p))return fail('草地字符串长度或字符不合法。');if([...p].filter(c=>c!=='.').length!==count)return fail('声明的草地数量与构造不一致。');const reach:Record<string,number>={G:-1,H:-1};let minimum=0;for(let c=0;c<n;c++)if(c>reach[s[c]]){minimum++;reach[s[c]]=c+2*k;}if(count!==minimum)return fail('构造使用的草地数量不是最少值。');for(const breed of ['G','H']){const prefix=[0];for(const c of p)prefix.push(prefix[prefix.length-1]+ +(c===breed));for(let c=0;c<n;c++)if(s[c]===breed&&prefix[Math.min(n,c+k+1)]===prefix[Math.max(0,c-k)])return fail(`第 ${c+1} 头牛未在距离 K 内找到对应草种。`);}}}
+  else if(id===1540){const tests=ni(),k=ni();for(let t=0;t<tests;t++){const n=ni(),s=next(),m=integer();if(n%2){if(m!==-1)return fail('奇数长度无法分解为偶数长度方串。');continue;}const half=s.length/2,optimal=s.slice(0,half)===s.slice(half)?1:2;if(m<1||m>optimal+k)return fail('操作次数超过题目允许的最优值范围。');const groups:string[][]=Array.from({length:m},()=>[]);for(const c of s){const v=integer();if(v<1||v>m)return fail('删除操作编号越界。');groups[v-1].push(c);}for(let g=0;g<m;g++){const v=groups[g].join('');if(!v.length||v.length%2||v.slice(0,v.length/2)!==v.slice(v.length/2))return fail(`第 ${g+1} 次删除的子序列不是方串。`);}}}
+  else if(id===1563){const tests=ni(),k=ni();for(let t=0;t<tests;t++){const n=ni(),s=next();if(read()!=='YES')return fail('任意目标 M/O 串都可构造，应输出 YES。');if(k){const keys=read();if(keys.length!==n||/[^MO]/.test(keys))return fail('按键字符串长度或字符不合法。');let flip=false;for(let c=n-1;c>=0;c--){const actual=flip?(keys[c]==='M'?'O':'M'):keys[c];if(actual!==s[c])return fail(`模拟按键后，第 ${c+1} 个字符与目标不符。`);if(keys[c]==='O')flip=!flip;}}}}
+  else if(id===1589){const tests=ni();for(let t=0;t<tests;t++){const n=ni(),m=ni(),target=next(),a:string[][]=[];for(let r=0;r<n;r++)a.push([...next()]);const count=integer();if(count<0||count>2*m)return fail('交换次数必须介于 0 与 2M 之间。');for(let op=0;op<count;op++){const kind=integer(),x=integer()-1,p=integer()-1,q=integer()-1;if(kind===1){if(x<0||x>=n||p<0||p>=m||q<0||q>=m)return fail('行内交换下标越界。');[a[x][p],a[x][q]]=[a[x][q],a[x][p]];}else if(kind===2){if(x<0||x>=n||p<0||p>=n||q<0||q>=m)return fail('列内交换下标越界。');[a[x][q],a[p][q]]=[a[p][q],a[x][q]];}else return fail('交换类型只能为 1 或 2。');}if(a[0].join('')!==target)return fail('执行所有交换后，第一行仍不等于目标字符串。');}}
+  else if(id===987){const lines=(v:string)=>v.trim().split(/\r?\n/).map(s=>s.trim()).join('\n');return {ok:lines(output)===lines(expected),detail:'按行比较，换行位置也是本题答案的一部分。'};}
+  else {const a=out,b=expected.trim().split(/\s+/);const mismatch=a.findIndex((v,k)=>v!==b[k]);const ok=a.length===b.length&&mismatch<0;return {ok,detail:ok?'输出一致。':a.length!==b.length?`输出项数量不符：得到 ${a.length} 项，期望 ${b.length} 项。`:`第 ${mismatch+1} 项不符：得到 ${a[mismatch]}，期望 ${b[mismatch]}。`};}
+  return j===out.length?{ok:true,detail:'构造满足题意与操作数量约束。'}:fail('答案结束后仍有多余输出。');
+ }catch(e){return fail(e instanceof Error?e.message:'无法解析输出。');}
+}

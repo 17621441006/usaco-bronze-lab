@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-03",
+  "problems": 99,
+  "programs": 198,
+  "officialTestFiles": 1156,
+  "pythonPassed": 1156,
+  "cppPassed": 1156,
+  "timeBudgetsSeconds": {
+    "cpp": 4,
+    "python": 8
+  },
+  "exceptions": [
+    {
+      "problemId": 1469,
+      "pythonCorrectnessBudgetSeconds": 60,
+      "initialEightSecondTimeouts": 5,
+      "note": "Official statement recommends a non-Python language for full credit."
+    }
+  ],
+  "qualification": "Local output correctness checks, not official judge timing certification."
+}

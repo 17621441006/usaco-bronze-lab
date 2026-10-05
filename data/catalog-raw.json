@@ -1,0 +1,2383 @@
+[
+  {
+    "id": 1589,
+    "title": "Swap to Win",
+    "round": "season26contest3results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1589",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_season26contest3.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_season26contest3.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest3results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n3 6\nbanana\nnabana\nbanana\nnnbaaa\n5 3\nabc\ndef\nbca\nghi\njkl\nmno\n3 5\nabcde\nabcde\nabcde\nzzzzz",
+        "output": "3\n2 1 2 1\n1 1 3 5\n2 1 2 5\n5\n1 2 1 3\n2 1 2 1\n1 2 2 3\n2 1 2 2\n2 1 2 3\n0"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "cd144e1b2a12541270c3a4599220b84cf41c046ddb367c487b9602c260d90c9a",
+    "editorialHash": "6d1059d40c626fef59c256cf8aed287d0a8c58e5478e02f4fa5fc1aab0073f68"
+  },
+  {
+    "id": 1588,
+    "title": "Strange Function",
+    "round": "season26contest3results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1588",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_season26contest3.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_season26contest3.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest3results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2\n24680\n210",
+        "output": "1\n4"
+      },
+      {
+        "input": "1\n1234567890123456789012345678901234567890",
+        "output": "511620083"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "3019c31019a880278f246d5c35f2ca03f30a8d0fbe1f6b7a7033d343c4692872",
+    "editorialHash": "f99098abedfccc4aefeace7e84e2e86f8670291d338ea3a66c19664ab054236d"
+  },
+  {
+    "id": 1587,
+    "title": "Make All Distinct",
+    "round": "season26contest3results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1587",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_season26contest3.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_season26contest3.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest3results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n4 1\n4 1 4 1\n4 -3\n4 1 4 1\n4 4\n4 1 4 1\n3 -1\n1 1 2",
+        "output": "2\n4\n2\n1"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "a871f5010532ab287da6f4070123167f37606974d7e504576b9c1f9d7a927152",
+    "editorialHash": "05720ee33f4fed7aeb3060c340c7210777ad0d98832647bb7c3443f47115e331"
+  },
+  {
+    "id": 1565,
+    "title": "Purchasing Milk",
+    "round": "season26contest2results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1565",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_season26contest2.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_season26contest2.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest2results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2 4\n10 15\n1\n2\n6\n7",
+        "output": "10\n15\n45\n55"
+      },
+      {
+        "input": "4 10\n10 25 30 70\n1\n2\n3\n4\n5\n6\n7\n8\n15\n101",
+        "output": "10\n20\n30\n30\n40\n50\n60\n60\n120\n760"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "5680097eaade8033d986847290b8ac3cc79660daefb1f7d32e7ab8510ee1316a",
+    "editorialHash": "50b304cb41d624a0a19f670f0f256840665d5518d7f45000ed8e747992b3c473"
+  },
+  {
+    "id": 1564,
+    "title": "Moo Hunt",
+    "round": "season26contest2results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1564",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_season26contest2.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_season26contest2.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest2results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5 6\n1 2 3\n1 2 3\n1 3 5\n2 3 4\n5 3 2\n5 2 3",
+        "output": "4 2"
+      },
+      {
+        "input": "6 12\n2 4 3\n2 3 4\n3 5 2\n3 5 1\n3 1 5\n3 1 2\n6 1 5\n1 6 4\n2 3 6\n3 6 2\n4 1 6\n3 4 2",
+        "output": "6 3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "85e5f26adbe9031b92c4ad3ad156efe80356efffdf85e9b65731982155300592",
+    "editorialHash": "bf368dff4c3dbedb0e41e33d46475d65a8cefccb55c14275d41c4cbf97f62592"
+  },
+  {
+    "id": 1563,
+    "title": "It's Mooin' Time IV",
+    "round": "season26contest2results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1563",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_season26contest2.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_season26contest2.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest2results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2 0\n3\nMOO\n5\nOOMOO",
+        "output": "YES\nYES"
+      },
+      {
+        "input": "2 1\n3\nMOO\n5\nOOMOO",
+        "output": "YES\nOMO\nYES\nMOOMO"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "2c056d770d5bf3e0530dfe99c275860144f9ed758c163bce4db0826ebb2c6989",
+    "editorialHash": "fb1d1866ec750f2a138fcaeaac2d719be345afbed6b95b4535d226d3f38a2f46"
+  },
+  {
+    "id": 1541,
+    "title": "Photoshoot",
+    "round": "season26contest1results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1541",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_season26contest1.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_season26contest1.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest1results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4 2\n3\n2 2 11\n3 4 3\n3 1 100",
+        "output": "11\n11\n111"
+      },
+      {
+        "input": "3 1\n3\n2 2 3\n2 2 5\n2 2 7",
+        "output": "3\n5\n7"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b2f5bf405ddabc522a7666472abefb6e0998b1103bfe23cc32470a0665e68362",
+    "editorialHash": "092dc92426cd8269dbc6f41c54a4d91ae2502ddc706c3c5b5235a3e4e6e4e286"
+  },
+  {
+    "id": 1540,
+    "title": "COW Splits",
+    "round": "season26contest1results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1540",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_season26contest1.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_season26contest1.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest1results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3 1\n3\nCOWOWCWCO\n4\nWCOCOWWCOCOW\n6\nCOWCOWOWCOWCOWCOWC",
+        "output": "-1\n1\n1 1 1 1 1 1 1 1 1 1 1 1\n3\n3 3 2 3 3 2 1 1 1 1 1 1 1 1 1 1 1 1"
+      },
+      {
+        "input": "3 0\n3\nCOWOWCWCO\n4\nWCOCOWWCOCOW\n6\nCOWCOWOWCOWCOWCOWC",
+        "output": "-1\n1\n1 1 1 1 1 1 1 1 1 1 1 1\n2\n1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "e4d3fde59341ece2fbb0415a02562d3ffea557b175bb29b9fa604e742b671855",
+    "editorialHash": "69bab46f513f2fd335bec1af6f6dcb3552e499549c6d85d25dc46e0e1d1baecc"
+  },
+  {
+    "id": 1539,
+    "title": "Chip Exchange",
+    "round": "season26contest1results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1539",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_season26contest1.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_season26contest1.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=season26contest1results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2\n2 3 1 1 6\n2 3 1 1 4",
+        "output": "1\n0"
+      },
+      {
+        "input": "5\n0 0 2 3 5\n0 1 2 3 5\n1 0 2 3 5\n10 10 2 3 5\n0 0 1 1000000000 1000000000",
+        "output": "9\n8\n7\n0\n1000000000000000000"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "6fbfb310aee5aedaa45ee0f335b36de0e187014a12d9538a53343bcc0d22cdf2",
+    "editorialHash": "1ef88a9eb55954ea4a1ec8406ece1c94baff9e97e29a2b4d46412860490d5025"
+  },
+  {
+    "id": 1493,
+    "title": "Printing Sequences",
+    "round": "feb25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1493",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb25results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2\n1 1\n1\n4 1\n1 1 1 1",
+        "output": "YES\nYES"
+      },
+      {
+        "input": "11\n4 2\n1 2 2 2\n4 2\n1 1 2 1\n4 2\n1 1 2 2\n6 2\n1 1 2 2 1 1\n10 2\n1 1 1 2 2 1 1 1 2 2\n8 3\n3 3 1 2 2 1 2 2\n9 3\n1 1 2 2 2 3 3 3 3\n16 3\n2 2 3 2 2 3 1 1 2 2 3 2 2 3 1 1\n24 3\n1 1 2 2 3 3 3 2 2 3 3 3 1 1 2 2 3 3 3 2 2 3 3 3\n9 3\n1 2 2 1 3 3 1 2 2\n6 3\n1 2 1 2 2 3",
+        "output": "YES\nNO\nYES\nNO\nYES\nYES\nYES\nYES\nYES\nNO\nNO"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "2b41eb049586490961f37d806cb60c51f5adb5108faa9ac336276391a33101c4",
+    "editorialHash": "bc722caa3552648fedbe21cc0df6749459f3f5cf214f330bf73d26021fe8bfaf"
+  },
+  {
+    "id": 1492,
+    "title": "Making Mexes",
+    "round": "feb25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1492",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb25results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n2 2 2 0",
+        "output": "1\n0\n3\n1\n2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "957a81ac4977cb407962d4a556ccefb645d5c801d9078e4089bc997e10f71b65",
+    "editorialHash": "fa8ba1122b0cc15333aaf2bb939c3cea8a5a7ff3c00ce932f60152b9d4302366"
+  },
+  {
+    "id": 1491,
+    "title": "Reflection",
+    "round": "feb25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1491",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb25results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4 5\n..#.\n##.#\n####\n..##\n1 3\n2 3\n4 3\n4 4\n4 4",
+        "output": "4\n3\n2\n1\n0\n1"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "755dc40cac32e2bbc39f7c7271991659bf82bad981e2d326060f3c6c1a92a28b",
+    "editorialHash": "e5d8e2e00928fe9832de86d9137482c0e34e071b1d0335bd5fd13c728af9b42f"
+  },
+  {
+    "id": 1469,
+    "title": "Cow Checkups",
+    "round": "jan25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1469",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan25results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n1 3 2\n3 2 1",
+        "output": "3\n3\n0\n0"
+      },
+      {
+        "input": "3\n1 2 3\n1 2 3",
+        "output": "0\n3\n0\n3"
+      },
+      {
+        "input": "7\n1 3 2 2 1 3 2\n3 2 2 1 2 3 1",
+        "output": "0\n6\n14\n6\n2\n0\n0\n0"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b7e556e4ea2b3c0fc48631b70516a304ce559b5051b31448d46c04d9fc1efe05",
+    "editorialHash": "22740072a810b33568b64ac95e4a44ce50da14052e0fc6afda1f4fad3ec0b77e"
+  },
+  {
+    "id": 1468,
+    "title": "It's Mooin' Time II",
+    "round": "jan25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1468",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan25results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "6\n1 2 3 4 4 4",
+        "output": "3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "e8c5d11533985d72dad5f74b07c509ace2834c0b5c2016a97b4690253a501346",
+    "editorialHash": "6357ce2000d16a3b066d528abdc8c9eea84ea60718de9b78d35a03a295ab1777"
+  },
+  {
+    "id": 1467,
+    "title": "Astral Superposition",
+    "round": "jan25results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1467",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan25.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan25.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan25results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "1\n3 0 0\nWWB\nBBB\nGGG",
+        "output": "7"
+      },
+      {
+        "input": "3\n5 1 2\nGWGWW\nWGWWW\nWBWGW\nWWWWW\nWWGWW\n3 1 1\nWWW\nWBW\nWWW\n3 1 0\nGGB\nGGW\nWWW",
+        "output": "4\n-1\n4"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "eaf0d35da94904a28671bbe9683ef28cc8310f125c595c5c6c05ea17408deb19",
+    "editorialHash": "5a20ac1ecb6d0688228058f7d83637da0f4377b4b9fdc7e15f6fa76d73bf478a"
+  },
+  {
+    "id": 1445,
+    "title": "It's Mooin' Time",
+    "round": "dec24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1445",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec24results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "10 2\nzzmoozzmoo",
+        "output": "1\nmoo"
+      },
+      {
+        "input": "17 2\nmomoobaaaaaqqqcqq",
+        "output": "3\naqq\nbaa\ncqq"
+      },
+      {
+        "input": "3 1\nooo",
+        "output": "25\naoo\nboo\ncoo\ndoo\neoo\nfoo\ngoo\nhoo\nioo\njoo\nkoo\nloo\nmoo\nnoo\npoo\nqoo\nroo\nsoo\ntoo\nuoo\nvoo\nwoo\nxoo\nyoo\nzoo"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "992ba7ac275eb5e0aaf3ad3cc72813d2c03fc98c075079d0d7a5b2c1aa712c29",
+    "editorialHash": "d151192079ee5f34cd1a6ef6518fd722c6b81011a9ff27066063e5409fc4477b"
+  },
+  {
+    "id": 1444,
+    "title": "Farmer John's Cheese Block",
+    "round": "dec24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1444",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec24results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2 5\n0 0 0\n1 1 1\n0 1 0\n1 0 0\n1 1 0",
+        "output": "0\n0\n1\n2\n5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "8633f08f318d86cc4f4af8d1961001d63577d7ca6f55667e9b6b63b7efcd84cc",
+    "editorialHash": "6988a8c6b168c33ac42109fa607882419d1345d4adb27d2f6886339552ec9123"
+  },
+  {
+    "id": 1443,
+    "title": "Roundabout Rounding",
+    "round": "dec24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1443",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec24results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n1\n100\n4567\n3366",
+        "output": "0\n5\n183\n60"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "a6ac8a4c0dc396fb4aee1b64b98344194010b96607e50aaf54e5e022fa7c4f2b",
+    "editorialHash": "123ff13257d3384abc4bb9c877bd03db1e8435b7b10c0ad5e77294e4061346aa"
+  },
+  {
+    "id": 1397,
+    "title": "Maximizing Productivity",
+    "round": "feb24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1397",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb24results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5 5\n3 5 7 9 12\n4 2 3 3 8\n1 5\n1 6\n3 3\n4 2\n5 1",
+        "output": "YES\nNO\nYES\nYES\nNO"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "72f3d938b4bfba8491d019f4a0d393b357a35ac33ee1ec37edfbcd5ba261732f",
+    "editorialHash": "18e26bc16f08caf7612df0c4161db43764e38230729f68e4a62bc8a5d6cd4b3c"
+  },
+  {
+    "id": 1396,
+    "title": "Milk Exchange",
+    "round": "feb24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1396",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb24results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3 1\nRRL\n1 1 1",
+        "output": "2"
+      },
+      {
+        "input": "5 20\nLLLLL\n3 3 2 3 3",
+        "output": "14"
+      },
+      {
+        "input": "9 5\nRRRLRRLLR\n5 8 4 9 3 4 9 5 4",
+        "output": "38"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "40d7456cc9df8ae0ba8bb7f8628a4844f6a4b6d58a5c04c745d5107e255d2847",
+    "editorialHash": "d678dbb43edbaaf5301fd20b7c15eac7489bab270a5b014a6284632853e86a93"
+  },
+  {
+    "id": 1395,
+    "title": "Palindrome Game",
+    "round": "feb24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1395",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb24results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n8\n10\n12",
+        "output": "B\nE\nB"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "8871b3020dc169965228f49874731066bf951d2e64279f2cfe3a41f19412def4",
+    "editorialHash": "b4f74d42a099673041a49b87fb291de8396fe11c20ee9a7512d8f032dbcfd186"
+  },
+  {
+    "id": 1373,
+    "title": "Balancing Bacteria",
+    "round": "jan24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1373",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan24results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2\n-1 3",
+        "output": "6"
+      },
+      {
+        "input": "5\n1 3 -2 -7 5",
+        "output": "26"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "dbec4481a3034d0fad03b95955254267f9d0554a2676629002a1b909306914ca",
+    "editorialHash": "236ea911f4a4316c7f64fc09b8d396d894290e2327e08d12aeaee219bfaf8b1b"
+  },
+  {
+    "id": 1372,
+    "title": "Cannonball",
+    "round": "jan24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1372",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan24results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5 2\n0 1\n1 1\n1 2\n0 1\n1 1",
+        "output": "1"
+      },
+      {
+        "input": "6 4\n0 3\n1 1\n1 2\n1 1\n0 1\n1 1",
+        "output": "3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "7fa032a835fad0e219d1faa254f41f50e28fa13ba0b2c287a0187521b7d55190",
+    "editorialHash": "c5f2be9f0c452bdd41a00562194352e96e85e361dbbd9f86c2389228af83afe4"
+  },
+  {
+    "id": 1371,
+    "title": "Majority Opinion",
+    "round": "jan24results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1371",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan24.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan24.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan24results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n5\n1 2 2 2 3\n6\n1 2 3 1 2 3\n6\n1 1 1 2 2 2\n3\n3 2 3\n2\n2 1",
+        "output": "2\n-1\n1 2\n3\n-1"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "321ec9aeb997f911a51bda84b021b61896666445c4cded29220aefde17553b45",
+    "editorialHash": "d80aedd338994b90907f866c2d26d6ab6c116014a604d5f34f486d88f1175c1b"
+  },
+  {
+    "id": 1349,
+    "title": "Farmer John Actually Farms",
+    "round": "dec23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1349",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec23results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "6\n1\n10\n1\n0\n2\n7 3\n8 10\n1 0\n2\n3 6\n10 8\n0 1\n2\n7 3\n8 9\n1 0\n2\n7 7\n8 8\n0 1\n2\n7 3\n8 8\n1 0",
+        "output": "0\n3\n2\n5\n-1\n-1"
+      },
+      {
+        "input": "2\n5\n7 4 1 10 12\n3 4 5 2 1\n2 1 0 3 4\n5\n4 10 12 7 1\n3 1 1 4 5\n2 4 3 1 0",
+        "output": "4\n7"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "7559edc2e8b824d1cbd0f519dfb629afd7a870d840ecc0747dd3d410f6c2aa29",
+    "editorialHash": "8e957ca5937b208fb1b2ae2863f753d7bef9dc94b535906a5a83dacfc5bebae3"
+  },
+  {
+    "id": 1348,
+    "title": "Cowntact Tracing 2",
+    "round": "dec23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1348",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec23results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n11111",
+        "output": "1"
+      },
+      {
+        "input": "6\n011101",
+        "output": "4"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "a8f8244236946b3ca89a3425db1a7ada27c27ef4d233a57a8a393cd0a801bb03",
+    "editorialHash": "cbcff007547a8383141388944d1ec01c2477adbc3c6fdec4e696d6a2f03dd527"
+  },
+  {
+    "id": 1347,
+    "title": "Candy Cane Feast",
+    "round": "dec23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1347",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec23results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3 2\n3 2 5\n6 1",
+        "output": "7\n2\n7"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "bfc887a57c5e561e362b7eaa27c5de79ab8564f0ebfab41df6c623f934b4709c",
+    "editorialHash": "5a6e39728674ab8b248eeed57e78757c1b268c179c61448d8d5f58a1c4dc1a10"
+  },
+  {
+    "id": 1301,
+    "title": "Watching Mooloo",
+    "round": "feb23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1301",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb23results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2 4\n7 9",
+        "output": "7"
+      },
+      {
+        "input": "2 3\n1 10",
+        "output": "8"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b7c565c432993809e8909b4fa0829a5af838d1d37301ddca67e86a48fd0a7452",
+    "editorialHash": "246b47853c975c88d7047f97b31f2a02eca91f87d705b7121fb3ac90c60d467a"
+  },
+  {
+    "id": 1300,
+    "title": "Stamp Grid",
+    "round": "feb23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1300",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb23results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n\n2\n**\n*.\n1\n*\n\n3\n.**\n.**\n***\n2\n.*\n**\n\n3\n...\n.*.\n...\n3\n.*.\n...\n...\n\n3\n**.\n.**\n..*\n2\n.*\n*.",
+        "output": "YES\nYES\nNO\nYES"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "54090c050f74681fd1d474e855c880842eb0359044ca6b8ea7d4d6651c6c6e0e",
+    "editorialHash": "09a6d9632a0047bf94648ea64c1dedf3a17b64a97f4b7367a5814e76779e4845"
+  },
+  {
+    "id": 1299,
+    "title": "Hungry Cow",
+    "round": "feb23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1299",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb23results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "1 5\n1 2",
+        "output": "2"
+      },
+      {
+        "input": "2 5\n1 2\n5 10",
+        "output": "3"
+      },
+      {
+        "input": "2 5\n1 10\n5 10",
+        "output": "5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "fcaf057354d55db99d54eab9d40986183e4790c343b58cb4dbb05f62e275ffdd",
+    "editorialHash": "186143671f5bc3ad4e386504a6bee2bc8807d915e7956ff8d59c40b0e93cb1f7"
+  },
+  {
+    "id": 1277,
+    "title": "Moo Operations",
+    "round": "jan23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1277",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan23results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\nMOMMOM\nMMO\nMOO",
+        "output": "4\n-1\n0"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "f50b03271fc7e2d3439a71822801ecbd74b2a6e0d3b43d7191a8371f61ed5424",
+    "editorialHash": "243de21b585c911b7e5657c00f98f76e2687ee4c07fcd74b8c9c1f06732dcb75"
+  },
+  {
+    "id": 1276,
+    "title": "Air Cownditioning II",
+    "round": "jan23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1276",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan23results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2 4\n1 5 2\n7 9 3\n2 9 2 3\n1 6 2 8\n1 2 4 2\n6 9 1 5",
+        "output": "10"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b61958d1e664b9018c90ca9fd68a44d391583fbeefac060e6ec055f778a846c8",
+    "editorialHash": "5e159556bf9ef8f96546c9cfaaca0c2540289e777d41d67423a79cabbc5160d5"
+  },
+  {
+    "id": 1275,
+    "title": "Leaders",
+    "round": "jan23results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1275",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan23.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan23.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan23results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\nGHHG\n2 4 3 4",
+        "output": "1"
+      },
+      {
+        "input": "3\nGGH\n2 3 3",
+        "output": "2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "f017d50eac0f024a9738f3b977ab3b7e2ca95f9b5a05641f0abfeef6678f8220",
+    "editorialHash": "3c673475c69f70ab1219257b75d2a71982d44497e2d2ff011db04785d92b6058"
+  },
+  {
+    "id": 1253,
+    "title": "Reverse Engineering",
+    "round": "dec22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1253",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec22results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n\n1 3\n0 0\n0 0\n1 1\n\n2 4\n00 0\n01 1\n10 1\n11 1\n\n1 2\n0 1\n0 0\n\n2 4\n00 0\n01 1\n10 1\n11 0",
+        "output": "OK\nOK\nLIE\nLIE"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "92c291fb47443ed41dc56675b1df4ff38b920456cd2cd2791f7f71a2f655684e",
+    "editorialHash": "d5517efe6e0a99847bcaa532a92442415a665f7a1fad569d3d4261641b8f0ef6"
+  },
+  {
+    "id": 1252,
+    "title": "Feeding the Cows",
+    "round": "dec22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1252",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec22results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "6\n5 0\nGHHGG\n5 1\nGHHGG\n5 2\nGHHGG\n5 3\nGHHGG\n5 4\nGHHGG\n2 1\nGH",
+        "output": "5\nGHHGG\n3\n.GH.G\n2\n..GH.\n2\n...GH\n2\n...HG\n2\nHG"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b06564a362f3d97176abc8c9e5b69c244693245baa21e577524eda4526d6a10d",
+    "editorialHash": "996118f4cc389f2b9519ad6e2fbc5e264bf6eb3fa58427de32e1ed14f58e0f7b"
+  },
+  {
+    "id": 1251,
+    "title": "Cow College",
+    "round": "dec22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1251",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec22results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n1 6 4 6",
+        "output": "12 4"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "7d936315ddab01e0e9190cd9d086f2909b6510bf66c9c20f789566ab5412c78d",
+    "editorialHash": "a61d3f42b7eccf5a579a8762e09ca65e71c7724dd4dd9e08a74b317b53b46506"
+  },
+  {
+    "id": 1205,
+    "title": "Blocks",
+    "round": "feb22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1205",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb22results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "6\nMOOOOO\nOOOOOO\nABCDEF\nUVWXYZ\nCOW\nMOO\nZOO\nMOVE\nCODE\nFARM",
+        "output": "YES\nNO\nYES\nYES\nNO\nNO"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "a7db5de4731047993a07b6cd266e11db6afbdb0cef672fdd7008c39e4ef3ea05",
+    "editorialHash": "95aa2b3bde16a1e9b9df2b81db4f5955d94ee5274ac633f3184c6f4df0c88df3"
+  },
+  {
+    "id": 1204,
+    "title": "Photoshoot 2",
+    "round": "feb22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1204",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb22results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n1 2 3 4 5\n1 2 3 4 5",
+        "output": "0"
+      },
+      {
+        "input": "5\n5 1 3 2 4\n4 5 2 1 3",
+        "output": "2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "3531f50e03378fb01f4c252783c05b8896be729455b3af525747b26f7400a5cc",
+    "editorialHash": "b7a80ec7e2bf538591f590dba2057eb8c8b34908e766a652159313daf5981606"
+  },
+  {
+    "id": 1203,
+    "title": "Sleeping in Class",
+    "round": "feb22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1203",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb22results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n6\n1 2 3 1 1 1\n3\n2 2 3\n5\n0 0 0 0 0",
+        "output": "3\n2\n0"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "19d9df580eb0fb8b0b8391b541b044616b3680368f157dded2757969a36d2da8",
+    "editorialHash": "aadc6314c28f2208156973db675bb3c607fa7f799ed44ef243837185559fc219"
+  },
+  {
+    "id": 1181,
+    "title": "Drought",
+    "round": "jan22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1181",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan22results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n3\n8 10 5\n6\n4 6 4 4 6 4\n3\n0 1 0\n2\n1 2\n3\n10 9 9",
+        "output": "14\n16\n-1\n-1\n-1"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "a854c0c79919340d299d65efce12860061b2a638bf2722165fd05ace1cdc1851",
+    "editorialHash": "88f7e896260f6c4644f3ff2bdf782daa0d1362291856cbecd6f9c75189c14409"
+  },
+  {
+    "id": 1180,
+    "title": "Non-Transitive Dice",
+    "round": "jan22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1180",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan22results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n4 5 6 7 2 4 5 10\n2 2 2 2 1 1 1 1\n1 1 1 1 2 2 2 2",
+        "output": "yes\nno\nno"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "7cb09323c27a22775b557e345223f1ea654e485e8071bf826843eee064ad622c",
+    "editorialHash": "8c6b8c551cb29426c9347cdc029873a9c0a55f0ec91e88333a3c4180b6cdc387"
+  },
+  {
+    "id": 1179,
+    "title": "Herdle",
+    "round": "jan22results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1179",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan22.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan22.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan22results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "COW\nSAY\nMOO\nWIN\nTHE\nIOI",
+        "output": "1\n1"
+      },
+      {
+        "input": "AAA\nBBB\nCCC\nAYY\nAAA\nZZZ",
+        "output": "1\n2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "60c5e9344d10f063feff4feeb8e5cefaa58427aa568f3a4300b2603499010d8f",
+    "editorialHash": "8bdbc5771306a20cbfb84302bea59f69db8ef7d3ca0893dabf8205cd577ba611"
+  },
+  {
+    "id": 1157,
+    "title": "Walking Home",
+    "round": "dec21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1157",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec21results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "7\n3 1\n...\n...\n...\n3 2\n...\n...\n...\n3 3\n...\n...\n...\n3 3\n...\n.H.\n...\n3 2\n.HH\nHHH\nHH.\n3 3\n.H.\nH..\n...\n4 3\n...H\n.H..\n....\nH...",
+        "output": "2\n4\n6\n2\n0\n0\n6"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "d6d8c3b07bd570fd23c7a2e8366e7605d4d8e6d6fa5e6a38861d28fda1951d30",
+    "editorialHash": "6df0e3d61ddb12f4d28ecd4ad1fdacfe08a22c6ba34babf2348564daab9232fa"
+  },
+  {
+    "id": 1156,
+    "title": "Air Cownditioning",
+    "round": "dec21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1156",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec21results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n1 5 3 3 4\n1 2 2 2 1",
+        "output": "5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "27d354aa22181de2b72c1474f91f6b96ba19ed13d16365b03f051574717e6425",
+    "editorialHash": "0082274a443fcca51ce1faede3cb8967badfcfec4cdadf4be8c17759cf037857"
+  },
+  {
+    "id": 1155,
+    "title": "Lonely Photo",
+    "round": "dec21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1155",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec21results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\nGHGHG",
+        "output": "3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "985b8aa254ec33036e65bdbd14d148311968b4d8edfa8d67e14451aba75800b1",
+    "editorialHash": "e34f83add8aa38b2a375cd3a12b54734138735e2a7f82c08047e640d6fe307ff"
+  },
+  {
+    "id": 1109,
+    "title": "Clockwise Fence",
+    "round": "feb21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1109",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_feb21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_feb21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb21results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2\nNESW\nWSSSEENWNEESSENNNNWWWS",
+        "output": "CW\nCCW"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "73c8bfc54550eb7fd9707e41a7be98efbff506d8af25ee55206d520a8ed453f5",
+    "editorialHash": "fd9ff142a6e29381aafda60cd4348d59464f1e88b4e9fdebc530411f792994f2"
+  },
+  {
+    "id": 1108,
+    "title": "Comfortable Cows",
+    "round": "feb21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1108",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_feb21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_feb21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb21results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "8\n0 1\n1 0\n1 1\n1 2\n2 1\n2 2\n3 1\n3 2",
+        "output": "0\n0\n0\n1\n0\n0\n1\n2"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "736a4800a67aa5717cc003aab87879f3030c593f2a28d62441ee31d0775d661a",
+    "editorialHash": "3b7b6f21d4f55ec0c59593bf0f678cca5d0be9475f585a8fbbf188ce3cf844c2"
+  },
+  {
+    "id": 1107,
+    "title": "Year of the Cow",
+    "round": "feb21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1107",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_feb21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_feb21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb21results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\nMildred born in previous Dragon year from Bessie\nGretta born in previous Monkey year from Mildred\nElsie born in next Ox year from Gretta\nPaulina born in next Dog year from Bessie",
+        "output": "12"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b0b22fc056d726b086adb94def319d570d4c3a45599b391a3ea0d374b593d954",
+    "editorialHash": "c993d962609a884aa7f6fa89d286867ab433b8eb827f54a185ef9b3169ad9c1c"
+  },
+  {
+    "id": 1085,
+    "title": "Just Stalling",
+    "round": "jan21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1085",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_jan21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_jan21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan21results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n1 2 3 4\n2 4 3 4",
+        "output": "8"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b07b55dd0a1d12586288a9c05d342d4597beb07e51530802c35e69726987d5d9",
+    "editorialHash": "04866fdeece1736e0b3a3656a437ceba03d1ccb6498ba38d616ff59698d2f201"
+  },
+  {
+    "id": 1084,
+    "title": "Even More Odd Photos",
+    "round": "jan21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1084",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_jan21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_jan21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan21results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "7\n1 3 5 7 9 11 13",
+        "output": "3"
+      },
+      {
+        "input": "7\n11 2 17 13 1 15 3",
+        "output": "5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "edac7572f2e39e589b392ac902318faecc033c4f3b156989ea8d154a5222a26f",
+    "editorialHash": "6d043a6a45ae85b7ec3268c1534186b6f7c20f42a0461f0749c8b877a7554093"
+  },
+  {
+    "id": 1083,
+    "title": "Uddered but not Herd",
+    "round": "jan21results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1083",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_jan21.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_jan21.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan21results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "abcdefghijklmnopqrstuvwxyz\nmood",
+        "output": "3"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "4a423963fd357af15c6a91bcaf36fb631d570afb01d1c2cdcb2c725c0ca99d4b",
+    "editorialHash": "e41020e827d9e91936dbac5102847d11458d92862d3b36e346770a4fce5f74bd"
+  },
+  {
+    "id": 1061,
+    "title": "Stuck in a Rut",
+    "round": "dec20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1061",
+    "testsUrl": "https://usaco.org/current/data/prob3_bronze_dec20.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob3_bronze_dec20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec20results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "6\nE 3 5\nN 5 3\nE 4 6\nE 10 4\nN 11 2\nN 8 1",
+        "output": "5\n3\nInfinity\nInfinity\n2\n5"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b2daefda74d4ea04cece05bf5084aebad09337c51d80261c82276b95e6c6bf33",
+    "editorialHash": "8e1c2fa72af9a8f8af7eabe1881bcbd059fad0db9943bbfaf1e0333d77b26b0a"
+  },
+  {
+    "id": 1060,
+    "title": "Daisy Chains",
+    "round": "dec20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1060",
+    "testsUrl": "https://usaco.org/current/data/prob2_bronze_dec20.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob2_bronze_dec20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec20results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n1 1 2 3",
+        "output": "6"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "d40ba58c73884b65dc374c354e6ee0ab675c9eb1cfb681523a992bb131080f79",
+    "editorialHash": "b0e7e58d86d728dd9929effa939f64936b3ecb005f71aba5e5266c72137e9d10"
+  },
+  {
+    "id": 1059,
+    "title": "Do You Know Your ABCs?",
+    "round": "dec20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1059",
+    "testsUrl": "https://usaco.org/current/data/prob1_bronze_dec20.zip",
+    "editorial": "https://usaco.org/current/data/sol_prob1_bronze_dec20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec20results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2 2 11 4 9 7 9",
+        "output": "2 2 7"
+      }
+    ],
+    "io": "stdio",
+    "inputFile": null,
+    "fetchedAt": "2026-10-03",
+    "statementHash": "7a5deddaeb98515334c69570e0466194bb0ae2fd3d72fcf518307fd76643de57",
+    "editorialHash": "33592ac20293121b4c1f4440f37b6a7e6211726337ef0a5fac07eee88ce47683"
+  },
+  {
+    "id": 1013,
+    "title": "Swapity Swap",
+    "round": "feb20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1013",
+    "testsUrl": "https://usaco.org/current/data/swap_bronze_feb20.zip",
+    "editorial": "https://usaco.org/current/data/sol_swap_bronze_feb20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb20results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "7 2\n2 5\n3 7",
+        "output": "1\n2\n4\n3\n5\n7\n6"
+      }
+    ],
+    "io": "file",
+    "inputFile": "swap.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "98d472ff6bf435106047ee9d781dbeb7fa375557285b4103cfba5606a7828fb5",
+    "editorialHash": "f52e17d676d159a68975d46ad34e2db0112e4042907df92cc8433d0c99f3aafc"
+  },
+  {
+    "id": 1012,
+    "title": "Mad Scientist",
+    "round": "feb20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1012",
+    "testsUrl": "https://usaco.org/current/data/breedflip_bronze_feb20.zip",
+    "editorial": "https://usaco.org/current/data/sol_breedflip_bronze_feb20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb20results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "7\nGHHHGHH\nHHGGGHH",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "breedflip.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "8a76873f6e343a93d8e04037c1f597a5c11218ee68be65372b954e4bb1af63da",
+    "editorialHash": "dd4484e14ff568166c980d2ddce799db7022ec23faeee45433a96b663bfeeaf3"
+  },
+  {
+    "id": 1011,
+    "title": "Triangles",
+    "round": "feb20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=1011",
+    "testsUrl": "https://usaco.org/current/data/triangles_bronze_feb20.zip",
+    "editorial": "https://usaco.org/current/data/sol_triangles_bronze_feb20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb20results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n0 0\n0 1\n1 0\n1 2",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "triangles.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "78d798730a17b75eaab2c63b29ca260d60001592e24790ca10dd0fb861de3980",
+    "editorialHash": "9828a6c35e2ee443940df7be05805b1188ad189c36f6799eb469d1cf9d5efe66"
+  },
+  {
+    "id": 989,
+    "title": "Race",
+    "round": "jan20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=989",
+    "testsUrl": "https://usaco.org/current/data/race_bronze_jan20.zip",
+    "editorial": "https://usaco.org/current/data/sol_race_bronze_jan20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan20results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "10 5\n1\n2\n3\n4\n5",
+        "output": "6\n5\n5\n4\n4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "race.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "f6b000fa2f62948799df0ea8aa66e2959544924d7fe67a0745973e3f301e3781",
+    "editorialHash": "035b7d1f3926177c3026bdebbb141765e6beeb0c040ba07d63ce1b3f15b29e74"
+  },
+  {
+    "id": 988,
+    "title": "Photoshoot",
+    "round": "jan20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=988",
+    "testsUrl": "https://usaco.org/current/data/photo_bronze_jan20.zip",
+    "editorial": "https://usaco.org/current/data/sol_photo_bronze_jan20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan20results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n4 6 7 6",
+        "output": "3 1 5 2 4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "photo.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b20c2d8ca630cbf2ac38757c17b0a1a65e875e5631b98e8199423ec75a56b2e4",
+    "editorialHash": "d48896cbace0a14c4652c92d47db823a3a447879284aaf6aed745c81cdd346c2"
+  },
+  {
+    "id": 987,
+    "title": "Word Processor",
+    "round": "jan20results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=987",
+    "testsUrl": "https://usaco.org/current/data/word_bronze_jan20.zip",
+    "editorial": "https://usaco.org/current/data/sol_word_bronze_jan20.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan20results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "10 7\nhello my name is Bessie and this is my essay",
+        "output": "hello my\nname is\nBessie\nand this\nis my\nessay"
+      }
+    ],
+    "io": "file",
+    "inputFile": "word.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "2dddd64aa00fdfcad7c543a50eddbdddd58e77071d4b55ddcd526622b4b8bec8",
+    "editorialHash": "021628b81d0364f421ee6d84dbf5ff5172dfe22255f56e2495ff072b5bdc29f2"
+  },
+  {
+    "id": 965,
+    "title": "Livestock Lineup",
+    "round": "dec19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=965",
+    "testsUrl": "https://usaco.org/current/data/lineup_bronze_dec19.zip",
+    "editorial": "https://usaco.org/current/data/sol_lineup_bronze_dec19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec19results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\nButtercup must be milked beside Bella\nBlue must be milked beside Bella\nSue must be milked beside Beatrice",
+        "output": "Beatrice\nSue\nBelinda\nBessie\nBetsy\nBlue\nBella\nButtercup"
+      }
+    ],
+    "io": "file",
+    "inputFile": "lineup.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "d65c9a9a7967a15209306bcf4797468b1d5db30f349ac1769ff87dba18d9fe7e",
+    "editorialHash": "3db7dbabf14c5a6f9103e56b29b95a80d5c29ea54f466059b85913c27ade4522"
+  },
+  {
+    "id": 964,
+    "title": "Where Am I?",
+    "round": "dec19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=964",
+    "testsUrl": "https://usaco.org/current/data/whereami_bronze_dec19.zip",
+    "editorial": "https://usaco.org/current/data/sol_whereami_bronze_dec19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec19results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "7\nABCDABC",
+        "output": "4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "whereami.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "d0638cf31ba433dce0e96119282de2c5c5cbaf57ee17b707af2a9abde09c3645",
+    "editorialHash": "4c2ec97df40ef46a2b9db1a62455507b8c964cc5f929bd94b28553255e5dd12c"
+  },
+  {
+    "id": 963,
+    "title": "Cow Gymnastics",
+    "round": "dec19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=963",
+    "testsUrl": "https://usaco.org/current/data/gymnastics_bronze_dec19.zip",
+    "editorial": "https://usaco.org/current/data/sol_gymnastics_bronze_dec19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec19results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3 4\n4 1 2 3\n4 1 3 2\n4 2 1 3",
+        "output": "4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "gymnastics.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "997b8b6803054cac1f8691e2e984f0a9cca4eded24e2d7a2e11af773a99eef20",
+    "editorialHash": "fbee1aa911651078a90a75a1d889984e102b31e02043e7fb8ddf864d7b347bd2"
+  },
+  {
+    "id": 917,
+    "title": "Measuring Traffic",
+    "round": "feb19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=917",
+    "testsUrl": "https://usaco.org/current/data/traffic_bronze_feb19.zip",
+    "editorial": "https://usaco.org/current/data/sol_traffic_bronze_feb19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb19results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\non 1 1\nnone 10 14\nnone 11 15\noff 2 3",
+        "output": "10 13\n8 12"
+      }
+    ],
+    "io": "file",
+    "inputFile": "traffic.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "a41a17041237dc6187e5eddcade0fdf3627db9dc0ac47906b50a2bed7ee97418",
+    "editorialHash": "c07f80a4a771411944dbc1283f4053c76ba4592842ff14935362508006a39f49"
+  },
+  {
+    "id": 916,
+    "title": "The Great Revegetation",
+    "round": "feb19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=916",
+    "testsUrl": "https://usaco.org/current/data/revegetate_bronze_feb19.zip",
+    "editorial": "https://usaco.org/current/data/sol_revegetate_bronze_feb19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb19results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5 6\n4 1\n4 2\n4 3\n2 5\n1 2\n1 5",
+        "output": "12133"
+      }
+    ],
+    "io": "file",
+    "inputFile": "revegetate.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "f97ddca0804d7011c169d944152afea23749b786af00d1ee6233b03646e82cc3",
+    "editorialHash": "967dc138d791183ab0573c788d3a8d3b20869f9a277b7d19bbde3e4f70b846ba"
+  },
+  {
+    "id": 915,
+    "title": "Sleepy Cow Herding",
+    "round": "feb19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=915",
+    "testsUrl": "https://usaco.org/current/data/herding_bronze_feb19.zip",
+    "editorial": "https://usaco.org/current/data/sol_herding_bronze_feb19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb19results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4 7 9",
+        "output": "1\n2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "herding.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "11c1877654349a3a1cd988a0338cbe6129d6cf9d8db1bfcdb7b703b365a3f77b",
+    "editorialHash": "f902eca5fe31c0255bda65093e550b4bdd26aa5e241905639963f1fd749803f1"
+  },
+  {
+    "id": 893,
+    "title": "Guess the Animal",
+    "round": "jan19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=893",
+    "testsUrl": "https://usaco.org/current/data/guess_bronze_jan19.zip",
+    "editorial": "https://usaco.org/current/data/sol_guess_bronze_jan19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan19results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\nbird 2 flies eatsworms\ncow 4 eatsgrass isawesome makesmilk goesmoo\nsheep 1 eatsgrass\ngoat 2 makesmilk eatsgrass",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "guess.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "010a5b41c0c0699a705ea4d9d067ab2e0f82e3cacb10617eb5248042e33efc53",
+    "editorialHash": "72d1fe1bc5342e41cc21b478c79825deed71f9d34ffab6fea44896221ee84740"
+  },
+  {
+    "id": 892,
+    "title": "Sleepy Cow Sorting",
+    "round": "jan19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=892",
+    "testsUrl": "https://usaco.org/current/data/sleepy_bronze_jan19.zip",
+    "editorial": "https://usaco.org/current/data/sol_sleepy_bronze_jan19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan19results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n1 2 4 3",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "sleepy.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "1f24c453427d678d240d5c766529a0977444a55d2d08ec21ab2012ef50383f21",
+    "editorialHash": "4d1fcbe1e3b18de6b05fe4ed0f38ecd003d937e7f0b58c84f41c93df4d5c22e4"
+  },
+  {
+    "id": 891,
+    "title": "Shell Game",
+    "round": "jan19results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=891",
+    "testsUrl": "https://usaco.org/current/data/shell_bronze_jan19.zip",
+    "editorial": "https://usaco.org/current/data/sol_shell_bronze_jan19.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan19results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n1 2 1\n3 2 1\n1 3 1",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "shell.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "6ca75df9962ceb95b79665f4e5de89d596500bdf78506f01eebf43cb64a0a816",
+    "editorialHash": "1b8d77985a22246cea7165dcef7bc43b75bdc432c589f0bdf038799da819f372"
+  },
+  {
+    "id": 857,
+    "title": "Back and Forth",
+    "round": "dec18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=857",
+    "testsUrl": "https://usaco.org/current/data/backforth_bronze_dec18.zip",
+    "editorial": "https://usaco.org/current/data/sol_backforth_bronze_dec18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec18results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "1 1 1 1 1 1 1 1 1 2\n5 5 5 5 5 5 5 5 5 5",
+        "output": "5"
+      }
+    ],
+    "io": "file",
+    "inputFile": "backforth.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "4d24131eaf4f190257847d6ea0074363fb5f22896b478bc9324c2eb299eb53e8",
+    "editorialHash": "827e595abf596c26ec0e6f53794a6597305c6fe42e4b12cae89282b998cae2af"
+  },
+  {
+    "id": 856,
+    "title": "The Bucket List",
+    "round": "dec18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=856",
+    "testsUrl": "https://usaco.org/current/data/blist_bronze_dec18.zip",
+    "editorial": "https://usaco.org/current/data/sol_blist_bronze_dec18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec18results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n4 10 1\n8 13 3\n2 6 2",
+        "output": "4"
+      }
+    ],
+    "io": "file",
+    "inputFile": "blist.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "7b85d3db1dbb4cf274b3967772c016746026b749f6b3e3a3416eb085781419f8",
+    "editorialHash": "26a069cec284b963fe73cea33365d3dd1e6bfee9adb8d26fd7005895dbd7d623"
+  },
+  {
+    "id": 855,
+    "title": "Mixing Milk",
+    "round": "dec18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=855",
+    "testsUrl": "https://usaco.org/current/data/mixmilk_bronze_dec18.zip",
+    "editorial": "https://usaco.org/current/data/sol_mixmilk_bronze_dec18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec18results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "10 3\n11 4\n12 5",
+        "output": "0\n10\n2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "mixmilk.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "33a71389f467746641ae902649569be03491d4360a3d09b8e450825ef4550ade",
+    "editorialHash": "e45982808a615baf54497257465fc8d113940cee30e632f0c419478b8c49c8a5"
+  },
+  {
+    "id": 809,
+    "title": "Taming the Herd",
+    "round": "feb18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=809",
+    "testsUrl": "https://usaco.org/current/data/taming_bronze_feb18.zip",
+    "editorial": "https://usaco.org/current/data/sol_taming_bronze_feb18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb18results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n-1 -1 -1 1",
+        "output": "2 3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "taming.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "386737a781d4594c6dd22898775c1f1a8f686fa9987a9226789a35d30c7a1b27",
+    "editorialHash": "16027f427747808b48f174eaa7c13c6224b4832b4d80ba40698b6c7cd8a6f836"
+  },
+  {
+    "id": 808,
+    "title": "Hoofball",
+    "round": "feb18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=808",
+    "testsUrl": "https://usaco.org/current/data/hoofball_bronze_feb18.zip",
+    "editorial": "https://usaco.org/current/data/sol_hoofball_bronze_feb18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb18results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n7 1 3 11 4",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "hoofball.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "ec68a913f40d39a0d791f63db20936554388f9fbddb14db3852c1f8f8a5ec466",
+    "editorialHash": "37bd3d121454d73a47f6d54deda4f045fd0b070846043bfea143b9e7c74def8f"
+  },
+  {
+    "id": 807,
+    "title": "Teleportation",
+    "round": "feb18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=807",
+    "testsUrl": "https://usaco.org/current/data/teleport_bronze_feb18.zip",
+    "editorial": "https://usaco.org/current/data/sol_teleport_bronze_feb18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb18results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3 10 8 2",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "teleport.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "9567cc484d8b00e5bab37b870ebfae9fa3bc71afbe0692e139d328e8f2a758db",
+    "editorialHash": "ce00d5401f28dcf62c2a9c14fe47e0e115833ba748922453cf6ba2106c19a03e"
+  },
+  {
+    "id": 785,
+    "title": "Out of Place",
+    "round": "jan18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=785",
+    "testsUrl": "https://usaco.org/current/data/outofplace_bronze_jan18.zip",
+    "editorial": "https://usaco.org/current/data/sol_outofplace_bronze_jan18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan18results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "6\n2\n4\n7\n7\n9\n3",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "outofplace.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "3dbafa94082d082a95e371347a334396d7e5d136a3995c71c100b1c23b9687df",
+    "editorialHash": "f8753f5c408ce77443e35bce216c7f18dadd3afb65ec54dbc7e72d0af2b90799"
+  },
+  {
+    "id": 784,
+    "title": "Lifeguards",
+    "round": "jan18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=784",
+    "testsUrl": "https://usaco.org/current/data/lifeguards_bronze_jan18.zip",
+    "editorial": "https://usaco.org/current/data/sol_lifeguards_bronze_jan18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan18results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n5 9\n1 4\n3 7",
+        "output": "7"
+      }
+    ],
+    "io": "file",
+    "inputFile": "lifeguards.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "7738827e7cb7c8d357d877db0a1b83bd4d6f024aeace19f5c56cc9d4ea828bab",
+    "editorialHash": "9b00d12a4ea130d7835ff7912e96668f8da86317a4f8faee5ddef7602e70690d"
+  },
+  {
+    "id": 783,
+    "title": "Blocked Billboard II",
+    "round": "jan18results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=783",
+    "testsUrl": "https://usaco.org/current/data/billboard_bronze_jan18.zip",
+    "editorial": "https://usaco.org/current/data/sol_billboard_bronze_jan18.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan18results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "2 1 7 4\n5 -1 10 3",
+        "output": "15"
+      }
+    ],
+    "io": "file",
+    "inputFile": "billboard.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "9fecd05cea01c125bd1b11b39b9cea5c9a0cc9cbecd872e0f87d9c1b95dc4ceb",
+    "editorialHash": "0706d01351ff443791eb0f05b491f528c4ead4004492eb8a1c8509cdd152d614"
+  },
+  {
+    "id": 761,
+    "title": "Milk Measurement",
+    "round": "dec17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=761",
+    "testsUrl": "https://usaco.org/current/data/measurement_bronze_dec17.zip",
+    "editorial": "https://usaco.org/current/data/sol_measurement_bronze_dec17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec17results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "4\n7 Mildred +3\n4 Elsie -1\n9 Mildred -1\n1 Bessie +2",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "measurement.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "bc748e688ec09a685b17390cca68f105e0ac6fca555a22112cb41d485e3bf5f9",
+    "editorialHash": "13f188c3f0232bd5c6a166c9c7c7e0145878802eb3bb371af66dda7a649b3ca8"
+  },
+  {
+    "id": 760,
+    "title": "The Bovine Shuffle",
+    "round": "dec17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=760",
+    "testsUrl": "https://usaco.org/current/data/shuffle_bronze_dec17.zip",
+    "editorial": "https://usaco.org/current/data/sol_shuffle_bronze_dec17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec17results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n1 3 4 5 2\n1234567 2222222 3333333 4444444 5555555",
+        "output": "1234567\n5555555\n2222222\n3333333\n4444444"
+      }
+    ],
+    "io": "file",
+    "inputFile": "shuffle.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "ee05ae91eb6c2868fa35ab15a1b6757073071004c5ee616cadf5da8bd7215ba9",
+    "editorialHash": "8599b25b2248ad8e4a1493cf99766923e8459b5660b060309ba6ca0a3a763491"
+  },
+  {
+    "id": 759,
+    "title": "Blocked Billboard",
+    "round": "dec17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=759",
+    "testsUrl": "https://usaco.org/current/data/billboard_bronze_dec17.zip",
+    "editorial": "https://usaco.org/current/data/sol_billboard_bronze_dec17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec17results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "1 2 3 5\n6 0 10 4\n2 1 8 3",
+        "output": "17"
+      }
+    ],
+    "io": "file",
+    "inputFile": "billboard.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "7130c8f03b213b6e43d88c77f9e41be2c6a5acb7585bce0d1337c05d6def1ef6",
+    "editorialHash": "b29e73135d45a11e0fc9acfd56bce43db107e6e0ecbee4a3b7261811a400ec20"
+  },
+  {
+    "id": 713,
+    "title": "Why Did the Cow Cross the Road III",
+    "round": "feb17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=713",
+    "testsUrl": "https://usaco.org/current/data/cowqueue_bronze_feb17.zip",
+    "editorial": "https://usaco.org/current/data/sol_cowqueue_bronze_feb17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb17results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n2 1\n8 3\n5 7",
+        "output": "15"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowqueue.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "c6bd03d199cd223d3dfbc4dd6cc2f0377275d0878c5536f083673b180b285e8b",
+    "editorialHash": "6353c97f0735d3f01313670fd6301f6089787883fce6149d60b127cc34a498a1"
+  },
+  {
+    "id": 712,
+    "title": "Why Did the Cow Cross the Road II",
+    "round": "feb17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=712",
+    "testsUrl": "https://usaco.org/current/data/circlecross_bronze_feb17.zip",
+    "editorial": "https://usaco.org/current/data/sol_circlecross_bronze_feb17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb17results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "ABCCABDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ",
+        "output": "1"
+      }
+    ],
+    "io": "file",
+    "inputFile": "circlecross.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "b63eb9dfba1b6fe9a527f43a1bc5e44eaff92faeff63ab82b4c4a1ce4b358b09",
+    "editorialHash": "cdf33a89855f3f5634eb14a66beb1440bf7ba982b47617e2b37a8fa9f027b5f2"
+  },
+  {
+    "id": 711,
+    "title": "Why Did the Cow Cross the Road",
+    "round": "feb17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=711",
+    "testsUrl": "https://usaco.org/current/data/crossroad_bronze_feb17.zip",
+    "editorial": "https://usaco.org/current/data/sol_crossroad_bronze_feb17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb17results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "8\n3 1\n3 0\n6 0\n2 1\n4 1\n3 0\n4 0\n3 1",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "crossroad.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "1ece18848d22f0c4557c7c56dbf52a09a55fedfbe308553802eb3554d842a046",
+    "editorialHash": "33bbebc51b61b1ea6561bddb6acc5370de951b593bdbf6c6e9cb47ecdeae396b"
+  },
+  {
+    "id": 689,
+    "title": "Cow Tipping",
+    "round": "jan17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=689",
+    "testsUrl": "https://usaco.org/current/data/cowtip_bronze_jan17.zip",
+    "editorial": "https://usaco.org/current/data/sol_cowtip_bronze_jan17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan17results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\n001\n111\n111",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowtip.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "2d8d13db350d0f4f774fb9485d0b02fa3134e913cfcbc219e6a4361bf97e8d51",
+    "editorialHash": "33b255206e27e262710ec6b94566114abb2776d86b1adc623ab22e34f9d61b4b"
+  },
+  {
+    "id": 688,
+    "title": "Hoof, Paper, Scissors",
+    "round": "jan17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=688",
+    "testsUrl": "https://usaco.org/current/data/hps_bronze_jan17.zip",
+    "editorial": "https://usaco.org/current/data/sol_hps_bronze_jan17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan17results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n1 2\n2 2\n1 3\n1 1\n3 2",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "hps.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "78417f88f841b700a773cd4c9b9b10f458dc44fa296feae5d6a137f6fd6004f5",
+    "editorialHash": "1c9fb8efbd34ad0e4cf208c4563ffc378218358b77259fa397042c76d4a88acb"
+  },
+  {
+    "id": 687,
+    "title": "Don't Be Last!",
+    "round": "jan17results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=687",
+    "testsUrl": "https://usaco.org/current/data/notlast_bronze_jan17.zip",
+    "editorial": "https://usaco.org/current/data/sol_notlast_bronze_jan17.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan17results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "10\nBessie 1\nMaggie 13\nElsie 3\nElsie 4\nHenrietta 4\nGertie 12\nDaisy 7\nAnnabelle 10\nBessie 6\nHenrietta 5",
+        "output": "Henrietta"
+      }
+    ],
+    "io": "file",
+    "inputFile": "notlast.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "84a0168fc5088e9cd5d39f0846373f212e783d220cae817cd823ccabfdb648a7",
+    "editorialHash": "8defd73510684a7e7ed1f9546eb3ebe2ffa47ccf2a64f7d5e4df4017d311c825"
+  },
+  {
+    "id": 665,
+    "title": "The Cow-Signal",
+    "round": "dec16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=665",
+    "testsUrl": "https://usaco.org/current/data/cowsignal_bronze_dec16.zip",
+    "editorial": "https://usaco.org/current/data/sol_cowsignal_bronze_dec16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec16results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5 4 2\nXXX.\nX..X\nXXX.\nX..X\nXXX.",
+        "output": "XXXXXX..\nXXXXXX..\nXX....XX\nXX....XX\nXXXXXX..\nXXXXXX..\nXX....XX\nXX....XX\nXXXXXX..\nXXXXXX.."
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowsignal.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "198d58d99c7bdfaaac72a8286e06603362caf4733043281f033510e7685479b5",
+    "editorialHash": "c5578ed96f4c45404378c814591204f671bfc0f1267605ab6faef53f873d1817"
+  },
+  {
+    "id": 664,
+    "title": "Block Game",
+    "round": "dec16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=664",
+    "testsUrl": "https://usaco.org/current/data/blocks_bronze_dec16.zip",
+    "editorial": "https://usaco.org/current/data/sol_blocks_bronze_dec16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec16results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3\nfox box\ndog cat\ncar bus",
+        "output": "2\n2\n2\n1\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n2\n0\n0\n1\n1\n1\n1\n0\n0\n1\n0\n0"
+      }
+    ],
+    "io": "file",
+    "inputFile": "blocks.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "04a6ecb3ab4b33cf163697d0a8c6417f946c1459173f0f7845bf016055d76b8e",
+    "editorialHash": "703cf7e3b701d00f469d735a58453b7cc0d09b18955ad0b89ac33f5a04c2a07d"
+  },
+  {
+    "id": 663,
+    "title": "Square Pasture",
+    "round": "dec16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=663",
+    "testsUrl": "https://usaco.org/current/data/square_bronze_dec16.zip",
+    "editorial": "https://usaco.org/current/data/sol_square_bronze_dec16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec16results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "6 6 8 8\n1 8 4 9",
+        "output": "49"
+      }
+    ],
+    "io": "file",
+    "inputFile": "square.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "28bef47e7464a6e0e2045796e581968541b378711be4634d46d3973add1fe262",
+    "editorialHash": "6955943f6f60d213be41468e720770ee558353a3b0890af583604d6082692140"
+  },
+  {
+    "id": 617,
+    "title": "Load Balancing",
+    "round": "feb16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=617",
+    "testsUrl": "https://usaco.org/current/data/balancing_bronze_feb16.zip",
+    "editorial": "https://usaco.org/current/data/sol_balancing_bronze_feb16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb16results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "7 10\n7 3\n5 5\n9 7\n3 1\n7 7\n5 3\n9 1",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "balancing.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "fdfaf77a407fc1b64241191349d390d0022723f96a3f90eb570f322b1d169b73",
+    "editorialHash": "8c55b3be3a95f461da885be449dc7a11ab1b28ed69f7ec53dfdfae0d2d9d9835"
+  },
+  {
+    "id": 616,
+    "title": "Circular Barn",
+    "round": "feb16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=616",
+    "testsUrl": "https://usaco.org/current/data/cbarn_bronze_feb16.zip",
+    "editorial": "https://usaco.org/current/data/sol_cbarn_bronze_feb16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb16results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "5\n4\n7\n8\n6\n4",
+        "output": "48"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cbarn.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "e0464394bcff6e3106dd952fa5f5f53d11012b8f1ca943878c448011583e990d",
+    "editorialHash": "3dabf2e34e5b17b24b0d04231f673740a90aae8fd2a6f78fe665fd8a5a6ed8a0"
+  },
+  {
+    "id": 615,
+    "title": "Milk Pails",
+    "round": "feb16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=615",
+    "testsUrl": "https://usaco.org/current/data/pails_bronze_feb16.zip",
+    "editorial": "https://usaco.org/current/data/sol_pails_bronze_feb16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=feb16results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "17 25 77",
+        "output": "76"
+      }
+    ],
+    "io": "file",
+    "inputFile": "pails.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "52d2dfdee0bd871619c2c7b6175896a99c341288c9e30a97267c55b6b06445b1",
+    "editorialHash": "86b87cfe0b3a5571dc3115c7cd4ce94d4345d630281cba97e06fb20eb61279a7"
+  },
+  {
+    "id": 593,
+    "title": "Mowing the Field",
+    "round": "jan16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=593",
+    "testsUrl": "https://usaco.org/current/data/mowing_bronze_jan16.zip",
+    "editorial": "https://usaco.org/current/data/sol_mowing_bronze_jan16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan16results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "6\nN 10\nE 2\nS 3\nW 4\nS 5\nE 8",
+        "output": "10"
+      }
+    ],
+    "io": "file",
+    "inputFile": "mowing.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "4a3d6f70d3a88f06a8ee6090bc85060f234e6b088ee38e3391f18277da2ca9b2",
+    "editorialHash": "137b8582270d618deed55e47d6366760944e5acb482464796683e3683ce3ac17"
+  },
+  {
+    "id": 592,
+    "title": "Angry Cows",
+    "round": "jan16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=592",
+    "testsUrl": "https://usaco.org/current/data/angry_bronze_jan16.zip",
+    "editorial": "https://usaco.org/current/data/sol_angry_bronze_jan16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan16results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "6\n8\n5\n6\n13\n3\n4",
+        "output": "5"
+      }
+    ],
+    "io": "file",
+    "inputFile": "angry.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "f74da877f9c606ff62c9c8d6be2b549f81c64ed3ccc7fa9121cd1d60ef938860",
+    "editorialHash": "672f7c4194434b473a50372b176a169db4ffb6642949e27701f1217f2b7d9a93"
+  },
+  {
+    "id": 591,
+    "title": "Promotion Counting",
+    "round": "jan16results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=591",
+    "testsUrl": "https://usaco.org/current/data/promote_bronze_jan16.zip",
+    "editorial": "https://usaco.org/current/data/sol_promote_bronze_jan16.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=jan16results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "1 2\n1 1\n1 1\n1 2",
+        "output": "1\n1\n1"
+      }
+    ],
+    "io": "file",
+    "inputFile": "promote.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "1e479c82d65992bb746326c45089dc5b725a80e81726c36a7ea9567cd094db41",
+    "editorialHash": "d93a994c84a0cbf97d39b516cc17ba8a1bdba4c9461f1dca2e00c80a1b0ef291"
+  },
+  {
+    "id": 569,
+    "title": "Contaminated Milk",
+    "round": "dec15results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=569",
+    "testsUrl": "https://usaco.org/current/data/badmilk_bronze_dec15.zip",
+    "editorial": "https://usaco.org/current/data/sol_badmilk_bronze_dec15.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec15results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3 4 7 2\n1 1 1\n1 4 1\n1 3 4\n1 2 2\n3 1 3\n2 1 5\n2 2 7\n1 3\n2 8",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "badmilk.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "f04e268983dab2e773cd287adbfbdfe0be2e1d718f5c0d131655b231bb7c5ad2",
+    "editorialHash": "49c0811d89936b5bb9ac8cd23cf29b468d2c59bf2ed9c5b4c8a437f2c9d8b8f6"
+  },
+  {
+    "id": 568,
+    "title": "Speeding Ticket",
+    "round": "dec15results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=568",
+    "testsUrl": "https://usaco.org/current/data/speeding_bronze_dec15.zip",
+    "editorial": "https://usaco.org/current/data/sol_speeding_bronze_dec15.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec15results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "3 3\n40 75\n50 35\n10 45\n40 76\n20 30\n40 40",
+        "output": "5"
+      }
+    ],
+    "io": "file",
+    "inputFile": "speeding.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "872b5448135621643c60a0839b3b02c402f5bd67c8129ab3acdb771afd7b503a",
+    "editorialHash": "a487ab2ea9134795772afc8f660050372741ab196aab50c995855cf137888c80"
+  },
+  {
+    "id": 567,
+    "title": "Fence Painting",
+    "round": "dec15results",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=567",
+    "testsUrl": "https://usaco.org/current/data/paint_bronze_dec15.zip",
+    "editorial": "https://usaco.org/current/data/sol_paint_bronze_dec15.html",
+    "division": "Bronze",
+    "source": "https://usaco.org/index.php?page=dec15results",
+    "reviewStatus": "待复核",
+    "tags": [],
+    "samples": [
+      {
+        "input": "7 10\n4 8",
+        "output": "6"
+      }
+    ],
+    "io": "file",
+    "inputFile": "paint.in",
+    "fetchedAt": "2026-10-03",
+    "statementHash": "8eb8ab9cb3334936417d86cd7d6c2b44c8cf8137c28f7a54bc995bc667411ec3",
+    "editorialHash": "55b21bbb9a57eb4a05264f4d3094bf0c3d55798187551520e0f72dcf095ba822"
+  }
+]

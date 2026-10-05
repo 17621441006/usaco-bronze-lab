@@ -1,0 +1,62 @@
+{
+  "updatedAt": "2026-10-04",
+  "basis": "按站内已验证参考解法整理；官方核验记录独立保留；可选 DP 单独标记",
+  "classified": 99,
+  "recent": 60,
+  "classic": 39,
+  "officiallyReviewed": 19,
+  "topics": {
+    "simulation": {
+      "recent": 11,
+      "total": 28
+    },
+    "enumeration": {
+      "recent": 15,
+      "total": 29
+    },
+    "strings": {
+      "recent": 20,
+      "total": 26
+    },
+    "sorting": {
+      "recent": 8,
+      "total": 18
+    },
+    "counting": {
+      "recent": 15,
+      "total": 27
+    },
+    "geometry": {
+      "recent": 3,
+      "total": 14
+    },
+    "grid": {
+      "recent": 8,
+      "total": 10
+    },
+    "greedy": {
+      "recent": 19,
+      "total": 23
+    },
+    "math": {
+      "recent": 23,
+      "total": 26
+    },
+    "prefix": {
+      "recent": 7,
+      "total": 8
+    },
+    "graphs": {
+      "recent": 0,
+      "total": 2
+    },
+    "adhoc": {
+      "recent": 10,
+      "total": 14
+    },
+    "dp": {
+      "recent": 3,
+      "total": 3
+    }
+  }
+}

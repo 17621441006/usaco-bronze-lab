@@ -1,0 +1,16 @@
+'use client';
+import {useEffect,useState} from 'react';
+import {Button} from '@/components/ui/button';
+import {Tabs,TabsList,TabsTrigger} from '@/components/ui/tabs';
+import {Skeleton} from '@/components/ui/skeleton';
+import {Copy,Check,Download,ExternalLink} from 'lucide-react';
+type RefSolution={pythonTeaching?:string,teachingNote?:string,python:string,cpp:string,complexity:string,approach:string,source:string,performanceWarning?:string,validation?:Record<string,{passed:number,total:number,cases?:{ms?:number}[]}>,verified:boolean};
+export function ReferencePanel({id}:{id:number}){
+ const [solution,setSolution]=useState<RefSolution|null>(null),[error,setError]=useState(''),[open,setOpen]=useState(true),[language,setLanguage]=useState('python'),[copied,setCopied]=useState(false),[copyNote,setCopyNote]=useState('');
+ useEffect(()=>{const ac=new AbortController();fetch(`/solutions/${id}.json`,{signal:ac.signal}).then(r=>{if(!r.ok)throw Error('参考解答加载失败');return r.json() as Promise<RefSolution>}).then(setSolution).catch(e=>{if(e.name!=='AbortError')setError(e.message)});return()=>ac.abort();},[id]);
+ if(error)return <p className="notice">{error}</p>;if(!solution)return <Skeleton className="h-40 w-full"/>;
+ const code=language==='python'?(solution.pythonTeaching||solution.python):solution.cpp,validation=solution.validation?.[language];
+ async function copy(){try{await navigator.clipboard.writeText(code);setCopied(true);setTimeout(()=>setCopied(false),2000);}catch{setCopyNote('复制未成功，可使用下载按钮。')}}
+ function download(){const url=URL.createObjectURL(new Blob([language==='python'?solution!.python:solution!.cpp],{type:'text/plain'}));const a=document.createElement('a');a.href=url;a.download=`usaco-${id}.${language==='python'?'py':'cpp'}`;a.click();URL.revokeObjectURL(url);}
+ return <section className="reference-panel"><h3>参考思路与完整代码</h3><p className="reference-intro">先写下自己的思路，再比较参考实现。参考代码独立编写，使用官方测试数据核验。</p><p>{solution.approach}</p><div className="complexity-box"><b>复杂度</b><span>{solution.complexity}</span></div>{!open?<Button variant="outline" onClick={()=>setOpen(true)}>展开 Python 3 / C++ 参考代码</Button>:<><div className="reference-toolbar"><Tabs value={language} onValueChange={setLanguage}><TabsList><TabsTrigger value="python">Python 3</TabsTrigger><TabsTrigger value="cpp">C++17</TabsTrigger></TabsList></Tabs><div><Button variant="ghost" size="icon" aria-label="复制参考代码" onClick={copy}>{copied?<Check size={16}/>:<Copy size={16}/>}</Button><Button variant="ghost" size="icon" aria-label="下载提交版代码" title="下载提交版代码（保留历史题文件输入输出）" onClick={download}><Download size={16}/></Button></div></div>{language==='python'&&solution.teachingNote&&<p className="notice">{solution.teachingNote}</p>}{copyNote&&<p className="notice">{copyNote}</p>}{validation&&<p className="validation-note">官方数据正确性核验：{validation.passed} / {validation.total} 个文件通过 · 本地验证上限 {language==='python'&&id===1469?'60':language==='python'?'8':'4'} 秒/文件</p>}{language==='python'&&solution.performanceWarning&&<p className="notice">{solution.performanceWarning}</p>}<pre className="reference-code"><code>{code}</code></pre></>}<a className="reference-source" href={solution.source} target="_blank" rel="noreferrer">对照官方题解 <ExternalLink size={13}/></a></section>
+}

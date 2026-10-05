@@ -1,0 +1,459 @@
+{
+  "sourceFile": "USACO_Bronze题面汇总_2020-2026_中英双语.html",
+  "sourceSha256": "8da025a680b17ca216c51fedf9107200b395bc1605f9ad4297bffb1327b4cf78",
+  "importedAt": "2026-10-04",
+  "included": 60,
+  "excludedUSOpenIds": [
+    1035,
+    1036,
+    1037,
+    1131,
+    1132,
+    1133,
+    1227,
+    1228,
+    1229,
+    1323,
+    1324,
+    1325,
+    1419,
+    1420,
+    1421,
+    1515,
+    1516,
+    1517
+  ],
+  "officialChinese": 42,
+  "unofficialChinese": 18,
+  "years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "problems": [
+    {
+      "id": 987,
+      "year": 2020,
+      "translation": "official",
+      "englishSha256": "e35b4410e5be011fc71732e24a8449afa27aefb212881801fa8a16df119fa3ec",
+      "chineseSha256": "cf801d288d60a244655e8f007d461a325e90049e1839f1092bbc9ea83c3cfaf5"
+    },
+    {
+      "id": 988,
+      "year": 2020,
+      "translation": "official",
+      "englishSha256": "5b025974e4ed9f39f1a22c1869a8009cb63fe5577c2eabe1174a0c586a9722e9",
+      "chineseSha256": "45a1ae06288c9291bcf8264408a228671c5aa2c75788ff1aa724472d9b3046c8"
+    },
+    {
+      "id": 989,
+      "year": 2020,
+      "translation": "official",
+      "englishSha256": "cac5564b28e05f8feeae278abca59f891cf3c4aa5855c864287ee3e7e6299d51",
+      "chineseSha256": "70436f3c5538406dc413217496026a5a79add0d1d41dc5cb092551929962e217"
+    },
+    {
+      "id": 1011,
+      "year": 2020,
+      "translation": "official",
+      "englishSha256": "16540e697f6931d9b291d4bde19f1698f8c46879826d39a61993a32c6b65a386",
+      "chineseSha256": "9453262d1970feafea6b4c3ad86f6f4445c194d21bee07190ddee45621d252a3"
+    },
+    {
+      "id": 1012,
+      "year": 2020,
+      "translation": "official",
+      "englishSha256": "734e407a25fd20512aa548f4aba0dd02947be64339e8259556a22dbe7b248621",
+      "chineseSha256": "dfeba5f06d0d2a88abf64772414a9a67bc545370a44543e22f1fe59416e5b216"
+    },
+    {
+      "id": 1013,
+      "year": 2020,
+      "translation": "official",
+      "englishSha256": "0a0b8a56b6823021a42dbbcf176eec00206f710e5252981ab25502a220336cd0",
+      "chineseSha256": "72ecd9d59be7e05a7a670c9c82939fc5df0daaa34e29820d6605497e83957251"
+    },
+    {
+      "id": 1059,
+      "year": 2020,
+      "translation": "official",
+      "englishSha256": "799af6eb18c987a53283a2971dcb2b76d5c8984023fd365c2df09e1bad4fcc7d",
+      "chineseSha256": "8b0f55148c1af072126f9caa21c03ef1d248d1cdb6cead1138e1ac322316c03a"
+    },
+    {
+      "id": 1060,
+      "year": 2020,
+      "translation": "official",
+      "englishSha256": "3430e9fdd772cc1a4f0cdfca0b5287636089598b10898bb012129cd11099bebe",
+      "chineseSha256": "e81d1fdac47c90e4ce57c41e678d555e2ef47cb42864441af5aee8753f0fc75d"
+    },
+    {
+      "id": 1061,
+      "year": 2020,
+      "translation": "official",
+      "englishSha256": "95adf7319c197b9592410cf81b325f7d4517462ff9536c2e13750f68d6dade15",
+      "chineseSha256": "a45b07887f3fdd8a95079ff557c666b324ca2c116b6e6e36969d7b656b214916"
+    },
+    {
+      "id": 1083,
+      "year": 2021,
+      "translation": "official",
+      "englishSha256": "7e7b49cec80f256500d4d160a2de4fa6084455c856cb3806e6a94c568d63a870",
+      "chineseSha256": "da23d8eb2eae07f34590f29e5ee1079421e521d0b8757d60b6c751f86a228823"
+    },
+    {
+      "id": 1084,
+      "year": 2021,
+      "translation": "official",
+      "englishSha256": "dd5721cb1a7bd0f1022e7a154a32fc79d7887c151aa82a27f18132ea013ef0ca",
+      "chineseSha256": "978375c9df026c21364734a8dc94965c98874bed73416a13a98ee5301ca723fd"
+    },
+    {
+      "id": 1085,
+      "year": 2021,
+      "translation": "official",
+      "englishSha256": "10992320bebbcf63d2627ffb8c7d9f79a2420496b1b03456cfef4043fca71c2a",
+      "chineseSha256": "48a907fed733e4a4a27ce77beb83eb3dbb7fff1412c3796f535cd5c5385b6af5"
+    },
+    {
+      "id": 1107,
+      "year": 2021,
+      "translation": "official",
+      "englishSha256": "2f6fb8c7cf17a6aa34861dee1d704d792f826f0fafda66581c1e2cec9eab6358",
+      "chineseSha256": "743f8a42dedbe7768913432d2ac592419bb9fc4eff66836bff2cd00fef3ff0ca"
+    },
+    {
+      "id": 1108,
+      "year": 2021,
+      "translation": "official",
+      "englishSha256": "042418ecbcb1e6fc100d67b3bbca6754b6d547b3555edf89c8a2c07649067cef",
+      "chineseSha256": "82e9b03d8bf524e8b62f7afca5e572a485978955e0a4d20a4958579b1f67cd03"
+    },
+    {
+      "id": 1109,
+      "year": 2021,
+      "translation": "official",
+      "englishSha256": "1d0595f3be79540519f9c2cfc03a264b96ed8fe5cfc33113a0c90f2337291a68",
+      "chineseSha256": "dd581da827e8870bc4a005c3dee1b3786ea765beb0234a80b48c7918f414139b"
+    },
+    {
+      "id": 1155,
+      "year": 2021,
+      "translation": "official",
+      "englishSha256": "6a8a14173d424b78ff3215565d4a95c9ea7d7c3da5fb211115f3b6016d09fa02",
+      "chineseSha256": "6c098a8afdedd4d2bed424fee5c9a2e97a12c9d5c9f51cc3fec127b895eabc78"
+    },
+    {
+      "id": 1156,
+      "year": 2021,
+      "translation": "official",
+      "englishSha256": "6e3e3625819751519a6d48500a145019de3cc32fda33d34292420ac1cecbf3d2",
+      "chineseSha256": "b41e0606ea311ca7719630bf1bdeb4f9cb17e72b645225eb236a52452b3a216e"
+    },
+    {
+      "id": 1157,
+      "year": 2021,
+      "translation": "official",
+      "englishSha256": "b464adbd2d8230f8c4522108b09bab6a16cc8134bad36e2b19ef163305e09eba",
+      "chineseSha256": "b12ddfcb2fc2898d67a3c6bb316c2a6ecee47df84d4c109389d0a3b02945f2f1"
+    },
+    {
+      "id": 1179,
+      "year": 2022,
+      "translation": "official",
+      "englishSha256": "7fecceb6d28aecfbb4e220f6647be7acbefe37d40925f5cb0227073f25339747",
+      "chineseSha256": "be2f16e8d91251c0cd3190dd9000895d1f8cbb1d75bccc1fda37a13cae182911"
+    },
+    {
+      "id": 1180,
+      "year": 2022,
+      "translation": "official",
+      "englishSha256": "f6e7c62b4c2d26385e99fb53d12e2feed4a88086968cd6e413120fce621268b5",
+      "chineseSha256": "69905e2c6f91e268faf97225c1395d21a54a609bcdafa353578b104ab14c309e"
+    },
+    {
+      "id": 1181,
+      "year": 2022,
+      "translation": "official",
+      "englishSha256": "410958d663b4cf10148c79a2bbf0cbb3516ead8a768abd69786c4f5c28ca46ec",
+      "chineseSha256": "02c80c5eb3e1d295b37a558287b5665d70646e22557f7eec6b2228ac2620da2a"
+    },
+    {
+      "id": 1203,
+      "year": 2022,
+      "translation": "official",
+      "englishSha256": "9a5589d3e6719e16c8634375ffc70ee62c9362c02a8854a5a5c527ae30572f4f",
+      "chineseSha256": "e7eedeb69c1f9c91ec7aafa9bba33ee1666c70ebfe5dee946004edd02ee4e2c8"
+    },
+    {
+      "id": 1204,
+      "year": 2022,
+      "translation": "official",
+      "englishSha256": "56a2ebc129bd0043144cb075882a1c3451106876f6bb7c992e4d5d9f15799501",
+      "chineseSha256": "8ffc66059034ffe5ae82aa72f41237359d07a98e5a71b52f0b53d331edca864a"
+    },
+    {
+      "id": 1205,
+      "year": 2022,
+      "translation": "official",
+      "englishSha256": "1bac358bcc73fb0d8cfd135ab571c4aa6fdbaae4c29d76441936c25f434bc0fe",
+      "chineseSha256": "ed8ea83f9559e3949af1678f15f3cedee34daeb138db66ab82d4d048b89a40d6"
+    },
+    {
+      "id": 1251,
+      "year": 2022,
+      "translation": "official",
+      "englishSha256": "85bde1a7b9ef004efa5a32a30203dbc7b88856fab9fecf5c16d2566dd8d9e836",
+      "chineseSha256": "39a7ac6cb88bdd051c2b266906e2b8561bbfd7b6a2749ecd0f01517a20307737"
+    },
+    {
+      "id": 1252,
+      "year": 2022,
+      "translation": "official",
+      "englishSha256": "1a80532438f96ff866f03bef1b2bdfbcd9675844d4a19546522b418fb34bd5a5",
+      "chineseSha256": "a6e1978dab24facbebf3268610855869f9aab78520946fd3ec35812dee511f59"
+    },
+    {
+      "id": 1253,
+      "year": 2022,
+      "translation": "official",
+      "englishSha256": "e4e3647c2b3b534660b1db315dfa247ae7076ae20f3a4309f54aa84d29153ad2",
+      "chineseSha256": "0814e3fd71d8aa0c7c09c1f475c58974cac5090d319f6a879c7bcbbcf19a8b6a"
+    },
+    {
+      "id": 1275,
+      "year": 2023,
+      "translation": "unofficial",
+      "englishSha256": "620da4c2aa696e4dc2267cdcac7cd72116d1c7bc5d3fdaae4413de5590b4f3b9",
+      "chineseSha256": "bac410195590a01d2771adb014bb7a99fe97b421e7edd15c131759666f257702"
+    },
+    {
+      "id": 1276,
+      "year": 2023,
+      "translation": "unofficial",
+      "englishSha256": "befbf3d59f92009254f0ee09f9736dc74f2f90ad1cdb50ca1d2bdbff1b9051b4",
+      "chineseSha256": "14bce2a3b6471cbe99ad0440c3f8161416b37df9b8fbf54f4e169d484ec26c75"
+    },
+    {
+      "id": 1277,
+      "year": 2023,
+      "translation": "unofficial",
+      "englishSha256": "b08d690091f39071c21052d8ae56117f5980ed3023dc03ff2697250018d6a53c",
+      "chineseSha256": "e58c2c9a7030a80bac0a95d0125787e40d0f109d544638242a9f0f5c7a7a9f4e"
+    },
+    {
+      "id": 1299,
+      "year": 2023,
+      "translation": "unofficial",
+      "englishSha256": "4d28d32f6bcb3b957e19960877556d2fc779966d307351c76a4349b5f727002f",
+      "chineseSha256": "55f31448fd7c7e8f05b3b0172fdd409a9bced27fed428f1081e15b2f9a2f385a"
+    },
+    {
+      "id": 1300,
+      "year": 2023,
+      "translation": "unofficial",
+      "englishSha256": "00cd383865b55cf246ba81e593a5aaae7a73a0e12a7081ee2c354c82da95a641",
+      "chineseSha256": "71859030f927494767e7660a70a12eb417f771f5b1370c9c7557c06a1811aba6"
+    },
+    {
+      "id": 1301,
+      "year": 2023,
+      "translation": "unofficial",
+      "englishSha256": "769ad953b7a22f84ac5aa5d88e5860e7ff668cc20aa026c38f00fb2df362dc37",
+      "chineseSha256": "db0a79b19f7d6740e05b5a8675e774caf6427a434f222929c249abfba00b71b0"
+    },
+    {
+      "id": 1347,
+      "year": 2023,
+      "translation": "unofficial",
+      "englishSha256": "f82509f283dd90bda0738290d28d72645a272fdbfb7aa0e1c5fd3602c4966fe4",
+      "chineseSha256": "bc1b189f99706e664a062f014e320ec90b599256dae392371a83e9ec66741260"
+    },
+    {
+      "id": 1348,
+      "year": 2023,
+      "translation": "unofficial",
+      "englishSha256": "d638554c6ed1a45ba58f1f31ac05983a841763feb598144d752d61e70aaeded5",
+      "chineseSha256": "bd650568132d4a8ab965ff19db395e04ab13f9676269b68e328ca3dac779493e"
+    },
+    {
+      "id": 1349,
+      "year": 2023,
+      "translation": "unofficial",
+      "englishSha256": "b3ce90c83c114ae2466dc6481ee108d7c23358b91957c8c7f52c5802dc469234",
+      "chineseSha256": "57a6e128163b8d1c3689af3430ea2c4b9d861b1a4c09f647c35742d6cc3a0ffe"
+    },
+    {
+      "id": 1371,
+      "year": 2024,
+      "translation": "official",
+      "englishSha256": "693ca7f48d0d424c2147ae9f6ef1240710cca044a2d78bcb9c47f1abdc31f0f0",
+      "chineseSha256": "8aed1a02c7163db0bce1669a91a0ee8a42aa9081be7e044192e359c16fdba666"
+    },
+    {
+      "id": 1372,
+      "year": 2024,
+      "translation": "official",
+      "englishSha256": "127e507372debaf83da9ca288b9bdf307f8e79d88f9cb2908ad3bf2525503fb0",
+      "chineseSha256": "f3e4bdddf1b9e8b4297c2a9c5346eb6268e8441390f6f7092905789bae06073d"
+    },
+    {
+      "id": 1373,
+      "year": 2024,
+      "translation": "official",
+      "englishSha256": "90883467da95991e342384299b92482543c5a121297f2feed3a6b17993474903",
+      "chineseSha256": "e43c5bf7474999093567b9ac9ba4de5b13b77388cba00fbe2235c51d944898bf"
+    },
+    {
+      "id": 1395,
+      "year": 2024,
+      "translation": "official",
+      "englishSha256": "9f3fbab3be0231c4a00e5dec13f1e3bd27df9c32b8343968704c2e2c943c28dd",
+      "chineseSha256": "cdb56cb425bb53186e25009a419d7b6fc23072f38a254f06c63ec8146a111541"
+    },
+    {
+      "id": 1396,
+      "year": 2024,
+      "translation": "official",
+      "englishSha256": "f2b3a30ab561da1ae8770fdf4a4e304bb06912dcb39c55b07904f03e84c17828",
+      "chineseSha256": "ddb80a2663b733c7c26dbc84dca8ac6e5a4145fae7f9d3dc2f67ad2157c669e8"
+    },
+    {
+      "id": 1397,
+      "year": 2024,
+      "translation": "official",
+      "englishSha256": "1421ee0cf193b268d9347a14fbd11aa84630e64cff573a18ff5ccb25982a693c",
+      "chineseSha256": "ced307973c99b52c1e774cc804e953c12f3bac597867b41f0ac5c2821fcdee9b"
+    },
+    {
+      "id": 1443,
+      "year": 2024,
+      "translation": "official",
+      "englishSha256": "6fc06de25f39d6d6e8b1603e708d153e9a90bf5673580913fb77503b2eb2f15e",
+      "chineseSha256": "c9b86d2a8b2d83f1eb2a5a72ad77e873004fa6d8b7bf8dceeb308ab1ff6b507d"
+    },
+    {
+      "id": 1444,
+      "year": 2024,
+      "translation": "official",
+      "englishSha256": "64f554af5e912357f433a464123018a696f9ec9bbbb9f6a08e5429ba3ae5007c",
+      "chineseSha256": "d7e530f2f5e9efb8313ac7e1b93ed054cd90dd5cea36c5ef607d8fcf904469b2"
+    },
+    {
+      "id": 1445,
+      "year": 2024,
+      "translation": "official",
+      "englishSha256": "f52629333ce8c948c6a7155a1a13cd38af075129c38721eaa748e10bfa26551f",
+      "chineseSha256": "ba0fb75d069dd64eafba40f90642f109a09c64ffb81cc204e23e1ff29e78e7f2"
+    },
+    {
+      "id": 1467,
+      "year": 2025,
+      "translation": "official",
+      "englishSha256": "b6eec9eec330be62ec016f8528569b0355b94c0b83f8b67d0940f4c79777e50b",
+      "chineseSha256": "50a2aaf8a1ad996843a941a445256b02d0bcf5da66670d6712e473ec9097878a"
+    },
+    {
+      "id": 1468,
+      "year": 2025,
+      "translation": "official",
+      "englishSha256": "b54fbac06223a6002dc65be4c19f8d14cc82d2db4b9183faa7602edfa5b5284b",
+      "chineseSha256": "c23662a96f169962ff707052a43e1badde30cf6fded28250de12a952a482ad37"
+    },
+    {
+      "id": 1469,
+      "year": 2025,
+      "translation": "official",
+      "englishSha256": "32cc6d30fe618e2dbf0d7e47646d39abd4b14870113920e2e79fba4359b6f042",
+      "chineseSha256": "5faa60b12e9e2c25d1078a91ad061d6ad9b429e92f0c6229f381023b3019a1bd"
+    },
+    {
+      "id": 1491,
+      "year": 2025,
+      "translation": "official",
+      "englishSha256": "657332583c5226b24018109a1077d253957193262e13cb23d258113202aedbaf",
+      "chineseSha256": "ebca8df14725b61a542dc50ba4bca733b6ca3e146cd0333f6069c641df055674"
+    },
+    {
+      "id": 1492,
+      "year": 2025,
+      "translation": "official",
+      "englishSha256": "c7376e1980929c1572504147db50a8765991efa856247be625cf2728e6086066",
+      "chineseSha256": "e09121e27cf2fd10db913ccf3b55b98a8b97771a6c20e7053ac1f948fa723f74"
+    },
+    {
+      "id": 1493,
+      "year": 2025,
+      "translation": "official",
+      "englishSha256": "03c32b467dceb73dbe6b9235ace9bab99beb68b79c7e5ac0c0ca806ed1fec1e3",
+      "chineseSha256": "27a18ff15eebe2131a7afed099e141063567d992272d9d65eeadad95113d9fa2"
+    },
+    {
+      "id": 1539,
+      "year": 2026,
+      "translation": "unofficial",
+      "englishSha256": "f7c89e7bcecbbb9fdeb7ac1b84b4e5b6ff08629848735f40906399da02148673",
+      "chineseSha256": "15f399fd4cb8f22acad84f5269da288553a0b51202bb6a613e1e2a884943a667"
+    },
+    {
+      "id": 1540,
+      "year": 2026,
+      "translation": "unofficial",
+      "englishSha256": "960fc9842697ca6a978c8033f7a5e159e488bd3cd23c8e7a1024f0e9ed28d858",
+      "chineseSha256": "0453e13e6de145d23819e2e6fbac1df6e3b82617dfcf6d052fc5e2298faf2e1d"
+    },
+    {
+      "id": 1541,
+      "year": 2026,
+      "translation": "unofficial",
+      "englishSha256": "1fb3390ac1f4acf1ecc39136833d15a4785d5974f7697c11b1153a081df96b57",
+      "chineseSha256": "acd42c0365d83c2387df2c3b7a73ab955598b7c5ea89f0df9dcaed1f439391f1"
+    },
+    {
+      "id": 1563,
+      "year": 2026,
+      "translation": "unofficial",
+      "englishSha256": "1e620d4fe0ab35f182b37091f1f96644b8ea8618ad2afc2185f6808150b661a2",
+      "chineseSha256": "4347d13a6c067c213f5792311703e91d479cd9e099a6f20d63cc34cf58c8551c"
+    },
+    {
+      "id": 1564,
+      "year": 2026,
+      "translation": "unofficial",
+      "englishSha256": "c1da5bfef600ec0a1844876e63914c32c7f5adaa3bc913e9aff3f5b720e5cc4a",
+      "chineseSha256": "65010a960190db77257c1c0e1b703f3c2795ed8a58143d73dda07c17ac578324"
+    },
+    {
+      "id": 1565,
+      "year": 2026,
+      "translation": "unofficial",
+      "englishSha256": "3764978f7622f841fd61356c921937c77fa00ba451f8a9929b3b159629bba433",
+      "chineseSha256": "2cc0412749adb3f40b7dad1287dcd8845ff1cd643a33c0fb058bfabb9248f05f"
+    },
+    {
+      "id": 1587,
+      "year": 2026,
+      "translation": "unofficial",
+      "englishSha256": "3ff6bdb62c3b755b8777bc36b085830592e18d2a850d67fc45e95d50dabbe5d7",
+      "chineseSha256": "b3aa624c96bd39eb90143eeb2aa2b1c29f9f9f0abbd66de9769acd1d0393d980"
+    },
+    {
+      "id": 1588,
+      "year": 2026,
+      "translation": "unofficial",
+      "englishSha256": "c2868e225f0131713b6366bc6eabada99f6b5095bafe5fec2b53f2108f4aa160",
+      "chineseSha256": "ae441398732c46eda26d6080040b45d00c8b6453e49056744c6a8aa63afe5d4c"
+    },
+    {
+      "id": 1589,
+      "year": 2026,
+      "translation": "unofficial",
+      "englishSha256": "7f34cfb14d39f589da86e839a0afea7b66380c8a706ce6622c6fa33412ed5ae4",
+      "chineseSha256": "04c5805d021fce2bf4443614122e7b2251f461a343b2b913ade79c7d6ec883f8"
+    }
+  ]
+}

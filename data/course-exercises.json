@@ -1,0 +1,2431 @@
+[
+  {
+    "id": 91000,
+    "lesson": "io",
+    "title": "读入并输出",
+    "level": "基础",
+    "prompt": "读入一个整数，原样输出。整数范围为 −100 到 100。",
+    "inputFormat": "一行一个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "print(int(input()))\n",
+    "hint": "input() 得到字符串；int() 转成整数。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "8\n",
+        "output": "8\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "-7\n",
+        "output": "-7\n"
+      }
+    ]
+  },
+  {
+    "id": 91001,
+    "lesson": "io",
+    "title": "两数之和",
+    "level": "巩固",
+    "prompt": "读入两个整数，输出它们的和。每个数的绝对值不超过 1000。",
+    "inputFormat": "一行两个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "a, b = map(int, input().split())\nprint(a + b)\n",
+    "hint": "split() 切开一行；map(int, ...) 逐个转换。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 7\n",
+        "output": "10\n"
+      },
+      {
+        "name": "2",
+        "input": "-4 4\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "0 -9\n",
+        "output": "-9\n"
+      }
+    ]
+  },
+  {
+    "id": 91002,
+    "lesson": "io",
+    "title": "三天的牛奶",
+    "level": "挑战",
+    "prompt": "分别读入三天的产奶量，输出总量与第三天的产量。每天为 0 到 1000。",
+    "inputFormat": "三行，每行一个非负整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "a = int(input())\nb = int(input())\nc = int(input())\nprint(a + b + c, c)\n",
+    "hint": "按输入的行数读取，print(x, y) 会自动用空格分隔。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3\n4\n5\n",
+        "output": "12 5\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n0\n0\n",
+        "output": "0 0\n"
+      },
+      {
+        "name": "3",
+        "input": "10\n2\n1\n",
+        "output": "13 1\n"
+      }
+    ]
+  },
+  {
+    "id": 91003,
+    "lesson": "arithmetic",
+    "title": "装满的箱子",
+    "level": "基础",
+    "prompt": "有 n 个苹果，每箱装 k 个。输出能装满的箱数。0≤n≤10000，1≤k≤100。",
+    "inputFormat": "一行 n 和 k。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, k = map(int, input().split())\nprint(n // k)\n",
+    "hint": "// 是整除。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "17 5\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "0 3\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "12 4\n",
+        "output": "3\n"
+      }
+    ]
+  },
+  {
+    "id": 91004,
+    "lesson": "arithmetic",
+    "title": "还剩几个",
+    "level": "巩固",
+    "prompt": "有 n 个苹果，每箱装 k 个。输出装满的箱数和剩余苹果数。0≤n≤10000，1≤k≤100。",
+    "inputFormat": "一行 n 和 k。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, k = map(int, input().split())\nprint(n // k, n % k)\n",
+    "hint": "商用 //，余数用 %。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "17 5\n",
+        "output": "3 2\n"
+      },
+      {
+        "name": "2",
+        "input": "12 4\n",
+        "output": "3 0\n"
+      },
+      {
+        "name": "3",
+        "input": "2 7\n",
+        "output": "0 2\n"
+      }
+    ]
+  },
+  {
+    "id": 91005,
+    "lesson": "arithmetic",
+    "title": "全部装走",
+    "level": "挑战",
+    "prompt": "有 n 个苹果，每箱最多装 k 个。输出装走全部苹果所需的最少箱数。0≤n≤10000，1≤k≤100。",
+    "inputFormat": "一行 n 和 k。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, k = map(int, input().split())\nprint((n + k - 1) // k)\n",
+    "hint": "恰好装满时不加箱；有余数才额外加一箱。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "17 5\n",
+        "output": "4\n"
+      },
+      {
+        "name": "2",
+        "input": "12 4\n",
+        "output": "3\n"
+      },
+      {
+        "name": "3",
+        "input": "0 7\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "1 8\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91006,
+    "lesson": "conditions",
+    "title": "偶数还是奇数",
+    "level": "基础",
+    "prompt": "给定整数 n，若为偶数输出 EVEN，否则输出 ODD。−1000≤n≤1000。",
+    "inputFormat": "一行 n。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\nprint(\"EVEN\" if n % 2 == 0 else \"ODD\")\n",
+    "hint": "n % 2 == 0 判断偶数。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "8\n",
+        "output": "EVEN\n"
+      },
+      {
+        "name": "2",
+        "input": "-3\n",
+        "output": "ODD\n"
+      },
+      {
+        "name": "3",
+        "input": "0\n",
+        "output": "EVEN\n"
+      }
+    ]
+  },
+  {
+    "id": 91007,
+    "lesson": "conditions",
+    "title": "三段区间",
+    "level": "巩固",
+    "prompt": "给定整数 x：小于 0 输出 NEG，等于 0 输出 ZERO，大于 0 输出 POS。",
+    "inputFormat": "一行绝对值不超过 1000 的整数 x。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "x = int(input())\nif x < 0:\n    print(\"NEG\")\nelif x == 0:\n    print(\"ZERO\")\nelse:\n    print(\"POS\")\n",
+    "hint": "用 if / elif / else，注意等于 0 的边界。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "-2\n",
+        "output": "NEG\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n",
+        "output": "ZERO\n"
+      },
+      {
+        "name": "3",
+        "input": "9\n",
+        "output": "POS\n"
+      }
+    ]
+  },
+  {
+    "id": 91008,
+    "lesson": "conditions",
+    "title": "矩形内外",
+    "level": "挑战",
+    "prompt": "判断点 (x,y) 是否在包含边界的矩形 [0,w]×[0,h] 内。在内输出 YES，否则 NO。1≤w,h≤100，−100≤x,y≤200。",
+    "inputFormat": "一行 w h x y。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "w, h, x, y = map(int, input().split())\nprint(\"YES\" if 0 <= x <= w and 0 <= y <= h else \"NO\")\n",
+    "hint": "横坐标与纵坐标都满足条件才算在内。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 3 4 0\n",
+        "output": "YES\n"
+      },
+      {
+        "name": "2",
+        "input": "4 3 -1 2\n",
+        "output": "NO\n"
+      },
+      {
+        "name": "3",
+        "input": "4 3 2 4\n",
+        "output": "NO\n"
+      },
+      {
+        "name": "4",
+        "input": "4 3 2 2\n",
+        "output": "YES\n"
+      }
+    ]
+  },
+  {
+    "id": 91009,
+    "lesson": "variables",
+    "title": "找到指定元素",
+    "level": "基础",
+    "prompt": "读入长度 n 的列表和下标 i，输出 a[i]。1≤n≤100，0≤i<n。",
+    "inputFormat": "第一行 n i；第二行 n 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, i = map(int, input().split())\na = list(map(int, input().split()))\nprint(a[i])\n",
+    "hint": "列表第一个元素的下标为 0。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 2\n4 2 7 1\n",
+        "output": "7\n"
+      },
+      {
+        "name": "2",
+        "input": "1 0\n9\n",
+        "output": "9\n"
+      },
+      {
+        "name": "3",
+        "input": "3 2\n0 -4 2\n",
+        "output": "2\n"
+      }
+    ]
+  },
+  {
+    "id": 91010,
+    "lesson": "variables",
+    "title": "交换两端",
+    "level": "巩固",
+    "prompt": "将列表的第一个和最后一个元素交换，输出新列表。1≤n≤100。",
+    "inputFormat": "第一行 n；第二行 n 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\na[0], a[-1] = a[-1], a[0]\nprint(*a)\n",
+    "hint": "a[-1] 是最后一个元素；同时赋值可以交换。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n4 2 7 1\n",
+        "output": "1 2 7 4\n"
+      },
+      {
+        "name": "2",
+        "input": "1\n8\n",
+        "output": "8\n"
+      },
+      {
+        "name": "3",
+        "input": "2\n3 9\n",
+        "output": "9 3\n"
+      }
+    ]
+  },
+  {
+    "id": 91011,
+    "lesson": "variables",
+    "title": "按指令修改",
+    "level": "挑战",
+    "prompt": "读入列表后执行 q 次修改，每次把 a[i] 改为 v。输出最终列表。1≤n≤100，0≤q≤100。",
+    "inputFormat": "第一行 n q；第二行列表；接下来 q 行 i v（0≤i<n）。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, q = map(int, input().split())\na = list(map(int, input().split()))\nfor _ in range(q):\n    i, v = map(int, input().split())\n    a[i] = v\nprint(*a)\n",
+    "hint": "依照顺序修改；同一下标后来的赋值覆盖先前的。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 2\n1 2 3\n0 8\n2 9\n",
+        "output": "8 2 9\n"
+      },
+      {
+        "name": "2",
+        "input": "1 0\n4\n",
+        "output": "4\n"
+      },
+      {
+        "name": "3",
+        "input": "2 2\n0 0\n1 7\n1 8\n",
+        "output": "0 8\n"
+      }
+    ]
+  },
+  {
+    "id": 91012,
+    "lesson": "loops",
+    "title": "逐个累加",
+    "level": "基础",
+    "prompt": "求 n 个整数的总和。1≤n≤100，每个数绝对值不超过 1000。",
+    "inputFormat": "第一行 n；第二行 n 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\ntotal = 0\nfor x in a:\n    total += x\nprint(total)\n",
+    "hint": "循环之前设 total=0，每次只加当前元素。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n4 2 7 1\n",
+        "output": "14\n"
+      },
+      {
+        "name": "2",
+        "input": "1\n-4\n",
+        "output": "-4\n"
+      },
+      {
+        "name": "3",
+        "input": "3\n-2 0 2\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91013,
+    "lesson": "loops",
+    "title": "达到标准的奶牛",
+    "level": "巩固",
+    "prompt": "统计 n 头奶牛中产量不小于 k 的头数。1≤n≤100，产量和 k 为 0 到 1000。",
+    "inputFormat": "第一行 n k；第二行 n 个产量。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, k = map(int, input().split())\na = list(map(int, input().split()))\ncount = 0\nfor x in a:\n    if x >= k:\n        count += 1\nprint(count)\n",
+    "hint": "把判断条件放在循环里。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 5\n2 5 7 4\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "3 0\n0 0 1\n",
+        "output": "3\n"
+      },
+      {
+        "name": "3",
+        "input": "2 8\n1 7\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91014,
+    "lesson": "loops",
+    "title": "最长连续晴天",
+    "level": "挑战",
+    "prompt": "用 1 表示晴天，0 表示雨天。求最长连续晴天数。1≤n≤100。",
+    "inputFormat": "第一行 n；第二行 n 个 0 或 1。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\ncurrent = best = 0\nfor x in a:\n    current = current + 1 if x == 1 else 0\n    best = max(best, current)\nprint(best)\n",
+    "hint": "维护当前连续长度和历史最大值，遇 0 重置当前长度。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "7\n1 1 0 1 1 1 0\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "3\n0 0 0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "3\n1 1 1\n",
+        "output": "3\n"
+      },
+      {
+        "name": "4",
+        "input": "1\n1\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91015,
+    "lesson": "strings",
+    "title": "统计 M",
+    "level": "基础",
+    "prompt": "给定只含 M 和 O 的非空字符串，输出 M 的数量。长度不超过 100。",
+    "inputFormat": "一行字符串。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "s = input().strip()\nprint(s.count(\"M\"))\n",
+    "hint": "字符串支持 count()。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "MOO\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "OOOO\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "MMM\n",
+        "output": "3\n"
+      }
+    ]
+  },
+  {
+    "id": 91016,
+    "lesson": "strings",
+    "title": "回文检查",
+    "level": "巩固",
+    "prompt": "字符串从左到右、从右到左相同则输出 YES，否则 NO。长度 1 到 100，只含小写字母。",
+    "inputFormat": "一行字符串。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "s = input().strip()\nprint(\"YES\" if s == s[::-1] else \"NO\")\n",
+    "hint": "切片 s[::-1] 可以得到逆序字符串。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "ababa\n",
+        "output": "YES\n"
+      },
+      {
+        "name": "2",
+        "input": "abc\n",
+        "output": "NO\n"
+      },
+      {
+        "name": "3",
+        "input": "a\n",
+        "output": "YES\n"
+      }
+    ]
+  },
+  {
+    "id": 91017,
+    "lesson": "strings",
+    "title": "相邻三字符",
+    "level": "挑战",
+    "prompt": "统计字符串中连续子串 MOO 出现的次数。长度 1 到 100，只含 M 和 O。",
+    "inputFormat": "一行字符串。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "s = input().strip()\nanswer = 0\nfor i in range(len(s) - 2):\n    if s[i:i + 3] == \"MOO\":\n        answer += 1\nprint(answer)\n",
+    "hint": "枚举长度为 3 的窗口，最后合法起点是 len(s)-3。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "MOOMOO\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "M\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "MMOOO\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "OOOO\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91018,
+    "lesson": "collections",
+    "title": "不同的编号",
+    "level": "基础",
+    "prompt": "统计出现过多少个不同的整数。1≤n≤100。",
+    "inputFormat": "第一行 n；第二行 n 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\nprint(len(set(a)))\n",
+    "hint": "set 会去掉重复值。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5\n2 2 3 5 3\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "3\n0 0 0\n",
+        "output": "1\n"
+      },
+      {
+        "name": "3",
+        "input": "3\n-1 0 1\n",
+        "output": "3\n"
+      }
+    ]
+  },
+  {
+    "id": 91019,
+    "lesson": "collections",
+    "title": "目标的频次",
+    "level": "巩固",
+    "prompt": "统计 n 个整数中目标值 x 出现的次数。1≤n≤100。",
+    "inputFormat": "第一行 n x；第二行 n 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, x = map(int, input().split())\na = list(map(int, input().split()))\ncounts = {}\nfor v in a:\n    counts[v] = counts.get(v, 0) + 1\nprint(counts.get(x, 0))\n",
+    "hint": "字典中不存在的键，可以用 get(key, 0) 读成 0。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5 2\n2 1 2 4 2\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "2 9\n1 2\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "1 -3\n-3\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91020,
+    "lesson": "collections",
+    "title": "相同编号配对",
+    "level": "挑战",
+    "prompt": "从列表中选两个不同位置，要求编号相同。统计无序位置对数。1≤n≤1000。",
+    "inputFormat": "第一行 n；第二行 n 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\ncounts = {}\nanswer = 0\nfor x in a:\n    answer += counts.get(x, 0)\n    counts[x] = counts.get(x, 0) + 1\nprint(answer)\n",
+    "hint": "当前元素能和之前每一个相同值组成一对。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5\n1 1 1 2 2\n",
+        "output": "4\n"
+      },
+      {
+        "name": "2",
+        "input": "3\n1 2 3\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "4\n7 7 7 7\n",
+        "output": "6\n"
+      },
+      {
+        "name": "4",
+        "input": "1\n0\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91021,
+    "lesson": "functions",
+    "title": "写一个距离函数",
+    "level": "基础",
+    "prompt": "计算数轴上 a 与 b 的距离。尝试用函数 distance(a,b) 返回结果。a,b 的绝对值不超过 1000。",
+    "inputFormat": "一行 a b。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "def distance(a, b):\n    return abs(a - b)\n\na, b = map(int, input().split())\nprint(distance(a, b))\n",
+    "hint": "return 把计算结果交还给调用处。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 8\n",
+        "output": "5\n"
+      },
+      {
+        "name": "2",
+        "input": "5 5\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "-4 2\n",
+        "output": "6\n"
+      }
+    ]
+  },
+  {
+    "id": 91022,
+    "lesson": "functions",
+    "title": "跨行读数",
+    "level": "巩固",
+    "prompt": "第一个整数 n 后跟 n 个整数，换行位置不固定。输出这些数之和。1≤n≤100。尝试使用 iter() 与 next()。",
+    "inputFormat": "所有整数之间可以是空格或换行。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "import sys\n\nit = iter(map(int, sys.stdin.read().split()))\nn = next(it)\nprint(sum(next(it) for _ in range(n)))\n",
+    "hint": "先 next(it) 读数量，再准确读取 n 个数。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3\n1 2\n3\n",
+        "output": "6\n"
+      },
+      {
+        "name": "2",
+        "input": "1 7\n",
+        "output": "7\n"
+      },
+      {
+        "name": "3",
+        "input": "4\n1\n-1 2\n-2\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91023,
+    "lesson": "functions",
+    "title": "多组求和",
+    "level": "挑战",
+    "prompt": "输入 t 组数据，每组先给数量 n，再给 n 个整数。每组输出一行总和，换行位置不固定。1≤t,n≤100。",
+    "inputFormat": "整数序列：t，接着每组 n 和 n 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "import sys\n\ndef read_sum(it):\n    n = next(it)\n    return sum(next(it) for _ in range(n))\n\nit = iter(map(int, sys.stdin.read().split()))\nt = next(it)\nfor _ in range(t):\n    print(read_sum(it))\n",
+    "hint": "函数只消耗当前组的数据；不要每组重新创建迭代器。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2\n3 1 2 3\n2 4 5\n",
+        "output": "6\n9\n"
+      },
+      {
+        "name": "2",
+        "input": "1 1 -7\n",
+        "output": "-7\n"
+      },
+      {
+        "name": "3",
+        "input": "3 1 0 2 1 -1 1 8\n",
+        "output": "0\n0\n8\n"
+      }
+    ]
+  },
+  {
+    "id": 91024,
+    "lesson": "interval",
+    "title": "两段的重叠",
+    "level": "基础",
+    "prompt": "给定两段连续区间 [a,b] 与 [c,d]，输出交集长度。端点为 0 到 100 的整数，a≤b，c≤d。",
+    "inputFormat": "一行 a b c d。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "a, b, c, d = map(int, input().split())\nprint(max(0, min(b, d) - max(a, c)))\n",
+    "hint": "交集的左端取较大值，右端取较小值；不相交时是 0。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "7 10 4 8\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "1 3 3 5\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "0 9 2 4\n",
+        "output": "2\n"
+      },
+      {
+        "name": "4",
+        "input": "0 1 3 4\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91025,
+    "lesson": "interval",
+    "title": "两段的总覆盖",
+    "level": "巩固",
+    "prompt": "给定两段连续区间，输出至少被覆盖一次的总长度。端点 0 到 100，a≤b，c≤d。",
+    "inputFormat": "一行 a b c d。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "a, b, c, d = map(int, input().split())\noverlap = max(0, min(b, d) - max(a, c))\nprint(b - a + d - c - overlap)\n",
+    "hint": "两段长度之和减去重复部分。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "7 10 4 8\n",
+        "output": "6\n"
+      },
+      {
+        "name": "2",
+        "input": "1 3 5 7\n",
+        "output": "4\n"
+      },
+      {
+        "name": "3",
+        "input": "0 10 3 4\n",
+        "output": "10\n"
+      },
+      {
+        "name": "4",
+        "input": "2 2 2 2\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91026,
+    "lesson": "interval",
+    "title": "多段覆盖",
+    "level": "挑战",
+    "prompt": "求 n 个连续区间覆盖的总长度。1≤n≤100，整数端点 0≤a≤b≤100。",
+    "inputFormat": "第一行 n；接下来 n 行 a b。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\ncovered = set()\nfor _ in range(n):\n    a, b = map(int, input().split())\n    for x in range(a, b):\n        covered.add(x)\nprint(len(covered))\n",
+    "hint": "整数小坐标下，用 x 代表单位区间 [x,x+1)，集合去重。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3\n1 4\n3 7\n9 10\n",
+        "output": "7\n"
+      },
+      {
+        "name": "2",
+        "input": "2\n0 3\n0 3\n",
+        "output": "3\n"
+      },
+      {
+        "name": "3",
+        "input": "1\n5 5\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91027,
+    "lesson": "grid",
+    "title": "定位格子",
+    "level": "基础",
+    "prompt": "读入 n×m 的矩阵，输出行 r、列 c 的元素，下标从 0 开始。1≤n,m≤10。",
+    "inputFormat": "第一行 n m r c；接下来 n 行，每行 m 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, m, r, c = map(int, input().split())\na = [list(map(int, input().split())) for _ in range(n)]\nprint(a[r][c])\n",
+    "hint": "先选行，再选该行中的列。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2 3 1 2\n1 2 3\n4 5 6\n",
+        "output": "6\n"
+      },
+      {
+        "name": "2",
+        "input": "1 1 0 0\n8\n",
+        "output": "8\n"
+      },
+      {
+        "name": "3",
+        "input": "2 2 0 1\n-1 4\n3 2\n",
+        "output": "4\n"
+      }
+    ]
+  },
+  {
+    "id": 91028,
+    "lesson": "grid",
+    "title": "一条轴线",
+    "level": "巩固",
+    "prompt": "n×n×n 方块中移除了 q 个不同格子。问给定 y0,z0 对应的 x 方向直线上有多少个格子已移除。1≤n≤10，0≤q≤n³。",
+    "inputFormat": "第一行 n q y0 z0；接下来 q 行 x y z，坐标在 0 到 n−1。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, q, y0, z0 = map(int, input().split())\nanswer = 0\nfor _ in range(q):\n    x, y, z = map(int, input().split())\n    if y == y0 and z == z0:\n        answer += 1\nprint(answer)\n",
+    "hint": "x 可以变化，y 和 z 必须固定。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2 3 0 1\n0 0 1\n1 0 1\n1 1 1\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "1 0 0 0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "2 1 1 0\n0 0 0\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91029,
+    "lesson": "grid",
+    "title": "完全打通",
+    "level": "挑战",
+    "prompt": "n×n×n 方块移除 q 个不同格子后，统计 x、y、z 三个方向上完全为空的轴线总数。不同方向算不同轴线。1≤n≤10。",
+    "inputFormat": "第一行 n q；接下来 q 行不同的坐标 x y z，范围 0 到 n−1。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, q = map(int, input().split())\nlines = {}\nfor _ in range(q):\n    x, y, z = map(int, input().split())\n    for key in [(0, y, z), (1, x, z), (2, x, y)]:\n        lines[key] = lines.get(key, 0) + 1\nprint(sum(v == n for v in lines.values()))\n",
+    "hint": "用方向加另外两个坐标标识一条线，计数达到 n 就完全为空。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2 3\n0 0 0\n1 0 0\n1 1 1\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "1 1\n0 0 0\n",
+        "output": "3\n"
+      },
+      {
+        "name": "3",
+        "input": "2 0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "2 4\n0 0 0\n0 0 1\n0 1 0\n0 1 1\n",
+        "output": "4\n"
+      }
+    ]
+  },
+  {
+    "id": 91030,
+    "lesson": "symmetry",
+    "title": "找到镜像",
+    "level": "基础",
+    "prompt": "n×n 网格下标从 0 开始，输出 (r,c) 关于中央竖直轴的镜像坐标。2≤n≤100 且 n 为偶数。",
+    "inputFormat": "一行 n r c。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, r, c = map(int, input().split())\nprint(r, n - 1 - c)\n",
+    "hint": "竖直轴反射只改变列。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 0 1\n",
+        "output": "0 2\n"
+      },
+      {
+        "name": "2",
+        "input": "2 1 0\n",
+        "output": "1 1\n"
+      },
+      {
+        "name": "3",
+        "input": "6 3 5\n",
+        "output": "3 0\n"
+      }
+    ]
+  },
+  {
+    "id": 91031,
+    "lesson": "symmetry",
+    "title": "统一四格",
+    "level": "巩固",
+    "prompt": "四个镜像格子的颜色用 0/1 表示。每次可翻转一格，求使四格相同的最少次数。",
+    "inputFormat": "一行四个 0 或 1。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "a = list(map(int, input().split()))\nc = sum(a)\nprint(min(c, 4 - c))\n",
+    "hint": "比较全改成 0 和全改成 1 的代价。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "1 1 1 0\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "0 0 0 0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "1 0 1 0\n",
+        "output": "2\n"
+      }
+    ]
+  },
+  {
+    "id": 91032,
+    "lesson": "symmetry",
+    "title": "整张画布",
+    "level": "挑战",
+    "prompt": "偶数 n×n 的 0/1 网格，每次可翻转一格。求同时满足水平和竖直镜像对称的最少修改次数。2≤n≤20。",
+    "inputFormat": "第一行 n；接下来 n 行，每行 n 个无空格的 0/1 字符。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\na = [input().strip() for _ in range(n)]\nanswer = 0\nfor r in range(n // 2):\n    for c in range(n // 2):\n        count = sum(a[x][y] == \"1\" for x, y in [(r,c),(r,n-1-c),(n-1-r,c),(n-1-r,n-1-c)])\n        answer += min(count, 4 - count)\nprint(answer)\n",
+    "hint": "只枚举左上四分之一，每个镜像组恰好计算一次。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2\n11\n10\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "4\n0000\n0000\n0000\n0000\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "4\n1000\n0100\n0000\n0000\n",
+        "output": "2\n"
+      }
+    ]
+  },
+  {
+    "id": 91033,
+    "lesson": "binary",
+    "title": "查找目标",
+    "level": "基础",
+    "prompt": "在严格递增列表中查找 x，存在则输出其从 0 开始的下标，否则 −1。1≤n≤1000。",
+    "inputFormat": "第一行 n x；第二行递增整数列表。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "from bisect import bisect_left\n\nn, x = map(int, input().split())\na = list(map(int, input().split()))\ni = bisect_left(a, x)\nprint(i if i < n and a[i] == x else -1)\n",
+    "hint": "找到第一个不小于 x 的位置后，还要检查是否相等。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5 7\n1 3 4 7 9\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "2 2\n1 3\n",
+        "output": "-1\n"
+      },
+      {
+        "name": "3",
+        "input": "1 4\n4\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "2 9\n1 3\n",
+        "output": "-1\n"
+      }
+    ]
+  },
+  {
+    "id": 91034,
+    "lesson": "binary",
+    "title": "第一个合格位置",
+    "level": "巩固",
+    "prompt": "在非递减列表中，输出第一个不小于 x 的下标；若不存在输出 n。1≤n≤1000。尝试自己写二分循环。",
+    "inputFormat": "第一行 n x；第二行非递减整数列表。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, x = map(int, input().split())\na = list(map(int, input().split()))\nlo, hi = 0, n\nwhile lo < hi:\n    mid = (lo + hi) // 2\n    if a[mid] < x:\n        lo = mid + 1\n    else:\n        hi = mid\nprint(lo)\n",
+    "hint": "用左闭右开区间 [lo,hi)，右端 n 同时代表不存在。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5 3\n1 3 3 5 8\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "2 9\n1 3\n",
+        "output": "2\n"
+      },
+      {
+        "name": "3",
+        "input": "2 0\n1 3\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "1 4\n4\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91035,
+    "lesson": "binary",
+    "title": "范围内的数量",
+    "level": "挑战",
+    "prompt": "在非递减列表中，统计值处于闭区间 [l,r] 的元素数量。1≤n≤1000，l≤r。",
+    "inputFormat": "第一行 n l r；第二行非递减列表。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "from bisect import bisect_left, bisect_right\n\nn, l, r = map(int, input().split())\na = list(map(int, input().split()))\nprint(bisect_right(a, r) - bisect_left(a, l))\n",
+    "hint": "右边找第一个大于 r 的位置，左边找第一个不小于 l 的位置。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "6 2 4\n1 2 2 4 5 8\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "3 7 9\n1 2 3\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "3 2 2\n2 2 2\n",
+        "output": "3\n"
+      }
+    ]
+  },
+  {
+    "id": 91036,
+    "lesson": "dp",
+    "title": "走到第 n 阶",
+    "level": "基础",
+    "prompt": "每次走 1 或 2 阶，求走到第 n 阶的方案数。0≤n≤25。不走也算到第 0 阶的一种方案。",
+    "inputFormat": "一行 n。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\ndp = [0] * (n + 1)\ndp[0] = 1\nfor i in range(1, n + 1):\n    dp[i] = dp[i - 1]\n    if i >= 2:\n        dp[i] += dp[i - 2]\nprint(dp[n])\n",
+    "hint": "按最后一步来自哪里，拆成两个互斥情况。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n",
+        "output": "5\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n",
+        "output": "1\n"
+      },
+      {
+        "name": "3",
+        "input": "1\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "6\n",
+        "output": "13\n"
+      }
+    ]
+  },
+  {
+    "id": 91037,
+    "lesson": "dp",
+    "title": "不能踩的台阶",
+    "level": "巩固",
+    "prompt": "每次走 1 或 2 阶，部分台阶禁止落脚。求到第 n 阶的方案数。1≤n≤25，0≤k≤n；禁止的台阶在 1 到 n 且互不相同。",
+    "inputFormat": "第一行 n k；第二行 k 个禁止台阶，k=0 时空行。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, k = map(int, input().split())\nblocked = set(map(int, input().split()))\ndp = [0] * (n + 1)\ndp[0] = 1\nfor i in range(1, n + 1):\n    if i not in blocked:\n        dp[i] = dp[i - 1] + (dp[i - 2] if i >= 2 else 0)\nprint(dp[n])\n",
+    "hint": "禁止落脚的状态保持 0，其他状态照常转移。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 1\n2\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "3 0\n\n",
+        "output": "3\n"
+      },
+      {
+        "name": "3",
+        "input": "3 1\n3\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "2 1\n1\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91038,
+    "lesson": "dp",
+    "title": "最省力的路线",
+    "level": "挑战",
+    "prompt": "从台阶 0 出发，每次前进 1 或 2 阶。落在第 i 阶要付出 cost[i]，求到第 n 阶的最小总代价。1≤n≤100，费用 0 到 1000。",
+    "inputFormat": "第一行 n；第二行第 1 到 n 阶的费用。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\ncost = [0] + list(map(int, input().split()))\ndp = [0] * (n + 1)\nfor i in range(1, n + 1):\n    dp[i] = cost[i] + (dp[i - 1] if i == 1 else min(dp[i - 1], dp[i - 2]))\nprint(dp[n])\n",
+    "hint": "状态改为最小代价，合并两个来源时用 min，而非求和。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n1 100 1 1\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "1\n7\n",
+        "output": "7\n"
+      },
+      {
+        "name": "3",
+        "input": "3\n0 0 0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "2\n9 2\n",
+        "output": "2\n"
+      }
+    ]
+  },
+  {
+    "id": 91039,
+    "lesson": "printing",
+    "title": "展开重复块",
+    "level": "基础",
+    "prompt": "把长度 m 的数字块重复 k 次并输出。1≤m,k≤10。",
+    "inputFormat": "第一行 m k；第二行 m 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "m, k = map(int, input().split())\na = list(map(int, input().split()))\nprint(*(a * k))\n",
+    "hint": "列表乘以 k 会重复整个块。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 2\n1 1 2\n",
+        "output": "1 1 2 1 1 2\n"
+      },
+      {
+        "name": "2",
+        "input": "1 3\n7\n",
+        "output": "7 7 7\n"
+      },
+      {
+        "name": "3",
+        "input": "2 1\n1 2\n",
+        "output": "1 2\n"
+      }
+    ]
+  },
+  {
+    "id": 91040,
+    "lesson": "printing",
+    "title": "检验给定周期",
+    "level": "巩固",
+    "prompt": "检查长度 n 的序列能否由前 k 个数字重复组成。可以则 YES，否则 NO。1≤k≤n≤100。",
+    "inputFormat": "第一行 n k；第二行 n 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, k = map(int, input().split())\na = list(map(int, input().split()))\nprint(\"YES\" if n % k == 0 and all(a[i] == a[i % k] for i in range(n)) else \"NO\")\n",
+    "hint": "既要长度整除，也要每个位置与块内对应位置相等。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "6 3\n1 1 2 1 1 2\n",
+        "output": "YES\n"
+      },
+      {
+        "name": "2",
+        "input": "5 2\n1 2 1 2 1\n",
+        "output": "NO\n"
+      },
+      {
+        "name": "3",
+        "input": "4 2\n1 2 1 3\n",
+        "output": "NO\n"
+      }
+    ]
+  },
+  {
+    "id": 91041,
+    "lesson": "printing",
+    "title": "最短重复块",
+    "level": "挑战",
+    "prompt": "求能完整重复组成序列的最短块长。1≤n≤100；允许块长为 n。此练习只研究平铺周期，不等同于原题允许嵌套 REP 的最优解。",
+    "inputFormat": "第一行 n；第二行 n 个整数。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\nfor k in range(1, n + 1):\n    if n % k == 0 and all(a[i] == a[i % k] for i in range(n)):\n        print(k)\n        break\n",
+    "hint": "从短到长枚举块长，找到第一个满足条件的即可。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "6\n1 1 2 1 1 2\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "4\n7 7 7 7\n",
+        "output": "1\n"
+      },
+      {
+        "name": "3",
+        "input": "5\n1 2 1 2 1\n",
+        "output": "5\n"
+      }
+    ]
+  },
+  {
+    "id": 91042,
+    "lesson": "bitmask",
+    "title": "查看某一位",
+    "level": "基础",
+    "prompt": "给定非负整数 mask 和位号 i，输出从低到高第 i 位的 0/1 值。0≤mask<1024，0≤i<10。",
+    "inputFormat": "一行 mask i。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "mask, i = map(int, input().split())\nprint((mask >> i) & 1)\n",
+    "hint": "右移 i 位，再与 1 按位与。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5 2\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "5 1\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "0 0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "1 0\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91043,
+    "lesson": "bitmask",
+    "title": "选恰好 k 个",
+    "level": "巩固",
+    "prompt": "n 个不同位置，每个可以选或不选，求恰好选择 k 个的方案数。0≤k≤n≤15。尝试用位掩码枚举。",
+    "inputFormat": "一行 n k。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, k = map(int, input().split())\nanswer = 0\nfor mask in range(1 << n):\n    if mask.bit_count() == k:\n        answer += 1\nprint(answer)\n",
+    "hint": "从 0 到 (1<<n)-1 枚举；bit_count() 统计置 1 的位数。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 2\n",
+        "output": "6\n"
+      },
+      {
+        "name": "2",
+        "input": "0 0\n",
+        "output": "1\n"
+      },
+      {
+        "name": "3",
+        "input": "5 5\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "3 1\n",
+        "output": "3\n"
+      }
+    ]
+  },
+  {
+    "id": 91044,
+    "lesson": "bitmask",
+    "title": "子集目标和",
+    "level": "挑战",
+    "prompt": "n 个带有位置的整数，统计元素总和为 target 的子集数量。空集也算，两个值相同但位置不同的元素可分别选择。0≤n≤15，元素与 target 的绝对值≤100。",
+    "inputFormat": "第一行 n target；第二行 n 个整数，n=0 时空行。",
+    "outputFormat": "输出题目要求的答案。多个数字用空格分隔。",
+    "solution": "n, target = map(int, input().split())\na = list(map(int, input().split()))\nanswer = 0\nfor mask in range(1 << n):\n    total = sum(a[i] for i in range(n) if (mask >> i) & 1)\n    if total == target:\n        answer += 1\nprint(answer)\n",
+    "hint": "位掩码区分位置，因此相同值不会被错误合并。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 3\n1 2 3\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "3 0\n0 0 0\n",
+        "output": "8\n"
+      },
+      {
+        "name": "3",
+        "input": "0 0\n\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "3 0\n-1 1 2\n",
+        "output": "2\n"
+      }
+    ]
+  },
+  {
+    "id": 91045,
+    "lesson": "complexity",
+    "title": "有多少对牛",
+    "level": "基础",
+    "prompt": "N 头不同的牛，选择两头组成一对。顺序不影响配对，不能选自己。0≤N≤100000。",
+    "inputFormat": "一行整数 N。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n = int(input())\nprint(n * (n - 1) // 2)\n",
+    "hint": "每对在 N(N−1) 中出现两次。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n",
+        "output": "6\n"
+      },
+      {
+        "name": "2",
+        "input": "1\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "100000\n",
+        "output": "4999950000\n"
+      }
+    ]
+  },
+  {
+    "id": 91046,
+    "lesson": "complexity",
+    "title": "这次枚举有多少检查",
+    "level": "巩固",
+    "prompt": "枚举所有 i<j 的牛对，并对每对检查 K 条规则。求检查总次数。0≤N≤100000，1≤K≤1000。",
+    "inputFormat": "一行 N K。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, k = map(int, input().split())\nprint(n * (n - 1) // 2 * k)\n",
+    "hint": "外层候选数乘每个候选的验证工作量。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 3\n",
+        "output": "18\n"
+      },
+      {
+        "name": "2",
+        "input": "1 1000\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "0 2\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "100000 1000\n",
+        "output": "4999950000000\n"
+      }
+    ]
+  },
+  {
+    "id": 91047,
+    "lesson": "complexity",
+    "title": "给程序补齐边界",
+    "level": "挑战",
+    "prompt": "牛的编号序列中，相同值连续出现算一段。输出段数。N 可以为 0；编号为 1 到 9。0≤N≤100000。",
+    "inputFormat": "第一行 N，第二行 N 个编号；N=0 时第二行为空。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\nanswer = 0\nfor i in range(n):\n    if i == 0 or a[i] != a[i - 1]:\n        answer += 1\nprint(answer)\n",
+    "hint": "只在第一项或与前一项不同的地方增加段数。检查空数组和全相同。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "6\n1 1 2 2 1 3\n",
+        "output": "4\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "1\n7\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "4\n2 2 2 2\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91048,
+    "lesson": "simulation",
+    "title": "倒一次牛奶",
+    "level": "基础",
+    "prompt": "把 1 号桶倒入 2 号桶，直到 1 号空或 2 号满。容量不超过 100，奶量在 0 与容量之间。",
+    "inputFormat": "两行，每行容量与当前奶量。",
+    "outputFormat": "输出两个桶最终的奶量，用空格隔开。",
+    "solution": "c1, m1 = map(int, input().split())\nc2, m2 = map(int, input().split())\namount = min(m1, c2 - m2)\nprint(m1 - amount, m2 + amount)\n",
+    "hint": "能倒多少同时受源桶现有量和目标桶剩余容量限制。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "10 3\n11 4\n",
+        "output": "0 7\n"
+      },
+      {
+        "name": "2",
+        "input": "10 9\n5 4\n",
+        "output": "8 5\n"
+      },
+      {
+        "name": "3",
+        "input": "4 0\n4 4\n",
+        "output": "0 4\n"
+      },
+      {
+        "name": "4",
+        "input": "5 5\n5 0\n",
+        "output": "0 5\n"
+      }
+    ]
+  },
+  {
+    "id": 91049,
+    "lesson": "simulation",
+    "title": "轮流倒奶",
+    "level": "巩固",
+    "prompt": "三个桶重复执行 1→2、2→3、3→1，共操作 T 次。容量≤100，0≤T≤1000。",
+    "inputFormat": "第一行 T，接下来三行各为容量和奶量。",
+    "outputFormat": "输出三个桶的最终奶量，用空格隔开。",
+    "solution": "t = int(input())\ncapacity, milk = [], []\nfor _ in range(3):\n    c, m = map(int, input().split())\n    capacity.append(c)\n    milk.append(m)\nfor i in range(t):\n    a, b = i % 3, (i + 1) % 3\n    amount = min(milk[a], capacity[b] - milk[b])\n    milk[a] -= amount\n    milk[b] += amount\nprint(*milk)\n",
+    "hint": "用 i%3 决定源桶，每次只更新两个位置。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3\n10 3\n11 4\n12 5\n",
+        "output": "10 0 2\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n2 1\n3 2\n4 3\n",
+        "output": "1 2 3\n"
+      },
+      {
+        "name": "3",
+        "input": "4\n5 5\n5 0\n5 0\n",
+        "output": "0 5 0\n"
+      },
+      {
+        "name": "4",
+        "input": "10\n1 1\n1 1\n1 1\n",
+        "output": "1 1 1\n"
+      }
+    ]
+  },
+  {
+    "id": 91050,
+    "lesson": "simulation",
+    "title": "跟踪交换的贝壳",
+    "level": "挑战",
+    "prompt": "三个位置编号为 1、2、3。小球初始在 P，每次交换两个位置的贝壳，输出最后球的位置。0≤N≤1000。",
+    "inputFormat": "第一行 N P；随后 N 行每行两个不同位置 a b。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, p = map(int, input().split())\nfor _ in range(n):\n    a, b = map(int, input().split())\n    if p == a:\n        p = b\n    elif p == b:\n        p = a\nprint(p)\n",
+    "hint": "每次最多进入一个分支；两个独立 if 可能把刚移动的小球又移回去。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 1\n1 2\n2 3\n1 2\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "0 2\n",
+        "output": "2\n"
+      },
+      {
+        "name": "3",
+        "input": "2 1\n1 2\n1 2\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "1 3\n1 2\n",
+        "output": "3\n"
+      }
+    ]
+  },
+  {
+    "id": 91051,
+    "lesson": "enumeration",
+    "title": "两袋饲料",
+    "level": "基础",
+    "prompt": "选择两个不同位置的袋子，使重量和恰好为 T。顺序不计；重复重量保留不同位置。1≤N≤200，重量与 T 为非负整数≤1000。",
+    "inputFormat": "第一行 N T，第二行 N 个重量。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, target = map(int, input().split())\na = list(map(int, input().split()))\nanswer = 0\nfor i in range(n):\n    for j in range(i + 1, n):\n        if a[i] + a[j] == target:\n            answer += 1\nprint(answer)\n",
+    "hint": "用 i<j 排除重复与自己配对。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 9\n2 4 7 5\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "3 4\n2 2 2\n",
+        "output": "3\n"
+      },
+      {
+        "name": "3",
+        "input": "1 4\n2\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "3 0\n0 0 0\n",
+        "output": "3\n"
+      }
+    ]
+  },
+  {
+    "id": 91052,
+    "lesson": "enumeration",
+    "title": "给每头牛送草",
+    "level": "巩固",
+    "prompt": "把一个供草点放在某头牛的位置，所有牛到此点的距离之和是多少的最小值？1≤N≤100，坐标绝对值≤1000。",
+    "inputFormat": "第一行 N，第二行 N 个一维坐标。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\nanswer = min(sum(abs(x - at) for x in a) for at in a)\nprint(answer)\n",
+    "hint": "枚举供草点，再遍历所有牛计算距离之和。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3\n1 4 8\n",
+        "output": "7\n"
+      },
+      {
+        "name": "2",
+        "input": "1\n-9\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "4\n2 2 2 2\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "4\n-5 -1 1 5\n",
+        "output": "12\n"
+      }
+    ]
+  },
+  {
+    "id": 91053,
+    "lesson": "enumeration",
+    "title": "检查每个连续区间",
+    "level": "挑战",
+    "prompt": "给定正整数序列，统计连续区间的元素和恰好为 T 的个数。1≤N≤100，1≤a[i]≤100，0≤T≤10000。",
+    "inputFormat": "第一行 N T，第二行 N 个整数。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, target = map(int, input().split())\na = list(map(int, input().split()))\nanswer = 0\nfor left in range(n):\n    total = 0\n    for right in range(left, n):\n        total += a[right]\n        if total == target:\n            answer += 1\nprint(answer)\n",
+    "hint": "固定左端点，向右扩展时维护总和，每个区间恰好检查一次。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 3\n1 2 1 2\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "3 2\n1 1 1\n",
+        "output": "2\n"
+      },
+      {
+        "name": "3",
+        "input": "1 0\n1\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "1 7\n7\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91054,
+    "lesson": "sorting",
+    "title": "最近的两头牛",
+    "level": "基础",
+    "prompt": "在一维坐标上找最近的两头牛，输出距离。不同牛可同坐标。2≤N≤10000，坐标绝对值≤1000000。",
+    "inputFormat": "第一行 N，第二行 N 个坐标。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n = int(input())\na = sorted(map(int, input().split()))\nprint(min(a[i] - a[i - 1] for i in range(1, n)))\n",
+    "hint": "排序后只需检查相邻牛；非相邻之间还夹着其他牛。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n7 1 4 2\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "2\n-5 5\n",
+        "output": "10\n"
+      },
+      {
+        "name": "3",
+        "input": "3\n8 8 2\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "2\n1000000 -1000000\n",
+        "output": "2000000\n"
+      }
+    ]
+  },
+  {
+    "id": 91055,
+    "lesson": "sorting",
+    "title": "给身高排座次",
+    "level": "巩固",
+    "prompt": "按身高从小到大输出牛的原始编号。身高相同则原编号小的靠前，编号从 1 开始。1≤N≤10000，身高为 1 到 1000000。",
+    "inputFormat": "第一行 N，第二行 N 个身高。",
+    "outputFormat": "输出 N 个原始编号，用空格隔开。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\norder = sorted(range(n), key=lambda i: (a[i], i))\nprint(*(i + 1 for i in order))\n",
+    "hint": "排序的是编号，比较键是 (身高, 编号)。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n4 2 7 1\n",
+        "output": "4 2 1 3\n"
+      },
+      {
+        "name": "2",
+        "input": "3\n5 5 5\n",
+        "output": "1 2 3\n"
+      },
+      {
+        "name": "3",
+        "input": "1\n9\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "4\n3 1 3 1\n",
+        "output": "2 4 1 3\n"
+      }
+    ]
+  },
+  {
+    "id": 91056,
+    "lesson": "sorting",
+    "title": "统一售价的最大收入",
+    "level": "挑战",
+    "prompt": "N 位顾客分别最多愿意支付 a[i]，售价不高于其意愿者都会购买。输出最大收入及最优售价；收入相同时取较小售价。1≤N≤10000，1≤a[i]≤1000000。",
+    "inputFormat": "第一行 N，第二行 N 个意愿价格。",
+    "outputFormat": "输出最大收入和售价，用空格隔开。",
+    "solution": "n = int(input())\na = sorted(map(int, input().split()))\nbest, price = 0, 0\nfor i, value in enumerate(a):\n    revenue = value * (n - i)\n    if revenue > best:\n        best, price = revenue, value\nprint(best, price)\n",
+    "hint": "升序枚举售价，后面的顾客都买得起。相同收入时不覆盖更小的售价。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n1 2 4 7\n",
+        "output": "8 4\n"
+      },
+      {
+        "name": "2",
+        "input": "3\n2 2 2\n",
+        "output": "6 2\n"
+      },
+      {
+        "name": "3",
+        "input": "2\n2 4\n",
+        "output": "4 2\n"
+      },
+      {
+        "name": "4",
+        "input": "1\n9\n",
+        "output": "9 9\n"
+      }
+    ]
+  },
+  {
+    "id": 91057,
+    "lesson": "counting",
+    "title": "牛的品种数",
+    "level": "基础",
+    "prompt": "统计字符串中不同品种的数量。品种用大写字母表示，1≤字符串长度≤10000。",
+    "inputFormat": "一行品种字符串。",
+    "outputFormat": "输出一个整数。",
+    "solution": "s = input().strip()\nprint(len(set(s)))\n",
+    "hint": "集合只保留不同的值。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "GHGGH\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "AAAA\n",
+        "output": "1\n"
+      },
+      {
+        "name": "3",
+        "input": "ABCDEF\n",
+        "output": "6\n"
+      },
+      {
+        "name": "4",
+        "input": "Z\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91058,
+    "lesson": "counting",
+    "title": "同品种配对",
+    "level": "巩固",
+    "prompt": "统计由两头同品种的不同牛组成的无序对。品种是大写字母，1≤长度≤10000。",
+    "inputFormat": "一行品种字符串。",
+    "outputFormat": "输出一个整数。",
+    "solution": "s = input().strip()\ncounts = {}\nfor x in s:\n    counts[x] = counts.get(x, 0) + 1\nprint(sum(c * (c - 1) // 2 for c in counts.values()))\n",
+    "hint": "同品种有 c 头时贡献 c(c−1)/2 对。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "GHGGH\n",
+        "output": "4\n"
+      },
+      {
+        "name": "2",
+        "input": "AAAA\n",
+        "output": "6\n"
+      },
+      {
+        "name": "3",
+        "input": "ABC\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "Z\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91059,
+    "lesson": "counting",
+    "title": "新增一头牛的贡献",
+    "level": "挑战",
+    "prompt": "牛按顺序进入队伍，每进入一头，输出它与之前同品种的牛能组成多少新牛对。品种为大写字母，1≤长度≤10000。",
+    "inputFormat": "一行品种字符串。",
+    "outputFormat": "按到达顺序输出每头牛新增的配对数，用空格隔开。",
+    "solution": "s = input().strip()\ncounts, answers = {}, []\nfor x in s:\n    old = counts.get(x, 0)\n    answers.append(old)\n    counts[x] = old + 1\nprint(*answers)\n",
+    "hint": "新牛的贡献等于之前该品种的数量，先读取再更新。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "GHGGH\n",
+        "output": "0 0 1 2 1\n"
+      },
+      {
+        "name": "2",
+        "input": "AAAA\n",
+        "output": "0 1 2 3\n"
+      },
+      {
+        "name": "3",
+        "input": "ABC\n",
+        "output": "0 0 0\n"
+      },
+      {
+        "name": "4",
+        "input": "Z\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91060,
+    "lesson": "adhoc",
+    "title": "步长二的脚印",
+    "level": "基础",
+    "prompt": "Bessie 从坐标 A 出发，每步可以向左或右走 2。能否到 B？坐标绝对值≤10^9。",
+    "inputFormat": "一行 A B。",
+    "outputFormat": "输出 YES 或 NO。",
+    "solution": "a, b = map(int, input().split())\nprint(\"YES\" if (b - a) % 2 == 0 else \"NO\")\n",
+    "hint": "每次移动后奇偶性不变；同奇偶时可以连续向一个方向走。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "1 7\n",
+        "output": "YES\n"
+      },
+      {
+        "name": "2",
+        "input": "1 8\n",
+        "output": "NO\n"
+      },
+      {
+        "name": "3",
+        "input": "-3 3\n",
+        "output": "YES\n"
+      },
+      {
+        "name": "4",
+        "input": "0 0\n",
+        "output": "YES\n"
+      }
+    ]
+  },
+  {
+    "id": 91061,
+    "lesson": "adhoc",
+    "title": "平均分配草料",
+    "level": "巩固",
+    "prompt": "每次可从任意牛栏搬一捆草到另一栏。让所有栏草量相等，求最少次数；无法相等输出 −1。1≤N≤10000，0≤a[i]≤1000000。",
+    "inputFormat": "第一行 N，第二行 N 个草量。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\nif sum(a) % n:\n    print(-1)\nelse:\n    target = sum(a) // n\n    print(sum(max(0, x - target) for x in a))\n",
+    "hint": "总量不变决定目标。每次只能搬一捆，所有多余的捆数就是下界，也一定能搬给缺草栏。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n4 2 6 4\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "3\n1 1 2\n",
+        "output": "-1\n"
+      },
+      {
+        "name": "3",
+        "input": "1\n8\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "3\n0 0 9\n",
+        "output": "6\n"
+      }
+    ]
+  },
+  {
+    "id": 91062,
+    "lesson": "adhoc",
+    "title": "构造脚印序列",
+    "level": "挑战",
+    "prompt": "构造 N 个数，每个为 1 或 −1，使总和为 S。要求所有 1 在所有 −1 前面；不可能时输出 IMPOSSIBLE。1≤N≤100，|S|≤200。",
+    "inputFormat": "一行 N S。",
+    "outputFormat": "按要求输出序列，或 IMPOSSIBLE。",
+    "solution": "n, s = map(int, input().split())\nif abs(s) > n or (n + s) % 2:\n    print(\"IMPOSSIBLE\")\nelse:\n    positive = (n + s) // 2\n    print(*([1] * positive + [-1] * (n - positive)))\n",
+    "hint": "设正步数量 p，负步是 N−p。由 p−(N−p)=S 求 p，并检查范围与整数性。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5 1\n",
+        "output": "1 1 1 -1 -1\n"
+      },
+      {
+        "name": "2",
+        "input": "2 1\n",
+        "output": "IMPOSSIBLE\n"
+      },
+      {
+        "name": "3",
+        "input": "1 -1\n",
+        "output": "-1\n"
+      },
+      {
+        "name": "4",
+        "input": "2 4\n",
+        "output": "IMPOSSIBLE\n"
+      }
+    ]
+  },
+  {
+    "id": 91063,
+    "lesson": "greedy",
+    "title": "尽量多买草袋",
+    "level": "基础",
+    "prompt": "每袋只能买一次，预算 B，最多能买多少袋？1≤N≤10000，0≤B≤10^9，价格为 1 到 10^6。",
+    "inputFormat": "第一行 N B，第二行 N 个价格。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, budget = map(int, input().split())\na = sorted(map(int, input().split()))\nanswer = 0\nfor cost in a:\n    if cost > budget:\n        break\n    budget -= cost\n    answer += 1\nprint(answer)\n",
+    "hint": "同样买一袋，更便宜不会减少以后能买的数量，可以交换到先买最便宜的方案。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 7\n4 2 7 1\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "2 0\n1 2\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "3 6\n2 2 2\n",
+        "output": "3\n"
+      },
+      {
+        "name": "4",
+        "input": "1 4\n5\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91064,
+    "lesson": "greedy",
+    "title": "覆盖一排牛",
+    "level": "巩固",
+    "prompt": "同品种牛在一维坐标上，饲喂站可放在任意位置，覆盖左右各 K 单位。求覆盖所有牛的最少站数。1≤N≤10000，0≤K≤100000，坐标绝对值≤10^6。",
+    "inputFormat": "第一行 N K，第二行 N 个坐标。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, k = map(int, input().split())\na = sorted(map(int, input().split()))\ni = answer = 0\nwhile i < n:\n    right = a[i] + 2 * k\n    answer += 1\n    while i < n and a[i] <= right:\n        i += 1\nprint(answer)\n",
+    "hint": "覆盖最左未处理点 x 的站，可以尽量向右放在 x+K，最右覆盖 x+2K。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 1\n1 2 5 6\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "3 0\n2 2 3\n",
+        "output": "2\n"
+      },
+      {
+        "name": "3",
+        "input": "1 9\n-5\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "3 1\n0 2 4\n",
+        "output": "2\n"
+      }
+    ]
+  },
+  {
+    "id": 91065,
+    "lesson": "greedy",
+    "title": "寻找硬币贪心的反例",
+    "level": "挑战",
+    "prompt": "硬币面值为 1、3、4，每种无限多。凑出 N 的最少硬币数是多少？0≤N≤100。请通过枚举 3、4 元数量获得确切答案。",
+    "inputFormat": "一行 N。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n = int(input())\nanswer = n\nfor four in range(n // 4 + 1):\n    for three in range((n - four * 4) // 3 + 1):\n        one = n - four * 4 - three * 3\n        answer = min(answer, four + three + one)\nprint(answer)\n",
+    "hint": "N=6 时先选 4 会用 3 枚，但 3+3 只需 2 枚。先验证贪心能否被反例推翻。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "6\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "8\n",
+        "output": "2\n"
+      },
+      {
+        "name": "3",
+        "input": "0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "2\n",
+        "output": "2\n"
+      }
+    ]
+  },
+  {
+    "id": 91066,
+    "lesson": "geometry",
+    "title": "走到牛棚的距离",
+    "level": "基础",
+    "prompt": "只能沿横轴或纵轴走。求从 (x1,y1) 到 (x2,y2) 的最短距离。坐标绝对值≤10^6。",
+    "inputFormat": "一行 x1 y1 x2 y2。",
+    "outputFormat": "输出一个整数。",
+    "solution": "x1, y1, x2, y2 = map(int, input().split())\nprint(abs(x1 - x2) + abs(y1 - y2))\n",
+    "hint": "每个方向都必须补齐坐标差，先横后纵能达到这个下界。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "0 0 3 4\n",
+        "output": "7\n"
+      },
+      {
+        "name": "2",
+        "input": "-2 3 2 -3\n",
+        "output": "10\n"
+      },
+      {
+        "name": "3",
+        "input": "1 1 1 1\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "0 -2 0 5\n",
+        "output": "7\n"
+      }
+    ]
+  },
+  {
+    "id": 91067,
+    "lesson": "geometry",
+    "title": "两块草地的交集",
+    "level": "巩固",
+    "prompt": "两个轴对齐矩形，求重叠面积。每个矩形给定左下角和右上角，宽高均为正；坐标绝对值≤1000。",
+    "inputFormat": "两行，每行 x1 y1 x2 y2。",
+    "outputFormat": "输出一个整数。",
+    "solution": "a, b, c, d = map(int, input().split())\ne, f, g, h = map(int, input().split())\nprint(max(0, min(c, g) - max(a, e)) * max(0, min(d, h) - max(b, f)))\n",
+    "hint": "横向和纵向分别求交集长度，再相乘。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "0 0 4 3\n2 1 5 4\n",
+        "output": "4\n"
+      },
+      {
+        "name": "2",
+        "input": "0 0 1 1\n1 0 2 1\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "-2 -2 2 2\n-1 -1 1 1\n",
+        "output": "4\n"
+      },
+      {
+        "name": "4",
+        "input": "0 0 2 2\n0 3 2 4\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91068,
+    "lesson": "geometry",
+    "title": "多块小草地的并集",
+    "level": "挑战",
+    "prompt": "N 个矩形都在整数网格中，统计至少被一块覆盖的面积。1≤N≤20；0≤x1<x2≤20，0≤y1<y2≤20。",
+    "inputFormat": "第一行 N，随后 N 行各为 x1 y1 x2 y2。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n = int(input())\ncovered = set()\nfor _ in range(n):\n    x1, y1, x2, y2 = map(int, input().split())\n    for x in range(x1, x2):\n        for y in range(y1, y2):\n            covered.add((x, y))\nprint(len(covered))\n",
+    "hint": "每个 (x,y) 代表一个单位小方格，把 Fence Painting 的标记方法扩展到二维。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2\n0 0 4 3\n2 1 5 4\n",
+        "output": "17\n"
+      },
+      {
+        "name": "2",
+        "input": "2\n0 0 2 2\n0 0 2 2\n",
+        "output": "4\n"
+      },
+      {
+        "name": "3",
+        "input": "2\n0 0 1 1\n1 0 2 1\n",
+        "output": "2\n"
+      },
+      {
+        "name": "4",
+        "input": "1\n0 0 20 20\n",
+        "output": "400\n"
+      }
+    ]
+  },
+  {
+    "id": 91069,
+    "lesson": "prefix",
+    "title": "写出累计草量",
+    "level": "基础",
+    "prompt": "输出前缀和数组 p，约定 p[0]=0，p[i] 为前 i 个元素之和。1≤N≤10000，元素绝对值≤1000。",
+    "inputFormat": "第一行 N，第二行 N 个整数。",
+    "outputFormat": "输出 N+1 个数，用空格隔开。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\np = [0]\nfor x in a:\n    p.append(p[-1] + x)\nprint(*p)\n",
+    "hint": "p 比原数组多一个初始的 0。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n4 2 7 1\n",
+        "output": "0 4 6 13 14\n"
+      },
+      {
+        "name": "2",
+        "input": "1\n0\n",
+        "output": "0 0\n"
+      },
+      {
+        "name": "3",
+        "input": "3\n1 -2 3\n",
+        "output": "0 1 -1 2\n"
+      },
+      {
+        "name": "4",
+        "input": "2\n-3 -4\n",
+        "output": "0 -3 -7\n"
+      }
+    ]
+  },
+  {
+    "id": 91070,
+    "lesson": "prefix",
+    "title": "多次查询牛槽",
+    "level": "巩固",
+    "prompt": "每次查询半开区间 [L,R) 的元素和。下标从 0 开始，0≤L≤R≤N；1≤N,Q≤10000，元素绝对值≤1000。",
+    "inputFormat": "第一行 N Q；第二行 N 个数；随后 Q 行各为 L R。",
+    "outputFormat": "每个查询的答案单独一行。",
+    "solution": "n, q = map(int, input().split())\na = list(map(int, input().split()))\np = [0]\nfor x in a:\n    p.append(p[-1] + x)\nfor _ in range(q):\n    l, r = map(int, input().split())\n    print(p[r] - p[l])\n",
+    "hint": "半开区间可统一处理空区间和完整数组，答案为 p[R]−p[L]。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 3\n4 2 7 1\n1 3\n0 4\n2 2\n",
+        "output": "9\n14\n0\n"
+      },
+      {
+        "name": "2",
+        "input": "1 1\n-5\n0 1\n",
+        "output": "-5\n"
+      },
+      {
+        "name": "3",
+        "input": "3 2\n1 -2 3\n0 2\n2 3\n",
+        "output": "-1\n3\n"
+      },
+      {
+        "name": "4",
+        "input": "2 1\n0 0\n0 2\n",
+        "output": "0\n"
+      }
+    ]
+  },
+  {
+    "id": 91071,
+    "lesson": "prefix",
+    "title": "批量添加草料",
+    "level": "挑战",
+    "prompt": "N 个槽初始为 0。执行 Q 次对半开区间 [L,R) 每项加 V，输出最终各槽值。1≤N,Q≤10000，0≤L≤R≤N，0≤V≤1000。",
+    "inputFormat": "第一行 N Q；随后 Q 行各为 L R V。",
+    "outputFormat": "输出 N 个最终值，用空格隔开。",
+    "solution": "n, q = map(int, input().split())\nd = [0] * (n + 1)\nfor _ in range(q):\n    l, r, v = map(int, input().split())\n    d[l] += v\n    d[r] -= v\nanswer, current = [], 0\nfor i in range(n):\n    current += d[i]\n    answer.append(current)\nprint(*answer)\n",
+    "hint": "只在两个端点记录变化，再累计一次。额外的 d[N] 用来接收右端减量。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 2\n0 3 2\n1 4 1\n",
+        "output": "2 3 3 1\n"
+      },
+      {
+        "name": "2",
+        "input": "1 1\n0 1 5\n",
+        "output": "5\n"
+      },
+      {
+        "name": "3",
+        "input": "3 1\n1 1 7\n",
+        "output": "0 0 0\n"
+      },
+      {
+        "name": "4",
+        "input": "2 2\n0 2 3\n0 2 4\n",
+        "output": "7 7\n"
+      }
+    ]
+  },
+  {
+    "id": 91072,
+    "lesson": "recursion",
+    "title": "列完选择再计数",
+    "level": "基础",
+    "prompt": "N 袋饲料，每袋选或不选。求总重量为 T 的子集数量，空集也算，重复重量按不同位置区分。0≤N≤18，0≤重量≤100，0≤T≤1800。",
+    "inputFormat": "第一行 N T；第二行 N 个重量。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, target = map(int, input().split())\na = list(map(int, input().split()))\ndef dfs(i, total):\n    if i == n:\n        return int(total == target)\n    return dfs(i + 1, total) + dfs(i + 1, total + a[i])\nprint(dfs(0, 0))\n",
+    "hint": "每层决定一袋是否选，直到所有位置决定完再判断总和。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 6\n2 4 7\n",
+        "output": "1\n"
+      },
+      {
+        "name": "2",
+        "input": "3 2\n1 1 1\n",
+        "output": "3\n"
+      },
+      {
+        "name": "3",
+        "input": "0 0\n\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "2 0\n0 0\n",
+        "output": "4\n"
+      }
+    ]
+  },
+  {
+    "id": 91073,
+    "lesson": "recursion",
+    "title": "至少装到目标",
+    "level": "巩固",
+    "prompt": "每袋可取一次，找总重量至少为 T 的子集中的最小总重量。做不到输出 −1。1≤N≤18，重量为 1 到 100，0≤T≤2000。",
+    "inputFormat": "第一行 N T，第二行 N 个重量。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, target = map(int, input().split())\na = list(map(int, input().split()))\nbest = sum(a) + 1\ndef dfs(i, total):\n    global best\n    if i == n:\n        if total >= target:\n            best = min(best, total)\n        return\n    dfs(i + 1, total)\n    dfs(i + 1, total + a[i])\ndfs(0, 0)\nprint(-1 if best == sum(a) + 1 else best)\n",
+    "hint": "先完整枚举保证正确，再讨论剪枝。空集在 T=0 时是合法最优解。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 6\n2 4 7\n",
+        "output": "6\n"
+      },
+      {
+        "name": "2",
+        "input": "2 8\n2 3\n",
+        "output": "-1\n"
+      },
+      {
+        "name": "3",
+        "input": "1 0\n7\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "3 8\n2 4 7\n",
+        "output": "9\n"
+      }
+    ]
+  },
+  {
+    "id": 91074,
+    "lesson": "recursion",
+    "title": "不能相邻的两头牛",
+    "level": "挑战",
+    "prompt": "将编号 1 到 N 的牛排成一队，编号 1 和 2 不得相邻。求合法排列数。2≤N≤8。",
+    "inputFormat": "一行 N。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n = int(input())\nused = [False] * (n + 1)\norder = []\ndef dfs():\n    if len(order) == n:\n        return 1\n    answer = 0\n    for x in range(1, n + 1):\n        if used[x]:\n            continue\n        if order and {order[-1], x} == {1, 2}:\n            continue\n        used[x] = True\n        order.append(x)\n        answer += dfs()\n        order.pop()\n        used[x] = False\n    return answer\nprint(dfs())\n",
+    "hint": "每层放一头尚未使用的牛；放入和撤回必须成对出现。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2\n",
+        "output": "0\n"
+      },
+      {
+        "name": "2",
+        "input": "3\n",
+        "output": "2\n"
+      },
+      {
+        "name": "3",
+        "input": "4\n",
+        "output": "12\n"
+      },
+      {
+        "name": "4",
+        "input": "8\n",
+        "output": "30240\n"
+      }
+    ]
+  },
+  {
+    "id": 91075,
+    "lesson": "graphs",
+    "title": "能到达的牛棚",
+    "level": "基础",
+    "prompt": "N 个牛棚、M 条无向道路，从 S 出发求能到达的牛棚数，包含自己。1≤N≤1000，0≤M≤2000。",
+    "inputFormat": "第一行 N M S；随后 M 行道路两端，编号 1 到 N。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, m, start = map(int, input().split())\ngraph = [[] for _ in range(n + 1)]\nfor _ in range(m):\n    a, b = map(int, input().split())\n    graph[a].append(b)\n    graph[b].append(a)\nseen, stack = {start}, [start]\nwhile stack:\n    v = stack.pop()\n    for u in graph[v]:\n        if u not in seen:\n            seen.add(u)\n            stack.append(u)\nprint(len(seen))\n",
+    "hint": "道路登记两遍。发现新点时立即标记 visited，避免重复入栈。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 2 1\n1 2\n2 3\n",
+        "output": "3\n"
+      },
+      {
+        "name": "2",
+        "input": "1 0 1\n",
+        "output": "1\n"
+      },
+      {
+        "name": "3",
+        "input": "3 3 1\n1 2\n2 3\n3 1\n",
+        "output": "3\n"
+      },
+      {
+        "name": "4",
+        "input": "4 1 4\n1 2\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91076,
+    "lesson": "graphs",
+    "title": "分成了几个牧场群",
+    "level": "巩固",
+    "prompt": "N 个牧场、M 条无向路，求连通块数。孤立牧场自己算一块。1≤N≤1000，0≤M≤2000。",
+    "inputFormat": "第一行 N M，随后 M 行两个端点，编号 1 到 N。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, m = map(int, input().split())\ngraph = [[] for _ in range(n)]\nfor _ in range(m):\n    a, b = map(int, input().split())\n    graph[a - 1].append(b - 1)\n    graph[b - 1].append(a - 1)\nseen, answer = set(), 0\nfor start in range(n):\n    if start in seen:\n        continue\n    answer += 1\n    seen.add(start)\n    stack = [start]\n    while stack:\n        v = stack.pop()\n        for u in graph[v]:\n            if u not in seen:\n                seen.add(u)\n                stack.append(u)\nprint(answer)\n",
+    "hint": "每次从未访问过的牧场重新出发，就发现一个新的连通块。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 2\n1 2\n2 3\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "3 0\n",
+        "output": "3\n"
+      },
+      {
+        "name": "3",
+        "input": "3 3\n1 2\n2 3\n3 1\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "1 0\n",
+        "output": "1\n"
+      }
+    ]
+  },
+  {
+    "id": 91077,
+    "lesson": "graphs",
+    "title": "跟着指示牌找循环",
+    "level": "挑战",
+    "prompt": "每个牧场恰有一个指向其他牧场或自己的指示牌。从 S 出发，最终进入的循环长度是多少？1≤N≤10000。",
+    "inputFormat": "第一行 N S；第二行 N 个编号，第 i 项是 i 的下一站，编号从 1 开始。",
+    "outputFormat": "输出一个整数。",
+    "solution": "n, start = map(int, input().split())\nnxt = list(map(int, input().split()))\nfirst, step, v = {}, 0, start\nwhile v not in first:\n    first[v] = step\n    step += 1\n    v = nxt[v - 1]\nprint(step - first[v])\n",
+    "hint": "记录第一次到达每个牧场的步数，再次遇到它时，两次步数之差就是循环长度。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 1\n2 3 2 4\n",
+        "output": "2\n"
+      },
+      {
+        "name": "2",
+        "input": "1 1\n1\n",
+        "output": "1\n"
+      },
+      {
+        "name": "3",
+        "input": "3 1\n2 3 1\n",
+        "output": "3\n"
+      },
+      {
+        "name": "4",
+        "input": "4 4\n2 3 1 4\n",
+        "output": "1\n"
+      }
+    ]
+  }
+]
