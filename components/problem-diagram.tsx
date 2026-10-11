@@ -7,27 +7,32 @@ import {Tabs,TabsList,TabsTrigger} from '@/components/ui/tabs';
 import {Skeleton} from '@/components/ui/skeleton';
 import {Box,PanelTop,ChevronLeft,ChevronRight,RotateCcw} from 'lucide-react';
 import {VisualLesson} from './visual-lesson';
+import {fitTeachingCamera,teachingBounds} from '@/lib/scene-framing';
 type Item={label:string,x:number,y:number,w:number,h:number,height:number,color:string};
 type Frame={title:string,text:string,items:Item[],edges:{from:number[],to:number[],color:string}[]};
 type Drawing={problemId:number,note:string,frames:Frame[]};
 function bounds(items:Item[]){return {left:Math.min(...items.map(t=>t.x-t.w/2))-.7,right:Math.max(...items.map(t=>t.x+t.w/2))+.7,top:Math.min(...items.map(t=>t.y-t.h/2))-1,bottom:Math.max(...items.map(t=>t.y+t.h/2))+1};}
 function SpatialDiagram({frame,onUnavailable}:{frame:Frame,onUnavailable:()=>void}){
- const host=useRef<HTMLDivElement>(null);
+ const host=useRef<HTMLDivElement>(null),resetView=useRef<()=>void>(()=>{}),orientation=useRef(new THREE.Vector3(.2,1,1.5));
  useEffect(()=>{if(!host.current)return;const node=host.current;let renderer:THREE.WebGLRenderer;
  try{renderer=new THREE.WebGLRenderer({antialias:true});}catch{onUnavailable();return;}
  const b=bounds(frame.items),width=b.right-b.left,depth=b.bottom-b.top,cx=(b.left+b.right)/2,cy=(b.top+b.bottom)/2;
  renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor('#f4f7fa');node.appendChild(renderer.domElement);
  const scene=new THREE.Scene();scene.add(new THREE.HemisphereLight(0xffffff,0x9bafbf,2.8));const light=new THREE.DirectionalLight(0xffffff,2.4);light.position.set(-10,18,6);scene.add(light);
- const camera=new THREE.PerspectiveCamera(38,1,.1,300);const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,.4,0);controls.maxPolarAngle=Math.PI/2.04;controls.enablePan=true;
- const textures:THREE.Texture[]=[];
- for(const t of frame.items){const mesh=new THREE.Mesh(new THREE.BoxGeometry(t.w,Math.max(.08,t.height),t.h),new THREE.MeshStandardMaterial({color:t.color,roughness:.8}));mesh.position.set(t.x-cx,t.height/2,t.y-cy);scene.add(mesh);
-  const canvas=document.createElement('canvas');canvas.width=768;canvas.height=128;const c=canvas.getContext('2d')!;c.fillStyle='rgba(255,255,255,.96)';c.beginPath();c.roundRect(3,4,762,120,16);c.fill();c.fillStyle='#263e51';c.font='500 45px Arial,"PingFang SC",sans-serif';c.textAlign='center';c.textBaseline='middle';c.fillText(t.label,384,67,730);const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;textures.push(texture);const label=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,depthTest:false}));const lw=Math.max(t.w,Math.min(2.7,t.label.length*.15+.45));label.scale.set(lw,lw/6,1);label.position.set(t.x-cx,t.height+.2,t.y-cy);scene.add(label);}
- for(const e of frame.edges){const from=new THREE.Vector3(e.from[0]-cx,.09,e.from[1]-cy),to=new THREE.Vector3(e.to[0]-cx,.09,e.to[1]-cy),dir=to.clone().sub(from),len=dir.length();if(len>.01)scene.add(new THREE.ArrowHelper(dir.normalize(),from,len,e.color,.25,.12));}
+ const camera=new THREE.PerspectiveCamera(38,1,.1,300);const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,.4,0);controls.maxPolarAngle=Math.PI/2.04;controls.enablePan=false;controls.enableZoom=false;camera.position.copy(orientation.current);controls.target.set(0,0,0);
+ const textures:THREE.Texture[]=[];const objects:THREE.Object3D[]=[];
+ for(const t of frame.items){const mesh=new THREE.Mesh(new THREE.BoxGeometry(t.w,Math.max(.08,t.height),t.h),new THREE.MeshStandardMaterial({color:t.color,roughness:.8}));mesh.position.set(t.x-cx,t.height/2,t.y-cy);scene.add(mesh);objects.push(mesh);
+  const canvas=document.createElement('canvas');canvas.width=768;canvas.height=128;const c=canvas.getContext('2d')!;c.fillStyle='rgba(255,255,255,.96)';c.beginPath();c.roundRect(3,4,762,120,16);c.fill();c.fillStyle='#263e51';c.font='500 45px Arial,"PingFang SC",sans-serif';c.textAlign='center';c.textBaseline='middle';c.fillText(t.label,384,67,730);const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;textures.push(texture);const label=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,depthTest:false}));const lw=Math.max(t.w,Math.min(2.7,t.label.length*.15+.45));label.scale.set(lw,lw/6,1);label.position.set(t.x-cx,t.height+.2,t.y-cy);scene.add(label);objects.push(label);}
+ for(const e of frame.edges){const from=new THREE.Vector3(e.from[0]-cx,.09,e.from[1]-cy),to=new THREE.Vector3(e.to[0]-cx,.09,e.to[1]-cy),dir=to.clone().sub(from),len=dir.length();if(len>.01){const arrow=new THREE.ArrowHelper(dir.normalize(),from,len,e.color,.25,.12);scene.add(arrow);objects.push(arrow);}}
  const grid=new THREE.GridHelper(Math.max(width,depth)+4,20,0xdce5ed,0xe9eef3);grid.position.y=-.08;scene.add(grid);
- let initialized=false;function render(){const w=node.clientWidth,h=node.clientHeight;if(!w||!h)return;camera.aspect=w/h;if(!initialized){const fit=Math.max(depth,width/camera.aspect,8);camera.position.set(fit*.25,fit*.95,fit*1.05);controls.minDistance=3;controls.maxDistance=fit*4;initialized=true;controls.update();}camera.updateProjectionMatrix();renderer.setSize(w,h);renderer.render(scene,camera);}
- controls.addEventListener('change',render);const ro=new ResizeObserver(render);ro.observe(node);render();return()=>{ro.disconnect();controls.dispose();scene.traverse(obj=>{const m=obj as THREE.Mesh;m.geometry?.dispose();const mats=Array.isArray(m.material)?m.material:[m.material];mats.forEach(v=>v?.dispose());});textures.forEach(t=>t.dispose());renderer.dispose();renderer.domElement.remove();};
+ const framedBounds=teachingBounds(objects);
+ function render(){renderer.render(scene,camera);}
+ function fit(direction=camera.position.clone().sub(controls.target)){const w=node.clientWidth,h=node.clientHeight;if(!w||!h)return;camera.aspect=w/h;controls.target.copy(fitTeachingCamera(camera,framedBounds,direction));renderer.setSize(w,h);controls.update();render();}
+ resetView.current=()=>fit(new THREE.Vector3(.2,1,1.5));
+ controls.addEventListener('change',render);const ro=new ResizeObserver(()=>fit());ro.observe(node);fit();return()=>{orientation.current=camera.position.clone().sub(controls.target);ro.disconnect();controls.dispose();scene.traverse(obj=>{const m=obj as THREE.Mesh;m.geometry?.dispose();const mats=Array.isArray(m.material)?m.material:[m.material];mats.forEach(v=>v?.dispose());});textures.forEach(t=>t.dispose());renderer.dispose();renderer.domElement.remove();};
+
  },[frame]);
- return <div className="problem-spatial" ref={host} role="img" aria-label={frame.title}><span className="scene-help">拖动旋转 · 滚轮缩放 · 标签为实际样例值</span></div>
+ return <div className="problem-spatial" ref={host} role="img" aria-label={frame.title}><span className="scene-help">拖动旋转 · 标签为实际样例值</span><button type="button" className="scene-fit-button" onClick={()=>resetView.current()} aria-label="恢复合适视角">适合窗口</button></div>
 }
 export function ProblemDiagram({id}:{id:number}){
  const [data,setData]=useState<Drawing|null>(null),[error,setError]=useState(''),[step,setStep]=useState(0),[view,setView]=useState('3d'),[special,setSpecial]=useState(false);

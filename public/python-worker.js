@@ -1,6 +1,6 @@
 let runtime;
 const base='https://cdn.jsdelivr.net/pyodide/v0.27.7/full/';
-async function init(){if(!runtime){importScripts(base+'pyodide.js');runtime=await loadPyodide({indexURL:base});runtime.runPython('import sys, io, os, contextlib, json, shutil, importlib');}self.postMessage({type:'ready',version:runtime.runPython('import sys; sys.version.split()[0]')});}
+async function init(){if(!runtime){importScripts(base+'pyodide.js');runtime=await loadPyodide({indexURL:base});runtime.runPython('import sys, io, os, contextlib, json, shutil, importlib, traceback');}self.postMessage({type:'ready',version:runtime.runPython('import sys; sys.version.split()[0]')});}
 self.onmessage=async({data})=>{
  try{
   if(data.type==='init'){await init();return;}
@@ -11,7 +11,7 @@ self.onmessage=async({data})=>{
   self.postMessage({type:'started',caseId});const start=performance.now();
   try{
    const output=runtime.runPython(`
-import sys, io, os, contextlib, json, shutil, importlib
+import sys, io, os, contextlib, json, shutil, importlib, traceback
 os.chdir('/')
 for _name, _module in list(sys.modules.items()):
     if str(getattr(_module, '__file__', '')).startswith('/workspace/'):
@@ -38,24 +38,32 @@ if _input_filename:
     if os.path.exists(_outname): os.remove(_outname)
 _capture_bytes = _BoundedOutput()
 _capture = io.TextIOWrapper(_capture_bytes, encoding='utf-8', write_through=True)
+_stderr_bytes = _BoundedOutput()
+_stderr_capture = io.TextIOWrapper(_stderr_bytes, encoding='utf-8', write_through=True)
+_execution_error = ''
 _old_stdin = sys.stdin
 sys.stdin = io.TextIOWrapper(io.BytesIO(_student_input.encode('utf-8')), encoding='utf-8')
 try:
-    with contextlib.redirect_stdout(_capture):
+    with contextlib.redirect_stdout(_capture), contextlib.redirect_stderr(_stderr_capture):
         try:
             exec(compile(_student_code, _entry_filename, 'exec'), {'__name__': '__main__', '__file__': '/workspace/' + _entry_filename, '__package__': None})
         except SystemExit as _exit:
             if _exit.code not in (None, 0): raise
+except BaseException:
+    _execution_error = traceback.format_exc()
 finally:
     sys.stdin = _old_stdin
 _capture.flush()
+_stderr_capture.flush()
 _result = _capture_bytes.getvalue().decode('utf-8', errors='replace')
+_output_source = 'stdout'
 if _input_filename and os.path.exists(_outname):
     if os.path.getsize(_outname) > 20000000: raise RuntimeError('Output limit exceeded: 20 MB')
     with open(_outname) as _f: _result = _f.read()
-_result
+    _output_source = _outname
+json.dumps({'output': _result, 'outputSource': _output_source, 'stderr': _stderr_bytes.getvalue().decode('utf-8', errors='replace'), 'error': _execution_error})
 `);
-   self.postMessage({type:'result',caseId,output:String(output),ms:Math.round(performance.now()-start)});
+   self.postMessage({type:'result',caseId,...JSON.parse(String(output)),ms:Math.round(performance.now()-start)});
   }catch(error){self.postMessage({type:'result',caseId,error:String(error),ms:Math.round(performance.now()-start)});}
  }catch(error){self.postMessage({type:'error',error:String(error)});}
 };

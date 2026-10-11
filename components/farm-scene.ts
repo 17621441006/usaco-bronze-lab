@@ -1,5 +1,6 @@
 import {farmFrame,type StoryKind} from '@/lib/farm-scenarios';
 import {cow,farmer,type SceneKit} from './farm-actors';
+import {createHayBale,createBucket,createBarn,createTrough} from './farm-models';
 export function drawFarmScene(k:SceneKit,kind:StoryKind,step:number){
  const f=farmFrame(kind,step),s=Math.min(step,3);
  if(kind==='pasture'){
@@ -13,18 +14,20 @@ export function drawFarmScene(k:SceneKit,kind:StoryKind,step:number){
   k.box(n.x,.02,n.z,1.65,.06,1.5,color,.15);
   if(n.type==='cow'){cow(k,n.x,n.z,'',color,.95);k.label(`${n.name} · ${n.value}`,n.x,1.9,n.z,n.active?'#a24d20':'#275576',1.8);}
   if(n.type==='hay'){
-   const count=Number(n.value);for(let i=0;i<count;i++)k.box(n.x+(i%2-.5)*.48,.22+Math.floor(i/2)*.39,n.z,.44,.35,.7,n.active?0xc8772e:n.done?0x399582:0xd4b657);
-   k.label(String(n.value),n.x,2.1,n.z,'#765621',1);k.label(n.name,n.x,.1,n.z+1,'#365e7a',1.2);
+   const count=Number(n.value);if(kind==='hayline'){const trough=createTrough(count,!!n.done);trough.position.set(n.x,0,n.z);k.add(trough);}else for(let i=0;i<count;i++){const bale=createHayBale(n.active?0xc8772e:n.done?0x9ca953:0xd4b657);bale.position.set(n.x+(i%2-.5)*.48,.22+Math.floor(i/2)*.39,n.z);k.add(bale);}
+   k.label(String(n.value),n.x,kind==='hayline'?1.45:2.1,n.z,'#765621',1);k.label(n.name,n.x,.1,n.z+1,'#365e7a',1.2);
   }
   if(n.type==='bucket'){
-   k.box(n.x,1,n.z,1.4,2,1.3,0x7695aa,.18);k.box(n.x,.08,n.z,1.4,.16,1.3,0x577287);const h=Number(n.value)/n.capacity!*1.9;if(h>0)k.box(n.x,.16+h/2,n.z,1.22,h,1.12,0x408ead,.92);k.label(`${n.value} / ${n.capacity}`,n.x,2.6,n.z,'#245877',1.6);k.label(n.name,n.x,.1,n.z+1.3,'#365e7a',1.5);
+   const bucket=createBucket(Number(n.value),n.capacity!);bucket.position.set(n.x,0,n.z);k.add(bucket);k.label(`${n.value} / ${n.capacity}`,n.x,2.9,n.z,'#245877',1.6);k.label(n.name,n.x,.1,n.z+1.1,'#365e7a',1.5);
+
   }
   if(n.type==='barn'){
-   k.box(n.x,.7,n.z,1.3,1.4,1.2,color);k.box(n.x,1.45,n.z,1.55,.16,1.45,0x334a62);k.box(n.x,.48,n.z+.61,.55,.95,.025,0xe8dfc9);k.label(n.name,n.x,2,n.z,'#2f5778',1.6);
+   const barn=createBarn(color);barn.position.set(n.x,0,n.z);k.add(barn);k.label(n.name,n.x,2.2,n.z,'#2f5778',1.6);
+
   }
  }
  for(const [a,b] of f.edges||[]){const p=f.nodes[a],q=f.nodes[b];k.line([[p.x,.2,p.z+.8],[(p.x+q.x)/2,kind==='barns'?.2:1.4,(p.z+q.z)/2+1.8],[q.x,.2,q.z+.8]],kind==='barns'?0x51728e:0xc3692c);}
- if(kind==='feed')for(const at of f.selection||[]){const x=(at-3.5)*1.2;k.box(x,.3,1.8,.6,.6,.6,0xc56627);k.box(x,.01,1.8,2.4,.04,.8,0x269888,.3);k.label(`站 ${at}`,x,1.1,1.8,'#9b461c',1.2);}
+ if(kind==='feed')for(const at of f.selection||[]){const x=(at-3.5)*1.2;const station=createHayBale(0xcba74b);station.position.set(x,.2,1.8);station.scale.set(1.3,1,1);k.add(station);k.box(x,.01,1.8,2.4,.04,.8,0x269888,.3);k.label(`站 ${at}`,x,1.1,1.8,'#9b461c',1.2);}
  if(kind==='balance'&&s===2)k.label('搬 2 捆',0,3,1.5,'#9b461c',2);
  if(kind==='choices'){
   const cols=[-2.5,0,2.5];for(let i=0;i<3;i++){k.label(`${namesForChoices[i]}：${f.nodes[i].active?'取':'不取'}`,cols[i],.5,2,'#355e7d',2);if(i<2)k.line([[cols[i]+.8,.5,2],[cols[i+1]-.8,.5,2]],0x608099);}

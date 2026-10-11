@@ -21,7 +21,7 @@ const style=document.createElement('style');
 const rules=require('postcss').parse(fs.readFileSync(root+'/app/globals.css','utf8')).nodes.filter(n=>n.type==='rule'&&(/(?:page-tab|practice-panel-inner|reading-panel-scroll|coding-panel-scroll)/.test(n.selector)));
 style.textContent=rules.map(n=>n.toString()).join('\n');document.head.appendChild(style);
 Module._load=function(name,parent,...args){
- if(name==='@/lib/practice-runner')return {PracticeRunner:class{stop(){}async run(args){lastCourseCases=args.cases;const results=args.cases.map(c=>({name:c.name,status:gradeStatus,output:c.output,ms:1}));results.forEach(args.onResult);return results;}}};
+ if(name==='@/lib/practice-runner')return {PracticeRunner:class{stop(){}async run(args){lastCourseCases=args.cases;const results=args.cases.map(c=>({name:c.name,status:c.output===null?'RUN':gradeStatus,input:c.input,expected:c.output,output:c.output===null?'6\n':gradeStatus==='WA'?'999\n':c.output,ms:1}));results.forEach(args.onResult);return results;}}};
  if(name==='@monaco-editor/react')return {__esModule:true,loader:{config(){}},default:props=>React.createElement('textarea',{'aria-label':'Test editor',value:props.value,readOnly:props.options?.readOnly,'data-fontsize':props.options.fontSize,'data-theme':props.theme,'data-path':props.path,onChange:e=>props.onChange(e.target.value)})};
  if(name==='./visual-lesson')return {VisualLesson:()=>null};
  if(name==='./problem-diagram')return {ProblemDiagram:()=>null};
@@ -80,8 +80,19 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  await click('Python 基础',container.querySelector('[data-slot="sidebar-content"]'));assert(container.querySelector('[aria-label="Python 基础课程"]'));assert.equal(container.querySelectorAll('.lesson-list button').length,8);assert.equal(container.querySelectorAll('.exercise-levels button').length,3);
  await click('下一步',container.querySelector('.foundation-controls'));assert(container.querySelector('.foundation-frame').textContent.includes('切分'));
  await click('开始练习');await act(tick);await input(container.querySelector('[aria-label="Test editor"]'),'print(int(input()))');
- await click('运行样例',container.querySelector('.ide-run-bar'));assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'0 / 3 已通过');
- gradeStatus='WA';await click('检查全部 3 例');assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'0 / 3 已通过');
+ await input(container.querySelector('[aria-label="Test editor"]'),'print(1+5)');
+ await click('运行代码',container.querySelector('.ide-run-bar'));
+ assert.equal(container.querySelector('.program-output').textContent,'6\n');assert.equal(lastCourseCases[0].output,null);
+ assert(!container.querySelector('.test-grid'));assert(!container.querySelector('.expected-output'));assert(!container.textContent.includes('自定义输入'));
+ assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'0 / 3 已通过');
+ await act(async()=>{const input=container.querySelector('[aria-label="运行时使用的样例输入"]');input.value='none';input.dispatchEvent(new Event('change',{bubbles:true}));await tick();});
+ await click('运行代码',container.querySelector('.ide-run-bar'));assert.equal(lastCourseCases[0].input,'');
+ await click('检查样例',container.querySelector('.ide-run-bar'));
+ assert(container.querySelector('.program-output').textContent.trim());assert.equal(container.querySelector('.program-output').textContent,container.querySelector('.expected-output').textContent);
+ assert(container.querySelector('.test-badge.ac'));assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'0 / 3 已通过');
+ console.log('PASS: ordinary run shows 6 without grading; no custom input tab; sample AC exposes output and expected answer; execution alone never completes lessons');
+ gradeStatus='WA';await click('检查全部 3 例');assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'0 / 3 已通过');assert.equal(container.querySelector('.program-output').textContent,'999\n');
+ await click(container.querySelectorAll('.test-badge')[1].textContent);assert.equal(container.querySelectorAll('.test-badge')[1].getAttribute('aria-pressed'),'true');
  gradeStatus='AC';await click('检查全部 3 例');assert.equal(lastCourseCases.length,3);assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'1 / 3 已通过');
  for(const index of [1,2]){await act(async()=>{container.querySelectorAll('.exercise-levels button')[index].click();await tick();});await click('开始练习');await act(tick);await input(container.querySelector('[aria-label="Test editor"]'),'print(0)');await click('检查全部 3 例');}
  assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'3 / 3 已通过');assert(JSON.parse(localStorage.getItem('usaco-course-completed-v2')).includes('io'));

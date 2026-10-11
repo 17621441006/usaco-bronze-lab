@@ -20,16 +20,25 @@ if(!isMainThread){
  result=await run(JSON.parse(fs.readFileSync(root+'/public/solutions/567.json')).pythonTeaching,manifest.cases);assert.equal(result.filter(r=>r.status==='AC').length,10);console.log('PASS: four-line teaching solution against all 10 official files');
  const course=JSON.parse(fs.readFileSync(root+'/data/course-exercises.json'));for(const ex of course.filter(e=>['跨行读数','多组求和','选恰好 k 个'].includes(e.title))){result=await run(ex.solution,ex.cases,{id:ex.id});assert(result.every(r=>r.status==='AC'),JSON.stringify(result));}console.log('PASS: real Pyodide course cases for iter/next, repeated-group input and bit_count');
 
- result=await run('import sys\nn=int(sys.stdin.buffer.readline())\nif n == 0:\n while True: pass\nsys.stdout.buffer.write(b"ok\\n")\nsys.exit(0)',[{name:'infinite',input:'0\n',output:'ok'},{name:'next',input:'1\n',output:'ok'}],{limitSeconds:.2});
+ result=await run('import sys\nn=int(sys.stdin.buffer.readline())\nif n == 0:\n while True: pass\nsys.stdout.buffer.write(b"ok\\n")\nsys.exit(0)',[{name:'infinite',input:'0\n',output:'ok'},{name:'next',input:'1\n',output:'ok'}],{limitSeconds:2});
  assert.deepEqual(result.map(r=>r.status),['TLE','AC']);console.log('PASS: per-case timeout, worker restart, buffered I/O, normal SystemExit');
  result=await run('from helpers import values\nvalues.append(int(input()))\nprint(sum(values))\nprint(open("notes.txt").read().strip())',[{name:'first import',input:'2',output:'12\nproject data'},{name:'fresh module',input:'3',output:'13\nproject data'}],{files:{'solve.py':'# selected entry','helpers.py':'values = [10]','notes.txt':'project data','samples/1.in':'2'},entryFile:'solve.py'});
  assert.deepEqual(result.map(r=>r.status),['AC','AC'],JSON.stringify(result));console.log('PASS: project imports, selected entry, data files, module reset between cases');
  result=await run('from broken import fail\nfail()',[{name:'helper traceback',input:'',output:''}],{files:{'broken.py':'def fail():\n    return 1 / 0'},entryFile:'solution2.py'});
  assert.equal(result[0].status,'RE');assert.match(result[0].error,/broken.py/);assert.match(result[0].error,/line 2/);console.log('PASS: helper-file traceback');
+ // Real Python output semantics: print automatically stringifies its arguments.
+ result=await run('print(1+5)',[{name:'ordinary run',input:'',output:null}]);assert.equal(result[0].status,'RUN');assert.equal(result[0].output,'6\n');
+ for(const code of ['print(6)','print(str(6))']){result=await run(code,[{name:'integer text',input:'',output:'6\n'}]);assert.equal(result[0].status,'AC');}
+ for(const code of ['print(6.0)','print([6])','print("answer:",6)']){result=await run(code,[{name:'wrong format',input:'',output:'6\n'}]);assert.equal(result[0].status,'WA');}
+ result=await run('import sys\nprint("before error")\nprint("diagnostic", file=sys.stderr)\nsys.stdout.write(6)',[{name:'real type error',input:'',output:null}]);
+ assert.equal(result[0].status,'RE');assert.equal(result[0].output,'before error\n');assert.equal(result[0].stderr,'diagnostic\n');assert.match(result[0].error,/TypeError/);
+ result=await run('print(input())',[{name:'no input',input:'',output:null}]);assert.equal(result[0].status,'RE');assert.match(result[0].error,/EOFError/);
+ result=await run('open("paint.out", "w").write("6\\n")',[{name:'file output',input:'',output:'6'}],{inputFile:'paint.in'});assert.equal(result[0].status,'AC');assert.equal(result[0].output,'6\n');assert.equal(result[0].outputSource,'paint.out');
+ console.log('PASS: print(1+5) displays 6; integer/string print both AC; decimals/lists/prompts WA; write(int) TypeError; partial stdout/stderr and file output preserved');
  result=await run('print(999)',[{name:'wrong',input:'',output:'1'}]);assert.equal(result[0].status,'WA');
  result=await run('print(1/0)',[{name:'error',input:'',output:'1'}]);assert.equal(result[0].status,'RE');
- result=await run('print("hello")',[{name:'custom',input:'',output:null}]);assert.equal(result[0].status,'RUN');
- result=await run('print("x"*120001)',[{name:'long',input:'',output:'x'.repeat(120001)}]);assert.equal(result[0].status,'AC');console.log('PASS: WA, RE, custom run, compare full output before display truncation');
+ result=await run('print("hello")',[{name:'ordinary run',input:'',output:null}]);assert.equal(result[0].status,'RUN');
+ result=await run('print("x"*120001)',[{name:'long',input:'',output:'x'.repeat(120001)}]);assert.equal(result[0].status,'AC');console.log('PASS: WA, RE, ordinary run, compare full output before display truncation');
  for(const id of [1252,1540,1563,1589,987]){
   const cases=JSON.parse(fs.readFileSync(root+'/public/official-tests/'+id+'.json')).cases;
   for(const test of cases){const d=JSON.parse(require('zlib').gunzipSync(fs.readFileSync(root+'/public'+test.url)));assert.equal(checkOutput(id,d.input,d.output,d.output).ok,true,`${id} ${test.name}`);assert.equal(checkOutput(id,d.input,d.output,'').ok,false);}
