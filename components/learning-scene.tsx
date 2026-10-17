@@ -7,11 +7,12 @@ import {drawFarmScene} from './farm-scene';
 import {cow,farmer} from './farm-actors';
 import {createTrough} from './farm-models';
 import {fitTeachingCamera,teachingBounds} from '@/lib/scene-framing';
+import {SceneZoomControls,clampSceneZoom} from './scene-zoom-controls';
 export type SceneKind=StoryKind|'fence'|'cheese'|'reflection'|'moo'|'printing'|'array'|'dp'|'binary';
 export const cheeseMoves=[[0,0,0],[1,1,1],[0,1,0],[1,0,0],[1,1,0]];
 export function cheeseCount(step:number){let count=0;const removed=new Set(cheeseMoves.slice(0,step).map(x=>x.join(',')));for(let axis=0;axis<3;axis++)for(let a=0;a<2;a++)for(let b=0;b<2;b++){let ok=true;for(let i=0;i<2;i++){let p=axis===0?[i,a,b]:axis===1?[a,i,b]:[a,b,i];if(!removed.has(p.join(',')))ok=false;}if(ok)count++;}return count;}
 export function LearningScene({kind,step=0,interval=[7,10,4,8],boardMask=17,flat=false,onUnavailable}:{kind:SceneKind,step?:number,interval?:number[],boardMask?:number,flat?:boolean,onUnavailable?:()=>void}){
- const host=useRef<HTMLDivElement>(null);const cam=useRef<{kind:SceneKind;direction:THREE.Vector3}|null>(null);const resetView=useRef<()=>void>(()=>{});const [failed,setFailed]=useState(false);
+ const host=useRef<HTMLDivElement>(null);const cam=useRef<{kind:SceneKind;direction:THREE.Vector3}|null>(null);const resetView=useRef<()=>void>(()=>{});const [failed,setFailed]=useState(false),[zoom,setZoom]=useState(1);const zoomValue=useRef(1),changeZoom=useRef<(value:number)=>void>(()=>{});
  useEffect(()=>{if(!host.current)return; const node=host.current;let renderer:THREE.WebGLRenderer;try{renderer=new THREE.WebGLRenderer({antialias:true});}catch{setFailed(true);onUnavailable?.();return;}
  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;renderer.setClearColor('#eaf2f7');renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;node.appendChild(renderer.domElement);
  const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(38,1,.1,100);
@@ -67,12 +68,13 @@ export function LearningScene({kind,step=0,interval=[7,10,4,8],boardMask=17,flat
  function render(){renderer.render(scene,camera);}
  function frame(direction=camera.position.clone().sub(controls.target)){
   const w=node.clientWidth,h=node.clientHeight;if(!w||!h)return;
-  camera.aspect=w/h;controls.target.copy(fitTeachingCamera(camera,bounds,direction));renderer.setSize(w,h);controls.update();render();
+  camera.aspect=w/h;camera.zoom=zoomValue.current;controls.target.copy(fitTeachingCamera(camera,bounds,direction));renderer.setSize(w,h);controls.update();render();
  }
- resetView.current=()=>frame(flat?new THREE.Vector3(0,18,.01):defaultDirection);
+ changeZoom.current=value=>{zoomValue.current=clampSceneZoom(value);setZoom(zoomValue.current);camera.zoom=zoomValue.current;camera.updateProjectionMatrix();render();};
+ resetView.current=()=>{zoomValue.current=1;setZoom(1);frame(flat?new THREE.Vector3(0,18,.01):defaultDirection);};
  controls.addEventListener('change',render);const ro=new ResizeObserver(()=>frame());ro.observe(node);frame();
  return()=>{cam.current={kind,direction:camera.position.clone().sub(controls.target)};ro.disconnect();controls.dispose();scene.traverse(o=>{const m=o as THREE.Mesh;if(m.geometry)m.geometry.dispose();const ms=Array.isArray(m.material)?m.material:[m.material];ms.forEach(mat=>{if(mat){const mp=(mat as THREE.MeshStandardMaterial).map;if(mp)mp.dispose();mat.dispose();}})});renderer.dispose();renderer.domElement.remove();};
 
  },[kind,step,interval.join(','),boardMask,flat]);
- return <div className="scene" ref={host} role="img" aria-label={`${kind} 三维教学场景，第 ${step} 步`}>{failed&&<div className="scene-fallback">3D 显示不可用，请使用下方二维示意与步骤讲解。</div>}<span className="scene-help">拖动旋转 · 滚轮浏览页面</span><button type="button" className="scene-fit-button" onClick={()=>resetView.current()} aria-label="恢复合适视角">适合窗口</button></div>
+ return <div className="scene" ref={host} role="group" aria-label={`${kind} 三维教学场景，第 ${step} 步`}>{failed&&<div className="scene-fallback">3D 显示不可用，请使用下方二维示意与步骤讲解。</div>}<span className="scene-help">拖动旋转 · 滚轮浏览页面</span><SceneZoomControls zoom={zoom} onChange={v=>changeZoom.current(v)} onFit={()=>resetView.current()}/></div>
 }

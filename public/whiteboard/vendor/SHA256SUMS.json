@@ -1,0 +1,57 @@
+{
+  "package": "@mediapipe/tasks-vision",
+  "version": "0.10.32",
+  "model": "gesture_recognizer/float16/1",
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 12331,
+      "sha256": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8403,
+      "sha256": "aadce68d35bfc0dc75fd191bbf9e6285816e907eb43a6301b43bd9a29768f7c5"
+    },
+    {
+      "path": "SOURCES.md",
+      "bytes": 2466,
+      "sha256": "bf76e0803f25e51707f3c700addc0b46504daa0b8369a5a09a4dde1449668008"
+    },
+    {
+      "path": "gesture_recognizer.task",
+      "bytes": 8373440,
+      "sha256": "97952348cf6a6a4915c2ea1496b4b37ebabc50cbbf80571435643c455f2b0482"
+    },
+    {
+      "path": "package.json",
+      "bytes": 592,
+      "sha256": "7e2b35c27840238235ae47abad63b5875fb1f8bf013ff4101a3595acea6f8682"
+    },
+    {
+      "path": "vision_bundle.js",
+      "bytes": 137479,
+      "sha256": "b6ada51f94a83bbebdca1ac2dd5cc79ebc25287d662684cb218a6e96eaa444d9"
+    },
+    {
+      "path": "wasm/vision_wasm_internal.js",
+      "bytes": 204816,
+      "sha256": "6f6b86509cf9e163ea1cfec7edc8cf53732699c04781e4c21c557c1ba402310e"
+    },
+    {
+      "path": "wasm/vision_wasm_internal.wasm",
+      "bytes": 11453626,
+      "sha256": "cb3ec20026a9aecc2a81a93c25630ceb5389297ddb7a5f0bd61dd09cde606b9b"
+    },
+    {
+      "path": "wasm/vision_wasm_nosimd_internal.js",
+      "bytes": 204669,
+      "sha256": "9f8fc960e363f0fb2f42f7937b97ae9cf9a5630490f71031fa90caa9bb121938"
+    },
+    {
+      "path": "wasm/vision_wasm_nosimd_internal.wasm",
+      "bytes": 10647962,
+      "sha256": "924274fcd5ac8985f6570a8573e7971b7bd2d580ba1b8f3beb0ba8f95db6347c"
+    }
+  ]
+}

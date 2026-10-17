@@ -27,8 +27,8 @@ for item in json.loads((R/'public/official-tests/567.json').read_text())['cases'
 for ex in exercises:
     for case in ex['cases']:run(ex['solution'],case,ex['id']);report['courseCases']+=1
     report['courseExercises']+=1
-assert len({e['id'] for e in exercises})==78
-assert len({e['lesson'] for e in exercises})==26
+assert len({e['id'] for e in exercises})==108
+assert len({e['lesson'] for e in exercises})==36
 for lesson in {e['lesson'] for e in exercises}:assert [e['level'] for e in exercises if e['lesson']==lesson]==['基础','巩固','挑战']
 (R/'data/learning-verification.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))

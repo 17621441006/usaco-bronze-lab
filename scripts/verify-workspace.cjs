@@ -3,7 +3,7 @@
 const fs=require('fs'),path=require('path'),Module=require('module'),assert=require('assert/strict');
 const root=process.cwd(),ts=require('typescript');
 const {JSDOM}=require(process.env.JSDOM_TEST_DIR||'/tmp/usaco-dom-tests/node_modules/jsdom');
-const dom=new JSDOM('<!doctype html><html><body><div id="root"></div></body></html>',{url:'https://example.test/#practice/567',pretendToBeVisual:true});
+const dom=new JSDOM('<!doctype html><html><body><div id="root"></div></body></html>',{url:'https://example.test/#route',pretendToBeVisual:true});
 for(const key of ['window','document','Node','NodeFilter','HTMLElement','Element','HTMLInputElement','HTMLTextAreaElement','DocumentFragment','MutationObserver','DOMParser','DOMRect','Event','CustomEvent','MouseEvent','KeyboardEvent','getComputedStyle','localStorage'])global[key]=dom.window[key];
 global.IS_REACT_ACT_ENVIRONMENT=true;global.requestAnimationFrame=dom.window.requestAnimationFrame.bind(dom.window);global.cancelAnimationFrame=dom.window.cancelAnimationFrame.bind(dom.window);
 global.matchMedia=dom.window.matchMedia=()=>({matches:false,addEventListener(){},removeEventListener(){}});
@@ -18,7 +18,7 @@ require.extensions['.css']=()=>{};
 let gradeStatus='AC',lastCourseCases=[];
 const React=require('react'),{act}=React,{createRoot}=require('react-dom/client');
 const style=document.createElement('style');
-const rules=require('postcss').parse(fs.readFileSync(root+'/app/globals.css','utf8')).nodes.filter(n=>n.type==='rule'&&(/(?:page-tab|practice-panel-inner|reading-panel-scroll|coding-panel-scroll)/.test(n.selector)));
+const rules=require('postcss').parse(fs.readFileSync(root+'/app/globals.css','utf8')).nodes.filter(n=>n.type==='rule'&&(/(?:page-tab|practice-panel-inner|reading-panel-scroll|coding-panel-scroll|study-sidebar|nav-brand-row|page-title|reading-toolbar)/.test(n.selector)));
 style.textContent=rules.map(n=>n.toString()).join('\n');document.head.appendChild(style);
 Module._load=function(name,parent,...args){
  if(name==='@/lib/practice-runner')return {PracticeRunner:class{stop(){}async run(args){lastCourseCases=args.cases;const results=args.cases.map(c=>({name:c.name,status:c.output===null?'RUN':gradeStatus,input:c.input,expected:c.output,output:c.output===null?'6\n':gradeStatus==='WA'?'999\n':c.output,ms:1}));results.forEach(args.onResult);return results;}}};
@@ -48,12 +48,22 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
 (async()=>{try{
  const StudyApp=require(root+'/components/study-app.tsx').default;
  await act(async()=>{view.render(React.createElement(StudyApp));await tick();});
- assert(container.querySelector('.workspace-read'));assert(!container.querySelector('.project-ide'));assert(container.querySelector('[data-state="expanded"][data-sidebar]')||container.querySelector('[data-state="expanded"][data-slot="sidebar"]'));
+ const navState=()=>container.querySelector('[data-slot=sidebar]').dataset.state;
+ assert.equal(navState(),'expanded','ordinary entry starts with the navigation visible');assert(!container.querySelector('.topbar'));assert(!container.querySelector('.data-strip'));assert(!container.querySelector('.resource-coverage'));
+ assert.equal(getComputedStyle(container.querySelector('.page-title h1')).fontSize,'19px');
+ await click('收起导航');assert.equal(navState(),'collapsed');
+ async function hoverNav(enter){await act(async()=>{const ev=new MouseEvent(enter?'pointerover':'pointerout',{bubbles:true,relatedTarget:document.body});Object.defineProperty(ev,'pointerType',{value:'mouse'});container.querySelector('.study-sidebar').dispatchEvent(ev);await new Promise(r=>setTimeout(r,230));});}
+ await hoverNav(false);await hoverNav(true);assert(container.querySelector('.study-sidebar.nav-peek'));assert.equal(container.querySelector('[data-slot=sidebar]').getAttribute('data-collapsible'),'','hover must deactivate Tailwind icon-only button widths');assert.equal(container.querySelector('[data-slot=sidebar-gap]').style.width,'var(--sidebar-width-icon)');assert.equal(navState(),'collapsed','hover does not reopen the layout gap or push the statement');
+ await hoverNav(false);assert(!container.querySelector('.study-sidebar.nav-peek'));assert.equal(container.querySelector('[data-slot=sidebar]').getAttribute('data-collapsible'),'icon');await hoverNav(true);await click('固定展开导航');assert.equal(navState(),'expanded');await hoverNav(false);assert.equal(navState(),'expanded','pinned navigation stays expanded');
+ await act(async()=>{window.location.hash='practice/567';window.dispatchEvent(new Event('hashchange'));await tick();});
+ assert.equal(navState(),'collapsed','entering a problem automatically collapses the navigation');
+ assert(container.querySelector('.workspace-read'));assert(!container.querySelector('.project-ide'));assert(container.querySelector('.reading-toolbar [aria-label=题面语言]'));assert(container.querySelector('.reading-toolbar [aria-label=全屏读题]'));assert(!container.querySelector('.statement-provenance'));
+ console.log('PASS: compact route heading, initial expanded navigation, manual collapse, edge hover overlay, pinning, automatic collapse on problem entry, merged reading controls');
  const tabTitle=container.querySelector('.page-tab-item [role="tab"]'),closeButton=container.querySelector('.page-tab-close');
- assert.equal(getComputedStyle(tabTitle).display,'flex');assert.equal(getComputedStyle(tabTitle).width,'auto');assert.equal(getComputedStyle(closeButton).width,'24px');assert.equal(getComputedStyle(container.querySelector('.page-tab-item')).minWidth,'145px');
+ assert.equal(getComputedStyle(tabTitle).display,'flex');assert.equal(getComputedStyle(tabTitle).width,'auto');assert.equal(getComputedStyle(closeButton).width,'24px');assert.equal(getComputedStyle(container.querySelector('.page-tab-item')).minWidth,'138px');
  assert(!container.textContent.includes('导入题面'));assert(!container.textContent.includes('导入本机题面'));
  assert(container.querySelector('.sample-copy-section [data-state="open"]'));assert(container.querySelector('.sample-block pre').textContent.trim());assert(!container.querySelector('.statement'));
- console.log('PASS: default expanded navigation, read-only workspace, visible samples, no summary on the original tab');
+ console.log('PASS: read-only workspace, visible samples, no summary on the original tab');
  await click('开始编程',container.querySelector('.work-header'));await act(tick);assert(container.querySelector('.workspace-split'));assert(container.querySelector('.project-ide'));
  assert.equal(container.querySelector('[aria-label="Test editor"]').value,'');
  await click('切换浅色编辑器');assert(container.querySelector('.ide-light'));assert.equal(container.querySelector('[aria-label="Test editor"]').dataset.theme,'vs');
@@ -77,10 +87,16 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  await click('关闭 Fence Painting');assert(!container.querySelector('.workspace'));assert(JSON.parse(localStorage.getItem('usaco-project-567')).files['helpers.py']==='answer = 42');
  console.log('PASS: page-tab switching preserves workspace and closing keeps saved project');
  assert(![...container.querySelectorAll('[data-slot="sidebar-menu-button"]')].some(e=>e.textContent==='编程工作台'));
- await click('Python 基础',container.querySelector('[data-slot="sidebar-content"]'));assert(container.querySelector('[aria-label="Python 基础课程"]'));assert.equal(container.querySelectorAll('.lesson-list button').length,8);assert.equal(container.querySelectorAll('.exercise-levels button').length,3);
+ await click('Python 基础',container.querySelector('[data-slot="sidebar-content"]'));assert(container.querySelector('[aria-label="Python 基础课程"]'));assert.equal(container.querySelectorAll('.lesson-list button').length,18);assert.equal(container.querySelectorAll('.exercise-levels button').length,3);
+ assert(container.querySelector('.foundation-data-flow'));
+ await act(async()=>{[...container.querySelectorAll('.lesson-list button')].find(b=>b.textContent.includes('输入、转换与输出')).click();await tick();});
  await click('下一步',container.querySelector('.foundation-controls'));assert(container.querySelector('.foundation-frame').textContent.includes('切分'));
  await click('开始练习');await act(tick);await input(container.querySelector('[aria-label="Test editor"]'),'print(int(input()))');
  await input(container.querySelector('[aria-label="Test editor"]'),'print(1+5)');
+ const exerciseSplit=container.querySelector('[aria-label="调整题目与编程区宽度"]');assert(exerciseSplit);assert(container.querySelector('.exercise-workspace.is-coding>.exercise-code-panel .project-ide'));
+ assert.equal(container.querySelector('.exercise-input').nextElementSibling.className,'exercise-io exercise-output');
+ await act(async()=>{exerciseSplit.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));await tick();});assert.equal(exerciseSplit.getAttribute('aria-valuenow'),'46');
+ await click('收起编程区');assert(container.querySelector('.exercise-code-panel').hidden);await click('开始练习');assert.equal(container.querySelector('[aria-label="Test editor"]').value,'print(1+5)');
  await click('运行代码',container.querySelector('.ide-run-bar'));
  assert.equal(container.querySelector('.program-output').textContent,'6\n');assert.equal(lastCourseCases[0].output,null);
  assert(!container.querySelector('.test-grid'));assert(!container.querySelector('.expected-output'));assert(!container.textContent.includes('自定义输入'));
@@ -97,7 +113,7 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  for(const index of [1,2]){await act(async()=>{container.querySelectorAll('.exercise-levels button')[index].click();await tick();});await click('开始练习');await act(tick);await input(container.querySelector('[aria-label="Test editor"]'),'print(0)');await click('检查全部 3 例');}
  assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'3 / 3 已通过');assert(JSON.parse(localStorage.getItem('usaco-course-completed-v2')).includes('io'));
  await click('算法课堂',container.querySelector('[data-slot="sidebar-content"]'));assert.equal(container.querySelectorAll('.lesson-list button').length,18);assert.equal(container.querySelectorAll('.exercise-levels button').length,3);
- console.log('PASS: 8 Python / 18 algorithm lessons, 3 progressive exercises each, inline IDE; only successful full checks mark course progress (runner mocked here)');
+ console.log('PASS: 18 Python / 18 algorithm lessons, 3 progressive exercises each, inline IDE; only successful full checks mark course progress (runner mocked here)');
  await click('真题练习',container.querySelector('[data-slot="sidebar-content"]'));assert.equal(container.querySelectorAll('.topic-directory button').length,13);assert(container.querySelector('.archive-filter-row').textContent.includes('60 道题'));
  await input(container.querySelector('[aria-label="搜索全部题目"]'),'567');assert(container.querySelector('.archive-table').textContent.includes('Fence Painting'));assert(container.querySelector('.archive-filter-row').textContent.includes('1 道题'));
  await input(container.querySelector('[aria-label="搜索全部题目"]'),'');assert(container.querySelector('.archive-filter-row').textContent.includes('60 道题'));
@@ -107,8 +123,8 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  await click('整场训练',container.querySelector('.round-card'));assert(container.querySelector('.exam-setup'));assert(container.querySelector('.exam-setup').textContent.includes('2026 第 3 场'));
  await click('真题练习',container.querySelector('.page-tabbar'));assert(container.querySelector('.round-directory'));await click('按知识点练');await input(container.querySelector('[aria-label="搜索全部题目"]'),'1589');await click('Swap to Win',container.querySelector('.archive-table'));
  const active=container.querySelector('.kept-problem-page:not([hidden])');assert(active);assert(!active.querySelector('iframe'));assert(active.querySelector('.local-statement-body').textContent.includes('Farmer John'));assert(active.querySelector('.katex'));assert(!active.querySelector('.sample-copy-section'));
- await click('中文题面',active);assert(active.querySelector('.statement-provenance').textContent.includes('非官方翻译'));assert(active.querySelector('.local-statement-body').textContent.includes('最喜欢'));assert(!active.querySelector('iframe'));
- await click('全屏读题',active);assert(document.querySelector('[role="dialog"] .local-statement-body').textContent.includes('最喜欢'));await click('Close');
+ await click('中文',active);assert(active.querySelector('[title="中文译文 · 非官方翻译"]'));assert(active.querySelector('.katex'));assert(active.querySelector('.local-statement-body').textContent.includes('最喜欢'));assert(!active.querySelector('iframe'));
+ await click('全屏读题',active);assert(document.querySelector('[role="dialog"] .local-statement-body').textContent.includes('最喜欢'));await click('Close');assert(active.querySelector('.reading-toolbar [aria-label=题面语言]'));assert(active.querySelector('.local-statement-body .katex'),'math remains rendered after closing fullscreen');
  const {renderToString}=require('react-dom/server'),StaticStatement=require(root+'/components/official-statement.tsx').OfficialStatement;const initial=renderToString(React.createElement(StaticStatement,{id:1589,title:'Swap to Win',exam:true}));assert(initial.includes('Farmer John'));assert(!initial.includes('<iframe'));assert(!initial.includes('正在读取'));assert(!initial.includes('中文题面'));
  console.log('PASS: topic navigation, cross-year search, complete 3-problem rounds, route to timed training, persistent archive tabs, immediate bilingual reading, translated provenance and fullscreen');
 
@@ -118,8 +134,16 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  localStorage.setItem('usaco-local-statement-567',JSON.stringify(stored));const fresh=createRoot(container),{OfficialStatement}=require(root+'/components/official-statement.tsx');
  await act(async()=>{fresh.render(React.createElement(OfficialStatement,{id:567,title:'Example'}));await tick();});await act(tick);
  assert(!container.querySelector('iframe'));assert(container.textContent.includes('My full task'));
- await click('中文题面');assert(container.textContent.includes('我的完整中文题面'));assert(!container.querySelector('iframe'));
+ await click('中文');assert(container.textContent.includes('我的完整中文题面'));assert(!container.querySelector('iframe'));
  console.log('PASS: local full-document reload and Chinese switch avoid the external reader');
  await act(()=>fresh.unmount());
+ const zoomRoot=createRoot(container),{SceneZoomControls}=require(root+'/components/scene-zoom-controls.tsx');
+ function ZoomFixture(){const [zoom,setZoom]=React.useState(1);return React.createElement(SceneZoomControls,{zoom,onChange:setZoom,onFit:()=>setZoom(1)});}
+ await act(async()=>{zoomRoot.render(React.createElement(ZoomFixture));await tick();});
+ await click('放大画面');assert.equal(container.querySelector('output').textContent,'115%');
+ for(let i=0;i<7;i++)await click('放大画面');assert(find('放大画面').disabled);assert.equal(container.querySelector('output').textContent,'200%');
+ for(let i=0;i<10;i++)await click('缩小画面');assert(find('缩小画面').disabled);assert.equal(container.querySelector('output').textContent,'60%');
+ await click('恢复合适视角');assert.equal(container.querySelector('output').textContent,'100%');assert(!find('放大画面').disabled&&!find('缩小画面').disabled);
+ await act(()=>zoomRoot.unmount());console.log('PASS: canvas zoom buttons, upper/lower limits and fit reset');
  }finally{dom.window.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

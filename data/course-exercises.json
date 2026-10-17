@@ -2427,5 +2427,995 @@
         "output": "1\n"
       }
     ]
+  },
+  {
+    "id": 91100,
+    "lesson": "types",
+    "title": "耳标文字与整数",
+    "level": "基础",
+    "prompt": "耳标上的文字 s 是一个整数的十进制写法，可以有负号或前导零，表示的整数在 −1000 到 1000 之间。先把文字连续拼接两次，再输出对应整数的两倍。",
+    "inputFormat": "一行非空字符串 s。",
+    "outputFormat": "第一行是 s+s；第二行是 int(s) 的两倍。",
+    "solution": "s = input()\nprint(s + s)\nprint(int(s) * 2)\n",
+    "hint": "字符串的 + 负责拼接；要算数值先用 int 转换。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "7\n",
+        "output": "77\n14\n"
+      },
+      {
+        "name": "2",
+        "input": "007\n",
+        "output": "007007\n14\n"
+      },
+      {
+        "name": "3",
+        "input": "0\n",
+        "output": "00\n0\n"
+      },
+      {
+        "name": "4",
+        "input": "-3\n",
+        "output": "-3-3\n-6\n"
+      }
+    ]
+  },
+  {
+    "id": 91101,
+    "lesson": "types",
+    "title": "重复围栏标记",
+    "level": "巩固",
+    "prompt": "一段围栏的标记为非空字符串 s，仅含大写字母，长度不超过 10。将这段标记连续重复 k 次，0≤k≤10。输出重复后的文字和字符总数。",
+    "inputFormat": "第一行 s；第二行整数 k。",
+    "outputFormat": "第一行是重复后的字符串；第二行是字符数。k=0 时第一行为空行。",
+    "solution": "s = input()\nk = int(input())\nresult = s * k\nprint(result)\nprint(len(result))\n",
+    "hint": "字符串乘整数表示重复，重复 0 次得到空字符串。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "MOO\n2\n",
+        "output": "MOOMOO\n6\n"
+      },
+      {
+        "name": "2",
+        "input": "A\n0\n",
+        "output": "\n0\n"
+      },
+      {
+        "name": "3",
+        "input": "GH\n1\n",
+        "output": "GH\n2\n"
+      },
+      {
+        "name": "4",
+        "input": "OO\n3\n",
+        "output": "OOOOOO\n6\n"
+      }
+    ]
+  },
+  {
+    "id": 91102,
+    "lesson": "types",
+    "title": "名单里的不同名字",
+    "level": "挑战",
+    "prompt": "农场收到 n 条名字记录，同一个名字可能重复出现。计算不同名字的数量，以及除每个名字第一次出现外的多余记录数。0≤n≤100，名字只含英文字母。",
+    "inputFormat": "第一行 n；第二行 n 个以空格分隔的名字，n=0 时为空行。",
+    "outputFormat": "一行两个整数：不同名字数、多余记录数。",
+    "solution": "n = int(input())\nnames = input().split()\ndifferent = len(set(names))\nprint(different, n - different)\n",
+    "hint": "列表保留重复项，集合只保留不同的名字。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5\nBessie Elsie Bessie Alice Elsie\n",
+        "output": "3 2\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n\n",
+        "output": "0 0\n"
+      },
+      {
+        "name": "3",
+        "input": "1\nBessie\n",
+        "output": "1 0\n"
+      },
+      {
+        "name": "4",
+        "input": "4\nElsie Elsie Elsie Elsie\n",
+        "output": "1 3\n"
+      }
+    ]
+  },
+  {
+    "id": 91103,
+    "lesson": "conversion",
+    "title": "下一张整数耳标",
+    "level": "基础",
+    "prompt": "读入一段表示整数 n 的文字，可能有前导零或正负号。输出 n+1 的标准十进制写法。−1000≤n≤1000。",
+    "inputFormat": "一行整数文字。",
+    "outputFormat": "一行一个整数，不保留多余前导零。",
+    "solution": "n = int(input())\nprint(n + 1)\n",
+    "hint": "int(\"009\") 是 9；print 会将计算结果转成输出文本。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "009\n",
+        "output": "10\n"
+      },
+      {
+        "name": "2",
+        "input": "-1\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "0\n",
+        "output": "1\n"
+      },
+      {
+        "name": "4",
+        "input": "+1000\n",
+        "output": "1001\n"
+      }
+    ]
+  },
+  {
+    "id": 91104,
+    "lesson": "conversion",
+    "title": "字符串开关与数字开关",
+    "level": "巩固",
+    "prompt": "给出非空字符串 s，它表示 −1000 到 1000 的一个整数。分别输出 bool(s) 和 bool(int(s))。答案必须写成 Python 的 True 或 False。",
+    "inputFormat": "一行非空整数文字 s。",
+    "outputFormat": "一行两个布尔值，用空格分隔。",
+    "solution": "s = input()\nprint(bool(s), bool(int(s)))\n",
+    "hint": "非空字符串总是真值；数字 0 的真值为 False。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "0\n",
+        "output": "True False\n"
+      },
+      {
+        "name": "2",
+        "input": "00\n",
+        "output": "True False\n"
+      },
+      {
+        "name": "3",
+        "input": "-3\n",
+        "output": "True True\n"
+      },
+      {
+        "name": "4",
+        "input": "17\n",
+        "output": "True True\n"
+      }
+    ]
+  },
+  {
+    "id": 91105,
+    "lesson": "conversion",
+    "title": "一批饲料的重量",
+    "level": "挑战",
+    "prompt": "给出每袋饲料重量 w 和袋数 n，计算这一批的总重量。0≤w≤100，每个 w 最多两位小数；0≤n≤100。总重量必须显示两位小数。",
+    "inputFormat": "一行 w 和 n，以空格分隔。",
+    "outputFormat": "一行总重量，固定两位小数。",
+    "solution": "weight, count = input().split()\ntotal = float(weight) * int(count)\nprint(f\"{total:.2f}\")\n",
+    "hint": "分别用 float 与 int 转换；格式 .2f 保留两位小数。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2.5 3\n",
+        "output": "7.50\n"
+      },
+      {
+        "name": "2",
+        "input": "0 8\n",
+        "output": "0.00\n"
+      },
+      {
+        "name": "3",
+        "input": "1.25 0\n",
+        "output": "0.00\n"
+      },
+      {
+        "name": "4",
+        "input": "0.10 3\n",
+        "output": "0.30\n"
+      }
+    ]
+  },
+  {
+    "id": 91106,
+    "lesson": "builtins",
+    "title": "两座牛棚之间",
+    "level": "基础",
+    "prompt": "两座牛棚位于一条数轴上的 x 和 y。输出它们的距离。−100000≤x,y≤100000。",
+    "inputFormat": "一行两个整数 x 和 y。",
+    "outputFormat": "一行一个非负整数。",
+    "solution": "x, y = map(int, input().split())\nprint(abs(x - y))\n",
+    "hint": "距离不带方向，使用 abs(x-y)。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 10\n",
+        "output": "7\n"
+      },
+      {
+        "name": "2",
+        "input": "-4 2\n",
+        "output": "6\n"
+      },
+      {
+        "name": "3",
+        "input": "5 5\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "100000 -100000\n",
+        "output": "200000\n"
+      }
+    ]
+  },
+  {
+    "id": 91107,
+    "lesson": "builtins",
+    "title": "牛棚温度统计",
+    "level": "巩固",
+    "prompt": "给出 n 次整数温度记录，统计最低温度、最高温度和温度总和。1≤n≤100，每次温度在 −100 到 100 之间。",
+    "inputFormat": "第一行 n；第二行 n 个整数。",
+    "outputFormat": "一行三个整数，依次是最小值、最大值、总和。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\nprint(min(a), max(a), sum(a))\n",
+    "hint": "列表保证非空；max 能正确处理全负数，不需要把答案初始设为 0。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n4 0 7 4\n",
+        "output": "0 7 15\n"
+      },
+      {
+        "name": "2",
+        "input": "3\n-8 -2 -5\n",
+        "output": "-8 -2 -15\n"
+      },
+      {
+        "name": "3",
+        "input": "1\n0\n",
+        "output": "0 0 0\n"
+      },
+      {
+        "name": "4",
+        "input": "4\n3 3 3 3\n",
+        "output": "3 3 12\n"
+      }
+    ]
+  },
+  {
+    "id": 91108,
+    "lesson": "builtins",
+    "title": "牛槽与目标草量",
+    "level": "挑战",
+    "prompt": "有 n 个牛槽，当前草量为 a。每个牛槽的目标草量为 t。统计所有牛槽与目标的绝对差之和，并统计已经恰好为 t 的牛槽数。0≤n≤100，0≤a_i,t≤1000。",
+    "inputFormat": "第一行 n 和 t；第二行 n 个草量，n=0 时为空行。",
+    "outputFormat": "一行两个整数：绝对差之和、恰好达标的牛槽数。",
+    "solution": "n, target = map(int, input().split())\na = list(map(int, input().split()))\ndifference = 0\nfor x in a:\n    difference += abs(x - target)\nprint(difference, a.count(target))\n",
+    "hint": "差值取绝对值后相加；count 要写成 a.count(target)。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 4\n4 0 7 4\n",
+        "output": "7 2\n"
+      },
+      {
+        "name": "2",
+        "input": "0 5\n\n",
+        "output": "0 0\n"
+      },
+      {
+        "name": "3",
+        "input": "3 0\n0 0 0\n",
+        "output": "0 3\n"
+      },
+      {
+        "name": "4",
+        "input": "4 5\n1 9 5 2\n",
+        "output": "11 1\n"
+      }
+    ]
+  },
+  {
+    "id": 91109,
+    "lesson": "list-methods",
+    "title": "补充草料清单",
+    "level": "基础",
+    "prompt": "初始清单有 n 个整数。依次执行：追加 x；再逐项追加 y 和 z；最后取出并删除末项。输出取出的数与最终清单。0≤n≤20，所有数绝对值不超过 100。",
+    "inputFormat": "第一行 n；第二行 n 个整数（n=0 时为空行）；第三行 x y z。",
+    "outputFormat": "第一行是取出的末项；第二行是最终清单，项之间用空格。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\nx, y, z = map(int, input().split())\na.append(x)\na.extend([y, z])\nlast = a.pop()\nprint(last)\nprint(*a)\n",
+    "hint": "append 加一项，extend 把一组数据逐项加入，pop 返回删除的末项。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2\n2 4\n7 1 3\n",
+        "output": "3\n2 4 7 1\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n\n0 0 0\n",
+        "output": "0\n0 0\n"
+      },
+      {
+        "name": "3",
+        "input": "1\n-2\n-3 5 -8\n",
+        "output": "-8\n-2 -3 5\n"
+      },
+      {
+        "name": "4",
+        "input": "3\n4 4 4\n4 4 4\n",
+        "output": "4\n4 4 4 4 4\n"
+      }
+    ]
+  },
+  {
+    "id": 91110,
+    "lesson": "list-methods",
+    "title": "移走第一袋指定草料",
+    "level": "巩固",
+    "prompt": "给出非空清单 a 和一定在清单中出现的 x。先输出 x 首次出现的下标与出现总次数，再删除第一个 x，输出剩余清单。下标从 0 开始。1≤n≤30，数值绝对值不超过 100。",
+    "inputFormat": "第一行 n；第二行 n 个整数；第三行 x。",
+    "outputFormat": "第一行是首次下标和删除前的次数；第二行是删除后的清单。清单为空则第二行为空行。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\nx = int(input())\nprint(a.index(x), a.count(x))\na.remove(x)\nprint(*a)\n",
+    "hint": "先查找和计数，再 remove(x)；remove 只删第一次出现的值。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n2 4 2 7\n2\n",
+        "output": "0 2\n4 2 7\n"
+      },
+      {
+        "name": "2",
+        "input": "1\n0\n0\n",
+        "output": "0 1\n\n"
+      },
+      {
+        "name": "3",
+        "input": "3\n-1 -2 -1\n-2\n",
+        "output": "1 1\n-1 -1\n"
+      },
+      {
+        "name": "4",
+        "input": "4\n5 5 5 5\n5\n",
+        "output": "0 4\n5 5 5\n"
+      }
+    ]
+  },
+  {
+    "id": 91111,
+    "lesson": "list-methods",
+    "title": "两份独立的调整方案",
+    "level": "挑战",
+    "prompt": "原清单 a 有 n 项。先复制出一份独立清单 b，然后只给 b 的第 i 项加 x，再只给 a 的第 j 项减 x。即使 i=j，两份清单也不能相互影响。1≤n≤30，0≤i,j<n，数据和 x 的绝对值不超过 100。",
+    "inputFormat": "第一行 n；第二行 n 个整数；第三行 i j x。",
+    "outputFormat": "第一行最终的 a；第二行最终的 b。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\ni, j, x = map(int, input().split())\nb = a[:]\nb[i] += x\na[j] -= x\nprint(*a)\nprint(*b)\n",
+    "hint": "b=a 会让两个名字共享一份列表；这里需要 b=a[:]。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3\n4 2 7\n0 2 3\n",
+        "output": "4 2 4\n7 2 7\n"
+      },
+      {
+        "name": "2",
+        "input": "1\n5\n0 0 2\n",
+        "output": "3\n7\n"
+      },
+      {
+        "name": "3",
+        "input": "2\n0 0\n1 1 0\n",
+        "output": "0 0\n0 0\n"
+      },
+      {
+        "name": "4",
+        "input": "3\n-1 -1 4\n2 0 -3\n",
+        "output": "2 -1 4\n-1 -1 1\n"
+      }
+    ]
+  },
+  {
+    "id": 91112,
+    "lesson": "string-methods",
+    "title": "清理耳标文本",
+    "level": "基础",
+    "prompt": "一行文字两端可能有空格，中间只含英文字母和连字符 -。先去掉两端空白，再将每个 - 替换成下划线 _。输出清理后的文字及其长度。原文本长度不超过 100，可以只含空格。",
+    "inputFormat": "一行待清理的文字。",
+    "outputFormat": "第一行清理后的文本；第二行字符数。",
+    "solution": "s = input().strip()\ns = s.replace(\"-\", \"_\")\nprint(s)\nprint(len(s))\n",
+    "hint": "strip 返回去掉两端空白的新字符串；replace 的结果也要保存。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "  Bessie-A  \n",
+        "output": "Bessie_A\n8\n"
+      },
+      {
+        "name": "2",
+        "input": "Elsie\n",
+        "output": "Elsie\n5\n"
+      },
+      {
+        "name": "3",
+        "input": "   \n",
+        "output": "\n0\n"
+      },
+      {
+        "name": "4",
+        "input": "--MOO--\n",
+        "output": "__MOO__\n7\n"
+      }
+    ]
+  },
+  {
+    "id": 91113,
+    "lesson": "string-methods",
+    "title": "整理名单分隔符",
+    "level": "巩固",
+    "prompt": "一行中给出若干名字，名字之间可能有多个空格，两端也可能有空格。统计名字数量，并用一个连字符 - 连接所有名字。名字只含英文字母，整行长度不超过 200，也可以为空。",
+    "inputFormat": "一行名单文本。",
+    "outputFormat": "第一行是名字数量；第二行是连字符连接后的名单，无名字时为空行。",
+    "solution": "names = input().split()\nprint(len(names))\nprint(\"-\".join(names))\n",
+    "hint": "不带参数的 split 会合并连续空白；join 只在相邻名字之间加入分隔符。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "  Bessie   Elsie  Alice \n",
+        "output": "3\nBessie-Elsie-Alice\n"
+      },
+      {
+        "name": "2",
+        "input": "\n",
+        "output": "0\n\n"
+      },
+      {
+        "name": "3",
+        "input": "Bessie\n",
+        "output": "1\nBessie\n"
+      },
+      {
+        "name": "4",
+        "input": "  Elsie Elsie  \n",
+        "output": "2\nElsie-Elsie\n"
+      }
+    ]
+  },
+  {
+    "id": 91114,
+    "lesson": "string-methods",
+    "title": "查找不重叠标记",
+    "level": "挑战",
+    "prompt": "给出大写字母字符串 s 和非空标记 p。按从左到右、匹配之间不能重叠的方式统计 p 的出现次数，同时输出 p 第一次出现的下标。找不到时下标输出 -1。1≤len(s)≤100，1≤len(p)≤20。",
+    "inputFormat": "第一行 s；第二行 p。",
+    "outputFormat": "一行两个整数：不重叠出现次数、第一次出现的下标（从 0 开始）。",
+    "solution": "s = input()\np = input()\nprint(s.count(p), s.find(p))\n",
+    "hint": "AAAAA 中 AA 的不重叠出现次数为 2，不是允许重叠时的 4。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "AAAAA\nAA\n",
+        "output": "2 0\n"
+      },
+      {
+        "name": "2",
+        "input": "MOOMOO\nMOO\n",
+        "output": "2 0\n"
+      },
+      {
+        "name": "3",
+        "input": "BOOMOO\nMOO\n",
+        "output": "1 3\n"
+      },
+      {
+        "name": "4",
+        "input": "MOO\nOOOO\n",
+        "output": "0 -1\n"
+      }
+    ]
+  },
+  {
+    "id": 91115,
+    "lesson": "tuples-grid",
+    "title": "移动牛棚坐标",
+    "level": "基础",
+    "prompt": "牛棚初始坐标为 (x,y)，一次移动量为 (dx,dy)。输出移动后的坐标。四个整数的绝对值均不超过 1000。",
+    "inputFormat": "第一行 x y；第二行 dx dy。",
+    "outputFormat": "一行新的 x 和 y，用空格分隔。",
+    "solution": "position = tuple(map(int, input().split()))\nx, y = position\ndx, dy = map(int, input().split())\nprint(x + dx, y + dy)\n",
+    "hint": "坐标元组可以解包到两个变量；横、纵方向分别计算。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2 3\n4 -1\n",
+        "output": "6 2\n"
+      },
+      {
+        "name": "2",
+        "input": "0 0\n0 0\n",
+        "output": "0 0\n"
+      },
+      {
+        "name": "3",
+        "input": "-5 8\n5 -8\n",
+        "output": "0 0\n"
+      },
+      {
+        "name": "4",
+        "input": "1000 -1000\n-1000 1000\n",
+        "output": "0 0\n"
+      }
+    ]
+  },
+  {
+    "id": 91116,
+    "lesson": "tuples-grid",
+    "title": "独立更新草料网格",
+    "level": "巩固",
+    "prompt": "创建 r 行 c 列、初值全为 0 的网格。依次执行 q 次赋值，把第 x 行第 y 列改为 v。行列下标从 0 开始，同一格多次赋值以最后一次为准。1≤r,c≤5，0≤q≤20，0≤v≤100。",
+    "inputFormat": "第一行 r c q；后面 q 行各有 x y v，保证坐标合法。",
+    "outputFormat": "输出 r 行，每行 c 个整数。",
+    "solution": "r, c, q = map(int, input().split())\ngrid = [[0] * c for _ in range(r)]\nfor _ in range(q):\n    x, y, value = map(int, input().split())\n    grid[x][y] = value\nfor row in grid:\n    print(*row)\n",
+    "hint": "每一行必须单独创建，不能用 [[0]*c]*r 共享同一行。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2 3 1\n0 1 5\n",
+        "output": "0 5 0\n0 0 0\n"
+      },
+      {
+        "name": "2",
+        "input": "1 1 0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "2 2 3\n0 0 3\n1 1 4\n0 0 8\n",
+        "output": "8 0\n0 4\n"
+      },
+      {
+        "name": "4",
+        "input": "3 1 2\n1 0 7\n2 0 9\n",
+        "output": "0\n7\n9\n"
+      }
+    ]
+  },
+  {
+    "id": 91117,
+    "lesson": "tuples-grid",
+    "title": "统计外围牛槽",
+    "level": "挑战",
+    "prompt": "一个 r×c 的网格记录草料量，最外圈的格子称为外围牛槽。输出所有外围牛槽的草料总量，每格只统计一次。1≤r,c≤10，每格草量为 0 到 100。",
+    "inputFormat": "第一行 r c；接下来 r 行，每行 c 个整数。",
+    "outputFormat": "一行外围草料总量。",
+    "solution": "r, c = map(int, input().split())\ngrid = [list(map(int, input().split())) for _ in range(r)]\nanswer = 0\nfor i in range(r):\n    for j in range(c):\n        if i == 0 or i == r - 1 or j == 0 or j == c - 1:\n            answer += grid[i][j]\nprint(answer)\n",
+    "hint": "逐格判断是否位于任意一条边，避免 1 行、1 列或角落被重复累计。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3 3\n1 2 3\n4 100 6\n7 8 9\n",
+        "output": "40\n"
+      },
+      {
+        "name": "2",
+        "input": "1 1\n5\n",
+        "output": "5\n"
+      },
+      {
+        "name": "3",
+        "input": "1 4\n1 2 3 4\n",
+        "output": "10\n"
+      },
+      {
+        "name": "4",
+        "input": "3 1\n0\n7\n0\n",
+        "output": "7\n"
+      }
+    ]
+  },
+  {
+    "id": 91118,
+    "lesson": "iteration",
+    "title": "给超量牛槽编号",
+    "level": "基础",
+    "prompt": "按顺序给 n 个牛槽编号为 1 到 n。输出草量严格大于 limit 的所有编号，保持原顺序。0≤n≤100，0≤草量,limit≤1000。",
+    "inputFormat": "第一行 n limit；第二行 n 个草量，n=0 时为空行。",
+    "outputFormat": "一行符合条件的编号，用空格分隔；没有时输出 NONE。",
+    "solution": "n, limit = map(int, input().split())\na = list(map(int, input().split()))\nanswer = []\nfor number, amount in enumerate(a, 1):\n    if amount > limit:\n        answer.append(number)\nif answer:\n    print(*answer)\nelse:\n    print(\"NONE\")\n",
+    "hint": "enumerate(a,1) 直接给出从 1 开始的题目编号；等于 limit 不符合。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 4\n4 0 7 5\n",
+        "output": "3 4\n"
+      },
+      {
+        "name": "2",
+        "input": "0 0\n\n",
+        "output": "NONE\n"
+      },
+      {
+        "name": "3",
+        "input": "3 2\n2 2 2\n",
+        "output": "NONE\n"
+      },
+      {
+        "name": "4",
+        "input": "3 0\n1 1 1\n",
+        "output": "1 2 3\n"
+      }
+    ]
+  },
+  {
+    "id": 91119,
+    "lesson": "iteration",
+    "title": "对照两天的产奶量",
+    "level": "巩固",
+    "prompt": "给出同一批 n 头牛前后两天的产奶量。计算每头牛的后一天减前一天，再判断“至少一头下降”和“全部没有下降”。0≤n≤100，产奶量为 0 到 1000。n=0 时按 any([])=False、all([])=True 处理。",
+    "inputFormat": "第一行 n；第二行前一天的 n 个数；第三行后一天的 n 个数。n=0 时后两行均为空行。",
+    "outputFormat": "第一行各头牛的变化量；第二行依次输出两项判断，使用 True 或 False。",
+    "solution": "n = int(input())\nbefore = list(map(int, input().split()))\nafter = list(map(int, input().split()))\nchanges = [y - x for x, y in zip(before, after)]\nprint(*changes)\nprint(any(x < 0 for x in changes), all(x >= 0 for x in changes))\n",
+    "hint": "zip 对应配对；any 检查是否存在负数，all 检查是否全部非负。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3\n4 2 7\n5 2 3\n",
+        "output": "1 0 -4\nTrue False\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n\n\n",
+        "output": "\nFalse True\n"
+      },
+      {
+        "name": "3",
+        "input": "3\n0 2 2\n0 2 2\n",
+        "output": "0 0 0\nFalse True\n"
+      },
+      {
+        "name": "4",
+        "input": "2\n0 1\n1 3\n",
+        "output": "1 2\nFalse True\n"
+      }
+    ]
+  },
+  {
+    "id": 91120,
+    "lesson": "iteration",
+    "title": "可装车的草料组合",
+    "level": "挑战",
+    "prompt": "有 n 组配对的两袋草料，第 i 组重量分别是 a_i、b_i。若两袋总重不超过 cap，该组可以装车。输出可装车组数、这些组的总重量之和，以及它们从 1 开始的编号。0≤n≤100，0≤a_i,b_i,cap≤1000。",
+    "inputFormat": "第一行 n cap；第二行 n 个 a_i；第三行 n 个 b_i。n=0 时后两行为空行。",
+    "outputFormat": "第一行是可装车组数与总重量；第二行是这些组的编号，没有则为空行。",
+    "solution": "n, cap = map(int, input().split())\na = list(map(int, input().split()))\nb = list(map(int, input().split()))\ntotals = [x + y for x, y in zip(a, b)]\nchosen = [(i, total) for i, total in enumerate(totals, 1) if total <= cap]\nprint(len(chosen), sum(total for i, total in chosen))\nprint(*(i for i, total in chosen))\n",
+    "hint": "先配对求总重，再同时保留编号与总重；等于容量也可以装车。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 7\n2 4 0 5\n5 4 0 1\n",
+        "output": "3 13\n1 3 4\n"
+      },
+      {
+        "name": "2",
+        "input": "0 0\n\n\n",
+        "output": "0 0\n\n"
+      },
+      {
+        "name": "3",
+        "input": "3 0\n0 1 0\n0 0 0\n",
+        "output": "2 0\n1 3\n"
+      },
+      {
+        "name": "4",
+        "input": "2 4\n3 3\n2 2\n",
+        "output": "0 0\n\n"
+      }
+    ]
+  },
+  {
+    "id": 91121,
+    "lesson": "sorting-python",
+    "title": "保留原清单的排序",
+    "level": "基础",
+    "prompt": "给出 n 个整数，先输出升序排列后的清单，再输出保持原样的输入清单。0≤n≤100，每个数绝对值不超过 1000。",
+    "inputFormat": "第一行 n；第二行 n 个整数，n=0 时为空行。",
+    "outputFormat": "第一行升序清单；第二行原清单。空清单对应空行。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\nordered = sorted(a)\nprint(*ordered)\nprint(*a)\n",
+    "hint": "sorted 返回新列表；a.sort 会改变原清单，不能满足保留原样的要求。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4\n4 1 3 1\n",
+        "output": "1 1 3 4\n4 1 3 1\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n\n",
+        "output": "\n\n"
+      },
+      {
+        "name": "3",
+        "input": "3\n-1 -3 0\n",
+        "output": "-3 -1 0\n-1 -3 0\n"
+      },
+      {
+        "name": "4",
+        "input": "1\n0\n",
+        "output": "0\n0\n"
+      }
+    ]
+  },
+  {
+    "id": 91122,
+    "lesson": "sorting-python",
+    "title": "按距离安排检查",
+    "level": "巩固",
+    "prompt": "牛棚位于整数数轴上，FJ 从 0 出发。按牛棚到 0 的距离从近到远排列；距离相同时，坐标更小的牛棚在前。允许不同牛棚坐标相同。1≤n≤100，坐标绝对值不超过 1000。",
+    "inputFormat": "第一行 n；第二行 n 个坐标。",
+    "outputFormat": "一行按规则排列的坐标。",
+    "solution": "n = int(input())\na = list(map(int, input().split()))\na.sort(key=lambda x: (abs(x), x))\nprint(*a)\n",
+    "hint": "排序键是 (距离,坐标)，元组先比较距离，相同再比较坐标。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5\n5 -2 2 0 -5\n",
+        "output": "0 -2 2 -5 5\n"
+      },
+      {
+        "name": "2",
+        "input": "1\n0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "4\n-3 3 -3 3\n",
+        "output": "-3 -3 3 3\n"
+      },
+      {
+        "name": "4",
+        "input": "3\n-8 -1 -4\n",
+        "output": "-1 -4 -8\n"
+      }
+    ]
+  },
+  {
+    "id": 91123,
+    "lesson": "sorting-python",
+    "title": "保持登记顺序的排名",
+    "level": "挑战",
+    "prompt": "有 n 条奶牛记录，每条是名字与产奶量。按产奶量从高到低排序；产奶量相同的奶牛，保持原来的登记先后。1≤n≤100，产奶量为 0 到 1000，名字互不相同且只含英文字母。",
+    "inputFormat": "第一行 n；后面 n 行，每行名字和整数产奶量。",
+    "outputFormat": "按排名输出 n 行，每行名字和产奶量。",
+    "solution": "n = int(input())\ncows = []\nfor _ in range(n):\n    name, milk = input().split()\n    cows.append((name, int(milk)))\ncows.sort(key=lambda cow: -cow[1])\nfor name, milk in cows:\n    print(name, milk)\n",
+    "hint": "只按奶量生成排序键。Python 稳定排序会保留同奶量的登记顺序，不要再按名字排序。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "3\nBessie 5\nElsie 8\nAlice 5\n",
+        "output": "Elsie 8\nBessie 5\nAlice 5\n"
+      },
+      {
+        "name": "2",
+        "input": "1\nAlice 0\n",
+        "output": "Alice 0\n"
+      },
+      {
+        "name": "3",
+        "input": "3\nSue 2\nBessie 2\nAlice 2\n",
+        "output": "Sue 2\nBessie 2\nAlice 2\n"
+      },
+      {
+        "name": "4",
+        "input": "4\nA 0\nB 8\nC 1\nD 8\n",
+        "output": "B 8\nD 8\nC 1\nA 0\n"
+      }
+    ]
+  },
+  {
+    "id": 91124,
+    "lesson": "function-basics",
+    "title": "返回一个距离",
+    "level": "基础",
+    "prompt": "尝试定义 distance(a,b) 函数，返回两个整数在数轴上的距离，再读入 x、y 并输出函数结果。−1000≤x,y≤1000。",
+    "inputFormat": "一行两个整数 x y。",
+    "outputFormat": "一行距离。",
+    "solution": "def distance(a, b):\n    return abs(a - b)\n\nx, y = map(int, input().split())\nprint(distance(x, y))\n",
+    "hint": "把 abs 的结果 return 给调用者，再在外面 print。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2 8\n",
+        "output": "6\n"
+      },
+      {
+        "name": "2",
+        "input": "-3 4\n",
+        "output": "7\n"
+      },
+      {
+        "name": "3",
+        "input": "0 0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "4",
+        "input": "1000 -1000\n",
+        "output": "2000\n"
+      }
+    ]
+  },
+  {
+    "id": 91125,
+    "lesson": "function-basics",
+    "title": "多块草地的围栏长度",
+    "level": "巩固",
+    "prompt": "有 n 块互相独立的长方形草地，长宽分别为 w、h。每块草地都单独围一圈，计算所需围栏总长度。建议定义返回单块周长的函数。0≤n≤100，1≤w,h≤1000。",
+    "inputFormat": "第一行 n；后面 n 行，每行 w h。",
+    "outputFormat": "一行全部周长的和。n=0 时输出 0。",
+    "solution": "def perimeter(width, height):\n    return 2 * (width + height)\n\nn = int(input())\ntotal = 0\nfor _ in range(n):\n    w, h = map(int, input().split())\n    total += perimeter(w, h)\nprint(total)\n",
+    "hint": "函数每次返回这一块的周长；调用处负责累计总量。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "2\n3 4\n1 2\n",
+        "output": "20\n"
+      },
+      {
+        "name": "2",
+        "input": "0\n",
+        "output": "0\n"
+      },
+      {
+        "name": "3",
+        "input": "1\n1 1\n",
+        "output": "4\n"
+      },
+      {
+        "name": "4",
+        "input": "3\n2 2\n2 2\n2 2\n",
+        "output": "24\n"
+      }
+    ]
+  },
+  {
+    "id": 91126,
+    "lesson": "function-basics",
+    "title": "筛出合法草量记录",
+    "level": "挑战",
+    "prompt": "一个牛槽的合法草量应在 0 到 capacity 之间，包含两端。给出 n 条可能有错误的整数记录，统计合法记录数与合法草量之和。建议用返回布尔值的函数判断合法性。0≤n≤100，0≤capacity≤1000，每条记录在 −1000 到 2000 之间。",
+    "inputFormat": "第一行 n capacity；第二行 n 个整数，n=0 时为空行。",
+    "outputFormat": "一行两个整数：合法记录数量、合法记录之和。",
+    "solution": "def valid(amount, capacity):\n    return 0 <= amount <= capacity\n\nn, capacity = map(int, input().split())\na = list(map(int, input().split()))\ncount = total = 0\nfor x in a:\n    if valid(x, capacity):\n        count += 1\n        total += x\nprint(count, total)\n",
+    "hint": "函数返回 True/False，外面的 if 决定是否把该项计入。0 和 capacity 都合法。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5 5\n-1 0 5 6 2\n",
+        "output": "3 7\n"
+      },
+      {
+        "name": "2",
+        "input": "0 7\n\n",
+        "output": "0 0\n"
+      },
+      {
+        "name": "3",
+        "input": "4 0\n0 1 -1 0\n",
+        "output": "2 0\n"
+      },
+      {
+        "name": "4",
+        "input": "3 10\n11 -2 20\n",
+        "output": "0 0\n"
+      }
+    ]
+  },
+  {
+    "id": 91127,
+    "lesson": "standard-library",
+    "title": "分成同样大的草料包",
+    "level": "基础",
+    "prompt": "有两堆草料，数量分别为 a、b。要分别分装成每包相同的整数份量，每堆都恰好分完，让每包尽可能大。输出每包份量，以及两堆各能分出的包数。0≤a,b≤100000，a、b 不同时为 0。",
+    "inputFormat": "一行两个整数 a b。",
+    "outputFormat": "一行三个整数：最大每包份量、第一堆包数、第二堆包数。",
+    "solution": "from math import gcd\n\na, b = map(int, input().split())\nsize = gcd(a, b)\nprint(size, a // size, b // size)\n",
+    "hint": "最大的共同整除份量就是 gcd(a,b)；只导入当前使用的 gcd。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "18 24\n",
+        "output": "6 3 4\n"
+      },
+      {
+        "name": "2",
+        "input": "0 7\n",
+        "output": "7 0 1\n"
+      },
+      {
+        "name": "3",
+        "input": "8 0\n",
+        "output": "8 1 0\n"
+      },
+      {
+        "name": "4",
+        "input": "7 11\n",
+        "output": "1 7 11\n"
+      }
+    ]
+  },
+  {
+    "id": 91128,
+    "lesson": "standard-library",
+    "title": "最常见的品种标记",
+    "level": "巩固",
+    "prompt": "给出 n 个品种标记，每个标记是一个大写英文字母。找出出现次数最多的标记；并列时输出字母表顺序最小的标记。1≤n≤100。",
+    "inputFormat": "第一行 n；第二行 n 个用空格分隔的标记。",
+    "outputFormat": "一行标记与出现次数。",
+    "solution": "from collections import Counter\n\nn = int(input())\ncounts = Counter(input().split())\nbest = min(counts, key=lambda breed: (-counts[breed], breed))\nprint(best, counts[best])\n",
+    "hint": "Counter 先统计频次；按 (-次数,字母) 取最小键即可处理并列。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "5\nG H G G H\n",
+        "output": "G 3\n"
+      },
+      {
+        "name": "2",
+        "input": "4\nZ A Z A\n",
+        "output": "A 2\n"
+      },
+      {
+        "name": "3",
+        "input": "1\nH\n",
+        "output": "H 1\n"
+      },
+      {
+        "name": "4",
+        "input": "6\nC B A C B A\n",
+        "output": "A 2\n"
+      }
+    ]
+  },
+  {
+    "id": 91129,
+    "lesson": "standard-library",
+    "title": "有序清单中的次数（选学）",
+    "level": "挑战",
+    "prompt": "给出已经升序排列的 n 个整数，以及 q 次查询。每次查询一个值 x，输出 x 在清单中出现的次数。可选用 bisect 的两个边界完成查询。0≤n≤100，1≤q≤20，数值绝对值不超过 1000。",
+    "inputFormat": "第一行 n q；第二行 n 个有序整数（n=0 时为空行）；后面 q 行，每行一个 x。",
+    "outputFormat": "输出 q 行，每行是对应值出现的次数。",
+    "solution": "from bisect import bisect_left, bisect_right\n\nn, q = map(int, input().split())\na = list(map(int, input().split()))\nfor _ in range(q):\n    x = int(input())\n    print(bisect_right(a, x) - bisect_left(a, x))\n",
+    "hint": "left 是第一个 >=x 的下标，right 是第一个 >x 的下标，两者相减就是次数。本题属于可选衔接。",
+    "cases": [
+      {
+        "name": "1",
+        "input": "4 3\n1 2 2 5\n2\n3\n5\n",
+        "output": "2\n0\n1\n"
+      },
+      {
+        "name": "2",
+        "input": "0 2\n\n0\n-1\n",
+        "output": "0\n0\n"
+      },
+      {
+        "name": "3",
+        "input": "3 3\n-2 -2 -2\n-2\n-3\n0\n",
+        "output": "3\n0\n0\n"
+      },
+      {
+        "name": "4",
+        "input": "5 3\n-3 0 0 4 9\n-3\n0\n10\n",
+        "output": "1\n2\n0\n"
+      }
+    ]
   }
 ]

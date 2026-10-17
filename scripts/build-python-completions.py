@@ -15,6 +15,8 @@ for name in ['Counter','defaultdict','deque']:
     global_items.append(item(name,getattr(importlib.import_module('collections'),name),'collections'))
 for name in ['bisect_left','bisect_right','insort','insort_left','insort_right']:
     global_items.append(item(name,getattr(importlib.import_module('bisect'),name),'bisect'))
+for name in ['gcd','lcm','isqrt','ceil','floor','sqrt']:
+    global_items.append(item(name,getattr(importlib.import_module('math'),name),'math'))
 methods={}
 for kind in [str,list,tuple,dict,set,frozenset,int,float,bytes,bytearray,*[getattr(importlib.import_module('collections'),n) for n in ['deque','Counter','defaultdict']]]:
     for n in dir(kind):

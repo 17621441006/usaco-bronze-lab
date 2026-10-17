@@ -497,6 +497,42 @@
       "insert": "insort_right(${1})$0",
       "detail": "bisect.insort_right(a, x, lo=0, hi=None, *, key=None)",
       "documentation": "Insert item x in list a, and keep it sorted assuming a is sorted.\n\nIf x is already in a, insert it to the right of the rightmost x.\n\nOptional args lo (default 0) and hi (default len(a)) bound the"
+    },
+    {
+      "label": "gcd",
+      "insert": "gcd(${1})$0",
+      "detail": "math.gcd(*integers)",
+      "documentation": "Greatest Common Divisor."
+    },
+    {
+      "label": "lcm",
+      "insert": "lcm(${1})$0",
+      "detail": "math.lcm(*integers)",
+      "documentation": "Least Common Multiple."
+    },
+    {
+      "label": "isqrt",
+      "insert": "isqrt(${1})$0",
+      "detail": "math.isqrt(n, /)",
+      "documentation": "Return the integer part of the square root of the input."
+    },
+    {
+      "label": "ceil",
+      "insert": "ceil(${1})$0",
+      "detail": "math.ceil(x, /)",
+      "documentation": "Return the ceiling of x as an Integral.\n\nThis is the smallest integer >= x."
+    },
+    {
+      "label": "floor",
+      "insert": "floor(${1})$0",
+      "detail": "math.floor(x, /)",
+      "documentation": "Return the floor of x as an Integral.\n\nThis is the largest integer <= x."
+    },
+    {
+      "label": "sqrt",
+      "insert": "sqrt(${1})$0",
+      "detail": "math.sqrt(x, /)",
+      "documentation": "Return the square root of x."
     }
   ],
   "methods": [

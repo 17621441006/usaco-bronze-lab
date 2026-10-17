@@ -4,7 +4,7 @@ const root=process.cwd(),resolve=Module._resolveFilename;
 Module._resolveFilename=function(name,...args){return resolve.call(this,name.startsWith('@/')?path.join(root,name.slice(2)):name,...args);};
 for(const ext of ['.ts','.tsx'])require.extensions[ext]=(m,f)=>m._compile(ts.transpileModule(fs.readFileSync(f,'utf8'),{compilerOptions:{jsx:ts.JsxEmit.ReactJSX,module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText,f);
 const {farmFrame,storyKinds}=require('../lib/farm-scenarios.ts'),{algorithmLessons,pythonLessons}=require('../data/course-lessons.ts'),{FarmDiagram}=require('../components/farm-diagram.tsx'),{FenceMethods}=require('../components/fence-methods.tsx'),React=require('react'),{renderToStaticMarkup}=require('react-dom/server'),exercises=require('../data/course-exercises.json');
-assert.equal(algorithmLessons.length,18);assert.equal(pythonLessons.length,8);
+assert.equal(algorithmLessons.length,18);assert.equal(pythonLessons.length,18);
 for(const lesson of [...algorithmLessons,...pythonLessons]){assert.equal(exercises.filter(e=>e.lesson===lesson.id).length,3);assert(lesson.kind||lesson.frames?.length);}
 assert.equal(new Set(algorithmLessons.map(l=>l.group)).size,4);
 for(const kind of storyKinds)for(let s=0;s<4;s++){
@@ -33,4 +33,4 @@ try{for(const method of Object.values(fenceMethods))for(const lang of ['python',
  if(lang==='cpp'){const cpp=path.join(tmp,'solution.cpp'),exe=path.join(tmp,'solution');fs.writeFileSync(cpp,method.cpp);const compile=spawnSync('g++',['-std=c++17','-O2',cpp,'-o',exe],{encoding:'utf8'});assert.equal(compile.status,0,compile.stderr);command=exe;args=[];}
  for(const item of require('../public/official-tests/567.json').cases){const c=JSON.parse(gunzipSync(fs.readFileSync(root+'/public'+item.url)));const r=spawnSync(command,args,{input:c.input,encoding:'utf8',cwd:tmp,timeout:3000});assert.equal(r.status,0,r.stderr);assert.equal(r.stdout.trim(),c.output.trim());verified++;}
 }}finally{fs.rmSync(tmp,{recursive:true,force:true});}
-console.log(`PASS: 18 algorithm lessons / 26 course chapters, 44 semantic 2D frames, bucket conservation, identity-preserving sorting, graph reachability, interval edge cases; ${verified} fence checks across two methods × two languages × ten official files`);
+console.log(`PASS: 18 algorithm lessons / 36 course chapters, 44 semantic 2D frames, bucket conservation, identity-preserving sorting, graph reachability, interval edge cases; ${verified} fence checks across two methods × two languages × ten official files`);

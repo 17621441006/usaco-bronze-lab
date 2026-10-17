@@ -8,12 +8,13 @@ import {Skeleton} from '@/components/ui/skeleton';
 import {Box,PanelTop,ChevronLeft,ChevronRight,RotateCcw} from 'lucide-react';
 import {VisualLesson} from './visual-lesson';
 import {fitTeachingCamera,teachingBounds} from '@/lib/scene-framing';
+import {SceneZoomControls,clampSceneZoom} from './scene-zoom-controls';
 type Item={label:string,x:number,y:number,w:number,h:number,height:number,color:string};
 type Frame={title:string,text:string,items:Item[],edges:{from:number[],to:number[],color:string}[]};
 type Drawing={problemId:number,note:string,frames:Frame[]};
 function bounds(items:Item[]){return {left:Math.min(...items.map(t=>t.x-t.w/2))-.7,right:Math.max(...items.map(t=>t.x+t.w/2))+.7,top:Math.min(...items.map(t=>t.y-t.h/2))-1,bottom:Math.max(...items.map(t=>t.y+t.h/2))+1};}
 function SpatialDiagram({frame,onUnavailable}:{frame:Frame,onUnavailable:()=>void}){
- const host=useRef<HTMLDivElement>(null),resetView=useRef<()=>void>(()=>{}),orientation=useRef(new THREE.Vector3(.2,1,1.5));
+ const host=useRef<HTMLDivElement>(null),resetView=useRef<()=>void>(()=>{}),orientation=useRef(new THREE.Vector3(.2,1,1.5)),zoomValue=useRef(1),changeZoom=useRef<(value:number)=>void>(()=>{});const [zoom,setZoom]=useState(1);
  useEffect(()=>{if(!host.current)return;const node=host.current;let renderer:THREE.WebGLRenderer;
  try{renderer=new THREE.WebGLRenderer({antialias:true});}catch{onUnavailable();return;}
  const b=bounds(frame.items),width=b.right-b.left,depth=b.bottom-b.top,cx=(b.left+b.right)/2,cy=(b.top+b.bottom)/2;
@@ -27,12 +28,13 @@ function SpatialDiagram({frame,onUnavailable}:{frame:Frame,onUnavailable:()=>voi
  const grid=new THREE.GridHelper(Math.max(width,depth)+4,20,0xdce5ed,0xe9eef3);grid.position.y=-.08;scene.add(grid);
  const framedBounds=teachingBounds(objects);
  function render(){renderer.render(scene,camera);}
- function fit(direction=camera.position.clone().sub(controls.target)){const w=node.clientWidth,h=node.clientHeight;if(!w||!h)return;camera.aspect=w/h;controls.target.copy(fitTeachingCamera(camera,framedBounds,direction));renderer.setSize(w,h);controls.update();render();}
- resetView.current=()=>fit(new THREE.Vector3(.2,1,1.5));
+ function fit(direction=camera.position.clone().sub(controls.target)){const w=node.clientWidth,h=node.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.zoom=zoomValue.current;controls.target.copy(fitTeachingCamera(camera,framedBounds,direction));renderer.setSize(w,h);controls.update();render();}
+ changeZoom.current=value=>{zoomValue.current=clampSceneZoom(value);setZoom(zoomValue.current);camera.zoom=zoomValue.current;camera.updateProjectionMatrix();render();};
+ resetView.current=()=>{zoomValue.current=1;setZoom(1);fit(new THREE.Vector3(.2,1,1.5));};
  controls.addEventListener('change',render);const ro=new ResizeObserver(()=>fit());ro.observe(node);fit();return()=>{orientation.current=camera.position.clone().sub(controls.target);ro.disconnect();controls.dispose();scene.traverse(obj=>{const m=obj as THREE.Mesh;m.geometry?.dispose();const mats=Array.isArray(m.material)?m.material:[m.material];mats.forEach(v=>v?.dispose());});textures.forEach(t=>t.dispose());renderer.dispose();renderer.domElement.remove();};
 
  },[frame]);
- return <div className="problem-spatial" ref={host} role="img" aria-label={frame.title}><span className="scene-help">拖动旋转 · 标签为实际样例值</span><button type="button" className="scene-fit-button" onClick={()=>resetView.current()} aria-label="恢复合适视角">适合窗口</button></div>
+ return <div className="problem-spatial" ref={host} role="group" aria-label={frame.title}><span className="scene-help">拖动旋转 · 标签为实际样例值</span><SceneZoomControls zoom={zoom} onChange={v=>changeZoom.current(v)} onFit={()=>resetView.current()}/></div>
 }
 export function ProblemDiagram({id}:{id:number}){
  const [data,setData]=useState<Drawing|null>(null),[error,setError]=useState(''),[step,setStep]=useState(0),[view,setView]=useState('3d'),[special,setSpecial]=useState(false);

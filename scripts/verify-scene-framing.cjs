@@ -24,3 +24,9 @@ for(const file of fs.readdirSync('public/diagrams').filter(f=>f.endsWith('.json'
  const objects=frame.items.flatMap(t=>{const mesh=new THREE.Mesh(new THREE.BoxGeometry(t.w,Math.max(.08,t.height),t.h));mesh.position.set(t.x,t.height/2,t.y);const label=new THREE.Sprite(),w=Math.max(t.w,Math.min(2.7,t.label.length*.15+.45));label.scale.set(w,w/6,1);label.position.set(t.x,t.height+.2,t.y);return [mesh,label];});verify(objects);frames++;
 }}
 console.log(`PASS: hollow trough, exact feed counts, curved farm models; ${fits} camera fits across 4 panel sizes, 44 teaching states and ${frames} problem frames`);
+
+// Zoom changes the projection, while viewport resize keeps the chosen magnification.
+const zoomBounds=new THREE.Box3(new THREE.Vector3(-3,0,-1),new THREE.Vector3(3,2,1)),zoomCamera=new THREE.PerspectiveCamera(38,2,.1,100),direction=new THREE.Vector3(.2,.75,1.5),point=zoomBounds.max.clone();
+fitTeachingCamera(zoomCamera,zoomBounds,direction);const normal=point.clone().project(zoomCamera);zoomCamera.zoom=1.6;zoomCamera.updateProjectionMatrix();const enlarged=point.clone().project(zoomCamera);assert(Math.abs(enlarged.x-normal.x*1.6)<1e-8);assert(Math.abs(enlarged.y-normal.y*1.6)<1e-8);
+zoomCamera.aspect=.8;fitTeachingCamera(zoomCamera,zoomBounds,direction);assert.equal(zoomCamera.zoom,1.6);zoomCamera.zoom=1;fitTeachingCamera(zoomCamera,zoomBounds,direction);assert(Math.abs(point.clone().project(zoomCamera).x)<.87);
+console.log('PASS: zoom affects actual camera projection, survives resizing and resets to fit');
