@@ -8,7 +8,13 @@ export function attachPythonInspection(editor:Monaco.editor.IStandaloneCodeEdito
  const suffix=++serial,accept=`usaco.inspection.accept.${suffix}`,dismiss=`usaco.inspection.dismiss.${suffix}`;
  const clear=()=>{if(uri){const model=m.editor.getModel(m.Uri.parse(uri));if(model&&!model.isDisposed())m.editor.setModelMarkers(model,owner,[]);}};
  function current(){const model=editor.getModel();return !disposed&&snapshot&&model?.uri.toString()===uri&&model.getValue()===snapshot.source?model:null;}
- function action(id:string,version:number,apply:boolean){const model=current(),issue=snapshot?.issues.find(d=>d.id===id);if(!model||!issue||version!==revision)return;if(!apply){onDismiss(id);return;}if(!issue.fix||issue.dismissed)return;editor.pushUndoStop();editor.executeEdits('python-inspection',issue.fix.edits.map(e=>({range:new m.Range(e.startLineNumber,e.startColumn,e.endLineNumber,e.endColumn),text:e.text,forceMoveMarkers:true})));editor.pushUndoStop();editor.focus();}
+ function action(id:string,version:number,apply:boolean){
+  const model=current(),issue=snapshot?.issues.find(d=>d.id===id);if(!model||!issue||version!==revision)return;
+  if(!apply){onDismiss(id);void editor.getAction?.('editor.action.hideHover')?.run();editor.focus();return;}
+  if(!issue.fix||issue.dismissed)return;
+  void editor.getAction?.('editor.action.hideHover')?.run();
+  editor.pushUndoStop();editor.executeEdits('python-inspection',issue.fix.edits.map(e=>({range:new m.Range(e.startLineNumber,e.startColumn,e.endLineNumber,e.endColumn),text:e.text,forceMoveMarkers:true})));editor.pushUndoStop();editor.focus();
+ }
  const subscriptions=[
   m.editor.registerCommand(accept,(_accessor,id,version)=>action(id,version,true)),
   m.editor.registerCommand(dismiss,(_accessor,id,version)=>action(id,version,false)),
@@ -29,22 +35,30 @@ export function attachPythonInspection(editor:Monaco.editor.IStandaloneCodeEdito
   editor.onDidChangeModelContent(()=>{clear();const model=editor.getModel();if(model)m.editor.setModelMarkers(model,'python',[]);snapshot=null;revision++;}),
   editor.onDidChangeModel(()=>{clear();snapshot=null;revision++;}),
  ];
- // Y/N are scoped to an actionable popup; ordinary editor typing is untouched.
+ // The editor keeps keyboard focus while hovering a marker. A visible actionable
+ // card must therefore work without moving the pointer into that card first.
  if(hoverHost){
-  let pointed:HTMLElement|null=null;
+  let pointed:HTMLElement|null=null,consumed='';
   const over=(event:PointerEvent)=>{const target=event.target as Element|null;pointed=target?.closest<HTMLElement>('.monaco-hover')||null;};
   const out=(event:PointerEvent)=>{if(pointed&&!pointed.contains(event.relatedTarget as Node|null))pointed=null;};
   const key=(event:KeyboardEvent)=>{
+   if(event.repeat&&consumed===event.key.toLowerCase()){event.preventDefault();event.stopImmediatePropagation();return;}
    if(event.defaultPrevented||event.repeat||event.altKey||event.ctrlKey||event.metaKey||event.isComposing||!['y','n'].includes(event.key.toLowerCase()))return;
-   const focused=document.activeElement?.closest<HTMLElement>('.monaco-hover'),hover=pointed||(focused&&hoverHost.contains(focused)?focused:null);
-   if(!hover||!hover.isConnected||!hover.getClientRects().length)return;
    const command=event.key.toLowerCase()==='y'?accept:dismiss;
+   const active=document.activeElement,focused=active?.closest<HTMLElement>('.monaco-hover');
+   const editorFocused=editor.hasTextFocus()||!!(active&&editor.getDomNode()?.contains(active));
+   const editorHover=editorFocused?hoverHost.querySelector<HTMLAnchorElement>(`a[data-href^="command:${command}?"]`)?.closest<HTMLElement>('.monaco-hover'):null;
+   const hover=(focused&&hoverHost.contains(focused)?focused:null)||editorHover||pointed;
+   // Do not intercept typing into an unrelated field, even if an old hover remains.
+   if(!editorFocused&&!focused&&active?.closest('input,textarea,[contenteditable=true],[role=textbox]'))return;
+   if(!hover||!hover.isConnected||!hover.getClientRects().length||getComputedStyle(hover).visibility==='hidden'||getComputedStyle(hover).display==='none')return;
    const link=hover.querySelector<HTMLAnchorElement>(`a[data-href^="command:${command}?"]`);
    if(!link)return;
-   try{const [id,version]=JSON.parse(decodeURIComponent(link.dataset.href!.split('?')[1]));if(typeof id!=='string'||typeof version!=='number')return;event.preventDefault();event.stopPropagation();action(id,version,command===accept);}catch{}
+   try{const [id,version]=JSON.parse(decodeURIComponent(link.dataset.href!.split('?')[1]));if(typeof id!=='string'||typeof version!=='number')return;consumed=event.key.toLowerCase();event.preventDefault();event.stopImmediatePropagation();action(id,version,command===accept);}catch{}
   };
-  hoverHost.addEventListener('pointerover',over);hoverHost.addEventListener('pointerout',out);document.addEventListener('keydown',key,true);
-  subscriptions.push({dispose(){hoverHost.removeEventListener('pointerover',over);hoverHost.removeEventListener('pointerout',out);document.removeEventListener('keydown',key,true);}});
+  const release=()=>{consumed='';};
+  hoverHost.addEventListener('pointerover',over);hoverHost.addEventListener('pointerout',out);document.addEventListener('keydown',key,true);document.addEventListener('keyup',release,true);
+  subscriptions.push({dispose(){hoverHost.removeEventListener('pointerover',over);hoverHost.removeEventListener('pointerout',out);document.removeEventListener('keydown',key,true);document.removeEventListener('keyup',release,true);}});
  }
  return {
   update(next:InspectionSnapshot|null){clear();snapshot=next;revision++;const model=editor.getModel();uri=model?.uri.toString()||'';if(!next||!model||model.getValue()!==next.source)return;

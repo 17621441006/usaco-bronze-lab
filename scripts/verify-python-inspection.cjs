@@ -42,5 +42,25 @@ if(!isMainThread){
   text='print(42)\n';commands.get(apply.command.id)(null,...apply.command.arguments);assert.equal(text,'print(42)\n');bridge.update({file:'main.py',source,issues});assert.equal(hoverProvider.provideHover(model,{lineNumber:1,column:2}),null);
   bridge.dispose();assert.equal(commands.size,0);assert.equal(disposed,6);
   console.log('PASS: Monaco errors vs mild style markers, trusted hover actions, decline leaves code intact, guarded edits, undo stops, stale-result rejection and provider cleanup');
+
+  // Marker hover opens while the caret is still in the editor: Y/N must consume
+  // that key before Monaco's input handling, without affecting another field.
+  const {JSDOM}=require(process.env.JSDOM_TEST_DIR||'/tmp/usaco-qa/node_modules/jsdom');
+  const dom=new JSDOM('<div id="editor"><textarea></textarea></div><div id="hover"></div><input id="other">');
+  global.document=dom.window.document;global.getComputedStyle=dom.window.getComputedStyle.bind(dom.window);
+  const editorNode=document.getElementById('editor'),field=editorNode.querySelector('textarea'),host=document.getElementById('hover');
+  editor.getDomNode=()=>editorNode;editor.hasTextFocus=()=>document.activeElement===field;
+  const keys=attachPythonInspection(editor,monaco,id=>dismissed=id,host);
+  function show(){text=source;keys.update({file:'main.py',source,issues});const h=hoverProvider.provideHover(model,{lineNumber:1,column:2});const card=document.createElement('div');card.className='monaco-hover';card.getClientRects=()=>[{width:300,height:180}];for(const match of h.contents[0].value.matchAll(/\]\((command:[^)]+)\)/g)){const a=document.createElement('a');a.dataset.href=match[1];card.append(a);}host.replaceChildren(card);return card;}
+  function press(key,repeat=false){const event=new dom.window.KeyboardEvent('keydown',{key,repeat,bubbles:true,cancelable:true});document.activeElement.dispatchEvent(event);return event;}
+  function release(){document.dispatchEvent(new dom.window.KeyboardEvent('keyup',{bubbles:true}));}
+  show();field.focus();assert(press('Y').defaultPrevented);assert.equal(text,'print(123+343);\nprint()\n');assert(press('Y',true).defaultPrevented);release();
+  show();field.focus();dismissed=null;assert(press('n').defaultPrevented);assert.equal(dismissed,undefinedName.id);assert.equal(text,source);release();
+  const card=show();document.getElementById('other').focus();assert(!press('y').defaultPrevented);assert.equal(text,source);
+  card.style.display='none';field.focus();assert(!press('y').defaultPrevented);assert(!press('n').defaultPrevented);
+  show();field.focus();text='print(99)\n';changeContent();assert(press('y').defaultPrevented);assert.equal(text,'print(99)\n');release();
+  keys.dispose();dom.window.close();delete global.document;delete global.getComputedStyle;
+  console.log('PASS: Y/N while caret stays in editor, no pointer entry required, repeat suppression, hidden hover/other field isolation and stale hover rejection');
+
  }finally{await w.terminate();}})().catch(e=>{console.error(e);process.exitCode=1;});
 }

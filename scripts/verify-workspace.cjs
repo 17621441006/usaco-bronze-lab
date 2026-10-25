@@ -22,7 +22,7 @@ const rules=require('postcss').parse(fs.readFileSync(root+'/app/globals.css','ut
 style.textContent=rules.map(n=>n.toString()).join('\n');document.head.appendChild(style);
 Module._load=function(name,parent,...args){
  if(name==='@/lib/practice-runner')return {PracticeRunner:class{stop(){}async run(args){lastCourseCases=args.cases;const results=args.cases.map(c=>({name:c.name,status:c.output===null?'RUN':gradeStatus,input:c.input,expected:c.output,output:c.output===null?'6\n':gradeStatus==='WA'?'999\n':c.output,ms:1}));results.forEach(args.onResult);return results;}}};
- if(name==='@monaco-editor/react')return {__esModule:true,loader:{config(){}},default:props=>React.createElement('textarea',{'aria-label':'Test editor',value:props.value,readOnly:props.options?.readOnly,'data-fontsize':props.options.fontSize,'data-theme':props.theme,'data-path':props.path,onChange:e=>props.onChange(e.target.value)})};
+ if(name==='@monaco-editor/react')return {__esModule:true,loader:{config(){}},default:props=>React.createElement('textarea',{'aria-label':props.options?.ariaLabel||'Test editor',value:props.value,readOnly:props.options?.readOnly,'data-fontsize':props.options.fontSize,'data-theme':props.theme,'data-path':props.path,onChange:e=>props.onChange(e.target.value)})};
  if(name==='./visual-lesson')return {VisualLesson:()=>null};
  if(name==='./problem-diagram')return {ProblemDiagram:()=>null};
  return originalLoad.call(this,name,parent,...args);
@@ -133,9 +133,9 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
 
  // Global tools preserve their instances and are available inside fullscreen reading.
  await click('打开 Python Shell',container.querySelector('.page-tabbar'));
- const shellField=document.querySelector('[aria-label="Python Shell 输入"]');await input(shellField,'cows = [2, 3, 5]');
+ const shellField=document.querySelector('[aria-label="Python Shell 输入"]');assert.equal(shellField.dataset.fontsize,'16');assert(document.querySelector('.coding-tools-header [aria-label="Shell 清屏"]'));assert(document.querySelector('.shell-input-row').compareDocumentPosition(document.querySelector('.shell-transcript'))&Node.DOCUMENT_POSITION_FOLLOWING);await click('放大 Shell 字号');assert.equal(shellField.dataset.fontsize,'18');await click('切换浅色 Shell');assert.equal(shellField.dataset.theme,'vs');await input(shellField,'cows = [2, 3, 5]');
  await click('收起编程工具');await click('打开 Python Shell',container.querySelector('.page-tabbar'));
- assert.strictEqual(document.querySelector('[aria-label="Python Shell 输入"]'),shellField);assert.equal(shellField.value,'cows = [2, 3, 5]');
+ const windowPanel=document.querySelector('.coding-tools-window'),beforeX=Number.parseFloat(windowPanel.style.left);await act(async()=>{find('移动编程工具窗口').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));await tick();});assert(Number.parseFloat(windowPanel.style.left)<beforeX);assert.strictEqual(document.querySelector('[aria-label="Python Shell 输入"]'),shellField);assert.equal(shellField.value,'cows = [2, 3, 5]');
  await click('收起编程工具');await click('全屏读题',active);
  await click('打开独立代码编辑器',document.querySelector('.reader-fullscreen-toolbar'));await act(tick);
  const tools=document.querySelector('.coding-tools-window');assert(tools.closest('.statement-fullscreen'),'global tools stay in the fullscreen root');

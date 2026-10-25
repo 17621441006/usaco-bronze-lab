@@ -19,7 +19,7 @@ async function pointer(type,x,y){await act(async()=>{const e=new MouseEvent(type
 function saved(key='first'){return JSON.parse(localStorage.getItem('usaco-page-annotations-v1-'+key)||'[]');}
 (async()=>{try{
  await act(async()=>{view.render(React.createElement(PageAnnotations,{contextKey:'first',onClose:()=>{}}));await tick();});
- assert.equal(document.querySelector('canvas').style.pointerEvents,'none');await click('AI画笔');await click('蓝色画笔');await pointer('pointerdown',200,250);await pointer('pointermove',350,250);await pointer('pointerup',400,250);await click('保存标注');await click('保存到本机');
+ assert.equal(document.querySelector('canvas').style.pointerEvents,'auto');assert.equal(find('AI画笔').getAttribute('aria-pressed'),'true');await click('蓝色画笔');await pointer('pointerdown',200,250);await pointer('pointermove',350,250);await pointer('pointerup',400,250);await click('保存标注');await click('保存到本机');
  let marks=saved();assert.equal(marks.length,1);assert.equal(marks[0].anchor,'statement-1-en');assert.equal(marks[0].ink.color,'blue');assert.equal(marks[0].ink.kind,'line');assert.equal(marks[0].ink.points[0].x,100);assert(hitPageMark(marks[0],{x:150,y:100}));assert(!hitPageMark(marks[0],{x:400,y:300}));assert.equal(movePageMark(marks[0],20,30).ink.points[0].x,120);
  await click('撤销标注');assert(!find('撤销标注').disabled===false);await click('重做标注');await click('选择');await pointer('pointerdown',280,250);await pointer('pointermove',330,300);await pointer('pointerup',330,300);await click('保存标注');await click('保存到本机');assert.equal(saved()[0].ink.points[0].x,150);
  await click('橡皮擦');await pointer('pointerdown',330,300);await pointer('pointerup',330,300);await click('保存标注');await click('保存到本机');assert.equal(saved().length,0);await click('撤销标注');

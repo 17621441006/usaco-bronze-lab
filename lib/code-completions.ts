@@ -82,6 +82,8 @@ const methodsAll=merge(methods,vocabulary.methods);
 const modulesAll:Record<string,Entry[]>={};
 for(const name of new Set([...Object.keys(modules),...Object.keys(vocabulary.modules)]))modulesAll[name]=merge(modules[name]||[],(vocabulary.modules as Record<string,Entry[]>)[name]||[]);
 const configured=new WeakSet<object>();
+const completionContext=new WeakMap<object,string>();
+export function setCompletionContext(model:object,source:string){completionContext.set(model,source);}
 export function registerCodeCompletions(monaco:typeof Monaco){
  if(configured.has(monaco))return;configured.add(monaco);
  for(const language of ['python','cpp'])monaco.languages.registerCompletionItemProvider(language,{
@@ -89,15 +91,16 @@ export function registerCodeCompletions(monaco:typeof Monaco){
   provideCompletionItems(model,position){
    const word=model.getWordUntilPosition(position),before=model.getLineContent(position.lineNumber).slice(0,word.startColumn-1);
    const member=language==='python'&&before.endsWith('.')?(before.match(/([A-Za-z_]\w*)\.$/)||['','']):null;
-   const alias=member?new RegExp('import\\s+([A-Za-z_][\\w.]*)\\s+as\\s+'+member[1]+'\\b').exec(model.getValue()):null;
+   const source=(completionContext.get(model)||'')+'\n'+model.getValue();
+   const alias=member?new RegExp('import\\s+([A-Za-z_][\\w.]*)\\s+as\\s+'+member[1]+'\\b').exec(source):null;
    const receiver=alias?alias[1]:member?.[1];
    const entries=language==='python'?(member?(modulesAll[receiver||'']||methodsAll):pythonAll):cpp;
    const range={startLineNumber:position.lineNumber,endLineNumber:position.lineNumber,startColumn:word.startColumn,endColumn:word.endColumn};
    const suggestions:Monaco.languages.CompletionItem[]=entries.map((entry,index)=>({label:entry.label,filterText:entry.label,insertText:entry.insert,detail:entry.detail,documentation:entry.documentation||entry.detail,range,sortText:String(index).padStart(3,'0'),kind:entry.kind==='keyword'?monaco.languages.CompletionItemKind.Keyword:entry.kind==='module'?monaco.languages.CompletionItemKind.Module:entry.kind==='snippet'?monaco.languages.CompletionItemKind.Snippet:member?monaco.languages.CompletionItemKind.Method:monaco.languages.CompletionItemKind.Function,insertTextRules:monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet}));
    if(!member){
-    const defined=new Set<string>(),text=model.getValue();
+    const defined=new Set<string>(),text=source;
     const pattern=language==='python'?/(?:\b(?:def|class|for)\s+([A-Za-z_]\w*)|^\s*([A-Za-z_]\w*)\s*(?:=(?!=)|:))/gm:/\b(?:int|long|double|float|bool|string|auto)\s+([A-Za-z_]\w*)/g;
-    for(const match of text.matchAll(pattern)){const label=match[1]||match[2];if(!defined.has(label)&&!entries.some(e=>e.label===label)){defined.add(label);suggestions.push({label,insertText:label,range,kind:monaco.languages.CompletionItemKind.Variable,detail:'当前文件中的名称',sortText:'900'+label});}}
+    for(const match of text.matchAll(pattern)){const label=match[1]||match[2];if(!defined.has(label)&&!entries.some(e=>e.label===label)){defined.add(label);suggestions.push({label,insertText:label,range,kind:monaco.languages.CompletionItemKind.Variable,detail:'代码中的名称',sortText:'900'+label});}}
    }
    return {suggestions};
   }

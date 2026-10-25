@@ -20,3 +20,15 @@ assert(suggest('mask.bi').some(s=>s.label==='bit_count'));
 assert(suggest('it.co','python','import itertools as it\nit.co').some(s=>s.label==='combinations'));
 assert(suggest('a[0].sp').some(s=>s.label==='split'));
 console.log(`PASS: all calls used across ${audit.referenceFiles} references and ${audit.exerciseSolutions} exercises; next/iter, int methods, module alias and chained receivers`);
+
+const sessionModel={getWordUntilPosition:()=>({word:'co',startColumn:1,endColumn:3}),getLineContent:()=> 'co',getValue:()=> 'co'};
+compiled.exports.setCompletionContext(sessionModel,'cows = [2, 3, 5]');
+assert(providers.python.provideCompletionItems(sessionModel,{lineNumber:1,column:3}).suggestions.some(s=>s.label==='cows'));
+compiled.exports.setCompletionContext(sessionModel,'');
+assert(!providers.python.provideCompletionItems(sessionModel,{lineNumber:1,column:3}).suggestions.some(s=>s.label==='cows'));
+const geometry=new Module('floating-window');geometry._compile(ts.transpileModule(fs.readFileSync('lib/floating-window.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,'floating-window.cjs');
+for(const view of [{width:1440,height:900},{width:1024,height:600},{width:375,height:667},{width:700,height:320}])for(const tool of ['shell','editor']){
+ const frame=geometry.exports.initialWindow(tool,view),outside={...frame,x:99999,y:-99999,width:99999,height:99999};
+ for(const result of [frame,geometry.exports.fitWindow(outside,view)]){assert(result.x>=0&&result.y>=0);assert(result.x+result.width<=view.width);assert(result.y+result.height<=view.height-Math.min(72,view.height*.15));}
+}
+console.log('PASS: Shell session-name completions reset cleanly; default and resized windows remain within desktop/mobile/short viewport bounds');
