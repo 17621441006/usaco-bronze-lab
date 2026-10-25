@@ -7,6 +7,8 @@ import {Play,Square,Trash2,RotateCcw,TextCursorInput,Minus,Plus,Sun,Moon} from '
 import {PythonShellRuntime,type ShellResult} from '@/lib/python-shell';
 import {configureCodeEditor} from '@/lib/editor-theme';
 import {setCompletionContext} from '@/lib/code-completions';
+import {bindShellShortcuts} from '@/lib/editor-shortcuts';
+import {insertShellNewline,shellIndent} from '@/lib/shell-editing';
 import {useEditorOverlays} from '@/hooks/use-editor-overlays';
 loader.config({paths:{vs:'/editor/vs'}});
 type Entry={id:number;code?:string;output?:string;stderr?:string;error?:string;note?:string};
@@ -36,11 +38,10 @@ export function PythonShell({visible,toolbarHost}:{visible:boolean;toolbarHost?:
  function updateContext(source:string){context.current=source;const model=editor.current?.getModel();if(model)setCompletionContext(model,source);}
  function nextLine(){
   if(running.current)return;
-  const ed=editor.current,model=ed?.getModel(),selection=ed?.getSelection(),field=fallbackField.current,current=model?.getValue()??code;
-  const start=model&&selection?model.getOffsetAt(selection.getStartPosition()):field?.selectionStart??current.length,end=model&&selection?model.getOffsetAt(selection.getEndPosition()):field?.selectionEnd??start;
-  const previous=current.slice(0,start).split('\n').at(-1)||'',indent=(previous.match(/^\s*/)?.[0]||'')+(previous.trimEnd().endsWith(':')?'    ':'');const inserted='\n'+indent;
-  if(ed&&model&&selection&&!fallback){ed.executeEdits('shell-newline',[{range:selection,text:inserted,forceMoveMarkers:true}]);ed.setPosition(model.getPositionAt(start+inserted.length));ed.focus();}
-  else{setCode(current.slice(0,start)+inserted+current.slice(end));requestAnimationFrame(()=>{field?.focus();field?.setSelectionRange(start+inserted.length,start+inserted.length);});}
+  const ed=editor.current;if(ed&&!fallback){insertShellNewline(ed);return;}
+  const field=fallbackField.current,current=field?.value??code,start=field?.selectionStart??current.length,end=field?.selectionEnd??start;
+  const previous=current.slice(0,start).split('\n').at(-1)||'',inserted='\n'+shellIndent(previous);
+  setCode(current.slice(0,start)+inserted+current.slice(end));requestAnimationFrame(()=>{field?.focus();field?.setSelectionRange(start+inserted.length,start+inserted.length);});
  }
  async function execute(force=false){
   const submitted=editor.current?.getValue()??code;if(running.current||!submitted.trim())return;
@@ -61,11 +62,9 @@ export function PythonShell({visible,toolbarHost}:{visible:boolean;toolbarHost?:
  }
  actions.current={execute,nextLine,recall};
  const mount:OnMount=(ed,m)=>{
-  editor.current=ed;setMonaco(m);setFallback(false);setCompletionContext(ed.getModel()!,context.current);const singleLine=ed.createContextKey('shellSingleLine',ed.getModel()?.getLineCount()===1);
-  ed.onDidChangeModelContent(()=>singleLine.set(ed.getModel()?.getLineCount()===1));
+  editor.current=ed;setMonaco(m);setFallback(false);setCompletionContext(ed.getModel()!,context.current);
   // Enter accepts a visible completion first; the next Enter executes the cell.
-  ed.addCommand(m.KeyCode.Enter,()=>actions.current.execute(false),'!suggestWidgetVisible');ed.addCommand(m.KeyMod.CtrlCmd|m.KeyCode.Enter,()=>actions.current.execute(true));ed.addCommand(m.KeyMod.Shift|m.KeyCode.Enter,()=>actions.current.nextLine());
-  ed.addCommand(m.KeyCode.UpArrow,()=>actions.current.recall(-1),'!suggestWidgetVisible && shellSingleLine');ed.addCommand(m.KeyCode.DownArrow,()=>actions.current.recall(1),'!suggestWidgetVisible && shellSingleLine');ed.addCommand(m.KeyMod.Alt|m.KeyCode.UpArrow,()=>actions.current.recall(-1));ed.addCommand(m.KeyMod.Alt|m.KeyCode.DownArrow,()=>actions.current.recall(1));if(visible)ed.focus();
+  bindShellShortcuts(ed,m,{execute:force=>actions.current.execute(force),nextLine:()=>actions.current.nextLine(),recall:direction=>actions.current.recall(direction)});if(visible)ed.focus();
  };
  const controls=<>
   <div className="shell-font-controls" aria-label="Shell 字号"><button aria-label="缩小 Shell 字号" title="缩小字号" disabled={preferences.fontSize<=12} onClick={()=>setPreferences(p=>({...p,fontSize:Math.max(12,p.fontSize-2)}))}><Minus size={13}/></button><output aria-label="Shell 当前字号">{preferences.fontSize}</output><button aria-label="放大 Shell 字号" title="放大字号" disabled={preferences.fontSize>=28} onClick={()=>setPreferences(p=>({...p,fontSize:Math.min(28,p.fontSize+2)}))}><Plus size={13}/></button></div>

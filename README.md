@@ -2,6 +2,15 @@
 
 Bronze regular-season learning site. Silver, Gold and Platinum remain reserved headings. US Open is excluded.
 
+## Shell and editor newline fixes · 2026-10-25
+
+- Shell shortcuts were registered with Monaco's global `addCommand` keybinding API. After opening Shell, its Enter/Shift+Enter handlers could capture typing in other code editors, including after snippet insertion. Shell execution/history/continuation and project run/save now use editor-scoped `addAction` bindings with focus guards, disposed with their own editor. Ordinary editor Enter is left to Monaco.
+- Shell continuation uses the model's EOL and explicitly positions the caret by line/column. This fixes the one-character-per-line indentation loss caused by inserting LF but calculating offsets against Windows CRLF. Repeated Shift+Enter keeps the current indentation; a colon adds four spaces. LF/CRLF, nested blocks, blank indented lines and selected completion placeholders are covered by `scripts/verify-shell-editing.cjs`.
+- Common-statement rows support double-click insertion in addition to the existing insert button. The handler inserts the double-clicked row directly, even when another preview was selected.
+- Shell's default height grows from 430 to 560 px, with its width unchanged. Both floating tools have draggable handles on all four sides and all four corners; resizing preserves the opposite edge, minimum dimensions and viewport clearance. Header dragging and keyboard adjustment remain available.
+
+Validation: TypeScript, completion/geometry regression and workspace DOM checks pass. Actual browser checks opened Shell before the independent editor, entered two ordinary lines, double-clicked “读取 n 行整数”, inserted `n = 5`, blank lines and `print(rows)` around it, and ran five input lines to produce `[[1], [2], [3], [4], [5]]`. Three consecutive Shift+Enter operations kept four-space Shell indentation and executed the six expected output lines. Ctrl+Enter still executes Shell after the editor has mounted. All four window edges were dragged in the browser; eight-direction bounds and opposite-edge invariants are checked automatically. Capture: [newline repair](docs/ui/editor-newlines-2026-10-25.jpg).
+
 ## Compact Shell, movable tools and annotation defaults · 2026-10-25
 
 - The Shell now uses the same local Monaco editor, Python completion vocabulary and syntax theme as the code workspace. Its input sits at the top, with the latest command/result immediately below. Default text increases from 14 to 16 px; the header includes font −/+, light/dark mode, standard input, clear and restart alongside the two tool tabs. Executed commands retain syntax colors without mounting one editor per history entry. Session code supplies variable-name completions; restarting clears that context.

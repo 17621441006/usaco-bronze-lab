@@ -32,3 +32,11 @@ for(const view of [{width:1440,height:900},{width:1024,height:600},{width:375,he
  for(const result of [frame,geometry.exports.fitWindow(outside,view)]){assert(result.x>=0&&result.y>=0);assert(result.x+result.width<=view.width);assert(result.y+result.height<=view.height-Math.min(72,view.height*.15));}
 }
 console.log('PASS: Shell session-name completions reset cleanly; default and resized windows remain within desktop/mobile/short viewport bounds');
+const resizeView={width:1440,height:1000},original={x:400,y:200,width:680,height:560};
+for(const edge of ['n','s','w','e','nw','ne','sw','se'])for(const [dx,dy] of [[35,45],[-90,-70],[10000,10000],[-10000,-10000]]){
+ const r=geometry.exports.resizeWindow(original,edge,dx,dy,resizeView);assert(r.width>=440&&r.height>=280);assert(r.x>=10&&r.y>=54&&r.x+r.width<=1430&&r.y+r.height<=928);
+ if(edge.includes('w'))assert.equal(r.x+r.width,1080);else assert.equal(r.x,400);
+ if(edge.includes('n'))assert.equal(r.y+r.height,760);else assert.equal(r.y,200);
+ if(!/[we]/.test(edge))assert.equal(r.width,680);if(!/[ns]/.test(edge))assert.equal(r.height,560);
+}
+console.log('PASS: all eight resize handles preserve opposite edges, minimum sizes and viewport bounds');
