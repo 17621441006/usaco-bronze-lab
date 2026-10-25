@@ -6,6 +6,7 @@ import {isStoryKind,type StoryKind} from '@/lib/farm-scenarios';
 import {drawFarmScene} from './farm-scene';
 import {cow,farmer} from './farm-actors';
 import {createTrough} from './farm-models';
+import {createFarmEnvironment} from './farm-environment';
 import {fitTeachingCamera,teachingBounds} from '@/lib/scene-framing';
 import {SceneZoomControls,clampSceneZoom} from './scene-zoom-controls';
 export type SceneKind=StoryKind|'fence'|'cheese'|'reflection'|'moo'|'printing'|'array'|'dp'|'binary';
@@ -19,12 +20,10 @@ export function LearningScene({kind,step=0,interval=[7,10,4,8],boardMask=17,flat
  const defaultDirection=new THREE.Vector3(...(kind==='fence'?[.22,.55,1.4]:kind==='cheese'?[1,.8,1.4]:[.2,.75,1.5]) as [number,number,number]);camera.position.copy(cam.current?.kind===kind?cam.current.direction:defaultDirection);
  const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,0,0);controls.enableDamping=false;controls.maxPolarAngle=Math.PI/2.02;controls.enablePan=false;controls.enableZoom=false;
  scene.add(new THREE.HemisphereLight(0xffffff,0xa7b1bf,1.5));const sun=new THREE.DirectionalLight(0xffffff,2.3);sun.position.set(-4,12,8);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-12,right:12,top:12,bottom:-12});scene.add(sun);
- const ground=new THREE.Mesh(new THREE.PlaneGeometry(40,40),new THREE.MeshStandardMaterial({color:0xeaf2f7,roughness:1}));ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;ground.position.y=-.04;scene.add(ground);
- const grid=new THREE.GridHelper(24,24,0xdde4ec,0xe8edf2);grid.position.y=-.025;scene.add(grid);
  const objects:THREE.Object3D[]=[];
  function add(object:THREE.Object3D){scene.add(object);objects.push(object);}
  function box(x:number,y:number,z:number,w:number,h:number,d:number,color:THREE.ColorRepresentation,opacity=1){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color,roughness:.72,transparent:opacity<1,opacity}));m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;add(m);return m;}
- function label(text:string,x:number,y:number,z:number,color='#24384c',width=2.2){const c=document.createElement('canvas');c.width=512;c.height=128;const ctx=c.getContext('2d')!;ctx.fillStyle='rgba(255,255,255,.94)';ctx.beginPath();ctx.roundRect(4,4,504,120,20);ctx.fill();ctx.fillStyle=color;ctx.font='500 45px Arial,"PingFang SC",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,256,66,480);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:t,depthTest:false}));sp.position.set(x,y,z);sp.scale.set(width,width/4,1);add(sp);return sp;}
+ function label(text:string,x:number,y:number,z:number,color='#24384c',width=2.2){const c=document.createElement('canvas');c.width=512;c.height=128;const ctx=c.getContext('2d')!;ctx.fillStyle='rgba(255,255,255,.94)';ctx.beginPath();ctx.roundRect(4,4,504,120,20);ctx.fill();ctx.fillStyle=color;ctx.font='500 45px Arial,"PingFang SC",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,256,66,480);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:t,depthTest:false,toneMapped:false}));sp.position.set(x,y,z);sp.scale.set(width,width/4,1);add(sp);return sp;}
  function line(points:number[][],color=0x446f93){const g=new THREE.BufferGeometry().setFromPoints(points.map(v=>new THREE.Vector3(...v as [number,number,number])));add(new THREE.Line(g,new THREE.LineBasicMaterial({color})));}
  const kit={add,box,label,line};
  if(isStoryKind(kind)){drawFarmScene(kit,kind,step);}
@@ -64,7 +63,7 @@ export function LearningScene({kind,step=0,interval=[7,10,4,8],boardMask=17,flat
 
  }
  if(flat){camera.position.set(0,18,.01);controls.enableRotate=false;}
- const bounds=teachingBounds(objects);
+ const bounds=teachingBounds(objects);scene.add(createFarmEnvironment(bounds));
  function render(){renderer.render(scene,camera);}
  function frame(direction=camera.position.clone().sub(controls.target)){
   const w=node.clientWidth,h=node.clientHeight;if(!w||!h)return;

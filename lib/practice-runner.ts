@@ -1,6 +1,6 @@
 import {checkOutput} from './judge-output';
-export type TestCase={name:string,input:string,output:string|null};
-export type TestResult={name:string,status:'AC'|'WA'|'RE'|'TLE'|'RUN',input?:string,output?:string,outputSource?:string,stderr?:string,expected?:string|null,error?:string,detail?:string,truncated?:boolean,ms:number};
+export type TestCase={name:string,input:string,output:string|null;purpose?:string};
+export type TestResult={name:string,purpose?:string,status:'AC'|'WA'|'RE'|'TLE'|'RUN',input?:string,output?:string,outputSource?:string,stderr?:string,expected?:string|null,error?:string,detail?:string,truncated?:boolean,ms:number};
 export type OfficialManifest={officialTotal:number,imported:number,cases:{name:string,url:string,bytes:number,compressedBytes:number}[]};
 export class PracticeRunner {
  private worker:Worker|null=null; private stopped=false; private pendingReject:((e:Error)=>void)|null=null; private timer:ReturnType<typeof setTimeout>|null=null; private abort=new AbortController();
@@ -22,7 +22,7 @@ export class PracticeRunner {
     if('url' in item){onStatus(`正在读取官方文件 ${index+1}/${cases.length} · ${item.name}`);const response=await fetch(item.url,{signal:this.abort.signal});if(!response.ok)throw Error(`测试文件 ${item.name} 加载失败`);const bytes=await response.arrayBuffer();const header=new Uint8Array(bytes);if(header[0]===31&&header[1]===139){const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));test=await new Response(stream).json() as TestCase;}else test=JSON.parse(new TextDecoder().decode(bytes)) as TestCase;}else test=item;
     await this.initialize(onStatus);const worker=this.worker!;onStatus(`正在执行 ${index+1}/${cases.length} · ${test.name}`);
     const raw:any=await new Promise((resolve,reject)=>{this.pendingReject=reject;worker.onmessage=({data})=>{if(data.type==='started'){this.timer=setTimeout(()=>{worker.terminate();this.worker=null;this.pendingReject=null;resolve({timeout:true,ms:limitSeconds*1000});},limitSeconds*1000);}else if(data.type==='result'){if(this.timer)clearTimeout(this.timer);this.pendingReject=null;resolve(data);}else if(data.type==='error'){if(this.timer)clearTimeout(this.timer);reject(Error(data.error));}};worker.onerror=e=>{if(this.timer)clearTimeout(this.timer);reject(Error(e.message||'Python 执行失败'));};worker.postMessage({type:'run',code,files,entryFile,input:test.input,inputFile,caseId:index});});
-    const display={name:test.name,ms:raw.ms,input:test.input.slice(0,12000),output:(raw.output||'').slice(0,12000),outputSource:raw.outputSource,stderr:(raw.stderr||'').slice(0,12000),expected:test.output?.slice(0,12000)??null,truncated:[test.input,test.output,raw.output,raw.stderr].some(s=>(s?.length||0)>12000)};
+    const display={name:test.name,purpose:test.purpose,ms:raw.ms,input:test.input.slice(0,12000),output:(raw.output||'').slice(0,12000),outputSource:raw.outputSource,stderr:(raw.stderr||'').slice(0,12000),expected:test.output?.slice(0,12000)??null,truncated:[test.input,test.output,raw.output,raw.stderr].some(s=>(s?.length||0)>12000)};
     let result:TestResult;
     if(raw.timeout)result={...display,status:'TLE',detail:`超过本机单文件 ${limitSeconds} 秒限制；不是官方服务器的 TLE 结论。`};
     else if(raw.error)result={...display,status:'RE',error:raw.error};

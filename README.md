@@ -2,6 +2,17 @@
 
 Bronze regular-season learning site. Silver, Gold and Platinum remain reserved headings. US Open is excluded.
 
+## Classroom update · 2026-10-25
+
+- The secondary lesson directory can be collapsed independently and remembers the choice. Starting an exercise collapses both directories; the course toggle remains reachable. On desktop, the scene/data diagram and “知识要点” with code share equal columns; smaller screens stack them.
+- 3D lessons now include a muted farm backdrop: pasture, teaching yard, fences, barn, trees, crops and hay. Decoration stays outside teaching camera bounds. Zoom, fit and vertical resizing remain available; numerical labels bypass tone mapping for clarity.
+- “标注” in the tab bar and fullscreen reader opens an overlay on the current page. It includes mouse passthrough, selection/drag, fading laser, six pen colors, local shape recognition, text, seven explicit shapes, a sizable eraser, undo/redo, clear, settings and local save/export. Strokes attach to statement/lesson/exercise containers and follow scrolling/scaling; browser-local persistence is separated by page. PNG export contains the transparent annotations, not a page screenshot. Cross-origin iframe contents cannot provide paragraph anchors.
+- The IDE’s searchable “常用语句” menu contains 28 Python/C++ pairs grouped by I/O, loops, containers, counting/sorting, algorithms and bridge topics. Insertion uses the current selection and Monaco undo boundaries; fragments deliberately require adapting names to the task.
+- Fullscreen reading requests the browser Fullscreen API, with a full-window fallback if refused. Escape exits, content zoom ranges from 60–200%, and local statement text from 14–32 px. Older external statements support whole-frame zoom; their cross-origin typography cannot be changed independently.
+- Full checks retain independent input per case and show input, actual output, expected output and available case-purpose notes. The screenshot’s sunny-days solution only updates its maximum after a zero, so all-ones/trailing runs correctly fail. Its correct reference passes all four cases. An unrelated empty-expected-output comparison edge case was fixed; grading is not relaxed.
+
+Validation: actual Pyodide executed all 108 course references against all 403 cases successfully. Targeted regression checks preserve the sunny-days failure, correct 4/4 result, WA/RE/local TLE, plain program output and independent case state. DOM/canvas checks cover directory toggles, snippet insertion, annotation interactions and per-page persistence, fullscreen lifecycle, zoom and Escape. Camera geometry checks cover the decorative group and existing fit behavior. Browser visual QA was unavailable because the managed preview URL refused connections despite reporting a running preview.
+
 ## Scope and provenance
 
 - 33 regular rounds, 99 Bronze problems: December 2015 through 2026 Contest 3.

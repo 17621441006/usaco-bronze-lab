@@ -18,7 +18,16 @@ if(!isMainThread){
  let result=await run(fs.readFileSync(root+'/reference-solutions/567.py','utf8'),manifest.cases,{inputFile:'paint.in'});
  assert.equal(result.filter(r=>r.status==='AC').length,10,JSON.stringify(result));console.log('PASS: 10 official gzip files, historical file I/O, Python reference');
  result=await run(JSON.parse(fs.readFileSync(root+'/public/solutions/567.json')).pythonTeaching,manifest.cases);assert.equal(result.filter(r=>r.status==='AC').length,10);console.log('PASS: four-line teaching solution against all 10 official files');
- const course=JSON.parse(fs.readFileSync(root+'/data/course-exercises.json'));for(const ex of course.filter(e=>['跨行读数','多组求和','选恰好 k 个'].includes(e.title))){result=await run(ex.solution,ex.cases,{id:ex.id});assert(result.every(r=>r.status==='AC'),JSON.stringify(result));}console.log('PASS: real Pyodide course cases for iter/next, repeated-group input and bit_count');
+ const course=JSON.parse(fs.readFileSync(root+'/data/course-exercises.json'));let caseCount=0;
+ const references=process.env.COURSE_IDS?course.filter(e=>process.env.COURSE_IDS.split(',').includes(String(e.id))):course;
+ for(const [i,ex] of references.entries()){result=await run(ex.solution,ex.cases,{id:ex.id});assert(result.every(r=>r.status==='AC'),ex.title+' '+JSON.stringify(result));caseCount+=result.length;if((i+1)%18===0)console.log(`Course references: ${i+1}/${course.length}`);}
+ console.log(`PASS: real Pyodide, ${references.length} course references / ${caseCount} cases`);
+ const sunny=course.find(e=>e.id===91014);
+ const missedTail='n = int(input())\na = list(map(int, input().split()))\ncurrent = best = 0\nfor x in a:\n    if x == 1:\n        current += 1\n    else:\n        best = max(best, current)\n        current = 0\nprint(best)';
+ result=await run(missedTail,sunny.cases,{id:sunny.id});assert.deepEqual(result.map(r=>r.status),['AC','AC','WA','WA']);assert.equal(result[2].output,'0\n');assert.equal(result[2].expected,'3\n');assert.match(result[2].purpose,/循环结束/);
+ result=await run(sunny.solution,sunny.cases,{id:sunny.id});assert(result.every(r=>r.status==='AC'));
+ assert.equal(checkOutput(91000,'','','').ok,true);assert.equal(checkOutput(91000,'','','extra').ok,false);
+ console.log('PASS: screenshot solution misses trailing run; correct solution gets 4/4; empty expected output handled');
 
  result=await run('import sys\nn=int(sys.stdin.buffer.readline())\nif n == 0:\n while True: pass\nsys.stdout.buffer.write(b"ok\\n")\nsys.exit(0)',[{name:'infinite',input:'0\n',output:'ok'},{name:'next',input:'1\n',output:'ok'}],{limitSeconds:2});
  assert.deepEqual(result.map(r=>r.status),['TLE','AC']);console.log('PASS: per-case timeout, worker restart, buffered I/O, normal SystemExit');

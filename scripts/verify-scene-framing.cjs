@@ -30,3 +30,7 @@ const zoomBounds=new THREE.Box3(new THREE.Vector3(-3,0,-1),new THREE.Vector3(3,2
 fitTeachingCamera(zoomCamera,zoomBounds,direction);const normal=point.clone().project(zoomCamera);zoomCamera.zoom=1.6;zoomCamera.updateProjectionMatrix();const enlarged=point.clone().project(zoomCamera);assert(Math.abs(enlarged.x-normal.x*1.6)<1e-8);assert(Math.abs(enlarged.y-normal.y*1.6)<1e-8);
 zoomCamera.aspect=.8;fitTeachingCamera(zoomCamera,zoomBounds,direction);assert.equal(zoomCamera.zoom,1.6);zoomCamera.zoom=1;fitTeachingCamera(zoomCamera,zoomBounds,direction);assert(Math.abs(point.clone().project(zoomCamera).x)<.87);
 console.log('PASS: zoom affects actual camera projection, survives resizing and resets to fit');
+
+const {createFarmEnvironment}=require('../components/farm-environment.ts');
+for(const b of [new THREE.Box3(),new THREE.Box3(new THREE.Vector3(-4,0,-2),new THREE.Vector3(4,3,2)),new THREE.Box3(new THREE.Vector3(-15,0,-2),new THREE.Vector3(15,3,2))]){const farm=createFarmEnvironment(b);validateModel(farm);assert(farm.userData.decorative);assert(farm.getObjectByName('distant-barn'));assert(farm.getObjectByName('pasture-fence-posts'));}
+console.log('PASS: bounded farm backdrop geometry, empty and wide teaching bounds, separate decorative group');

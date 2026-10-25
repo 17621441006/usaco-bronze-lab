@@ -71,6 +71,8 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  const separator=container.querySelector('[aria-label="上下调整代码区高度"]'),before=+separator.getAttribute('aria-valuenow');await act(async()=>{separator.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',bubbles:true}));await tick();});assert.equal(+separator.getAttribute('aria-valuenow'),before+40);
  await click('全屏编程');assert(container.querySelector('.ide-maximized'));assert.equal(document.body.style.overflow,'hidden');await act(async()=>{window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));await tick();});assert(!container.querySelector('.ide-maximized'));assert.notEqual(document.body.style.overflow,'hidden');
  await click('切换深色编辑器');assert(container.querySelector('.ide-dark'));
+ await input(container.querySelector('[aria-label="Test editor"]'),'# keep\n');await click('常用竞赛语句');await input(container.querySelector('[aria-label="搜索常用语句"]'),'两个整数');await click('读取同一行两个整数输入输出');await click('插入光标位置');assert.equal(container.querySelector('[aria-label="Test editor"]').value,'# keep\na, b = map(int, input().split())');assert(!container.querySelector('.contest-snippets'));
+ console.log('PASS: snippet filtering and insertion preserves draft');
  console.log('PASS: blank first line, light/dark theme, font-size preference, keyboard height resize, fullscreen and Escape');
  assert(!container.querySelector('.ide-project-tree'));await click('展开工程目录');
  await input(container.querySelector('[aria-label="Test editor"]'),'print("keep my draft")');await click('保存');assert(JSON.parse(localStorage.getItem('usaco-project-567')).files['main.py']==='print("keep my draft")');
@@ -91,12 +93,12 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  assert(container.querySelector('.foundation-data-flow'));
  await act(async()=>{[...container.querySelectorAll('.lesson-list button')].find(b=>b.textContent.includes('输入、转换与输出')).click();await tick();});
  await click('下一步',container.querySelector('.foundation-controls'));assert(container.querySelector('.foundation-frame').textContent.includes('切分'));
- await click('开始练习');await act(tick);await input(container.querySelector('[aria-label="Test editor"]'),'print(int(input()))');
+ await click('开始编程');await act(tick);assert(container.querySelector('.directory-collapsed'));assert(container.querySelector('.lesson-list').hidden);await click('展开课程目录');assert(!container.querySelector('.lesson-list').hidden);await click('收起课程目录');await input(container.querySelector('[aria-label="Test editor"]'),'print(int(input()))');
  await input(container.querySelector('[aria-label="Test editor"]'),'print(1+5)');
  const exerciseSplit=container.querySelector('[aria-label="调整题目与编程区宽度"]');assert(exerciseSplit);assert(container.querySelector('.exercise-workspace.is-coding>.exercise-code-panel .project-ide'));
  assert.equal(container.querySelector('.exercise-input').nextElementSibling.className,'exercise-io exercise-output');
  await act(async()=>{exerciseSplit.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));await tick();});assert.equal(exerciseSplit.getAttribute('aria-valuenow'),'46');
- await click('收起编程区');assert(container.querySelector('.exercise-code-panel').hidden);await click('开始练习');assert.equal(container.querySelector('[aria-label="Test editor"]').value,'print(1+5)');
+ await click('收起编程区');assert(container.querySelector('.exercise-code-panel').hidden);await click('开始编程');assert.equal(container.querySelector('[aria-label="Test editor"]').value,'print(1+5)');
  await click('运行代码',container.querySelector('.ide-run-bar'));
  assert.equal(container.querySelector('.program-output').textContent,'6\n');assert.equal(lastCourseCases[0].output,null);
  assert(!container.querySelector('.test-grid'));assert(!container.querySelector('.expected-output'));assert(!container.textContent.includes('自定义输入'));
@@ -110,7 +112,7 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  gradeStatus='WA';await click('检查全部 3 例');assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'0 / 3 已通过');assert.equal(container.querySelector('.program-output').textContent,'999\n');
  await click(container.querySelectorAll('.test-badge')[1].textContent);assert.equal(container.querySelectorAll('.test-badge')[1].getAttribute('aria-pressed'),'true');
  gradeStatus='AC';await click('检查全部 3 例');assert.equal(lastCourseCases.length,3);assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'1 / 3 已通过');
- for(const index of [1,2]){await act(async()=>{container.querySelectorAll('.exercise-levels button')[index].click();await tick();});await click('开始练习');await act(tick);await input(container.querySelector('[aria-label="Test editor"]'),'print(0)');await click('检查全部 3 例');}
+ for(const index of [1,2]){await act(async()=>{container.querySelectorAll('.exercise-levels button')[index].click();await tick();});await click('开始编程');await act(tick);await input(container.querySelector('[aria-label="Test editor"]'),'print(0)');await click('检查全部 3 例');}
  assert.equal(container.querySelector('.lesson-practice .course-progress').textContent,'3 / 3 已通过');assert(JSON.parse(localStorage.getItem('usaco-course-completed-v2')).includes('io'));
  await click('算法课堂',container.querySelector('[data-slot="sidebar-content"]'));assert.equal(container.querySelectorAll('.lesson-list button').length,18);assert.equal(container.querySelectorAll('.exercise-levels button').length,3);
  console.log('PASS: 18 Python / 18 algorithm lessons, 3 progressive exercises each, inline IDE; only successful full checks mark course progress (runner mocked here)');
@@ -124,7 +126,7 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  await click('真题练习',container.querySelector('.page-tabbar'));assert(container.querySelector('.round-directory'));await click('按知识点练');await input(container.querySelector('[aria-label="搜索全部题目"]'),'1589');await click('Swap to Win',container.querySelector('.archive-table'));
  const active=container.querySelector('.kept-problem-page:not([hidden])');assert(active);assert(!active.querySelector('iframe'));assert(active.querySelector('.local-statement-body').textContent.includes('Farmer John'));assert(active.querySelector('.katex'));assert(!active.querySelector('.sample-copy-section'));
  await click('中文',active);assert(active.querySelector('[title="中文译文 · 非官方翻译"]'));assert(active.querySelector('.katex'));assert(active.querySelector('.local-statement-body').textContent.includes('最喜欢'));assert(!active.querySelector('iframe'));
- await click('全屏读题',active);assert(document.querySelector('[role="dialog"] .local-statement-body').textContent.includes('最喜欢'));await click('Close');assert(active.querySelector('.reading-toolbar [aria-label=题面语言]'));assert(active.querySelector('.local-statement-body .katex'),'math remains rendered after closing fullscreen');
+ await click('全屏读题',active);assert(document.querySelector('[role="dialog"] .local-statement-body').textContent.includes('最喜欢'));assert.equal(document.body.style.overflow,'hidden');await click('放大题面');assert.equal(document.querySelector('.statement-zoom-content').style.zoom,'1.1');await act(async()=>{const size=document.querySelector('[aria-label="题面字号"]');size.value='24';size.dispatchEvent(new Event('change',{bubbles:true}));await tick();});assert.equal(document.querySelector('.statement-zoom-content').style.getPropertyValue('--reader-font-size'),'24px');await click('退出全屏读题');assert(active.querySelector('.reading-toolbar [aria-label=题面语言]'));assert(active.querySelector('.local-statement-body .katex'),'math remains rendered after closing fullscreen');
  const {renderToString}=require('react-dom/server'),StaticStatement=require(root+'/components/official-statement.tsx').OfficialStatement;const initial=renderToString(React.createElement(StaticStatement,{id:1589,title:'Swap to Win',exam:true}));assert(initial.includes('Farmer John'));assert(!initial.includes('<iframe'));assert(!initial.includes('正在读取'));assert(!initial.includes('中文题面'));
  console.log('PASS: topic navigation, cross-year search, complete 3-problem rounds, route to timed training, persistent archive tabs, immediate bilingual reading, translated provenance and fullscreen');
 
