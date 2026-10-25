@@ -2,6 +2,15 @@
 
 Bronze regular-season learning site. Silver, Gold and Platinum remain reserved headings. US Open is excluded.
 
+## Editor inspection update · 2026-10-25
+
+- The page-annotation shape menu shows a distinct SVG before each of its seven labels, including double arrows and a cuboid with hidden edges. Exercise input/output cards retain their blue/green colors and expanded data, capped at 440 px on wide pages and fluid on small screens.
+- Python live inspection uses pinned `@astral-sh/ruff-wasm-web` 0.17.2 in a local Web Worker, debounced 400 ms. It parses code without executing it or uploading it. Syntax and undefined-name/local errors are red; PEP 8 spacing, indentation, naming, imports and 79-column guidance remain mild suggestions and never change judging results. C++ live inspection is not included.
+- Hovering a marker shows its reason, suggestion and available edit preview. Accept/decline is explicit, accepted edits support undo, declined style suggestions can be restored, and real errors remain marked even if their suggested edit is declined. The status bar opens a keyboard-accessible issue list. Whole-file formatting for indentation is labeled and previewed; it is never automatic. Source/model/revision guards reject stale edits.
+- Ruff JS/WASM/license assets are prepared from the locked dependency during development and build (`scripts/prepare-python-lint.mjs`). They are served by this site, with no third-party lint CDN. Generated vendor files are not committed. A failed check displays an unavailable/retry state instead of reporting clean code.
+
+Validation: TypeScript, `scripts/verify-python-inspection.cjs` (actual Ruff WASM/worker and guarded Monaco integration), workspace regression and page-annotation/fullscreen DOM checks pass. Managed browser preview additionally verified the screenshot's `printdf(123+343);` error and two mild hints, hover acceptance, undo, declining/restoring a style suggestion without changing code, missing-colon syntax errors before running, both editor themes, seven visible shape icons and the 440 px card width. Browser captures: [shape menu](docs/ui/shape-menu-2026-10-25.jpg), [live inspection](docs/ui/python-inspection-2026-10-25.jpg).
+
 ## Classroom update · 2026-10-25
 
 - The secondary lesson directory can be collapsed independently and remembers the choice. Starting an exercise collapses both directories; the course toggle remains reachable. On desktop, the scene/data diagram and “知识要点” with code share equal columns; smaller screens stack them.

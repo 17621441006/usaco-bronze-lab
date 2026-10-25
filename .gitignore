@@ -47,3 +47,5 @@ next-env.d.ts
 
 .research-cache/
 /public/editor/
+
+/public/python-lint/vendor/
