@@ -24,10 +24,11 @@ export function attachPythonInspection(editor:Monaco.editor.IStandaloneCodeEdito
    if(!found.length)return null;
    return {range:found[0].range,contents:found.slice(0,4).map(issue=>{
     const caption=issue.severity==='error'?'错误':issue.severity==='style'?'PEP 8 提醒':'代码提醒';
-    let value=`**${caption} · ${escaped(issue.title)}**\n\n${escaped(issue.reason)}\n\n建议：${escaped(issue.suggestion)}`;
-    if(issue.fix&&!issue.dismissed){const preview=issuePreview(issue,snapshot!.source).replace(/`/g,'ˋ');value+=`\n\n修改后预览：\n\n\`\`\`python\n${preview}\n\`\`\``;}
+    let value=`**${caption} · ${escaped(issue.title)}**`;
     const args=encodeURIComponent(JSON.stringify([issue.id,revision]));
     if(!issue.dismissed){value+='\n\n';if(issue.fix)value+=`[${escaped(issue.fix.title)} · Y](command:${accept}?${args})  `;value+=`[忽略 · N](command:${dismiss}?${args})`;}else value+='\n\n已忽略建议，错误标记仍保留。';
+    value+=`\n\n${escaped(issue.reason)}\n\n建议：${escaped(issue.suggestion)}`;
+    if(issue.fix&&!issue.dismissed){const preview=issuePreview(issue,snapshot!.source).replace(/`/g,'ˋ');value+=`\n\n修改后预览：\n\n\`\`\`python\n${preview}\n\`\`\``;}
     return {value,isTrusted:{enabledCommands:[accept,dismiss]},supportHtml:false};
    })};
   }}),

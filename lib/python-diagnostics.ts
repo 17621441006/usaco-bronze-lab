@@ -63,4 +63,14 @@ export function normalizePythonDiagnostics(raw:Diagnostic[],source:string,format
   return issue;
  }).sort((a,b)=>({error:0,warning:1,style:2}[a.severity]-{error:0,warning:1,style:2}[b.severity])||a.range.startLineNumber-b.range.startLineNumber||a.range.startColumn-b.range.startColumn).slice(0,160);
 }
-export function issuePreview(issue:PythonIssue,source:string){if(!issue.fix)return '';const lines=issue.fix.preview.split('\n'),row=Math.max(0,issue.range.startLineNumber-2);return (issue.fix.title.startsWith('规范本文件')?lines.slice(0,20):lines.slice(row,Math.min(lines.length,row+5))).join('\n').slice(0,1400);}
+export function issuePreview(issue:PythonIssue,source:string){
+ if(!issue.fix)return '';
+ const before=source.replace(/\r\n/g,'\n').split('\n'),after=issue.fix.preview.replace(/\r\n/g,'\n').split('\n');
+ if(issue.fix.title.startsWith('规范本文件'))return after.slice(0,20).join('\n').slice(0,1400);
+ // Show the changed lines, not unrelated statements separated by blank lines.
+ let first=0,lastBefore=before.length-1,lastAfter=after.length-1;
+ while(first<=lastBefore&&first<=lastAfter&&before[first]===after[first])first++;
+ while(lastBefore>=first&&lastAfter>=first&&before[lastBefore]===after[lastAfter]){lastBefore--;lastAfter--;}
+ if(first>=after.length)return '';
+ return after.slice(first,Math.min(after.length,Math.max(first+1,lastAfter+1),first+8)).join('\n').slice(0,1400);
+}

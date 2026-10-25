@@ -8,13 +8,14 @@ if(!isMainThread){
 }else{
  const resolve=Module._resolveFilename;Module._resolveFilename=function(n,...a){return resolve.call(this,n.startsWith('@/')?path.join(root,n.slice(2)):n,...a);};
  require.extensions['.ts']=(m,f)=>m._compile(ts.transpileModule(fs.readFileSync(f,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText,f);
- const {normalizePythonDiagnostics,applyInspectionEdits}=require(root+'/lib/python-diagnostics.ts'),{attachPythonInspection}=require(root+'/lib/monaco-python-inspection.ts');
+ const {normalizePythonDiagnostics,applyInspectionEdits,issuePreview}=require(root+'/lib/python-diagnostics.ts'),{attachPythonInspection}=require(root+'/lib/monaco-python-inspection.ts');
  (async()=>{const w=new Worker(__filename);let sequence=0;try{
   await new Promise((resolve,reject)=>{w.once('message',resolve);w.once('error',reject);});
   const lint=code=>new Promise((resolve,reject)=>{const id=++sequence,timer=setTimeout(()=>reject(Error('Timeout')),15000);const message=d=>{if(d.id!==id)return;w.off('message',message);clearTimeout(timer);if(d.type==='error')reject(Error(d.error));else resolve(normalizePythonDiagnostics(d.diagnostics,code,d.formatted));};w.on('message',message);w.postMessage({id,code});});
   const source='printdf(123+343);\nprint()\n',issues=await lint(source),undefinedName=issues.find(d=>d.rule==='undefined-name');assert.equal(undefinedName.severity,'error');assert.match(undefinedName.fix.title,/print/);assert.equal(applyInspectionEdits(source,undefinedName.fix.edits),'print(123+343);\nprint()\n');
   for(const rule of ['useless-semicolon','missing-whitespace-around-arithmetic-operator']){const d=issues.find(x=>x.rule===rule);assert.equal(d.severity,'style');assert(d.fix);}
   const semicolon=issues.find(d=>d.rule==='useless-semicolon');assert.equal(applyInspectionEdits(source,semicolon.fix.edits),'printdf(123+343)\nprint()\n');
+  const spacedSource='print(8+9)\n\n\na, b = map(int, input().split())\n',spacing=(await lint(spacedSource)).find(d=>d.code==='E226');assert(spacing.fix);assert.equal(issuePreview(spacing,spacedSource),'print(8 + 9)');assert.equal(issuePreview({...spacing,fix:{...spacing.fix,preview:spacing.fix.preview.replace(/\n/g,'\r\n')}},spacedSource.replace(/\n/g,'\r\n')),'print(8 + 9)');
   assert((await lint('for i in range(3)\n    print(i)\n')).some(d=>d.severity==='error'&&d.code==='SyntaxError'));
   assert((await lint('print("unclosed)\n')).some(d=>d.severity==='error'));
   assert((await lint('if True:\nprint(1)\n')).some(d=>d.severity==='error'));
@@ -35,6 +36,7 @@ if(!isMainThread){
   const editor={getModel:()=>model,pushUndoStop:()=>undoStops++,executeEdits:(_s,edits)=>{text=applyInspectionEdits(text,edits.map(e=>({...e.range,text:e.text})));changeContent();},focus(){},onDidChangeModelContent:fn=>{changeContent=fn;return disposable();},onDidChangeModel:fn=>{changeModel=fn;return disposable();},setPosition(){},revealLineInCenterIfOutsideViewport(){}};
   const bridge=attachPythonInspection(editor,monaco,id=>dismissed=id);bridge.update({file:'main.py',source,issues});assert(markers.some(d=>d.severity===8));assert(markers.some(d=>d.severity===2));
   const hover=hoverProvider.provideHover(model,{lineNumber:1,column:2});assert(hover.contents[0].value.includes('修改后预览'));assert(hover.contents[0].value.includes('忽略'));assert.equal(hover.contents[0].isTrusted.enabledCommands.length,2);
+  assert(hover.contents[0].value.indexOf('command:usaco.inspection.accept.')<hover.contents[0].value.indexOf('修改后预览'),'hover actions precede the potentially tall preview');
   const actions=actionProvider.provideCodeActions(model,{startLineNumber:1,endLineNumber:1}).actions,apply=actions.find(d=>d.title.startsWith('改为 print')),reject=actions.find(d=>d.title==='忽略 · 名称未定义');assert(apply&&reject);
   commands.get(reject.command.id)(null,...reject.command.arguments);assert.equal(dismissed,undefinedName.id);assert.equal(text,source);
   commands.get(apply.command.id)(null,...apply.command.arguments);assert.equal(text,'print(123+343);\nprint()\n');assert.equal(undoStops,2);assert.deepEqual(markers,[]);

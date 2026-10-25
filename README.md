@@ -2,6 +2,14 @@
 
 Bronze regular-season learning site. Silver, Gold and Platinum remain reserved headings. US Open is excluded.
 
+## Visible PEP 8 actions · 2026-10-25
+
+- Monaco's inner hover content clipped the accept/ignore controls when the code preview extended past its fixed height. The inner content now grows inside the scrollable outer hover, with bounded scrolling for long code previews.
+- Green accept and neutral ignore controls appear immediately beneath the hover title, ahead of explanations and preview. The issue panel also places actions before its preview. Existing Y/N shortcuts, revision guards and undo remain intact.
+- Local-fix previews show only changed lines, excluding unrelated blank lines and later statements. Whole-file formatting remains explicitly labeled and bounded. Style reminders remain nonblocking.
+
+Validation: TypeScript, actual Ruff/guarded-hover regression and LF/CRLF preview cases pass. Browser checks confirmed both controls fully inside the hover in light and dark themes; accepting `print(8+9)` produces `print(8 + 9)`, and ignoring leaves source unchanged and closes the hover.
+
 ## Shell and editor newline fixes · 2026-10-25
 
 - Shell shortcuts were registered with Monaco's global `addCommand` keybinding API. After opening Shell, its Enter/Shift+Enter handlers could capture typing in other code editors, including after snippet insertion. Shell execution/history/continuation and project run/save now use editor-scoped `addAction` bindings with focus guards, disposed with their own editor. Ordinary editor Enter is left to Monaco.
