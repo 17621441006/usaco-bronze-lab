@@ -131,6 +131,22 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  console.log('PASS: topic navigation, cross-year search, complete 3-problem rounds, route to timed training, persistent archive tabs, immediate bilingual reading, translated provenance and fullscreen');
 
 
+ // Global tools preserve their instances and are available inside fullscreen reading.
+ await click('打开 Python Shell',container.querySelector('.page-tabbar'));
+ const shellField=document.querySelector('[aria-label="Python Shell 输入"]');await input(shellField,'cows = [2, 3, 5]');
+ await click('收起编程工具');await click('打开 Python Shell',container.querySelector('.page-tabbar'));
+ assert.strictEqual(document.querySelector('[aria-label="Python Shell 输入"]'),shellField);assert.equal(shellField.value,'cows = [2, 3, 5]');
+ await click('收起编程工具');await click('全屏读题',active);
+ await click('打开独立代码编辑器',document.querySelector('.reader-fullscreen-toolbar'));await act(tick);
+ const tools=document.querySelector('.coding-tools-window');assert(tools.closest('.statement-fullscreen'),'global tools stay in the fullscreen root');
+ const editorPanel=tools.querySelector('#coding-panel-editor');assert(editorPanel.querySelector('[aria-label="Test editor"]'));
+ assert(![...editorPanel.querySelectorAll('button')].some(b=>/评测全部|检查全部|检查样例/.test(b.textContent)));
+ await input(editorPanel.querySelector('[aria-label="Test editor"]'),'print(1 + 5)');await click('保存',editorPanel);assert.equal(JSON.parse(localStorage.getItem('usaco-project--1')).files['main.py'],'print(1 + 5)');
+ await click('运行代码',editorPanel);assert.equal(editorPanel.querySelector('[aria-label="程序输出数据"]').textContent,'6\n');
+ await click('收起编程工具');await click('退出全屏读题');await act(tick);assert.strictEqual(document.querySelector('.coding-tools-portal').parentElement,document.body);
+ await click('打开独立代码编辑器',container.querySelector('.page-tabbar'));assert.equal(editorPanel.querySelector('[aria-label="Test editor"]').value,'print(1 + 5)');
+ await click('收起编程工具');
+ console.log('PASS: global Shell draft/instance retention, editor save/run without judging, fullscreen tool portal and restoration');
  await act(async()=>{view.unmount();await tick();});
  const stored={en:'<p>My full task $N$</p><pre>1 2</pre>',zh:'<p>我的完整中文题面</p>',source:'provided.html',updatedAt:'2026-10-03'};
  localStorage.setItem('usaco-local-statement-567',JSON.stringify(stored));const fresh=createRoot(container),{OfficialStatement}=require(root+'/components/official-statement.tsx');
