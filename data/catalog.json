@@ -3507,7 +3507,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "按字典序枚举排列，检查所有相邻约束，第一个合法排列就是所求。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -3564,7 +3564,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "从短到长试观察窗口；当所有等长子串互不相同时，窗口就能唯一确定所在位置。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -3619,7 +3619,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "先记录每次训练中每头牛的位置；某对牛只有每次相对顺序一致才算稳定。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -3674,7 +3674,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "维护可能车流量区间；入口加区间、出口减区间、传感器取交集，再反向处理一次求起点。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -3729,7 +3729,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "从编号最小的牧场开始，选择邻居尚未使用的最小草种，得到字典序最小的合法答案。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -3786,7 +3786,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "最少步数由相邻空隙是否恰好为一格决定；最多步数来自较大的那段空隙。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -3841,7 +3841,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "两种动物共同特征最多时，需要先问完这些相同特征，再问一个能够区分它们的问题。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -3896,7 +3896,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "保留末尾已经严格递增的后缀，前面的每头牛都必须从队首移走一次。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -3951,7 +3951,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "分别假设石子最初在三个杯子下面，完整模拟交换和猜测。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4008,7 +4008,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "枚举四次搬桶，移动的桶要从原集合删除并加入另一边；用集合去重最终奶量。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4065,7 +4065,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "把开始时间视作桶需求增加、结束时间视作归还；最大同时占用数就是所需桶数。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4118,7 +4118,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "按 1→2→3→1 的顺序倒奶；实际倒入量由来源剩余和目标空余容量共同决定。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4173,7 +4173,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "一条“距离上次逃跑 v 天”的记录，强制确定前 v 天没有逃跑以及第 i−v 天逃跑；检查冲突后数确定和未定位置。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4230,7 +4230,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "画出每头牛传给最近邻的箭头。入度为零的牛需要初始球；没有外来箭头的互传二元环再加一个球。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4285,7 +4285,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "比较直接走、从第一个传送口进入、从第二个传送口进入三条路线。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4342,7 +4342,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "只有一头牛站错位置；比较排序前后的不同位置，跨过每种被错开的身高只需交换一次。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4399,7 +4399,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "扫描时间事件，计算总覆盖时间和每个人独自覆盖的时间；解雇独占时间最少的人。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4452,7 +4452,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "求所有可见部分的最小外接矩形。只有遮挡覆盖整条宽或高且贴着边缘时，遮布才能缩小。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4509,7 +4509,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "按日期排序；每次更新产量后比较榜首牛的集合，而不是只比较最大产量数值。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4564,7 +4564,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "已知移动后的位置，按原映射反向取回每头牛，连续逆推三次。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4617,7 +4617,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "每块广告牌的可见面积等于自身面积减去与卡车矩形的交集面积。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4674,7 +4674,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "按到达时间排队；服务开始时间取“上一头牛结束”和“本牛到达”的较大值。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4729,7 +4729,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "两头牛的四个端点必须交替出现（ABAB 或 BABA），它们的路线才相交。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4784,7 +4784,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "为每头牛记住上一次所在的道路一侧；只有同一头牛从一侧变到另一侧才计一次。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4841,7 +4841,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "从右下向左上处理；如果当前格为 1，翻转以它为右下角的矩形是唯一可行决定。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4896,7 +4896,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "三种手势的编号映射只会产生两种不同的克制方向，分别统计胜场。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -4951,7 +4951,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "未出现在记录中的牛产奶量也为 0；寻找第二小的不同产量，并检查是否唯一。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5006,7 +5006,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "每个字符横向复制 K 次，再将扩展后的整行纵向复制 K 次。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5061,7 +5061,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "同一块木板的两面不能同时使用，所以每个字母取两面需求的较大值，再把各块木板累加。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5114,7 +5114,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "取两个矩形的整体宽度与高度，较大值就是最小正方形的边长。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5169,7 +5169,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "分隔线只需放在某头牛坐标的右侧和上侧；枚举两条线，统计四个象限。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5224,7 +5224,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "枚举入口，将每个房间所需牛数乘以从入口顺时针走到它的距离。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5279,7 +5279,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "枚举小桶数量，剩余容量尽可能装大桶。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5336,7 +5336,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "逐步移动，记录每个格子最近一次经过的时间；同格两次访问的最小间隔决定答案。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5393,7 +5393,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "依次试每个起爆点，左右独立扩展；每一轮爆炸半径增加 1。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5448,7 +5448,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "从最高组往下计算；当前组新增人数加上向更高组晋级的人数，就是流入本组的人数。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5503,7 +5503,7 @@
     "optionalTopics": [],
     "practiceStage": "专项进阶",
     "classificationBasis": "枚举污染牛奶；它必须在发病前被每名已知病人喝过，再统计喝过它的全部人数。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5556,7 +5556,7 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "把限速和实际速度对齐到每一英里，取超速差的最大值。",
-    "statementAvailable": false,
+    "statementAvailable": true,
     "classificationSource": "站内参考解法",
     "classifiedAt": "2026-10-04"
   },
@@ -5615,6 +5615,341 @@
     "optionalTopics": [],
     "practiceStage": "基础巩固",
     "classificationBasis": "两段长度相加，再减去被重复计算的交集长度。",
-    "statementAvailable": false
+    "statementAvailable": true
+  },
+  {
+    "id": 507,
+    "title": "Cow Routing",
+    "zhTitle": "奶牛航线",
+    "round": "jan15results",
+    "roundLabel": "2015 / 01",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=507",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=507",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "顺序模拟",
+      "枚举航线"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "基础",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "1 2 3\n3 3\n3 2 1\n4 4\n2 1 4 3\n8 5\n4 1 7 8 2",
+        "output": "8"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowroute.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "simulation",
+      "enumeration"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "按提供的题面初步归类：按航线顺序检查出发城市是否先于目的地，再比较可行航线费用。",
+    "statementAvailable": true
+  },
+  {
+    "id": 508,
+    "title": "Cow Routing II",
+    "zhTitle": "奶牛航线 II",
+    "round": "jan15results",
+    "roundLabel": "2015 / 01",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=508",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=508",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "枚举中转点",
+      "路径组合"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "1 2 3\n3 3\n3 2 1\n4 4\n2 1 4 3\n8 5\n4 1 7 8 2",
+        "output": "7"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowroute.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "enumeration",
+      "graphs"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "按提供的题面初步归类：题目允许至多两条航线，可按中转城市组织从起点出发与到达终点的可行费用。",
+    "statementAvailable": true
+  },
+  {
+    "id": 509,
+    "title": "It's All About the Base",
+    "zhTitle": "什么进制",
+    "round": "jan15results",
+    "roundLabel": "2015 / 01",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=509",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=509",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "进制转换",
+      "单调性",
+      "双指针"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "1\n419 792",
+        "output": "47 35"
+      }
+    ],
+    "io": "file",
+    "inputFile": "whatbase.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "math",
+      "sorting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "按提供的题面初步归类：三位数的数值随进制递增，可利用单调性寻找两种表示对应的相同数值。",
+    "statementAvailable": true
+  },
+  {
+    "id": 510,
+    "title": "Meeting Time",
+    "zhTitle": "会面时间",
+    "round": "jan15results",
+    "roundLabel": "2015 / 01",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=510",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=510",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "有向无环图",
+      "路径搜索",
+      "集合交集"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "3 3\n1 3 1 2\n1 2 1 2\n2 3 1 2",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "meeting.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "graphs",
+      "enumeration"
+    ],
+    "optionalTopics": [
+      "dp"
+    ],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "按提供的题面初步归类：按下坡方向枚举可达路径时间，比较两头牛的可达时间集合。",
+    "statementAvailable": true
+  },
+  {
+    "id": 526,
+    "title": "Censoring (Bronze)",
+    "zhTitle": "文本审查",
+    "round": "feb15results",
+    "roundLabel": "2015 / 02",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=526",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=526",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "字符串",
+      "栈式处理"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "whatthemomooofun\nmoo",
+        "output": "whatthefun"
+      }
+    ],
+    "io": "file",
+    "inputFile": "censor.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "strings",
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "按提供的题面初步归类：删除可能产生新的匹配，需要保留已处理文本并反复检查末尾匹配。",
+    "statementAvailable": true
+  },
+  {
+    "id": 527,
+    "title": "COW",
+    "zhTitle": "奶牛密码",
+    "round": "feb15results",
+    "roundLabel": "2015 / 02",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=527",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=527",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "子序列计数",
+      "累计贡献"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "6\nCOOWWW",
+        "output": "6"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cow.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "strings",
+      "counting",
+      "prefix"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "按提供的题面初步归类：依次统计 C、CO 与 COW 的累计数量，注意计数范围。",
+    "statementAvailable": true
+  },
+  {
+    "id": 528,
+    "title": "Cow Hopscotch (Bronze)",
+    "zhTitle": "奶牛跳房子",
+    "round": "feb15results",
+    "roundLabel": "2015 / 02",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=528",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=528",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "网格",
+      "方案计数",
+      "动态规划"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "4 4\nRRRR\nRRBR\nRBBR\nRRRR",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "hopscotch.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "grid",
+      "dp"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "按提供的题面初步归类：跳跃只能同时向右和向下，按格子累计不同颜色前驱的路径数。",
+    "statementAvailable": true
   }
 ]

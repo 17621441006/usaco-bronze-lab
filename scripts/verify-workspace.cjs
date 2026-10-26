@@ -36,9 +36,9 @@ assert.equal(readProject(null,'my saved Python','my saved C++').files['main.py']
 const project=selectFile(readProject(null),'main.cpp');assert.equal(project.entryFile,'main.cpp');assert.equal(readProject(JSON.stringify(project)).entryFile,'main.cpp');
 console.log('PASS: local document sanitization, literal text import and existing draft migration');
 const {filterProblems,defaultArchiveFilters,topicMatches}=require(root+'/lib/problem-library.ts'),catalog=require(root+'/data/catalog.json'),topicData=require(root+'/data/learning-topics.json');
-assert.equal(filterProblems(catalog,defaultArchiveFilters).length,60);assert.equal(filterProblems(catalog,{...defaultArchiveFilters,period:'classic'}).length,39);assert.equal(filterProblems(catalog,{...defaultArchiveFilters,period:'all'}).length,99);
-assert.equal(filterProblems(catalog,{...defaultArchiveFilters,query:'Fence Painting'})[0].id,567);assert(catalog.every(p=>p.learningTopics.length&&p.learningTopics.every(id=>topicData.some(t=>t.id===id))));assert.deepEqual(catalog.filter(p=>topicMatches(p,'dp')).map(p=>p.id).sort((a,b)=>a-b),[1157,1493,1564]);
-console.log('PASS: 60 recent / 39 classic / 99 searchable problems, complete taxonomy, separate optional DP labels');
+assert.equal(filterProblems(catalog,defaultArchiveFilters).length,60);assert.equal(filterProblems(catalog,{...defaultArchiveFilters,period:'classic'}).length,46);assert.equal(filterProblems(catalog,{...defaultArchiveFilters,period:'all'}).length,106);
+assert.equal(filterProblems(catalog,{...defaultArchiveFilters,query:'Fence Painting'})[0].id,567);assert(catalog.every(p=>p.learningTopics.length&&p.learningTopics.every(id=>topicData.some(t=>t.id===id))));assert.deepEqual(catalog.filter(p=>topicMatches(p,'dp')).map(p=>p.id).sort((a,b)=>a-b),[510,528,1157,1493,1564]);
+console.log('PASS: 60 recent / 46 classic / 106 searchable problems, complete taxonomy, separate optional DP labels');
 
 global.fetch=async url=>new Response(fs.readFileSync(root+'/public'+url));
 const container=document.getElementById('root'),view=createRoot(container),tick=()=>new Promise(r=>setTimeout(r,25));
@@ -62,7 +62,7 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  const tabTitle=container.querySelector('.page-tab-item [role="tab"]'),closeButton=container.querySelector('.page-tab-close');
  assert.equal(getComputedStyle(tabTitle).display,'flex');assert.equal(getComputedStyle(tabTitle).width,'auto');assert.equal(getComputedStyle(closeButton).width,'24px');assert.equal(getComputedStyle(container.querySelector('.page-tab-item')).minWidth,'138px');
  assert(!container.textContent.includes('导入题面'));assert(!container.textContent.includes('导入本机题面'));
- assert(container.querySelector('.sample-copy-section [data-state="open"]'));assert(container.querySelector('.sample-block pre').textContent.trim());assert(!container.querySelector('.statement'));
+ assert(!container.querySelector('iframe'));assert(!container.querySelector('.sample-copy-section'));assert(container.querySelector('.local-statement-body pre').textContent.trim());assert(!container.querySelector('.statement'));
  console.log('PASS: read-only workspace, visible samples, no summary on the original tab');
  await click('开始编程',container.querySelector('.work-header'));await act(tick);assert(container.querySelector('.workspace-split'));assert(container.querySelector('.project-ide'));
  assert.equal(container.querySelector('[aria-label="Test editor"]').value,'');
@@ -121,7 +121,7 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  await click('真题练习',container.querySelector('[data-slot="sidebar-content"]'));assert.equal(container.querySelectorAll('.topic-directory button').length,13);assert(container.querySelector('.archive-filter-row').textContent.includes('60 道题'));
  await input(container.querySelector('[aria-label="搜索全部题目"]'),'567');assert(container.querySelector('.archive-table').textContent.includes('Fence Painting'));assert(container.querySelector('.archive-filter-row').textContent.includes('1 道题'));
  await input(container.querySelector('[aria-label="搜索全部题目"]'),'');assert(container.querySelector('.archive-filter-row').textContent.includes('60 道题'));
- const graph=[...container.querySelectorAll('.topic-directory button')].find(n=>n.textContent.startsWith('图与关系'));await click(graph.textContent);assert(container.querySelector('.archive-filter-row').textContent.includes('2 道题'));assert.equal(container.querySelector('.archive-periods [aria-selected="true"]').textContent.trim(),'全部题目 99');
+ const graph=[...container.querySelectorAll('.topic-directory button')].find(n=>n.textContent.startsWith('图与关系'));await click(graph.textContent);assert(container.querySelector('.archive-filter-row').textContent.includes('4 道题'));assert.equal(container.querySelector('.archive-periods [aria-selected="true"]').textContent.trim(),'全部题目 106');
  await click('全部分类',container.querySelector('.archive-topic-guide'));const recentTab=[...container.querySelectorAll('.archive-periods [role="tab"]')].find(n=>n.textContent.startsWith('2020'));await click(recentTab.textContent.trim());
  await click('按场次练');assert.equal(container.querySelectorAll('.round-card').length,6);assert([...container.querySelectorAll('.round-card')].every(c=>c.querySelectorAll('li').length===3));assert(container.querySelector('.archive-filter-row').textContent.includes('20 场'));
  await click('整场训练',container.querySelector('.round-card'));assert(container.querySelector('.exam-setup'));assert(container.querySelector('.exam-setup').textContent.includes('2026 第 3 场'));
@@ -150,10 +150,21 @@ async function input(element,value){await act(async()=>{Object.getOwnPropertyDes
  await click('打开独立代码编辑器',container.querySelector('.page-tabbar'));assert.equal(editorPanel.querySelector('[aria-label="Test editor"]').value,'print(1 + 5)');
  await click('收起编程工具');
  console.log('PASS: global Shell draft/instance retention, editor save/run without judging, fullscreen tool portal and restoration');
+ // Newly supplied January 2015 content is immediately readable and never offers
+ // a full-data judge or learning assets that have not been supplied.
+ await act(async()=>{window.location.hash='practice/507';window.dispatchEvent(new Event('hashchange'));await tick();});
+ const classic=container.querySelector('.kept-problem-page:not([hidden])');assert(classic.querySelector('.statement-verbatim'));assert(!classic.querySelector('iframe'));
+ assert(![...classic.querySelectorAll('[role=tab]')].some(t=>['样例图解','参考代码','解题引导'].includes(t.textContent)));
+ await click('中文',classic);assert(classic.querySelector('.local-statement-body').textContent.includes('航线'));assert(classic.querySelector('.statement-translation-note'));assert(!classic.querySelector('iframe'));
+ await click('开始编程',classic.querySelector('.work-header'));await act(tick);assert(find('完整测试待补充',classic).disabled);
+ await input(classic.querySelector('[aria-label="Test editor"]'),'print(8)');await click('检查样例',classic);assert.equal(lastCourseCases.length,1);assert.equal(lastCourseCases[0].output,'8');
+ for(const p of catalog){const initial=renderToString(React.createElement(StaticStatement,{id:p.id,title:p.title}));assert(initial.includes('local-statement-body'));assert(!initial.includes('<iframe'));assert(!initial.includes('正在读取题面'));}
+ console.log('PASS: 106 bundled initial renders without iframes, early text layout, instant Chinese switch, honest supplemental availability and sample-only grading');
+
  await act(async()=>{view.unmount();await tick();});
  const stored={en:'<p>My full task $N$</p><pre>1 2</pre>',zh:'<p>我的完整中文题面</p>',source:'provided.html',updatedAt:'2026-10-03'};
- localStorage.setItem('usaco-local-statement-567',JSON.stringify(stored));const fresh=createRoot(container),{OfficialStatement}=require(root+'/components/official-statement.tsx');
- await act(async()=>{fresh.render(React.createElement(OfficialStatement,{id:567,title:'Example'}));await tick();});await act(tick);
+ localStorage.setItem('usaco-local-statement-999999',JSON.stringify(stored));const fresh=createRoot(container),{OfficialStatement}=require(root+'/components/official-statement.tsx');
+ await act(async()=>{fresh.render(React.createElement(OfficialStatement,{id:999999,title:'Example'}));await tick();});await act(tick);
  assert(!container.querySelector('iframe'));assert(container.textContent.includes('My full task'));
  await click('中文');assert(container.textContent.includes('我的完整中文题面'));assert(!container.querySelector('iframe'));
  console.log('PASS: local full-document reload and Chinese switch avoid the external reader');

@@ -1,0 +1,337 @@
+[
+  {
+    "id": 507,
+    "title": "Cow Routing",
+    "zhTitle": "奶牛航线",
+    "round": "jan15results",
+    "roundLabel": "2015 / 01",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=507",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=507",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "顺序模拟",
+      "枚举航线"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "基础",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "1 2 3\n3 3\n3 2 1\n4 4\n2 1 4 3\n8 5\n4 1 7 8 2",
+        "output": "8"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowroute.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "simulation",
+      "enumeration"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "基础巩固",
+    "classificationBasis": "按提供的题面初步归类：按航线顺序检查出发城市是否先于目的地，再比较可行航线费用。",
+    "statementAvailable": true
+  },
+  {
+    "id": 508,
+    "title": "Cow Routing II",
+    "zhTitle": "奶牛航线 II",
+    "round": "jan15results",
+    "roundLabel": "2015 / 01",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=508",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=508",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "枚举中转点",
+      "路径组合"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "1 2 3\n3 3\n3 2 1\n4 4\n2 1 4 3\n8 5\n4 1 7 8 2",
+        "output": "7"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cowroute.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "enumeration",
+      "graphs"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "按提供的题面初步归类：题目允许至多两条航线，可按中转城市组织从起点出发与到达终点的可行费用。",
+    "statementAvailable": true
+  },
+  {
+    "id": 509,
+    "title": "It's All About the Base",
+    "zhTitle": "什么进制",
+    "round": "jan15results",
+    "roundLabel": "2015 / 01",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=509",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=509",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "进制转换",
+      "单调性",
+      "双指针"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "1\n419 792",
+        "output": "47 35"
+      }
+    ],
+    "io": "file",
+    "inputFile": "whatbase.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "math",
+      "sorting"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "按提供的题面初步归类：三位数的数值随进制递增，可利用单调性寻找两种表示对应的相同数值。",
+    "statementAvailable": true
+  },
+  {
+    "id": 510,
+    "title": "Meeting Time",
+    "zhTitle": "会面时间",
+    "round": "jan15results",
+    "roundLabel": "2015 / 01",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=510",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=510",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "有向无环图",
+      "路径搜索",
+      "集合交集"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "3 3\n1 3 1 2\n1 2 1 2\n2 3 1 2",
+        "output": "2"
+      }
+    ],
+    "io": "file",
+    "inputFile": "meeting.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "graphs",
+      "enumeration"
+    ],
+    "optionalTopics": [
+      "dp"
+    ],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "按提供的题面初步归类：按下坡方向枚举可达路径时间，比较两头牛的可达时间集合。",
+    "statementAvailable": true
+  },
+  {
+    "id": 526,
+    "title": "Censoring (Bronze)",
+    "zhTitle": "文本审查",
+    "round": "feb15results",
+    "roundLabel": "2015 / 02",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=526",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=526",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "字符串",
+      "栈式处理"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "挑战",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "whatthemomooofun\nmoo",
+        "output": "whatthefun"
+      }
+    ],
+    "io": "file",
+    "inputFile": "censor.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "strings",
+      "simulation"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "综合挑战",
+    "classificationBasis": "按提供的题面初步归类：删除可能产生新的匹配，需要保留已处理文本并反复检查末尾匹配。",
+    "statementAvailable": true
+  },
+  {
+    "id": 527,
+    "title": "COW",
+    "zhTitle": "奶牛密码",
+    "round": "feb15results",
+    "roundLabel": "2015 / 02",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=527",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=527",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "子序列计数",
+      "累计贡献"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "6\nCOOWWW",
+        "output": "6"
+      }
+    ],
+    "io": "file",
+    "inputFile": "cow.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "strings",
+      "counting",
+      "prefix"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "按提供的题面初步归类：依次统计 C、CO 与 COW 的累计数量，注意计数范围。",
+    "statementAvailable": true
+  },
+  {
+    "id": 528,
+    "title": "Cow Hopscotch (Bronze)",
+    "zhTitle": "奶牛跳房子",
+    "round": "feb15results",
+    "roundLabel": "2015 / 02",
+    "year": 2015,
+    "season": "2014–15",
+    "division": "Bronze",
+    "official": "https://usaco.org/index.php?page=viewproblem2&cpid=528",
+    "source": "https://usaco.org/index.php?page=viewproblem2&cpid=528",
+    "editorial": "",
+    "testsUrl": "",
+    "tags": [
+      "网格",
+      "方案计数",
+      "动态规划"
+    ],
+    "reviewStatus": "题面已收录",
+    "level": "进阶",
+    "visual": "array",
+    "summary": "",
+    "summaryEn": "",
+    "analysis": "",
+    "hints": [],
+    "samples": [
+      {
+        "input": "4 4\nRRRR\nRRBR\nRBBR\nRRRR",
+        "output": "3"
+      }
+    ],
+    "io": "file",
+    "inputFile": "hopscotch.in",
+    "checker": "tokens",
+    "testsImported": 0,
+    "testsTotal": 0,
+    "diagramReady": false,
+    "referenceReady": false,
+    "statementOnly": true,
+    "learningTopics": [
+      "grid",
+      "dp"
+    ],
+    "optionalTopics": [],
+    "practiceStage": "专项进阶",
+    "classificationBasis": "按提供的题面初步归类：跳跃只能同时向右和向下，按格子累计不同颜色前驱的路径数。",
+    "statementAvailable": true
+  }
+]

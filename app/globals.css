@@ -513,6 +513,7 @@ pre { white-space:pre-wrap; overflow-wrap:anywhere; font-family:ui-monospace,SFM
 .local-statement-body table { border-collapse:collapse; max-width:100%; }
 .local-statement-body td,.local-statement-body th { border:1px solid #dce3eb; padding:6px 12px; }
 .local-statement-body img { max-width:100%; height:auto; }
+.local-statement-body .statement-verbatim{display:block;white-space:pre-wrap;font-family:Consolas,"SFMono-Regular",monospace;font-size:.92em;line-height:1.7;overflow-wrap:break-word;tab-size:4}.statement-translation-note{font-size:11px;color:#8b6741;white-space:nowrap}
 .local-statement-body .katex { font-size:1.05em; }
 .local-statement-body .katex-display { overflow-x:auto; overflow-y:hidden; padding:4px 0; }
 .statement-reader-body .local-statement-body { flex:1; min-height:0; overflow:auto; }
