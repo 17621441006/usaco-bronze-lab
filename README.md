@@ -2,6 +2,14 @@
 
 Bronze regular-season learning site. Silver, Gold and Platinum remain reserved headings. US Open is excluded.
 
+## Persistent inspection advice · 2026-10-26
+
+- Python diagnostic advice now opens in a persistent, viewport-bounded card instead of Monaco's timed hover. Hovering a marked range or clicking it opens the card; moving through other code or leaving the editor does not close or replace it. Overlapping diagnostics have previous/next controls.
+- Accept/ignore remain green/gray with Y/N shortcuts and revision-guarded, undoable edits. Actions, Escape, close, outside clicks, editing, file changes and scrolling the editor/page dismiss the card. Scrolling its preview does not dismiss it. Only one advice card is active across editors; disposal removes listeners and pending hover timers.
+- Native Python tooltips are disabled in the project editor to avoid competing popups. Existing quick fixes and the persistent issue list remain available; other language tooltips are unchanged.
+
+Validation: TypeScript and actual Ruff/DOM regression pass, including delayed pointer travel beyond the old timeout, click acceptance, ignore, Y/N focus isolation, Escape/outside clicks, preview scrolling, file/edit invalidation and cleanup. Managed preview reported running but refused connections, so browser visual verification was unavailable for this change.
+
 ## Visible PEP 8 actions · 2026-10-25
 
 - Monaco's inner hover content clipped the accept/ignore controls when the code preview extended past its fixed height. The inner content now grows inside the scrollable outer hover, with bounded scrolling for long code previews.

@@ -45,24 +45,39 @@ if(!isMainThread){
   bridge.dispose();assert.equal(commands.size,0);assert.equal(disposed,6);
   console.log('PASS: Monaco errors vs mild style markers, trusted hover actions, decline leaves code intact, guarded edits, undo stops, stale-result rejection and provider cleanup');
 
-  // Marker hover opens while the caret is still in the editor: Y/N must consume
-  // that key before Monaco's input handling, without affecting another field.
+  // Exercise the persistent card lifecycle with real DOM events and delayed
+  // pointer traversal, including edits/model changes that invalidate an action.
   const {JSDOM}=require(process.env.JSDOM_TEST_DIR||'/tmp/usaco-qa/node_modules/jsdom');
   const dom=new JSDOM('<div id="editor"><textarea></textarea></div><div id="hover"></div><input id="other">');
-  global.document=dom.window.document;global.getComputedStyle=dom.window.getComputedStyle.bind(dom.window);
+  global.document=dom.window.document;global.window=dom.window;global.Event=dom.window.Event;
   const editorNode=document.getElementById('editor'),field=editorNode.querySelector('textarea'),host=document.getElementById('hover');
+  const listeners={};
+  for(const name of ['onMouseMove','onMouseLeave','onMouseDown','onDidScrollChange','onDidLayoutChange'])editor[name]=fn=>{listeners[name]=fn;return disposable();};
   editor.getDomNode=()=>editorNode;editor.hasTextFocus=()=>document.activeElement===field;
+  editor.getScrolledVisiblePosition=()=>({left:50,top:20,height:22});editor.focus=()=>field.focus();
   const keys=attachPythonInspection(editor,monaco,id=>dismissed=id,host);
-  function show(){text=source;keys.update({file:'main.py',source,issues});const h=hoverProvider.provideHover(model,{lineNumber:1,column:2});const card=document.createElement('div');card.className='monaco-hover';card.getClientRects=()=>[{width:300,height:180}];for(const match of h.contents[0].value.matchAll(/\]\((command:[^)]+)\)/g)){const a=document.createElement('a');a.dataset.href=match[1];card.append(a);}host.replaceChildren(card);return card;}
+  function show(){text=source;keys.update({file:'main.py',source,issues});listeners.onMouseDown({event:{leftButton:true},target:{position:{lineNumber:1,column:2}}});const card=host.querySelector('.python-inspection-card');assert(card);card.getClientRects=()=>[{width:360,height:220}];field.focus();return card;}
   function press(key,repeat=false){const event=new dom.window.KeyboardEvent('keydown',{key,repeat,bubbles:true,cancelable:true});document.activeElement.dispatchEvent(event);return event;}
   function release(){document.dispatchEvent(new dom.window.KeyboardEvent('keyup',{bubbles:true}));}
-  show();field.focus();assert(press('Y').defaultPrevented);assert.equal(text,'print(123+343);\nprint()\n');assert(press('Y',true).defaultPrevented);release();
-  show();field.focus();dismissed=null;assert(press('n').defaultPrevented);assert.equal(dismissed,undefinedName.id);assert.equal(text,source);release();
-  const card=show();document.getElementById('other').focus();assert(!press('y').defaultPrevented);assert.equal(text,source);
-  card.style.display='none';field.focus();assert(!press('y').defaultPrevented);assert(!press('n').defaultPrevented);
-  show();field.focus();text='print(99)\n';changeContent();assert(press('y').defaultPrevented);assert.equal(text,'print(99)\n');release();
-  keys.dispose();dom.window.close();delete global.document;delete global.getComputedStyle;
-  console.log('PASS: Y/N while caret stays in editor, no pointer entry required, repeat suppression, hidden hover/other field isolation and stale hover rejection');
+  text=source;keys.update({file:'main.py',source,issues});
+  listeners.onMouseMove({target:{position:{lineNumber:1,column:2}}});
+  await new Promise(r=>setTimeout(r,400));
+  const persisted=host.querySelector('.python-inspection-card');assert(persisted,'hover opens a card');
+  listeners.onMouseMove({target:{position:{lineNumber:2,column:1}}});listeners.onMouseLeave();
+  await new Promise(r=>setTimeout(r,1700));assert(persisted.isConnected,'crossing blank code and waiting beyond the former timeout must not close advice');
+  persisted.querySelector('[aria-label="采纳建议"]').click();assert.equal(text,'print(123+343);\nprint()\n');assert(!persisted.isConnected);
+  show();assert(press('Y').defaultPrevented);assert.equal(text,'print(123+343);\nprint()\n');assert(press('Y',true).defaultPrevented);release();assert(!press('y').defaultPrevented,'ordinary typing resumes after action');
+  show();dismissed=null;assert(press('n').defaultPrevented);assert.equal(dismissed,undefinedName.id);assert.equal(text,source);release();
+  let card=show();document.getElementById('other').focus();assert(!press('y').defaultPrevented);assert.equal(text,source);
+  field.focus();assert(press('Escape').defaultPrevented);assert(!card.isConnected);
+  card=show();card.querySelector('button').dispatchEvent(new dom.window.Event('pointerdown',{bubbles:true}));assert(card.isConnected,'pointerdown inside keeps the card clickable');
+  document.getElementById('other').dispatchEvent(new dom.window.Event('pointerdown',{bubbles:true}));assert(!card.isConnected);
+  card=show();card.querySelector('.inspection-card-body').dispatchEvent(new dom.window.Event('scroll'));assert(card.isConnected,'preview scrolling does not close');listeners.onDidScrollChange();assert(!card.isConnected);
+  card=show();text='print(99)\n';changeContent();assert(!card.isConnected);assert(!press('y').defaultPrevented);assert.equal(text,'print(99)\n');
+  card=show();changeModel();assert(!card.isConnected);
+  card=show();keys.dispose();assert(!card.isConnected);assert(!press('y').defaultPrevented);
+  dom.window.close();delete global.document;delete global.window;delete global.Event;
+  console.log('PASS: persistent hover across slow pointer travel, real accept click, Y/N capture, Escape/outside/edit/model/scroll cleanup, unrelated input isolation and listener disposal');
 
  }finally{await w.terminate();}})().catch(e=>{console.error(e);process.exitCode=1;});
 }
