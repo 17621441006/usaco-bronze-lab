@@ -1,6 +1,6 @@
 'use client';
-import {useEffect,useRef,useState,lazy,Suspense,Fragment,type PointerEvent} from 'react';
-import {Check,ChevronRight,Code2,Play,RotateCcw,GripVertical,ArrowDownToLine,ArrowUpFromLine,PanelLeftClose,PanelLeftOpen} from 'lucide-react';
+import {useEffect,useRef,useState,lazy,Suspense,Fragment,type PointerEvent,type ReactNode} from 'react';
+import {Check,ChevronRight,Code2,Play,RotateCcw,GripVertical,ArrowDownToLine,ArrowUpFromLine,PanelLeftClose,PanelLeftOpen,BookOpen,Terminal,Copy} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {useSidebar} from '@/components/ui/sidebar';
 import {VisualLesson} from './visual-lesson';
@@ -11,10 +11,78 @@ import type {Problem} from './practice-workspace';
 const ProjectIDE=lazy(()=>import('./project-ide').then(m=>({default:m.ProjectIDE})));
 type Exercise=(typeof exerciseData)[number];
 const progressKey='usaco-course-exercise-progress-v1';
+
+function inferDataKind(label:string,value:string):'int'|'str'|'float'|'bool'|'collection'|'default'{
+ const s=(label+' '+value).toLowerCase();
+ if(/\bint\b|整数|数量|记录数|总量|最小值|最大值/.test(s))return 'int';
+ if(/\bstr\b|文字|字符串|文本|^".*"$/.test(s))return 'str';
+ if(/\bfloat\b|小数|\d+\.\d+/.test(s))return 'float';
+ if(/\bbool\b|true|false|真假|判断/.test(s))return 'bool';
+ if(/\blist\b|\btuple\b|\bset\b|\bdict\b|\[.*\]|\{.*\}|→/.test(s))return 'collection';
+ return 'default';
+}
+
+function formatNoteText(note:string):ReactNode[]{
+ const parts=note.split(/(\b(?:int|float|bool|str|list|tuple|set|dict|None|True|False|Counter|StopIteration|IndexError|TypeError|input|split|print|map|len|sum|min|max|abs|range|sorted|sort|iter|next|append|pop|add|discard|get|items|keys|values|bisect_left|bisect_right|dfs)\b(?:\([^)]*\))?|"[^"]*"|\[\d+(?:,\s*\d+)*\]|\{\d+(?:,\s*\d+)*\})/g);
+ return parts.map((part,i)=>i%2===1?<code key={i} className="note-inline-token">{part}</code>:part);
+}
+
+function highlightPythonLine(line:string):ReactNode{
+ const commentIdx=line.indexOf('#');
+ const codePart=commentIdx>=0?line.slice(0,commentIdx):line;
+ const commentPart=commentIdx>=0?line.slice(commentIdx):'';
+ const tokens=codePart.split(/("[^"]*"|'[^']*'|\b(?:def|return|if|elif|else|for|while|in|and|or|not|import|from|True|False|None)\b|\b(?:int|float|str|bool|list|dict|set|tuple|print|input|split|map|len|sum|min|max|abs|range|sorted|iter|next)\b|\b\d+(?:\.\d+)?\b)/g);
+ return <>
+  {tokens.map((tok,i)=>{
+   if(!tok)return null;
+   if(/^(".*"|'.*')$/.test(tok))return <span key={i} className="py-tok-str">{tok}</span>;
+   if(/^(def|return|if|elif|else|for|while|in|and|or|not|import|from|True|False|None)$/.test(tok))return <span key={i} className="py-tok-kw">{tok}</span>;
+   if(/^(int|float|str|bool|list|dict|set|tuple|print|input|split|map|len|sum|min|max|abs|range|sorted|iter|next)$/.test(tok))return <span key={i} className="py-tok-fn">{tok}</span>;
+   if(/^\d+(?:\.\d+)?$/.test(tok))return <span key={i} className="py-tok-num">{tok}</span>;
+   return tok;
+  })}
+  {commentPart&&<span className="py-tok-com">{commentPart}</span>}
+ </>;
+}
+
 function FoundationDiagram({lesson}:{lesson:CourseLesson}){
  const [step,setStep]=useState(0),frames=lesson.frames!,frame=frames[step];
- return <div className="foundation-diagram"><div className="foundation-stages" aria-label="执行步骤">{frames.map((f,i)=><button key={f.label} aria-current={i===step?'step':undefined} onClick={()=>setStep(i)}><span>{i+1}</span>{f.label}{i<frames.length-1&&<ChevronRight size={15}/>}</button>)}</div><div className="foundation-frame" aria-live="polite"><small>第 {step+1} 步 · {frame.label}</small>{frame.items&&<div className="foundation-data-flow" aria-label="数据变化">{frame.items.map((item,i)=><Fragment key={item.label+'-'+i}>{i>0&&<ChevronRight className="data-flow-arrow" size={18}/>}<div className={item.active?'active':''}><small>{item.label}</small><code>{item.value}</code></div></Fragment>)}</div>}<pre>{frame.value}</pre><p>{frame.explanation}</p></div><div className="foundation-controls"><span>逐步执行</span><Button variant="ghost" onClick={()=>setStep(0)}><RotateCcw size={14}/>重置</Button><Button variant="outline" onClick={()=>setStep(s=>Math.min(frames.length-1,s+1))} disabled={step===frames.length-1}><Play size={14}/>下一步</Button></div></div>;
+ return <div className="foundation-diagram">
+  <div className="foundation-stages" aria-label="执行步骤">
+   {frames.map((f,i)=><button key={f.label} className={i<step?'is-done':''} aria-current={i===step?'step':undefined} onClick={()=>setStep(i)}>
+    <span>{i<step?<Check size={12}/>:i+1}</span>
+    <b>{f.label}</b>
+    {i<frames.length-1&&<ChevronRight size={14} className="stage-chevron"/>}
+   </button>)}
+  </div>
+  <div className="foundation-frame" aria-live="polite">
+   <small className="foundation-step-badge">第 {step+1} 步 · {frame.label}</small>
+   {frame.items&&<div className="foundation-data-flow" aria-label="数据变化">
+    {frame.items.map((item,i)=>{
+     const kind=inferDataKind(item.label,item.value);
+     return <Fragment key={item.label+'-'+i}>
+      {i>0&&<ChevronRight className="data-flow-arrow" size={18}/>}
+      <div className={`data-flow-card ${item.active?'active':''}`} data-kind={kind}>
+       <small>{item.label}</small>
+       <code>{item.value}</code>
+      </div>
+     </Fragment>;
+    })}
+   </div>}
+   <pre>{frame.value}</pre>
+   <p>{frame.explanation}</p>
+  </div>
+  <div className="foundation-controls">
+   <span>逐步执行</span>
+   <div className="foundation-step-dots" aria-hidden="true">
+    {frames.map((f,i)=><i key={f.label} className={i===step?'is-active':i<step?'is-done':''}/>)}
+   </div>
+   <Button variant="ghost" onClick={()=>setStep(0)}><RotateCcw size={14}/>重置</Button>
+   <Button variant="outline" className="foundation-next-btn" onClick={()=>setStep(s=>Math.min(frames.length-1,s+1))} disabled={step===frames.length-1}><Play size={14}/>下一步</Button>
+  </div>
+ </div>;
 }
+
 function ExercisePanel({exercise,onPassed,onStartCoding}:{exercise:Exercise;onPassed:()=>void;onStartCoding:()=>void}){
  const [coding,setCoding]=useState(false),[started,setStarted]=useState(false),[help,setHelp]=useState(false),[reference,setReference]=useState(false),[split,setSplit]=useState(43);
  const workspace=useRef<HTMLDivElement>(null),drag=useRef<number|null>(null);
@@ -32,22 +100,52 @@ function ExercisePanel({exercise,onPassed,onStartCoding}:{exercise:Exercise;onPa
   </div>
  </div>;
 }
+
 function LessonPractice({lesson,onComplete,onStartCoding}:{lesson:CourseLesson;onComplete:()=>void;onStartCoding:()=>void}){
  const exercises=exerciseData.filter(e=>e.lesson===lesson.id),[selected,setSelected]=useState(0),[passed,setPassed]=useState<number[]>([]);
  useEffect(()=>{try{const values=JSON.parse(localStorage.getItem(progressKey)||'[]');if(Array.isArray(values))setPassed(values.filter(Number.isInteger));}catch{}},[]);
  function markPassed(id:number){let saved:number[]=[];try{const value=JSON.parse(localStorage.getItem(progressKey)||'[]');if(Array.isArray(value))saved=value.filter(Number.isInteger);}catch{}const next=[...new Set([...saved,...passed,id])];setPassed(next);try{localStorage.setItem(progressKey,JSON.stringify(next));}catch{}if(exercises.every(e=>next.includes(e.id)))onComplete();}
  return <section className="lesson-practice"><div className="practice-heading"><h2>编程练习</h2><p>运行看输出 · 检查全部后记录通过</p><span className="course-progress">{exercises.filter(e=>passed.includes(e.id)).length} / {exercises.length} 已通过</span></div><div className="exercise-levels" role="tablist" aria-label="练习难度">{exercises.map((e,i)=><button key={e.id} role="tab" aria-selected={i===selected} aria-controls={`exercise-${lesson.id}`} onClick={()=>setSelected(i)}><span>{passed.includes(e.id)?<Check size={14}/>:String(i+1).padStart(2,'0')}</span><small>{e.level}</small><b>{e.title}</b></button>)}</div><div id={`exercise-${lesson.id}`} role="tabpanel"><ExercisePanel key={exercises[selected].id} exercise={exercises[selected]} onStartCoding={onStartCoding} onPassed={()=>markPassed(exercises[selected].id)}/></div></section>;
 }
+
 export function CoursePage({section,selected,onSelect,onOpenProblem,onLessonDone,done}:{section:'python'|'algorithm';selected:string;onSelect:(id:string)=>void;onOpenProblem:(id:number)=>void;onLessonDone:(id:string)=>void;done:string[]}){
  const {setOpen:setMainNavOpen}=useSidebar();
- const [directoryCollapsed,setDirectoryCollapsed]=useState(false),[directoryReady,setDirectoryReady]=useState(false);
+ const [directoryCollapsed,setDirectoryCollapsed]=useState(false),[directoryReady,setDirectoryReady]=useState(false),[copied,setCopied]=useState(false);
  useEffect(()=>{try{setDirectoryCollapsed(localStorage.getItem('usaco-course-directory-collapsed')==='true');}catch{}setDirectoryReady(true);},[]);
  useEffect(()=>{if(directoryReady)try{localStorage.setItem('usaco-course-directory-collapsed',String(directoryCollapsed));}catch{}},[directoryCollapsed,directoryReady]);
  function beginCoding(){setDirectoryCollapsed(true);setMainNavOpen(false);}
  const list=section==='python'?pythonLessons:algorithmLessons,lesson=list.find(l=>l.id===selected)||list[0],index=list.findIndex(l=>l.id===lesson.id);
+ const codeLines=lesson.code.split('\n');
+ function copyCode(){
+  try{navigator.clipboard?.writeText(lesson.code);setCopied(true);setTimeout(()=>setCopied(false),1600);}catch{}
+ }
  return <section className="course-page"><header className="course-topline"><div className="course-identity"><h1>{section==='python'?'Python 基础':'算法课堂'}</h1><span className="course-slash">/</span><h2>{lesson.title}</h2><span className="course-position">{index+1} / {list.length}</span></div><p className="course-summary" title={lesson.desc}>{lesson.desc}</p><span className="course-progress">{list.filter(l=>done.includes(l.id)).length} / {list.length} 节完成</span><WhiteboardLauncher key={lesson.id} context={{id:`lesson-${lesson.id}`,title:lesson.title,notes:[lesson.desc,...lesson.notes]}}/></header>
-  <div className={`classroom-layout ${directoryCollapsed?"directory-collapsed":""}`}><aside className="lesson-directory"><div className="directory-controls"><Button variant="ghost" onClick={()=>setDirectoryCollapsed(!directoryCollapsed)} aria-label={directoryCollapsed?"展开课程目录":"收起课程目录"} aria-expanded={!directoryCollapsed} title={directoryCollapsed?"展开课程目录":"收起课程目录"}>{directoryCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}<span>课程目录</span></Button></div><nav hidden={directoryCollapsed} className="lesson-list" aria-label={section==='python'?'Python 基础课程':'算法课程'}>{list.map((l,i)=><Fragment key={l.id}>{l.group&&(i===0||l.group!==list[i-1].group)&&<h3 className="lesson-group-label">{l.group}</h3>}<button className={l.id===lesson.id?'active':''} onClick={()=>onSelect(l.id)} aria-current={l.id===lesson.id?'page':undefined}><span>{done.includes(l.id)?<Check size={15}/>:String(i+1).padStart(2,'0')}</span><div>{l.title}<small>{l.minutes} 分钟 · 3 道练习</small></div></button></Fragment>)}</nav></aside>
-   <article className="lesson-content"><div className="lesson-overview" data-annotation-anchor={`lesson-${lesson.id}`}>{lesson.kind?<VisualLesson key={'visual-'+lesson.id} kind={lesson.kind} steps={lesson.steps} lessonId={lesson.id}/>:<FoundationDiagram key={'visual-'+lesson.id} lesson={lesson}/>}<div className="course-explanation"><section><h3>知识要点</h3><ul>{lesson.notes.map(note=><li key={note}>{note}</li>)}</ul></section><section><h3>对应代码 / 伪代码</h3><pre className="code-sample">{lesson.code}</pre></section></div></div><LessonPractice key={'practice-'+lesson.id} lesson={lesson} onStartCoding={beginCoding} onComplete={()=>onLessonDone(lesson.id)}/><div className="course-next">{lesson.problem&&<Button variant="outline" onClick={()=>onOpenProblem(lesson.problem!)}>练对应真题</Button>}<Button onClick={()=>onSelect(index<list.length-1?list[index+1].id:section==='python'?'complexity':'exam')}>{index<list.length-1?'下一课：'+list[index+1].title:section==='python'?'进入算法课堂':'进入模拟考试'}<ChevronRight size={15}/></Button></div>{section==='python'&&<p className="course-sources">延伸阅读：<a href="https://m.runoob.com/python3/" target="_blank" rel="noreferrer">菜鸟教程目录</a><a href="https://docs.python.org/zh-cn/3.12/library/functions.html" target="_blank" rel="noreferrer">Python 内置函数</a><a href="https://docs.python.org/zh-cn/3.12/tutorial/datastructures.html" target="_blank" rel="noreferrer">Python 数据结构</a></p>}</article>
+  <div className={`classroom-layout ${directoryCollapsed?"directory-collapsed":""}`}><aside className="lesson-directory"><div className="directory-controls"><Button variant="ghost" onClick={()=>setDirectoryCollapsed(!directoryCollapsed)} aria-label={directoryCollapsed?"展开课程目录":"收起课程目录"} aria-expanded={!directoryCollapsed} title={directoryCollapsed?"展开课程目录":"收起课程目录"}>{directoryCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}<span>课程目录</span></Button></div><nav hidden={directoryCollapsed} className="lesson-list" aria-label={section==='python'?'Python 基础课程':'算法课程'}>{list.map((l,i)=><Fragment key={l.id}>{l.group&&(i===0||l.group!==list[i-1].group)&&<h3 className="lesson-group-label">{l.group}</h3>}<button className={l.id===lesson.id?'active':done.includes(l.id)?'is-completed':''} onClick={()=>onSelect(l.id)} aria-current={l.id===lesson.id?'page':undefined}><span>{done.includes(l.id)?<Check size={14}/>:String(i+1).padStart(2,'0')}</span><div>{l.title}<small>{l.minutes} 分钟 · 3 道练习</small></div></button></Fragment>)}</nav></aside>
+   <article className="lesson-content">
+    <div className="lesson-overview" data-annotation-anchor={`lesson-${lesson.id}`}>
+     {lesson.kind?<VisualLesson key={'visual-'+lesson.id} kind={lesson.kind} steps={lesson.steps} lessonId={lesson.id}/>:<FoundationDiagram key={'visual-'+lesson.id} lesson={lesson}/>}
+     <div className="course-explanation">
+      <section className="explanation-notes-card">
+       <header className="explanation-card-header">
+        <h3><BookOpen size={15}/>知识要点</h3>
+        <span className="explanation-pill">Key Insights</span>
+       </header>
+       <ul>{lesson.notes.map(note=><li key={note}>{formatNoteText(note)}</li>)}</ul>
+      </section>
+      <section className="explanation-code-card">
+       <header className="code-window-bar">
+        <div className="code-window-dots" aria-hidden="true"><i/><i/><i/></div>
+        <h3><Terminal size={14}/>对应代码 / 伪代码</h3>
+        <button type="button" className="code-copy-btn" onClick={copyCode} title="复制示例代码"><Copy size={12}/><span>{copied?'已复制':'复制'}</span></button>
+       </header>
+       <pre className="code-sample">{codeLines.map((line,idx)=><span key={idx} className="code-line" data-line={idx+1}>{highlightPythonLine(line)}{idx<codeLines.length-1?'\n':''}</span>)}</pre>
+      </section>
+     </div>
+    </div>
+    <LessonPractice key={'practice-'+lesson.id} lesson={lesson} onStartCoding={beginCoding} onComplete={()=>onLessonDone(lesson.id)}/>
+    <div className="course-next">{lesson.problem&&<Button variant="outline" onClick={()=>onOpenProblem(lesson.problem!)}>练对应真题</Button>}<Button onClick={()=>onSelect(index<list.length-1?list[index+1].id:section==='python'?'complexity':'exam')}>{index<list.length-1?'下一课：'+list[index+1].title:section==='python'?'进入算法课堂':'进入模拟考试'}<ChevronRight size={15}/></Button></div>
+    {section==='python'&&<p className="course-sources">延伸阅读：<a href="https://m.runoob.com/python3/" target="_blank" rel="noreferrer">菜鸟教程目录</a><a href="https://docs.python.org/zh-cn/3.12/library/functions.html" target="_blank" rel="noreferrer">Python 内置函数</a><a href="https://docs.python.org/zh-cn/3.12/tutorial/datastructures.html" target="_blank" rel="noreferrer">Python 数据结构</a></p>}
+   </article>
   </div>
  </section>;
 }
