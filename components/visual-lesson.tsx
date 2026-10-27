@@ -9,7 +9,7 @@ import {FarmDiagram} from './farm-diagram';
 import {FenceMethods} from './fence-methods';
 import {SceneZoomControls} from './scene-zoom-controls';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-export function VisualLesson({kind='fence',compact=false,steps,lessonId}:{kind:SceneKind,compact?:boolean,steps?:readonly string[],lessonId?:string}){
+export function VisualLesson({kind='fence',compact=false,steps,lessonId,onStepChange}:{kind:SceneKind,compact?:boolean,steps?:readonly string[],lessonId?:string,onStepChange?:(step:number)=>void}){
  const [step,setStep]=useState(0),[play,setPlay]=useState(false),[view,setView]=useState('3d'),[flatZoom,setFlatZoom]=useState(1),[speed,setSpeed]=useState<1|1.5|0.75>(1);
  const [interval,setIntervalValue]=useState([7,10,4,8]);const [mask,setMask]=useState(17);
  const defaults:Record<string,string[]>={fence:['先观察两段区间。','FJ 涂色：蓝色部分。','Bessie 涂色：赭色部分。','紫色是重叠区域，总长度只计算一次。'],cheese:['初始奶酪，没有通道。','移除 (0,0,0)。','移除 (1,1,1)。','移除 (0,1,0)，出现第一条通道。','移除 (1,0,0)，总共 2 条通道。','移除 (1,1,0)，总共 5 条通道。'],reflection:['示意画布：不是官方样例。','高亮四个镜像位置。','这四格必须统一颜色。','只更新受影响的一组。'],printing:['教学序列：6 个输出。','它由同一个块重复两次。','程序只需两条 PRINT 语句。'],moo:['官方样例中的 5 个格子。','点击格子，切换 M/O。','重复三元组也计入分数。','枚举 32 种棋盘，最大分是 4，共 2 种棋盘达到。'],array:['观察数据。','访问第二个元素。','继续向后处理。','关注变量如何变化。'],dp:['dp[0]=1','dp[1]=1','dp[2]=2','dp[3]=3','dp[4]=5','dp[5]=8','dp[6]=13'],binary:['比较 4 和 7。','比较 9 和 7。','找到 7。']};
@@ -19,6 +19,7 @@ export function VisualLesson({kind='fence',compact=false,steps,lessonId}:{kind:S
  const brief=story?[story.title,story.unit+(kind==='buckets'?' 桶的正面剖开，显示当前液面。':'')]:context[kind];
  const legend=kind==='fence'?[['FJ','#3b82f6'],['Bessie','#f59e0b'],['共同涂色','#8b5cf6']]:story?[['原始数据','#64748b'],['当前关注','#f59e0b'],['已完成','#10b981']]:[];
  useEffect(()=>{setStep(0);setPlay(false);},[kind]);
+ useEffect(()=>{onStepChange?.(step);},[step,onStepChange]);
  useEffect(()=>{if(!play)return;const t=window.setInterval(()=>setStep(s=>{if(s>=lines.length-1){setPlay(false);return s;}return s+1;}),Math.round(1500/speed));return()=>clearInterval(t);},[play,lines.length,speed]);
  const [a,b,c,d]=interval,overlap=Math.max(0,Math.min(b,d)-Math.max(a,c));
  const triples=[[1,2,3],[1,2,3],[1,3,5],[2,3,4],[5,3,2],[5,2,3]];

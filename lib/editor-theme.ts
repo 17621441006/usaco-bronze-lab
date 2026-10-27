@@ -7,8 +7,23 @@ export function configureCodeEditor(monaco:typeof Monaco){
  if(configured.has(monaco))return;
  configured.add(monaco);
  monaco.editor.defineTheme('usaco-idea',{base:'vs-dark',inherit:true,rules:[
-  {token:'comment',foreground:'7A7E85'},{token:'keyword',foreground:'CF8E6D'},
-  {token:'string',foreground:'6AAB73'},{token:'number',foreground:'2AACB8'},
-  {token:'type.identifier',foreground:'BCBEC4'},{token:'function',foreground:'56A8F5'},
- ],colors:{'editor.background':'#1E1F22','editor.foreground':'#BCBEC4','editorLineNumber.foreground':'#61656D','editorLineNumber.activeForeground':'#A8ADBD','editor.lineHighlightBackground':'#26282E','editor.selectionBackground':'#214283','editorCursor.foreground':'#CED0D6','editorIndentGuide.background1':'#31343A','editorInfo.foreground':'#6B8799','editorWarning.foreground':'#D0AA66','editorError.foreground':'#E46A70'}});
+  {token:'comment',foreground:'64748B',fontStyle:'italic'},
+  {token:'keyword',foreground:'C084FC',fontStyle:'bold'},
+  {token:'string',foreground:'34D399'},
+  {token:'number',foreground:'FBBF24'},
+  {token:'type.identifier',foreground:'E2E8F0'},
+  {token:'function',foreground:'38BDF8'},
+ ],colors:{
+  'editor.background':'#0F172A',
+  'editor.foreground':'#E2E8F0',
+  'editorLineNumber.foreground':'#475569',
+  'editorLineNumber.activeForeground':'#94A3B8',
+  'editor.lineHighlightBackground':'#1E293B',
+  'editor.selectionBackground':'#312E81',
+  'editorCursor.foreground':'#38BDF8',
+  'editorIndentGuide.background1':'#1E293B',
+  'editorInfo.foreground':'#38BDF8',
+  'editorWarning.foreground':'#F59E0B',
+  'editorError.foreground':'#F87171',
+ }});
 }
