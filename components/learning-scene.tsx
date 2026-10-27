@@ -92,6 +92,11 @@ export const LearningScene=memo(function LearningScene({kind,step=0,interval=[7,
   stepGroup.name='teaching-step-group';
   scene.add(stepGroup);
 
+  // Remember the last intended viewing direction. If the first framing happens while the
+  // host is still 0×0 (hidden tab, layout not settled), the camera would otherwise sit at the
+  // origin and a later resize would derive a zero-length direction, placing the camera inside
+  // the scene (the "zoomed into the cow" bug).
+  let lastDirection=new THREE.Vector3(.54,.88,1.38);
   const state:EngineState={
    renderer,
    scene,
@@ -102,12 +107,15 @@ export const LearningScene=memo(function LearningScene({kind,step=0,interval=[7,
    envKind:null,
    bounds:new THREE.Box3(new THREE.Vector3(-4,0,-2),new THREE.Vector3(4,3,2)),
    render:()=>{renderer.render(scene,camera);},
-   frame:(direction=camera.position.clone().sub(controls.target))=>{
+   frame:(direction?:THREE.Vector3)=>{
+    const current=camera.position.clone().sub(controls.target);
+    const dir=direction&&direction.lengthSq()>1e-6?direction.clone():current.lengthSq()>1e-6?current:lastDirection.clone();
+    lastDirection=dir.clone();
     const w=node.clientWidth,h=node.clientHeight;
     if(!w||!h)return;
     camera.aspect=w/h;
     camera.zoom=zoomValue.current;
-    controls.target.copy(fitTeachingCamera(camera,state.bounds,direction,.68));
+    controls.target.copy(fitTeachingCamera(camera,state.bounds,dir,.74));
     renderer.setSize(w,h);
     controls.update();
     renderer.render(scene,camera);

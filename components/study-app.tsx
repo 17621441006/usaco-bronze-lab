@@ -1,6 +1,6 @@
 'use client';
 import { useEffect,useState,useRef,lazy,Suspense } from 'react';
-import { Code2,Route,Library,Box,Timer,BookMarked,ExternalLink,BookOpen,ChevronRight,Database } from 'lucide-react';
+import { Code2,Route,Library,Box,Timer,BookMarked,ExternalLink,BookOpen,Database } from 'lucide-react';
 import { SidebarProvider,SidebarInset,SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import { Empty } from '@/components/ui/empty';
@@ -17,6 +17,7 @@ import {CodingToolLaunchers} from './coding-tool-launchers';
 const CodingTools=lazy(()=>import('./coding-tools'));
 const PageAnnotations=lazy(()=>import('./page-annotations'));
 import {StudyNavigation} from './study-navigation';
+import {RouteHome} from './route-home';
 import {ProblemLibrary,type LibraryRequest} from './problem-library';
 import learningTopics from '@/data/learning-topics.json';
 import {topicMatches} from '@/lib/problem-library';
@@ -59,10 +60,9 @@ export default function StudyApp(){
  return <SidebarProvider open={navOpen} onOpenChange={setNavOpen} style={{'--sidebar-width':'192px','--sidebar-width-icon':'48px'} as React.CSSProperties}>
  <StudyNavigation page={page} wrong={wrong.length} onNavigate={go}/><SidebarInset>
  <PageTabs tools={<CodingToolLaunchers/>} tabs={openTabs} active={activeKey} onSelect={tab=>go(tab.page,tab.problemId)} onClose={closeTab} onOpen={dest=>go(dest)} leading={<SidebarTrigger className="mobile-nav-trigger" aria-label="打开导航"/>} trailing={<div className="page-tab-actions"><AnnotationLauncher/>{examEnd?<Button className="tab-exam-clock" variant="ghost" onClick={()=>go('exam')}><Timer size={14}/>{clock}</Button>:null}</div>}/>
- <main className={'content '+(page==='practice'?'work-content':'')}>
- {page==='route'&&<><div className="page-title route-title"><div><h1>学习路线</h1><span className="compact-meta">已完成 {done.length}/{courseCount} 节 · {problems.length} 道真题</span></div><div className="compact-actions"><Button variant="outline" onClick={()=>go('library')}>打开题库</Button><Button onClick={()=>openLesson('types')}><Code2 size={15}/>Python 基础</Button></div></div>
- <div className="module-grid">{modules.map(m=><article className="module" key={m.num}><div className="module-top"><span>{m.num}</span><small>{m.level}</small></div><h3>{m.name}</h3><p>{m.desc}</p><div className="module-sub">{m.sub}</div><div className="module-bottom"><Button variant="ghost" onClick={()=>openLesson(m.lesson)}>进入学习 <ChevronRight size={14}/></Button><Button variant="ghost" onClick={()=>openProblem(m.ids[0])}>对应真题</Button></div></article>)}</div><div className="update-note"><BookOpen size={20}/><div><b>课程覆盖范围</b><p>模拟、枚举、Ad Hoc、贪心与建模同样重要。二分和 DP 单列为衔接；完整训练仍要包含陌生题、证明与复盘。</p></div><Button variant="outline" onClick={()=>go('sources')}>查看依据</Button></div></>}
- {openTabs.some(t=>t.page==='library')&&<div hidden={page!=='library'}><ProblemLibrary problems={problems} request={libraryRequest} onOpen={openProblem} onLesson={openLesson} onRound={round=>{setExamRound(round);go('exam');}}/></div>}
+ <main className={'content '+(page==='practice'?'work-content':'')+(['route','python','classroom','library'].includes(page)?' lx-page':'')}>
+ {page==='route'&&<RouteHome modules={modules} done={done} courseCount={courseCount} problemCount={problems.length} wrongCount={wrong.length} attemptCount={attempts.length} onLesson={openLesson} onProblem={openProblem} onGo={dest=>go(dest)}/>}
+ {openTabs.some(t=>t.page==='library')&&<div hidden={page!=='library'}><ProblemLibrary problems={problems} statusById={Object.fromEntries([...latestAttempts.entries()].map(([id,a])=>[id,a.status]))} request={libraryRequest} onOpen={openProblem} onLesson={openLesson} onRound={round=>{setExamRound(round);go('exam');}}/></div>}
  {(page==='python'||page==='classroom')&&<CoursePage section={page==='python'?'python':'algorithm'} selected={lessonId} onSelect={openLesson} onOpenProblem={openProblem} onLessonDone={id=>setDone(prev=>[...new Set([...prev,id])])} done={done}/>}
  {openTabs.filter(t=>t.page==='practice').map(t=>{const problem=problems.find(p=>p.id===t.problemId);return problem?<div key={t.key} hidden={activeKey!==t.key} className="kept-problem-page"><PracticeWorkspace problem={problem} mode={mode} setMode={setMode} onAttempt={a=>setAttempts(prev=>[a,...prev].slice(0,200))} examExpired={mode==='exam'&&!!examEnd&&seconds===0}/></div>:null;})}
  {page==='exam'&&<><div className="page-title"><div><h1>计时模拟训练</h1><p>按原场次组卷。首版提供计时自练，尚不产生完整模考分数。</p></div></div><div className="exam-layout"><section className="exam-setup"><Timer size={30}/><h2>铜组常规赛 · 4 小时训练</h2><p>模考模式隐藏中文、考点标签、可视化讲解和提示。全部已收录英文原题可直接在站内阅读。</p><label>选择场次</label><Choice value={examRound} onChange={setExamRound} label="模拟场次" options={rounds.map(r=>({value:r,label:r}))}/><Button onClick={startExam}>开始计时训练</Button>{examEnd&&<div className="exam-live"><b>{clock}</b><span>当前训练剩余时间</span><Button variant="outline" onClick={()=>{setExamEnd(null);localStorage.removeItem('usaco-exam-end');setMode('learning');}}>结束本次训练</Button></div>}<p className="micro">计时和记录保存在本机。完整云端判题、官方计分规则与防泄题机制将在后续接入。</p></section><section className="exam-paper"><h3>本场 {problems.filter(p=>p.roundLabel===examRound).length} 道题</h3>{problems.filter(p=>p.roundLabel===examRound).sort((a,b)=>a.id-b.id).map((p,i)=><button key={p.id} onClick={()=>{setMode('exam');go('practice',p.id);}}><span>{i+1}</span><div><b>{p.title}</b><small>不展示考点标签</small></div><BookOpen size={18}/></button>)}<div className="exam-tip"><h3>复盘时关注什么</h3><p>哪里读错了？为什么选这个算法？何时应该先拿部分分？最后一次提交是否经过检查？</p></div></section></div></>}

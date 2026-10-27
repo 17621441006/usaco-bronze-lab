@@ -1,9 +1,9 @@
 'use client';
 import {useEffect,useRef,useState,lazy,Suspense,Fragment,type PointerEvent,type ReactNode} from 'react';
-import {Check,ChevronRight,Code2,Play,RotateCcw,GripVertical,ArrowDownToLine,ArrowUpFromLine,PanelLeftClose,PanelLeftOpen,BookOpen,Terminal,Copy,Zap,AlertTriangle,CheckCircle2,Gauge,Layers,Lightbulb,FileCode2,Sparkles} from 'lucide-react';
-import {Button} from '@/components/ui/button';
+import {Check,ChevronRight,ChevronLeft,Code2,GripVertical,ArrowDownToLine,ArrowUpFromLine,PanelLeftClose,PanelLeftOpen,BookOpen,Terminal,Copy,Zap,AlertTriangle,CheckCircle2,Gauge,Layers,Lightbulb,FileCode2,Clock3} from 'lucide-react';
 import {useSidebar} from '@/components/ui/sidebar';
 import {VisualLesson} from './visual-lesson';
+import {LessonTransport,type PlaybackSpeed} from './lesson-transport';
 import {WhiteboardLauncher} from './whiteboard-launcher';
 import {pythonLessons,algorithmLessons,type CourseLesson} from '@/data/course-lessons';
 import exerciseData from '@/data/course-exercises.json';
@@ -37,37 +37,37 @@ function renderDataSchematic(kind:DataKind,value:string):ReactNode{
  if(kind==='int'){
   const numMatch=value.match(/-?\d+/);
   const n=numMatch?Math.min(8,Math.max(1,Math.abs(parseInt(numMatch[0],10)))):4;
-  return <div className="schematic-widget schematic-int" aria-hidden="true">
-   <div className="schematic-int-blocks">
+  return <div className="lx-sch lx-sch-int" aria-hidden="true">
+   <div className="lx-sch-blocks">
     {Array.from({length:8},(_,i)=><i key={i} className={i<n?'is-filled':''}/>)}
    </div>
-   <span className="schematic-caption">离散计数单元 · 无精度损失</span>
+   <span className="lx-sch-cap">离散计数单元 · 无精度损失</span>
   </div>;
  }
  if(kind==='str'){
   const clean=value.replace(/^["']|["']$/g,'').slice(0,6)||'USACO';
-  return <div className="schematic-widget schematic-str" aria-hidden="true">
-   <div className="schematic-char-tape">
-    {Array.from(clean).map((ch,idx)=><span key={idx} className="char-cell"><b>{ch===' '?'␣':ch}</b><small>[{idx}]</small></span>)}
+  return <div className="lx-sch lx-sch-str" aria-hidden="true">
+   <div className="lx-sch-tape">
+    {Array.from(clean).map((ch,idx)=><span key={idx} className="lx-sch-char"><b>{ch===' '?'␣':ch}</b><small>[{idx}]</small></span>)}
    </div>
   </div>;
  }
  if(kind==='float'){
   const numMatch=value.match(/\d+(?:\.\d+)?/);
   const pct=numMatch?Math.min(92,Math.max(15,(parseFloat(numMatch[0])*17)%85+12)):62;
-  return <div className="schematic-widget schematic-float" aria-hidden="true">
-   <div className="schematic-ruler">
-    <div className="schematic-ruler-fill" style={{width:`${pct}%`}}/>
-    <i className="schematic-ruler-pin" style={{left:`${pct}%`}}/>
+  return <div className="lx-sch lx-sch-float" aria-hidden="true">
+   <div className="lx-sch-ruler">
+    <div className="lx-sch-fill" style={{width:`${pct}%`}}/>
+    <i className="lx-sch-pin" style={{left:`${pct}%`}}/>
    </div>
-   <span className="schematic-caption">连续刻度 · 注意 IEEE-754 尾数误差</span>
+   <span className="lx-sch-cap">连续刻度 · 注意 IEEE-754 尾数误差</span>
   </div>;
  }
  if(kind==='bool'){
   const isTrue=!/false|假|0|不/i.test(value);
-  return <div className="schematic-widget schematic-bool" aria-hidden="true">
-   <div className={`schematic-switch ${isTrue?'is-on':'is-off'}`}>
-    <i className="switch-knob"/>
+  return <div className="lx-sch lx-sch-bool" aria-hidden="true">
+   <div className={`lx-sch-switch ${isTrue?'is-on':'is-off'}`}>
+    <i className="lx-sch-knob"/>
     <span>{isTrue?'TRUE · 分支通行':'FALSE · 条件跳过'}</span>
    </div>
   </div>;
@@ -75,15 +75,15 @@ function renderDataSchematic(kind:DataKind,value:string):ReactNode{
  if(kind==='collection'){
   const tokens=value.replace(/^[\[\(\{]|[\]\)\}]$/g,'').split(/[,，]/).map(s=>s.trim()).filter(Boolean).slice(0,4);
   const cells=tokens.length?tokens:['a[0]','a[1]','a[2]'];
-  return <div className="schematic-widget schematic-collection" aria-hidden="true">
-   <div className="schematic-slots">
-    {cells.map((c,idx)=><span key={idx} className="slot-cell"><b>{c.slice(0,8)}</b><small>#{idx}</small></span>)}
+  return <div className="lx-sch lx-sch-collection" aria-hidden="true">
+   <div className="lx-sch-slots">
+    {cells.map((c,idx)=><span key={idx} className="lx-sch-slot"><b>{c.slice(0,8)}</b><small>#{idx}</small></span>)}
    </div>
   </div>;
  }
- return <div className="schematic-widget schematic-default" aria-hidden="true">
-  <div className="schematic-pulse-bar"><i/></div>
-  <span className="schematic-caption">实时内存绑定状态</span>
+ return <div className="lx-sch lx-sch-default" aria-hidden="true">
+  <div className="lx-sch-pulse"><i/></div>
+  <span className="lx-sch-cap">实时内存绑定状态</span>
  </div>;
 }
 
@@ -306,107 +306,99 @@ function highlightPythonLine(line:string):ReactNode{
 }
 
 function FoundationDiagram({lesson,onStepChange}:{lesson:CourseLesson;onStepChange?:(step:number)=>void}){
- const [step,setStep]=useState(0),frames=lesson.frames!,frame=frames[step];
+ const [step,setStep]=useState(0),[playing,setPlaying]=useState(false),[speed,setSpeed]=useState<PlaybackSpeed>(1),frames=lesson.frames!,frame=frames[step];
  useEffect(()=>{onStepChange?.(step);},[step,onStepChange]);
- return <div className="foundation-diagram">
-  <div className="foundation-stages" aria-label="执行步骤">
-   {frames.map((f,i)=><button key={f.label} className={i<step?'is-done':''} aria-current={i===step?'step':undefined} onClick={()=>setStep(i)}>
-    <span>{i<step?<Check size={12}/>:i+1}</span>
-    <b>{f.label}</b>
-    {i<frames.length-1&&<ChevronRight size={14} className="stage-chevron"/>}
+ useEffect(()=>{if(!playing)return;const t=window.setInterval(()=>setStep(s=>{if(s>=frames.length-1){setPlaying(false);return s;}return s+1;}),Math.round(1900/speed));return()=>clearInterval(t);},[playing,speed,frames.length]);
+ const cols=Math.min(frame.items?.length||1,4);
+ return <div className="lx-stage lx-foundation">
+  <header className="lx-stage-head">
+   <div className="lx-stage-title"><span className="lx-eyebrow"><Layers size={13}/>Python 内存与类型视图</span><h3>{lesson.title}</h3><p>{lesson.desc}</p></div>
+   <div className="lx-legend"><span><i style={{background:'#f59e0b'}}/>本步变化</span><span><i style={{background:'#94a3b8'}}/>已有数据</span></div>
+  </header>
+  <div className="lx-step-tabs" role="tablist" aria-label="执行步骤">
+   {frames.map((f,i)=><button key={f.label} type="button" role="tab" aria-selected={i===step} className={i<step?'is-done':''} onClick={()=>{setPlaying(false);setStep(i);}}>
+    <span>{i<step?<Check size={11}/>:i+1}</span><b>{f.label}</b>
    </button>)}
   </div>
-  <div className="foundation-frame" aria-live="polite">
-   <div className="foundation-frame-topline">
-    <small className="foundation-step-badge">第 {step+1} / {frames.length} 步 · {frame.label}</small>
-    <span className="foundation-memory-tag"><Layers size={13}/>Python 内存与类型具象视图</span>
-   </div>
-   {frame.items&&<div className="foundation-data-flow" aria-label="数据变化" style={{'--flow-cols':Math.min(frame.items.length,4)} as React.CSSProperties}>
+  <div className="lx-memory" aria-live="polite">
+   {frame.items?<div className="lx-mem-grid" style={{'--lx-cols':cols} as React.CSSProperties}>
     {frame.items.map((item,i)=>{
      const kind=inferDataKind(item.label,item.value);
-     return <div key={item.label+'-'+i} className={`data-flow-card ${item.active?'active':''}`} data-kind={kind}>
-      <div className="data-card-head">
-       <small>{item.label}</small>
-       <span className="data-kind-tag">{kindBadgeLabel[kind]}</span>
-      </div>
-      <code>{item.value}</code>
+     return <div key={item.label+'-'+i} className={`lx-mem-card ${item.active?'is-active':''}`} data-kind={kind}>
+      <div className="lx-mem-head"><span className="lx-mem-name">{item.label}</span><span className="lx-mem-type">{kindBadgeLabel[kind]}</span></div>
+      <code className="lx-mem-value">{item.value}</code>
       {renderDataSchematic(kind,item.value)}
      </div>;
     })}
-   </div>}
-   <div className="foundation-inspector-grid">
-    <div className="inspector-box inspector-code">
-     <span className="inspector-label">当前执行语句 / 表达式求值</span>
-     <pre>{frame.value}</pre>
-    </div>
-    <div className="inspector-box inspector-note">
-     <span className="inspector-label">执行机制与 USACO 竞赛语义</span>
-     <p>{frame.explanation}</p>
-    </div>
-   </div>
+   </div>:<div className="lx-mem-empty"><code>{frame.value}</code></div>}
   </div>
-  <div className="foundation-controls">
-   <span>点击上方步骤胶囊或「下一步」观察变量内存变化</span>
-   <div className="foundation-step-dots" aria-hidden="true">
-    {frames.map((f,i)=><i key={f.label} className={i===step?'is-active':i<step?'is-done':''}/>)}
-   </div>
-   <Button variant="ghost" onClick={()=>setStep(0)}><RotateCcw size={14}/>重置</Button>
-   <Button variant="outline" className="foundation-next-btn" onClick={()=>setStep(s=>Math.min(frames.length-1,s+1))} disabled={step===frames.length-1}><Play size={14}/>下一步</Button>
+  <div className="lx-exec">
+   <div className="lx-exec-stmt"><span>执行</span><code>{frame.value}</code></div>
+   <p>{frame.explanation}</p>
   </div>
+  <LessonTransport step={step} total={frames.length} playing={playing} speed={speed} labels={frames.map(f=>f.label)} onStep={s=>{setPlaying(false);setStep(s);}} onTogglePlay={()=>{if(step===frames.length-1)setStep(0);setPlaying(!playing);}} onReset={()=>{setPlaying(false);setStep(0);}} onSpeed={setSpeed}/>
  </div>;
 }
 
+function CodePanel({code,activeLine,title}:{code:string;activeLine:number;title:string}){
+ const [copied,setCopied]=useState(false);
+ const lines=code.split('\n');
+ function copy(){try{navigator.clipboard?.writeText(code);setCopied(true);setTimeout(()=>setCopied(false),1600);}catch{}}
+ return <section className="lx-code" aria-label="对应代码">
+  <header className="lx-code-bar">
+   <span className="lx-code-tab"><FileCode2 size={13}/>{title}</span>
+   <span className="lx-code-sync" title="随演示步骤同步高亮"><i/>第 {activeLine+1} 行</span>
+   <button type="button" className="lx-code-copy" onClick={copy} title="复制代码">{copied?<Check size={13}/>:<Copy size={13}/>}<span>{copied?'已复制':'复制'}</span></button>
+  </header>
+  <div className="lx-code-body">
+   {lines.map((line,idx)=><div key={idx} className={`lx-code-line ${idx===activeLine?'is-active':''}`}><span className="lx-ln">{idx+1}</span><code>{line?highlightPythonLine(line):' '}</code></div>)}
+  </div>
+  <footer className="lx-code-foot"><span>Python 3</span><span>{lines.length} 行</span><span>UTF-8</span></footer>
+ </section>;
+}
+
 function ExercisePanel({exercise,onPassed,onStartCoding}:{exercise:Exercise;onPassed:()=>void;onStartCoding:()=>void}){
- const [coding,setCoding]=useState(false),[started,setStarted]=useState(false),[help,setHelp]=useState(false),[reference,setReference]=useState(false),[split,setSplit]=useState(44),[copiedIn,setCopiedIn]=useState(false);
+ const [coding,setCoding]=useState(false),[started,setStarted]=useState(false),[help,setHelp]=useState(false),[reference,setReference]=useState(false),[split,setSplit]=useState(40),[copiedIn,setCopiedIn]=useState(false);
  const workspace=useRef<HTMLDivElement>(null),drag=useRef<number|null>(null);
  const p:Problem={id:exercise.id,title:exercise.title,zhTitle:exercise.title,roundLabel:'课堂练习',year:2026,season:'course',tags:[],reviewStatus:'教学练习',level:'Bronze',visual:'',official:'',editorial:'',testsUrl:'',summary:exercise.prompt,summaryEn:'',analysis:'',hints:[exercise.hint],samples:[exercise.cases[0]],io:'stdin',checker:'tokens',testsImported:exercise.cases.length,testsTotal:exercise.cases.length};
- function resize(e:PointerEvent<HTMLDivElement>){if(drag.current!==e.pointerId||!workspace.current)return;const r=workspace.current.getBoundingClientRect();if(r.width)setSplit(Math.max(32,Math.min(60,(e.clientX-r.left)/r.width*100)));}
+ function resize(e:PointerEvent<HTMLDivElement>){if(drag.current!==e.pointerId||!workspace.current)return;const r=workspace.current.getBoundingClientRect();if(r.width)setSplit(Math.max(28,Math.min(60,(e.clientX-r.left)/r.width*100)));}
  function copySampleInput(){
   try{navigator.clipboard?.writeText(exercise.cases[0].input||'');setCopiedIn(true);setTimeout(()=>setCopiedIn(false),1400);}catch{}
  }
- return <div className="course-exercise">
-  <div className="exercise-actions">
-   <div className="exercise-title-group">
-    <span className="exercise-level-pill">{exercise.level}</span>
+ return <div className="lx-ex">
+  <div className="lx-ex-head">
+   <div className="lx-ex-title">
+    <span className="lx-ex-level">{exercise.level}</span>
     <h3>{exercise.title}</h3>
-    <span className="exercise-meta-badge">{exercise.cases.length} 组测试点 · Python 3 · 标准 I/O</span>
+    <span className="lx-ex-meta">{exercise.cases.length} 组测试 · Python 3 · 标准输入输出</span>
    </div>
-   <div className="exercise-toolbar-btns">
+   <div className="lx-ex-actions">
     <WhiteboardLauncher context={{id:`exercise-${exercise.id}`,title:exercise.title,notes:[exercise.prompt,`输入：${exercise.inputFormat}`,`输出：${exercise.outputFormat}`],samples:exercise.cases.slice(0,1)}}/>
-    <Button variant="outline" size="sm" onClick={()=>setHelp(!help)} aria-expanded={help}><Lightbulb size={14}/>思路提示</Button>
-    <Button variant="outline" size="sm" onClick={()=>setReference(!reference)} aria-expanded={reference}><FileCode2 size={14}/>参考解法</Button>
-    <Button onClick={()=>{setStarted(true);setCoding(!coding);if(!coding)onStartCoding();}} aria-expanded={coding}><Code2 size={15}/>{coding?'收起编程区':'开始编程'}</Button>
+    <button type="button" className="lx-btn lx-btn-outline lx-btn-sm" onClick={()=>setHelp(!help)} aria-expanded={help}><Lightbulb size={14}/>思路提示</button>
+    <button type="button" className="lx-btn lx-btn-outline lx-btn-sm" onClick={()=>setReference(!reference)} aria-expanded={reference}><FileCode2 size={14}/>参考解法</button>
+    <button type="button" className="lx-btn lx-btn-primary lx-btn-sm" onClick={()=>{setStarted(true);setCoding(!coding);if(!coding)onStartCoding();}} aria-expanded={coding}><Code2 size={14}/>{coding?'收起编程区':'开始编程'}</button>
    </div>
   </div>
-  <div ref={workspace} className={`exercise-workspace ${coding?'is-coding':''}`} style={{'--exercise-reading-width':`${split}%`} as React.CSSProperties}>
-   <div className="exercise-statement" data-annotation-anchor={`exercise-${exercise.id}`}>
-    <div className="exercise-prompt-card">
-     <span className="prompt-eyebrow">题目要求</span>
-     <p className="exercise-prompt">{exercise.prompt}</p>
-    </div>
-    <div className="exercise-io-grid">
-     <section className="exercise-io exercise-input">
-      <header>
-       <h4><ArrowDownToLine size={14}/>输入格式与样例</h4>
-       <button type="button" className="io-copy-btn" onClick={copySampleInput}>{copiedIn?'已复制':'复制输入'}</button>
-      </header>
+  <div ref={workspace} className={`lx-ex-body ${coding?'is-coding':''}`} style={{'--lx-read':`${split}%`} as React.CSSProperties}>
+   <div className="lx-ex-statement" data-annotation-anchor={`exercise-${exercise.id}`}>
+    <div className="lx-ex-prompt"><span className="lx-ex-eyebrow">题目要求</span><p>{exercise.prompt}</p></div>
+    <div className="lx-ex-io">
+     <section>
+      <header><h4><ArrowDownToLine size={14}/>输入</h4><button type="button" className="lx-ex-copy" onClick={copySampleInput}>{copiedIn?<Check size={12}/>:<Copy size={12}/>}{copiedIn?'已复制':'复制'}</button></header>
       <p>{exercise.inputFormat}</p>
       <pre aria-label="练习样例输入">{exercise.cases[0].input||'（无输入）'}</pre>
      </section>
-     <section className="exercise-io exercise-output">
-      <header>
-       <h4><ArrowUpFromLine size={14}/>输出格式与样例</h4>
-       <span>Sample Output</span>
-      </header>
+     <section>
+      <header><h4><ArrowUpFromLine size={14}/>输出</h4><span>Sample Output</span></header>
       <p>{exercise.outputFormat}</p>
       <pre aria-label="练习样例输出">{exercise.cases[0].output}</pre>
      </section>
     </div>
-    {help&&<div className="exercise-hint"><Lightbulb size={15}/><div><b>解题思路提示：</b><span>{exercise.hint}</span></div></div>}
-    {reference&&<div className="exercise-reference-box"><header><Terminal size={13}/><span>参考 Python 3 解法</span></header><pre className="code-sample">{exercise.solution}</pre></div>}
+    {help&&<div className="lx-ex-hint"><Lightbulb size={15}/><div><b>思路提示</b><span>{exercise.hint}</span></div></div>}
+    {reference&&<div className="lx-ex-ref"><header><Terminal size={13}/><span>参考 Python 3 解法</span></header><pre>{exercise.solution}</pre></div>}
    </div>
-   {coding&&<div className="exercise-divider" role="separator" aria-label="调整题目与编程区宽度" aria-orientation="vertical" aria-valuemin={32} aria-valuemax={60} aria-valuenow={Math.round(split)} tabIndex={0} onDoubleClick={()=>setSplit(44)} onPointerDown={e=>{e.preventDefault();drag.current=e.pointerId;e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={resize} onPointerUp={e=>{resize(e);drag.current=null;if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);}} onPointerCancel={()=>{drag.current=null;}} onLostPointerCapture={()=>{drag.current=null;}} onKeyDown={e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();setSplit(s=>e.key==='Home'?32:e.key==='End'?60:Math.max(32,Math.min(60,s+(e.key==='ArrowLeft'?-3:3))));}}}><GripVertical size={14}/></div>}
-   {started&&<aside className="exercise-code-panel" hidden={!coding} aria-label="练习编程区"><Suspense fallback={<p className="ide-opening">正在打开编辑器…</p>}><ProjectIDE problem={p} mode="learning" visible={coding} onAttempt={()=>{}} practiceCases={exercise.cases} onGraded={passed=>{if(passed)onPassed();}}/></Suspense></aside>}
+   {coding&&<div className="lx-ex-divider" role="separator" aria-label="调整题目与编程区宽度" aria-orientation="vertical" aria-valuemin={28} aria-valuemax={60} aria-valuenow={Math.round(split)} tabIndex={0} onDoubleClick={()=>setSplit(40)} onPointerDown={e=>{e.preventDefault();drag.current=e.pointerId;e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={resize} onPointerUp={e=>{resize(e);drag.current=null;if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);}} onPointerCancel={()=>{drag.current=null;}} onLostPointerCapture={()=>{drag.current=null;}} onKeyDown={e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();setSplit(s=>e.key==='Home'?28:e.key==='End'?60:Math.max(28,Math.min(60,s+(e.key==='ArrowLeft'?-3:3))));}}}><GripVertical size={14}/></div>}
+   {started&&<aside className="lx-ex-code" hidden={!coding} aria-label="练习编程区"><Suspense fallback={<p className="lx-ex-loading">正在打开编辑器…</p>}><ProjectIDE problem={p} mode="learning" visible={coding} onAttempt={()=>{}} practiceCases={exercise.cases} onGraded={passed=>{if(passed)onPassed();}}/></Suspense></aside>}
   </div>
  </div>;
 }
@@ -415,22 +407,17 @@ function LessonPractice({lesson,onComplete,onStartCoding}:{lesson:CourseLesson;o
  const exercises=exerciseData.filter(e=>e.lesson===lesson.id),[selected,setSelected]=useState(0),[passed,setPassed]=useState<number[]>([]);
  useEffect(()=>{try{const values=JSON.parse(localStorage.getItem(progressKey)||'[]');if(Array.isArray(values))setPassed(values.filter(Number.isInteger));}catch{}},[]);
  function markPassed(id:number){let saved:number[]=[];try{const value=JSON.parse(localStorage.getItem(progressKey)||'[]');if(Array.isArray(value))saved=value.filter(Number.isInteger);}catch{}const next=[...new Set([...saved,...passed,id])];setPassed(next);try{localStorage.setItem(progressKey,JSON.stringify(next));}catch{}if(exercises.every(e=>next.includes(e.id)))onComplete();}
- return <section className="lesson-practice">
-  <div className="practice-heading">
-   <div className="practice-heading-title">
-    <span className="practice-icon-badge"><Code2 size={16}/></span>
-    <div>
-     <h2>随堂编程练习</h2>
-     <p>支持在线运行调试 · 3 组测试点全部通过后自动记录完成状态</p>
-    </div>
-   </div>
-   <span className="course-progress">{exercises.filter(e=>passed.includes(e.id)).length} / {exercises.length} 已通过</span>
-  </div>
-  <div className="exercise-levels" role="tablist" aria-label="练习难度">
-   {exercises.map((e,i)=><button key={e.id} role="tab" aria-selected={i===selected} aria-controls={`exercise-${lesson.id}`} onClick={()=>setSelected(i)}>
-    <span>{passed.includes(e.id)?<Check size={14}/>:String(i+1).padStart(2,'0')}</span>
-    <small>{e.level}</small>
-    <b>{e.title}</b>
+ if(!exercises.length)return null;
+ const passedCount=exercises.filter(e=>passed.includes(e.id)).length;
+ return <section className="lx-practice">
+  <header className="lx-block-head">
+   <div><span className="lx-block-icon"><Code2 size={16}/></span><div><h2>随堂编程练习</h2><p>在线运行调试，全部测试通过后自动记录完成。</p></div></div>
+   <span className={`lx-pill ${passedCount===exercises.length?'is-done':''}`}>{passedCount} / {exercises.length} 已通过</span>
+  </header>
+  <div className="lx-levels" role="tablist" aria-label="练习难度">
+   {exercises.map((e,i)=><button key={e.id} type="button" role="tab" aria-selected={i===selected} aria-controls={`exercise-${lesson.id}`} className={passed.includes(e.id)?'is-passed':''} onClick={()=>setSelected(i)}>
+    <span className="lx-level-no">{passed.includes(e.id)?<Check size={13}/>:String(i+1).padStart(2,'0')}</span>
+    <span className="lx-level-copy"><small>{e.level}</small><b>{e.title}</b></span>
    </button>)}
   </div>
   <div id={`exercise-${lesson.id}`} role="tabpanel">
@@ -441,7 +428,7 @@ function LessonPractice({lesson,onComplete,onStartCoding}:{lesson:CourseLesson;o
 
 export function CoursePage({section,selected,onSelect,onOpenProblem,onLessonDone,done}:{section:'python'|'algorithm';selected:string;onSelect:(id:string)=>void;onOpenProblem:(id:number)=>void;onLessonDone:(id:string)=>void;done:string[]}){
  const {setOpen:setMainNavOpen}=useSidebar();
- const [directoryCollapsed,setDirectoryCollapsed]=useState(false),[directoryReady,setDirectoryReady]=useState(false),[copied,setCopied]=useState(false),[activeStep,setActiveStep]=useState(0);
+ const [directoryCollapsed,setDirectoryCollapsed]=useState(false),[directoryReady,setDirectoryReady]=useState(false),[activeStep,setActiveStep]=useState(0);
  useEffect(()=>{try{setDirectoryCollapsed(localStorage.getItem('usaco-course-directory-collapsed')==='true');}catch{}setDirectoryReady(true);},[]);
  useEffect(()=>{if(directoryReady)try{localStorage.setItem('usaco-course-directory-collapsed',String(directoryCollapsed));}catch{}},[directoryCollapsed,directoryReady]);
  useEffect(()=>{setActiveStep(0);},[selected,section]);
@@ -452,71 +439,83 @@ export function CoursePage({section,selected,onSelect,onOpenProblem,onLessonDone
  const activeLineIdx=Math.min(codeLines.length-1,Math.floor((activeStep/Math.max(1,totalSteps-1))*Math.max(0,codeLines.length-1)));
  const pyTip=usacoPythonPlaybook[lesson.id]||defaultUsacoTip;
  const algoMeta=algorithmComplexityMeta[lesson.id]||defaultAlgoComplexity;
- function copyCode(){
-  try{navigator.clipboard?.writeText(lesson.code);setCopied(true);setTimeout(()=>setCopied(false),1600);}catch{}
- }
- return <section className="course-page"><header className="course-topline"><div className="course-identity"><h1>{section==='python'?'Python 基础':'算法课堂'}</h1><span className="course-slash">/</span><h2>{lesson.title}</h2><span className="course-position">{index+1} / {list.length}</span></div><p className="course-summary" title={lesson.desc}>{lesson.desc}</p><span className="course-progress">{list.filter(l=>done.includes(l.id)).length} / {list.length} 节完成</span><WhiteboardLauncher key={lesson.id} context={{id:`lesson-${lesson.id}`,title:lesson.title,notes:[lesson.desc,...lesson.notes]}}/></header>
-  <div className={`classroom-layout ${directoryCollapsed?"directory-collapsed":""}`}><aside className="lesson-directory"><div className="directory-controls"><Button variant="ghost" onClick={()=>setDirectoryCollapsed(!directoryCollapsed)} aria-label={directoryCollapsed?"展开课程目录":"收起课程目录"} aria-expanded={!directoryCollapsed} title={directoryCollapsed?"展开课程目录":"收起课程目录"}>{directoryCollapsed?<PanelLeftOpen size={17}/>:<PanelLeftClose size={17}/>}<span>课程目录</span></Button></div><nav hidden={directoryCollapsed} className="lesson-list" aria-label={section==='python'?'Python 基础课程':'算法课程'}>{list.map((l,i)=><Fragment key={l.id}>{l.group&&(i===0||l.group!==list[i-1].group)&&<h3 className="lesson-group-label">{l.group}</h3>}<button className={l.id===lesson.id?'active':done.includes(l.id)?'is-completed':''} onClick={()=>onSelect(l.id)} aria-current={l.id===lesson.id?'page':undefined}><span>{done.includes(l.id)?<Check size={14}/>:String(i+1).padStart(2,'0')}</span><div>{l.title}<small>{l.minutes} 分钟 · 3 道练习</small></div></button></Fragment>)}</nav></aside>
-   <article className="lesson-content">
-    <div className="lesson-overview" data-annotation-anchor={`lesson-${lesson.id}`}>
-     {lesson.kind?<VisualLesson key={'visual-'+lesson.id} kind={lesson.kind} steps={lesson.steps} lessonId={lesson.id} onStepChange={setActiveStep}/>:<FoundationDiagram key={'visual-'+lesson.id} lesson={lesson} onStepChange={setActiveStep}/>}
-     <div className="course-explanation">
-      <section className="explanation-notes-card">
-       <header className="explanation-card-header">
-        <h3><BookOpen size={15}/>知识要点</h3>
-        <span className="explanation-pill">Key Insights</span>
-       </header>
-       <ul>{lesson.notes.map(note=><li key={note}>{formatNoteText(note)}</li>)}</ul>
-
-       {section==='algorithm'&&<div className="algo-complexity-panel" aria-label="核心复杂度与规模对比">
-        <div className="algo-complexity-head">
-         <span className="algo-complexity-title"><Gauge size={13}/>算法复杂度与 USACO 数据规模对照</span>
-         <small className="algo-complexity-limit">{algoMeta.limit}</small>
-        </div>
-        <div className="algo-complexity-bars">
-         {algoMeta.bars.map(bar=><div key={bar.label} className="algo-bar-row">
-          <div className="algo-bar-labels"><b>{bar.label}</b><span>{bar.badge}</span></div>
-          <div className="algo-bar-track"><div className={`algo-bar-fill tone-${bar.tone}`} style={{width:`${bar.pct}%`}}/></div>
-         </div>)}
-        </div>
-       </div>}
-
-       {section==='python'&&<div className="usaco-playbook-card" aria-label="USACO 赛场避坑指南">
-        <div className="playbook-top-banner">
-         <span className="playbook-section-tag"><Sparkles size={12}/>USACO 赛场避坑与提速指南</span>
-         <span className="playbook-badge"><Zap size={11}/>{pyTip.badge}</span>
-        </div>
-        <div className="playbook-body">
-         <h4 className="playbook-title">{pyTip.title}</h4>
-         <p className="playbook-why">{pyTip.why}</p>
-         <div className="playbook-compare">
-          <div className="playbook-col is-bad">
-           <span className="playbook-col-label"><AlertTriangle size={11}/>{pyTip.badLabel}</span>
-           <pre>{pyTip.badCode}</pre>
-          </div>
-          <div className="playbook-col is-good">
-           <span className="playbook-col-label"><CheckCircle2 size={11}/>{pyTip.goodLabel}</span>
-           <pre>{pyTip.goodCode}</pre>
-          </div>
-         </div>
-        </div>
-       </div>}
-      </section>
-
-      <section className="explanation-code-card">
-       <header className="code-window-bar">
-        <div className="code-window-dots" aria-hidden="true"><i/><i/><i/></div>
-        <h3><Terminal size={14}/>对应代码 / 伪代码</h3>
-        <span className="code-sync-indicator">第 {activeLineIdx+1} 行联动中</span>
-        <button type="button" className="code-copy-btn" onClick={copyCode} title="复制示例代码"><Copy size={12}/><span>{copied?'已复制':'复制'}</span></button>
-       </header>
-       <pre className="code-sample">{codeLines.map((line,idx)=><span key={idx} className={`code-line ${idx===activeLineIdx?'is-active-line':''}`} data-line={idx+1}>{highlightPythonLine(line)}{idx<codeLines.length-1?'\n':''}</span>)}</pre>
-      </section>
-     </div>
+ const doneCount=list.filter(l=>done.includes(l.id)).length;
+ const prev=index>0?list[index-1]:null,next=index<list.length-1?list[index+1]:null;
+ const sectionLabel=section==='python'?'Python 基础':'算法课堂';
+ const nextLabel=next?'下一课：'+next.title:section==='python'?'进入算法课堂':'进入模拟考试';
+ const goNext=()=>onSelect(next?next.id:section==='python'?'complexity':'exam');
+ return <section className={`lx-course is-${section}`}>
+  <header className="lx-course-head">
+   <div className="lx-course-heading">
+    <nav className="lx-crumbs" aria-label="课程位置"><span>{sectionLabel}</span><ChevronRight size={13}/><span>{lesson.group||lesson.label}</span><ChevronRight size={13}/><b>{lesson.title}</b></nav>
+    <div className="lx-course-title"><span className="lx-lesson-no">{String(index+1).padStart(2,'0')}</span><h1>{lesson.title}</h1><span className="lx-lesson-time"><Clock3 size={13}/>{lesson.minutes} 分钟</span></div>
+   </div>
+   <div className="lx-course-tools">
+    <div className="lx-course-progress" title={`${doneCount} / ${list.length} 节完成`}><span>{doneCount}/{list.length} 节完成</span><div className="lx-bar"><i style={{width:`${doneCount/list.length*100}%`}}/></div></div>
+    <WhiteboardLauncher key={lesson.id} context={{id:`lesson-${lesson.id}`,title:lesson.title,notes:[lesson.desc,...lesson.notes]}}/>
+    <div className="lx-pager">
+     <button type="button" className="lx-icon-btn" disabled={!prev} onClick={()=>prev&&onSelect(prev.id)} title={prev?'上一课：'+prev.title:'已是第一课'} aria-label="上一课"><ChevronLeft size={16}/></button>
+     <button type="button" className="lx-icon-btn" onClick={goNext} title={nextLabel} aria-label="下一课"><ChevronRight size={16}/></button>
     </div>
+   </div>
+  </header>
+
+  <div className={`lx-course-body ${directoryCollapsed?'is-collapsed':''}`}>
+   <aside className="lx-rail" aria-label="课程目录">
+    <button type="button" className="lx-rail-toggle" onClick={()=>setDirectoryCollapsed(!directoryCollapsed)} aria-expanded={!directoryCollapsed} title={directoryCollapsed?'展开课程目录':'收起课程目录'}>
+     {directoryCollapsed?<PanelLeftOpen size={16}/>:<PanelLeftClose size={16}/>}<span>课程目录</span><small>{index+1}/{list.length}</small>
+    </button>
+    <nav className="lx-rail-list" aria-label={section==='python'?'Python 基础课程':'算法课程'}>
+     {list.map((l,i)=><Fragment key={l.id}>
+      {l.group&&(i===0||l.group!==list[i-1].group)&&<h3 className="lx-rail-group">{l.group}</h3>}
+      <button type="button" className={`lx-rail-item ${l.id===lesson.id?'is-active':''} ${done.includes(l.id)?'is-done':''}`} onClick={()=>onSelect(l.id)} aria-current={l.id===lesson.id?'page':undefined} title={l.title}>
+       <span className="lx-rail-no">{done.includes(l.id)?<Check size={12}/>:String(i+1).padStart(2,'0')}</span>
+       <span className="lx-rail-copy"><b>{l.title}</b><small>{l.minutes} 分钟 · 3 道练习</small></span>
+      </button>
+     </Fragment>)}
+    </nav>
+   </aside>
+
+   <article className="lx-lesson">
+    <div className="lx-lesson-main" data-annotation-anchor={`lesson-${lesson.id}`}>
+     <div className="lx-stage-col">
+      {lesson.kind?<VisualLesson key={'visual-'+lesson.id} kind={lesson.kind} steps={lesson.steps} lessonId={lesson.id} onStepChange={setActiveStep}/>:<FoundationDiagram key={'visual-'+lesson.id} lesson={lesson} onStepChange={setActiveStep}/>}
+     </div>
+     <aside className="lx-inspector">
+      <CodePanel code={lesson.code} activeLine={activeLineIdx} title={section==='python'?`${lesson.id}.py`:'solution.py'}/>
+      {section==='algorithm'&&<section className="lx-card lx-complexity" aria-label="复杂度与数据规模对照">
+       <header className="lx-card-head"><h3><Gauge size={15}/>复杂度 × 数据规模</h3><span className="lx-tag">{algoMeta.limit}</span></header>
+       <div className="lx-cx-list">
+        {algoMeta.bars.map(bar=><div key={bar.label} className={`lx-cx-row tone-${bar.tone}`}>
+         <div className="lx-cx-label"><b>{bar.label}</b><span>{bar.badge}</span></div>
+         <div className="lx-cx-track"><i style={{width:`${bar.pct}%`}}/></div>
+        </div>)}
+       </div>
+       <p className="lx-cx-note">经验值：Python 每秒约 10⁷ 次简单运算；USACO 铜组时限通常为 Python 4 秒。</p>
+      </section>}
+      {section==='python'&&<section className="lx-card lx-tip" aria-label="USACO 赛场提示">
+       <header className="lx-card-head"><h3><Zap size={15}/>USACO 赛场提示</h3><span className="lx-tag lx-tag-amber">{pyTip.badge}</span></header>
+       <h4>{pyTip.title}</h4>
+       <p className="lx-tip-why">{pyTip.why}</p>
+       <div className="lx-compare">
+        <div className="is-bad"><span><AlertTriangle size={12}/>{pyTip.badLabel}</span><pre>{pyTip.badCode}</pre></div>
+        <div className="is-good"><span><CheckCircle2 size={12}/>{pyTip.goodLabel}</span><pre>{pyTip.goodCode}</pre></div>
+       </div>
+      </section>}
+     </aside>
+    </div>
+
+    <section className="lx-notes" aria-label="知识要点">
+     <header className="lx-block-head"><div><span className="lx-block-icon"><BookOpen size={16}/></span><div><h2>知识要点</h2><p>{lesson.desc}</p></div></div><span className="lx-pill">{lesson.notes.length} 条</span></header>
+     <ol className="lx-note-grid">{lesson.notes.map((note,i)=><li key={note}><span className="lx-note-no">{String(i+1).padStart(2,'0')}</span><p>{formatNoteText(note)}</p></li>)}</ol>
+    </section>
+
     <LessonPractice key={'practice-'+lesson.id} lesson={lesson} onStartCoding={beginCoding} onComplete={()=>onLessonDone(lesson.id)}/>
-    <div className="course-next">{lesson.problem&&<Button variant="outline" onClick={()=>onOpenProblem(lesson.problem!)}>练对应真题</Button>}<Button onClick={()=>onSelect(index<list.length-1?list[index+1].id:section==='python'?'complexity':'exam')}>{index<list.length-1?'下一课：'+list[index+1].title:section==='python'?'进入算法课堂':'进入模拟考试'}<ChevronRight size={15}/></Button></div>
-    {section==='python'&&<p className="course-sources">延伸阅读：<a href="https://m.runoob.com/python3/" target="_blank" rel="noreferrer">菜鸟教程目录</a><a href="https://docs.python.org/zh-cn/3.12/library/functions.html" target="_blank" rel="noreferrer">Python 内置函数</a><a href="https://docs.python.org/zh-cn/3.12/tutorial/datastructures.html" target="_blank" rel="noreferrer">Python 数据结构</a></p>}
+
+    <footer className="lx-course-next">
+     <div className="lx-next-meta">{section==='python'&&<span>延伸阅读：<a href="https://m.runoob.com/python3/" target="_blank" rel="noreferrer">菜鸟教程目录</a><a href="https://docs.python.org/zh-cn/3.12/library/functions.html" target="_blank" rel="noreferrer">Python 内置函数</a><a href="https://docs.python.org/zh-cn/3.12/tutorial/datastructures.html" target="_blank" rel="noreferrer">Python 数据结构</a></span>}</div>
+     <div className="lx-next-actions">{lesson.problem&&<button type="button" className="lx-btn lx-btn-outline" onClick={()=>onOpenProblem(lesson.problem!)}>练对应真题</button>}<button type="button" className="lx-btn lx-btn-primary" onClick={goNext}>{nextLabel}<ChevronRight size={15}/></button></div>
+    </footer>
    </article>
   </div>
  </section>;
