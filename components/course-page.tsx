@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useRef,useState,lazy,Suspense,Fragment,type PointerEvent,type ReactNode} from 'react';
-import {Check,ChevronRight,ChevronLeft,Code2,GripVertical,ArrowDownToLine,ArrowUpFromLine,PanelLeftClose,PanelLeftOpen,BookOpen,Terminal,Copy,Zap,AlertTriangle,CheckCircle2,Gauge,Layers,Lightbulb,FileCode2,Clock3} from 'lucide-react';
+import {Check,ChevronRight,ChevronLeft,Code2,GripVertical,ArrowDownToLine,ArrowUpFromLine,PanelLeftClose,PanelLeftOpen,BookOpen,Terminal,Copy,Zap,AlertTriangle,CheckCircle2,Gauge,Layers,Lightbulb,FileCode2,Clock3,Grid3x3} from 'lucide-react';
 import {useSidebar} from '@/components/ui/sidebar';
 import {VisualLesson} from './visual-lesson';
 import {LessonTransport,type PlaybackSpeed} from './lesson-transport';
@@ -454,6 +454,7 @@ export function CoursePage({section,selected,onSelect,onOpenProblem,onLessonDone
    </div>
    <div className="lx-course-tools">
     <div className="lx-course-progress" title={`${doneCount} / ${list.length} 节完成`}><span>{doneCount}/{list.length} 节完成</span><div className="lx-bar"><i style={{width:`${doneCount/list.length*100}%`}}/></div></div>
+    {['graphs','grid','recursion','prefix','geometry'].includes(lesson.id)&&<button type="button" className="lx-btn lx-btn-primary lx-btn-sm lx-lab-jump" onClick={()=>document.querySelector('.lx-gridlab')?.scrollIntoView({behavior:'smooth',block:'start'})}><Grid3x3 size={14}/>平面网格实验</button>}
     <WhiteboardLauncher key={lesson.id} context={{id:`lesson-${lesson.id}`,title:lesson.title,notes:[lesson.desc,...lesson.notes]}}/>
     <div className="lx-pager">
      <button type="button" className="lx-icon-btn" disabled={!prev} onClick={()=>prev&&onSelect(prev.id)} title={prev?'上一课：'+prev.title:'已是第一课'} aria-label="上一课"><ChevronLeft size={16}/></button>
