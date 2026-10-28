@@ -5,6 +5,7 @@ import {useSidebar} from '@/components/ui/sidebar';
 import {VisualLesson} from './visual-lesson';
 import {LessonTransport,type PlaybackSpeed} from './lesson-transport';
 import {WhiteboardLauncher} from './whiteboard-launcher';
+import {GridLab} from './grid-lab';
 import {pythonLessons,algorithmLessons,type CourseLesson} from '@/data/course-lessons';
 import exerciseData from '@/data/course-exercises.json';
 import type {Problem} from './practice-workspace';
@@ -504,6 +505,8 @@ export function CoursePage({section,selected,onSelect,onOpenProblem,onLessonDone
       </section>}
      </aside>
     </div>
+
+    {['graphs','grid','recursion'].includes(lesson.id)&&<GridLab key={'grid-'+lesson.id} defaultMode={lesson.id==='recursion'?'dfs':'bfs'}/>}
 
     <section className="lx-notes" aria-label="知识要点">
      <header className="lx-block-head"><div><span className="lx-block-icon"><BookOpen size={16}/></span><div><h2>知识要点</h2><p>{lesson.desc}</p></div></div><span className="lx-pill">{lesson.notes.length} 条</span></header>
