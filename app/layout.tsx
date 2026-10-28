@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./lab-ui.css";
 
 export const metadata: Metadata = {
   title: "USACO Lab · 铜组升银组",

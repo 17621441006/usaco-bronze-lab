@@ -106,7 +106,7 @@ export default function AIWhiteboard({context,onClose}:{context:BoardContext;onC
  useEffect(()=>{if(!notice)return;const timer=setTimeout(()=>setNotice(''),2200);return()=>clearTimeout(timer);},[notice]);
  useEffect(()=>{
   mounted.current=true;const before=()=>{finish();persist();};window.addEventListener('pagehide',before);
-  return()=>{mounted.current=false;finish();persist();cancelAnimationFrame(drawFrame.current);clearTimeout(pauseTimer.current);window.removeEventListener('pagehide',before);};
+  return()=>{mounted.current=false;finish();persist();cancelAnimationFrame(drawFrame.current);drawFrame.current=0;clearTimeout(pauseTimer.current);window.removeEventListener('pagehide',before);};
  },[finish,persist]);
  function undoMark(){
   if(draft.current||box.current){cancelBox();return;}const b=boardRef.current,h=history.current[b.page];if(!h?.past.length)return;const s=h.past.pop()!;h.future.push(b.pages[b.page]);const pages=[...b.pages];pages[b.page]=s;replace({...b,pages});setHistoryCount({undo:h.past.length,redo:h.future.length});setSelectedId(null);
