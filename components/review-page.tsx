@@ -7,7 +7,7 @@ type Tab='wrong'|'notes'|'history';
 export function ReviewPage({problems,attempts,wrong,onOpen}:{problems:Problem[];attempts:Attempt[];wrong:Attempt[];onOpen:(id:number)=>void}){
  const [tab,setTab]=useState<Tab>('wrong');
  const [notes]=useState(()=>{if(typeof window==='undefined')return [] as {p:Problem;text:string}[];return problems.map(p=>({p,text:localStorage.getItem(`usaco-note-${p.id}`)||''})).filter(x=>x.text.trim());});
- const solved=new Set(attempts.filter(a=>a.status==='本次通过').map(a=>a.id));
+ const solved=new Set(attempts.filter(a=>a.status==='本次通过'&&/完整|全部/.test(a.detail)).map(a=>a.id));
  const touched=new Set(attempts.map(a=>a.id));
  const statusClass=(s:string)=>s==='本次通过'?'is-ac':s==='待复习'?'is-review':'is-run';
  return <div className="lx-review">

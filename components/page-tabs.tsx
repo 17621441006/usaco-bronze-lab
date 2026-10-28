@@ -11,7 +11,7 @@ const MORE_WIDTH=92,GAP=4;
 function TabIcon({page}:{page:string}){const Icon=pageIcons[page]||BookOpen;return <Icon size={14}/>;}
 
 /** Browser-style page tabs. Tabs that do not fit are collected into a "更多" overflow menu; the active tab always stays visible. */
-export function PageTabs({tabs,active,onSelect,onClose,onOpen,leading,trailing,tools}:{tabs:PageTab[];active:string;onSelect:(tab:PageTab)=>void;onClose:(key:string)=>void;onOpen:(page:string)=>void;leading?:ReactNode;trailing?:ReactNode;tools?:ReactNode}) {
+export function PageTabs({tabs,active,onSelect,onClose,onOpen,leading,trailing,tools}:{tabs:PageTab[];active:string;onSelect:(tab:PageTab)=>void;onClose:(key:string|string[])=>void;onOpen:(page:string)=>void;leading?:ReactNode;trailing?:ReactNode;tools?:ReactNode}) {
  const strip=useRef<HTMLDivElement>(null),measure=useRef<HTMLDivElement>(null);
  const [visibleKeys,setVisibleKeys]=useState<string[]>(()=>tabs.map(t=>t.key));
  useLayoutEffect(()=>{
@@ -47,7 +47,7 @@ export function PageTabs({tabs,active,onSelect,onClose,onOpen,leading,trailing,t
      <DropdownMenuLabel>收起的页面 · {hidden.length}</DropdownMenuLabel>
      {hidden.map(t=><DropdownMenuItem key={t.key} onSelect={()=>onSelect(t)} className="lx-tabs-menu-item"><TabIcon page={t.page}/><span>{t.label}</span><button type="button" aria-label={`关闭 ${t.label}`} onPointerDown={e=>e.stopPropagation()} onClick={e=>{e.preventDefault();e.stopPropagation();onClose(t.key);}}><X size={12}/></button></DropdownMenuItem>)}
      <DropdownMenuSeparator/>
-     <DropdownMenuItem onSelect={()=>hidden.forEach(t=>onClose(t.key))} className="lx-tabs-menu-danger">关闭这些页面</DropdownMenuItem>
+     <DropdownMenuItem onSelect={()=>onClose(hidden.map(t=>t.key))} className="lx-tabs-menu-danger">关闭这些页面</DropdownMenuItem>
     </DropdownMenuContent></DropdownMenu>}
    <div className="lx-tabs-probe" ref={measure} aria-hidden="true">{tabs.map(t=>tab(t,true))}</div>
   </div>

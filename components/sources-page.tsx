@@ -21,9 +21,9 @@ export function SourcesPage({problems,rounds,statementReport,pythonCount,algorit
   }).sort((a,b)=>b.n-a.n);
   const maxCell=Math.max(1,...topics.flatMap(x=>x.byYear));
   const stages=stageOrder.map(st=>({st,n:problems.filter(p=>p.practiceStage===st).length}));
-  // Difficulty by position inside each contest (problem 1 / 2 / 3)
+  // Some historical papers contain four problems; include every position.
   const byRound=new Map<string,Problem[]>();problems.forEach(p=>byRound.set(p.roundLabel,[...(byRound.get(p.roundLabel)||[]),p]));
-  const positions=[0,1,2].map(i=>{const list=[...byRound.values()].map(ps=>[...ps].sort((a,b)=>a.id-b.id)[i]).filter(Boolean) as Problem[];return {i,total:list.length,parts:stageOrder.map(st=>({st,n:list.filter(p=>p.practiceStage===st).length}))};});
+  const positions=Array.from({length:Math.max(0,...[...byRound.values()].map(ps=>ps.length))},(_,i)=>{const list=[...byRound.values()].map(ps=>[...ps].sort((a,b)=>a.id-b.id)[i]).filter(Boolean) as Problem[];return {i,total:list.length,parts:stageOrder.map(st=>({st,n:list.filter(p=>p.practiceStage===st).length}))};});
   const tagCounts=[1,2,3,4].map(k=>({k,n:problems.filter(p=>(p.learningTopics||[]).length===k).length}));
   const multi=problems.filter(p=>(p.learningTopics||[]).length>=2).length;
   const pairMap=new Map<string,number>();
@@ -59,7 +59,7 @@ export function SourcesPage({problems,rounds,statementReport,pythonCount,algorit
    <section className="lx-card lx-src-trend">
     <header className="lx-card-head"><h3><TrendingUp size={15}/>经典 vs 近年：考点占比变化</h3><span className="lx-tag">2015–19 · {s.classic.length} 题　|　2020+ · {s.recent.length} 题</span></header>
     <div className="lx-dumbbell">{s.topics.map(x=><div key={x.t.id} className="lx-db-row"><span className="lx-db-name">{x.t.label}</span><span className="lx-db-track"><i className="lx-db-line" style={{left:`${sc(Math.min(x.cShare,x.rShare))}%`,width:`${sc(Math.abs(x.rShare-x.cShare))}%`}}/><i className="lx-db-dot is-classic" style={{left:`${sc(x.cShare)}%`}} title={`经典 ${x.cShare}%`}/><i className="lx-db-dot is-recent" style={{left:`${sc(x.rShare)}%`}} title={`近年 ${x.rShare}%`}/></span><span className={`lx-db-delta ${x.rShare>=x.cShare?'is-up':'is-down'}`}>{x.rShare>=x.cShare?'+':''}{Math.round((x.rShare-x.cShare)*10)/10}</span></div>)}</div>
-    <div className="lx-db-legend"><span><i className="is-classic"/>经典占比</span><span><i className="is-recent"/>近年占比</span><span className="lx-muted">横轴：该分类题目占本时期题数的百分比（0–{dbMax}%）（0–{dbMax}%）</span></div>
+    <div className="lx-db-legend"><span><i className="is-classic"/>经典占比</span><span><i className="is-recent"/>近年占比</span><span className="lx-muted">横轴：该分类题目占本时期题数的百分比（0–{dbMax}%）</span></div>
     <div className="lx-insight"><div><TrendingUp size={14}/><b>近年上升</b>{s.rising.map(x=><span key={x.t.id}>{x.t.label}</span>)}</div><div><TrendingDown size={14}/><b>近年下降</b>{s.falling.map(x=><span key={x.t.id}>{x.t.label}</span>)}</div></div>
    </section>
   </div>
@@ -79,7 +79,7 @@ export function SourcesPage({problems,rounds,statementReport,pythonCount,algorit
      <svg viewBox="0 0 100 100" className="lx-donut">{s.stages.map(({st,n})=>{const len=ring*n/problems.length,el=<circle key={st} cx="50" cy="50" r="38" stroke={stageColor[st]} strokeDasharray={`${len} ${ring-len}`} strokeDashoffset={-acc}/>;acc+=len;return el;})}<text x="50" y="49" textAnchor="middle" className="n">{problems.length}</text><text x="50" y="62" textAnchor="middle" className="c">道题</text></svg>
      <ul className="lx-legend-list">{s.stages.map(({st,n})=><li key={st}><i style={{background:stageColor[st]}}/>{st}<b>{n}</b><small>{pct(n,problems.length)}%</small></li>)}</ul>
     </div>
-    <h4 className="lx-sub-h">按题号看难度（每场第 1 / 2 / 3 题）</h4>
+    <h4 className="lx-sub-h">按场内题号看练习阶段</h4>
     <div className="lx-stack-list">{s.positions.map(({i,total,parts})=><div key={i} className="lx-stack-row"><span>第 {i+1} 题</span><div className="lx-stack">{parts.map(({st,n})=>n?<i key={st} style={{width:`${n/total*100}%`,background:stageColor[st]}} title={`${st} ${n}`}/>:null)}</div><small>{total}</small></div>)}</div>
    </section>
 

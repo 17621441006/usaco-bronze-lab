@@ -2,6 +2,14 @@
 
 Bronze regular-season learning site. Silver, Gold and Platinum remain reserved headings. US Open is excluded.
 
+## UI v2 release · 2026-10-28
+
+Integrates the nine commits through `baf476f` on `feat/ui-redesign-v2`, including the earlier 3D redesign. The learning route, course stage and controls, problem library, editor, overflow tabs, exams, notes and source statistics use the new UI. BFS/DFS, 2D prefix sums and rectangle overlap have interactive grid labs. Existing statements, official tests and browser-local drafts/progress are preserved.
+
+Release corrections: hidden tabs close in one batch; sample-only successes do not count as full-data successes in the review dashboard; source statistics include the fourth problem in January 2015. The repeated chart-axis caption was removed.
+
+Use `scripts/verify-ui-v2.cjs` for the current UI interaction regression; `verify-workspace.cjs` contains historical pre-v2 layout selectors. Monaco, WebGL rendering and the runner are mocked in the UI DOM test. Separate worker/canvas checks exercise actual Python execution, inspections, annotation and whiteboard drawing, and 3D model/camera geometry. See [release verification](docs/releases/2026-10-28-ui-v2.md) for commands and limitations.
+
 ## Local classic statements · 2026-10-27
 
 - Imported the supplied 2015–2019 HTML as inert, bundled English/Chinese content. Existing official-reader problems now render immediately inside the site; old plain-text layouts preserve line breaks and sample alignment. Optional official-source links remain available.
