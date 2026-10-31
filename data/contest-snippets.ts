@@ -1,10 +1,10 @@
-export type ContestSnippet={id:string;title:string;category:string;note:string;python:string;cpp:string};
+export type ContestSnippet={id:string;title:string;category:string;note:string;python:string;cpp:string;pythonBadge?:string;cppNote?:string};
 export const contestSnippets:ContestSnippet[]=[
+ {id:'tokens',title:'批量读入与迭代器',category:'输入输出',pythonBadge:'大量数据 · 整批读入',note:'sys.stdin.read() 一次读完输入，减少反复读取的开销，适合大量以空白分隔的整数。示例先读 n，再读 n 个数；会占用更多内存，split() 不保留空格与换行。若需保留一行原文，请用 input() 或 sys.stdin.readline()。',cppNote:'先读取数量 n，再依次读取 n 个整数，空格和换行均可分隔。',python:'import sys\nit = iter(map(int, sys.stdin.read().split()))\nn = next(it)\na = [next(it) for _ in range(n)]',cpp:'int n;\ncin >> n;\nvector<int> a(n);\nfor (int &x : a) cin >> x;'},
  {id:'one',title:'读取一个整数',category:'输入输出',note:'读取一行中的一个整数。',python:'n = int(input())',cpp:'int n;\ncin >> n;'},
  {id:'pair',title:'读取同一行两个整数',category:'输入输出',note:'Python 左侧变量数量要与输入项数一致。',python:'a, b = map(int, input().split())',cpp:'int a, b;\ncin >> a >> b;'},
  {id:'ints',title:'读取一行整数列表',category:'输入输出',note:'map 转换每一项，list 保存所有结果。',python:'a = list(map(int, input().split()))',cpp:'vector<int> a(n);\nfor (int &x : a) cin >> x;'},
  {id:'rows',title:'读取 n 行整数',category:'输入输出',note:'用于二维表或每行固定个数的数据。',python:'rows = [list(map(int, input().split())) for _ in range(n)]',cpp:'vector<vector<int>> rows(n, vector<int>(m));\nfor (auto &row : rows)\n    for (int &x : row) cin >> x;'},
- {id:'tokens',title:'批量读入与迭代器',category:'输入输出',note:'全部读入后按顺序消费；不要重复导入 sys。',python:'import sys\nit = iter(map(int, sys.stdin.read().split()))\nn = next(it)\na = [next(it) for _ in range(n)]',cpp:'int n;\ncin >> n;\nvector<int> a(n);\nfor (int &x : a) cin >> x;'},
  {id:'print',title:'输出一组数',category:'输入输出',note:'按空格分隔，末尾换行；不输出说明文字。',python:'print(*a)',cpp:'for (int i = 0; i < (int)a.size(); ++i)\n    cout << a[i] << (i + 1 == (int)a.size() ? "\\n" : " ");'},
  {id:'file',title:'旧题文件读写',category:'输入输出',note:'把 paint 改为题目要求的文件名；新题通常使用标准输入输出。',python:'with open("paint.in") as f:\n    a, b, c, d = map(int, f.read().split())\nwith open("paint.out", "w") as f:\n    f.write(str(answer) + "\\n")',cpp:'freopen("paint.in", "r", stdin);\nfreopen("paint.out", "w", stdout);'},
  {id:'range',title:'按下标循环',category:'循环与条件',note:'下标从 0 到 n−1。',python:'for i in range(n):\n    print(i)',cpp:'for (int i = 0; i < n; ++i) {\n    cout << i << "\\n";\n}'},

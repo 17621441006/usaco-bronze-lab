@@ -1,5 +1,6 @@
 'use client';
 import {useEffect,useMemo,useRef,useState} from 'react';
+import {Popover} from 'radix-ui';
 import Editor,{loader} from '@monaco-editor/react';
 import {defaultEditorPreferences,readEditorPreferences} from '@/lib/editor-preferences';
 import {useEditorOverlays} from '@/hooks/use-editor-overlays';
@@ -9,6 +10,7 @@ import {applyInspectionEdits,type PythonIssue} from '@/lib/python-diagnostics';
 import {PythonInspectionPanel} from './python-inspection-panel';
 import {configureCodeEditor} from '@/lib/editor-theme';
 import {bindProjectShortcuts} from '@/lib/editor-shortcuts';
+import {withPreservedPageScroll} from '@/lib/editor-scroll';
 loader.config({paths:{vs:'/editor/vs'}});
 import {Code2,FileCode2,FileText,FolderOpen,Plus,Play,Square,Download,X,Check,Terminal,ChevronDown,Save,Maximize2,Minimize2,Sun,Moon,GripHorizontal,Braces,AlertCircle,Info,LoaderCircle,Files,ListChecks,Type,Timer,FlaskConical,Send} from 'lucide-react';
 import {Button} from '@/components/ui/button';
@@ -30,11 +32,14 @@ export function ProjectIDE({problem:p,mode,onAttempt,examExpired=false,visible=t
  const overlayNode=useEditorOverlays(preferences.theme,visible);
  useEffect(()=>{if(standalone)try{setStandardInput(localStorage.getItem('usaco-playground-stdin')||'');}catch{}},[standalone]);
  const fallbackEditor=useRef<HTMLTextAreaElement>(null);
+ const snippetsTrigger=useRef<HTMLButtonElement>(null);
+ function closeSnippets(){setSnippetsOpen(false);snippetsTrigger.current?.focus({preventScroll:true});}
+ useEffect(()=>{setSnippetsOpen(false);},[visible,project.activeFile]);
  function insertSnippet(code:string){
   if(readOnly)return;
   const ed=editor.current;
-  if(ed&&!fallback){const selection=ed.getSelection();if(selection){ed.pushUndoStop();ed.executeEdits('contest-snippet',[{range:selection,text:code,forceMoveMarkers:true}]);ed.pushUndoStop();ed.focus();}}
-  else {const text=fallbackEditor.current,start=text?.selectionStart??activeCode.length,end=text?.selectionEnd??start;setProject(prev=>({...prev,files:{...prev.files,[prev.activeFile]:activeCode.slice(0,start)+code+activeCode.slice(end)}}));requestAnimationFrame(()=>{text?.focus();text?.setSelectionRange(start+code.length,start+code.length);});}
+  if(ed&&!fallback){const selection=ed.getSelection();if(selection)withPreservedPageScroll(root.current,()=>{ed.pushUndoStop();ed.executeEdits('contest-snippet',[{range:selection,text:code,forceMoveMarkers:true}]);ed.pushUndoStop();ed.focus();});}
+  else {const text=fallbackEditor.current,start=text?.selectionStart??activeCode.length,end=text?.selectionEnd??start;setProject(prev=>({...prev,files:{...prev.files,[prev.activeFile]:activeCode.slice(0,start)+code+activeCode.slice(end)}}));requestAnimationFrame(()=>{withPreservedPageScroll(root.current,()=>{text?.focus({preventScroll:true});text?.setSelectionRange(start+code.length,start+code.length);});});}
   setSnippetsOpen(false);
  }
  const root=useRef<HTMLElement|null>(null),saveAction=useRef<()=>void>(()=>{}),projectNow=useRef(project);projectNow.current=project;
@@ -114,7 +119,10 @@ export function ProjectIDE({problem:p,mode,onAttempt,examExpired=false,visible=t
     {!standalone&&<div className="pi-project"><span className="pi-project-icon"><Code2 size={14}/></span><span className="pi-project-name">{practiceCases?'课堂练习':<>USACO <b>#{p.id}</b></>}</span></div>}
     {!standalone&&<div className="pi-run-config"><Select value={project.entryFile} onValueChange={name=>setProject(prev=>({...prev,entryFile:name}))}><SelectTrigger aria-label="运行入口" className="pi-entry-trigger"><FileCode2 size={13}/><SelectValue/></SelectTrigger><SelectContent portalContainer={overlayNode?.parentElement}>{Object.keys(project.files).filter(executable).map(n=><SelectItem key={n} value={n}>{n}</SelectItem>)}</SelectContent></Select><button type="button" className="pi-run-icon" disabled={runDisabled} onClick={()=>run('run')} aria-label="运行当前入口" title="运行 · Ctrl+Enter"><Play size={14}/></button>{busy&&<button type="button" className="pi-run-icon is-stop" onClick={stop} aria-label="停止运行" title="停止"><Square size={12}/></button>}</div>}
     <div className="pi-header-tools">
-     <button type="button" className="pi-tool" disabled={readOnly||!["python","cpp"].includes(language)} onClick={()=>setSnippetsOpen(v=>!v)} aria-expanded={snippetsOpen} aria-label="常用竞赛语句" title="常用竞赛语句"><Braces size={14}/><span>常用语句</span></button>
+     <Popover.Root open={snippetsOpen&&visible} onOpenChange={setSnippetsOpen}>
+      <Popover.Trigger asChild><button ref={snippetsTrigger} type="button" className="pi-tool" disabled={readOnly||!["python","cpp"].includes(language)} aria-label="常用竞赛语句" title="常用竞赛语句"><Braces size={14}/><span>常用语句</span></button></Popover.Trigger>
+      <ContestSnippets language={language} theme={preferences.theme} portalContainer={overlayNode?.parentElement} onInsert={insertSnippet} onClose={closeSnippets}/>
+     </Popover.Root>
      <span className="pi-sep"/>
      <label className="pi-font" title="代码字号"><Type size={13}/><select aria-label="代码字号" value={preferences.fontSize} onChange={e=>setPreferences(v=>({...v,fontSize:+e.target.value}))}>{[12,13,14,15,16,18,20,22,24,28].map(n=><option key={n} value={n}>{n}px</option>)}</select></label>
      <button type="button" className="pi-tool pi-tool-icon" onClick={()=>setPreferences(v=>({...v,theme:v.theme==='dark'?'light':'dark'}))} aria-label={preferences.theme==='dark'?'切换浅色编辑器':'切换深色编辑器'} title={preferences.theme==='dark'?'浅色主题':'深色主题'}>{preferences.theme==='dark'?<Sun size={14}/>:<Moon size={14}/>}</button>
@@ -122,7 +130,6 @@ export function ProjectIDE({problem:p,mode,onAttempt,examExpired=false,visible=t
      <button type="button" className="pi-tool pi-tool-icon" onClick={()=>setMaximized(v=>!v)} aria-label={maximized?'退出全屏编程':'全屏编程'} title={maximized?'退出全屏 · Esc':'全屏编程'}>{maximized?<Minimize2 size={14}/>:<Maximize2 size={14}/>}</button>
     </div>
    </header>
-   {snippetsOpen&&<ContestSnippets language={language} onInsert={insertSnippet} onClose={()=>setSnippetsOpen(false)}/>}
    <div className={'pi-body '+(!treeOpen?'is-tree-closed':'')}>
     <aside className="pi-activity">
      <button type="button" className={treeOpen?'is-active':''} title={treeOpen?'收起工程目录':'展开工程目录'} aria-label={treeOpen?'收起工程目录':'展开工程目录'} onClick={()=>setTreeOpen(!treeOpen)}><Files size={17}/></button>
